@@ -4,4 +4,6 @@
 
 [![Build Status](https://travis-ci.org/iamskok/skok.io.svg?branch=master)](https://travis-ci.org/iamskok/skok.io)
 
+[![Bors enabled](https://bors.tech/images/badge_small.svg)](https://app.bors.tech/repositories/22976)
+
 Vladimir Skok's development blog
