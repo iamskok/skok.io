@@ -30,6 +30,6 @@
   },
   "devDependencies": {
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
-    "wait-for-netlify-preview": "^1.2.1"
+    "wait-for-netlify-preview": "1.2.1"
   }
 }
