@@ -7,7 +7,8 @@
   "scripts": {
     "clean": "rm -rf .cache public",
     "start": "gatsby develop",
-    "build": "gatsby build"
+    "build": "gatsby build",
+    "lh": "lighthousebot"
   },
   "dependencies": {
     "@emotion/core": "^10.0.27",
@@ -26,5 +27,9 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "theme-ui": "^0.2.52"
+  },
+  "devDependencies": {
+    "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
+    "wait-for-netlify-preview": "1.2.1"
   }
 }
