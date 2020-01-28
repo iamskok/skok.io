@@ -4,6 +4,9 @@ node_js:
 
 jobs:
   include:
+    - stage: Test
+      install: yarn install --frozen-lockfile
+      script: yarn test
     - stage: Lighthouse
       if: type = pull_request
       install: yarn install --frozen-lockfile
