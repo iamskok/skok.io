@@ -4,13 +4,17 @@ import { jsx } from 'theme-ui'
 const heading = Tag => ({ id, ...props }) => !id
   ? <Tag {...props} />
   : (
-    <Tag id={id} {...props}>
+    <Tag
+      id={id}
+      {...props}
+    >
       <a
         href={'#' + id}
         sx={{
           color: 'inherit',
           textDecoration: 'none',
-        }}>
+        }}
+      >
         {props.children}
       </a>
     </Tag>
