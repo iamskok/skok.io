@@ -1,14 +1,16 @@
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/nightOwl';
-import React from 'react';
+import React from 'react'
+import Highlight, { defaultProps } from 'prism-react-renderer'
+import theme from 'prism-react-renderer/themes/nightOwl'
 
-const Code = ({ codeString, language, ...props }) => {
+const Code = ({ codeString, language }) => {
+  console.log('theme', theme)
   return (
     <Highlight
       {...defaultProps}
       code={codeString}
       language={language}
-      theme={theme}>
+      theme={theme}
+    >
       {({
         className,
         style,
@@ -16,7 +18,10 @@ const Code = ({ codeString, language, ...props }) => {
         getLineProps,
         getTokenProps,
       }) => (
-        <pre className={className} style={style}>
+        <pre
+          className={className}
+          style={style}
+        >
           {tokens.map((line, i) => (
             <div {...getLineProps({ line, key: i })}>
               <span>{i + 1}</span>
@@ -28,7 +33,7 @@ const Code = ({ codeString, language, ...props }) => {
         </pre>
       )}
     </Highlight>
-  );
-};
+  )
+}
 
-export default Code;
+export default Code
