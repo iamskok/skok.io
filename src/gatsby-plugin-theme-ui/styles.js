@@ -1,5 +1,4 @@
-import nightOwl from '@theme-ui/prism/presets/night-owl.json'
-// import prism from '@theme-ui/prism/presets/theme-ui'
+import prism from './prism'
 
 const heading = {
   fontFamily: 'heading',
@@ -65,13 +64,12 @@ export default {
   },
   code: {
     fontFamily: 'monospace',
-    ...nightOwl,
-    // ...prism
+    ...prism
   },
   inlineCode: {
     fontFamily: 'monospace',
     color: 'secondary',
-    ...nightOwl,
+    backgroundColor: 'muted'
   },
   strong: {
     fontWeight: 'bold',
