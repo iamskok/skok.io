@@ -5,3 +5,4 @@ TODO.md
 .cache
 .netlify
 .DS_Store
+.lighthouseci
