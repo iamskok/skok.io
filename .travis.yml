@@ -5,7 +5,7 @@ node_js:
 addons:
   chrome: stable # make Chrome available
 before_install:
-  - yarn add -g @lhci/cli@0.3.x # install LHCI
+  - npm install -g @lhci/cli@0.3.x # install LHCI
 script:
   - yarn build # build your site
 after_success:
