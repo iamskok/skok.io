@@ -1,6 +1,5 @@
 import colors from './colors'
 import styles from './styles'
-import components from './styles'
 
 const theme = {
   initialColorMode: 'light',
@@ -23,7 +22,6 @@ const theme = {
     container: 768,
   },
   styles,
-  components,
 }
 
 export default theme

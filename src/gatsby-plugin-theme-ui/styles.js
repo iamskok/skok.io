@@ -63,8 +63,10 @@ export default {
     overflowX: 'auto',
   },
   code: {
+    ...prism,
     fontFamily: 'monospace',
-    ...prism
+    float: 'left',
+    minWidth: '100%'
   },
   inlineCode: {
     fontFamily: 'monospace',

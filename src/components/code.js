@@ -57,37 +57,39 @@ export default ({
         getLineProps,
         getTokenProps
       }) => (
-        <Styled.pre
-          className={`${outerClassName} ${className}`}
-          style={style}
-        >
-          {tokens.map((line, i) => {
-            return (
-              <div
-                key={i}
-                {...getLineProps({
-                  line,
-                  key: i,
-                  className: shouldHighlightLine(i) ? 'highlight-line' : '',
-                })}
-              >
-                <span sx={{
-                  display: 'inline-block',
-                  width: '1.8em',
-                  userSelect: 'none',
-                  opacity: 0.3
-                }}>
-                  {i + 1}
-                </span>
-                {line.map((token, key) => (
-                  <span
-                    {...getTokenProps({ token, key })}
-                    sx={{ display: 'inline-block' }}
-                  />
-                ))}
-              </div>
-            )
-          })}
+        <Styled.pre>
+          <Styled.code
+            className={`${outerClassName} ${className}`}
+            style={style}
+          >
+            {tokens.map((line, i) => {
+              return (
+                <div
+                  key={i}
+                  {...getLineProps({
+                    line,
+                    key: i,
+                    className: shouldHighlightLine(i) ? 'highlight-line' : '',
+                  })}
+                >
+                  <span sx={{
+                    display: 'inline-block',
+                    width: '1.8em',
+                    userSelect: 'none',
+                    opacity: 0.3
+                  }}>
+                    {i + 1}
+                  </span>
+                  {line.map((token, key) => (
+                    <span
+                      {...getTokenProps({ token, key })}
+                      sx={{ display: 'inline-block' }}
+                    />
+                  ))}
+                </div>
+              )
+            })}
+          </Styled.code>
         </Styled.pre>
       )}
     </Highlight>
