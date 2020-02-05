@@ -1,0 +1,15 @@
+name: Test Audit
+on: [push, pull_request]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Audit Netlify deploy preview
+      uses: jakejarvis/lighthouse-action@master
+      with:
+        netlify_site: 'skok.netlify.com'
+    - uses: actions/upload-artifact@master
+      with:
+        name: report
+        path: './report'
