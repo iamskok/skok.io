@@ -9,4 +9,4 @@ before_install:
 script:
   - yarn build # build your site
 after_success:
-  - lhci autorun # run lighthouse CI against your static site
+  - yarn serve &; lhci autorun # run lighthouse CI against your static site
