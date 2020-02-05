@@ -3,21 +3,21 @@ import { jsx } from 'theme-ui'
 import Code from '../components/code'
 
 export default {
-  // pre: props => console.log('pre props', props) || props.children,
-  pre: props => {
+  pre: preProps => {
     if (
-      props.children &&
-      props.children.props
+      preProps &&
+      preProps.children &&
+      preProps.children.props
     ) {
       if (
-        props.children.props.className &&
-        props.children.props.className.includes('language-')
+        preProps.children.props.className &&
+        preProps.children.props.className.includes('language-')
       ) {
-        console.log('code tag', props)
-        return <pre {...props}><Code {...props.children.props}>{props.children}</Code></pre>
+        console.log('code tag', preProps)
+        return <pre {...preProps}><Code {...preProps.children.props}>{preProps.children}</Code></pre>
         } else {
-          console.log('pre tag', props)
-          return <pre {...props}>{props.children.props.children}</pre>
+          console.log('pre tag', preProps)
+        return <pre {...preProps}>{preProps.children.props.children}</pre>
         }
       } else {
       return null

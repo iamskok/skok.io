@@ -42,27 +42,11 @@ export default ({
   const lang = aliases[language] || language
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
 
-  const includeCodeTag = outerClassName.includes('language-')
-  // console.log('code children', children)
-  // console.log('code children2', children.children.props.children)
-  // console.log('includeCodeTag', includeCodeTag)
-
-  let codeString = ''
-
-  if (
-    children &&
-    children.props &&
-    children.props.children
-  ) {
-    codeString = children.props.children 
-
-  }
-
   return (
     <Highlight
       {...defaultProps}
       {...props}
-      code={codeString.trim()}
+      code={children.props.children.trim()}
       language={lang}
       theme={undefined}
     >
