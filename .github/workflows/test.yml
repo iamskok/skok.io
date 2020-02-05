@@ -1,5 +1,5 @@
-name: Test Audit
-on: [push, pull_request]
+name: Audit pull request
+on: pull_request
 
 jobs:
   audit:
