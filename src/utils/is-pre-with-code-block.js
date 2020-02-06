@@ -1,4 +1,4 @@
-exports.isPreWithCodeBlock = preProps => {
+const isPreWithCodeBlock = preProps => {
   if (
     preProps.children &&
     preProps.children.props &&
@@ -11,3 +11,5 @@ exports.isPreWithCodeBlock = preProps => {
     return false
   }
 }
+
+module.exports = isPreWithCodeBlock
