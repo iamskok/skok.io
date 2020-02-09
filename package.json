@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf .cache public",
+    "clean": "gatsby clean",
     "start": "gatsby develop",
     "build": "gatsby build",
     "lh": "lighthousebot"
