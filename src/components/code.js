@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import React from 'react'
+import React from 'react' // eslint-disable-line no-unused-vars
 import { defaultProps } from 'prism-react-renderer'
 import {
   LiveProvider,
