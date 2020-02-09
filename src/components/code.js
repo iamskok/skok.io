@@ -2,13 +2,8 @@
 import { jsx } from 'theme-ui'
 import React from 'react' // eslint-disable-line no-unused-vars
 import { defaultProps } from 'prism-react-renderer'
-import {
-  LiveProvider,
-  LiveEditor,
-  LiveError,
-  LivePreview
-} from 'react-live'
 import PrismHighlight from './prism-highlight'
+import ReactLive from './react-live'
 import calculateLinesToHighlight from '../utils/calculate-lines-to-highlight'
 
 const aliases = {
@@ -33,15 +28,11 @@ const Code = ({
     <>
       {
         isReactLive ?
-        <LiveProvider
+        <ReactLive
           code={codeString}
           noInline={false}
           theme={undefined}
-        >
-          <LiveEditor />
-          <LiveError />
-          <LivePreview />
-        </LiveProvider> :
+        /> :
         <PrismHighlight
           code={codeString}
           language={lang}

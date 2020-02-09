@@ -1,5 +1,4 @@
 import React from 'react'
-// import { useThemeUI } from 'theme-ui'
 import {
   LiveProvider,
   LiveEditor,
@@ -7,19 +6,24 @@ import {
   LivePreview
 } from 'react-live'
 
-const ReactLive = ({ codeString, noInline }) => {
-  // const components = useThemeUI()
-  return (
-    <LiveProvider
-      code={codeString}
-      noInline={noInline}
-      // scope={components}
-    >
-      <LiveEditor />
-      <LiveError />
-      <LivePreview />
-    </LiveProvider>
-  )
-}
+const ReactLive = ({
+  codeString,
+  noInline,
+  theme,
+  // scope,
+  ...props
+}) => (
+  <LiveProvider
+    code={codeString}
+    noInline={noInline}
+    theme={theme}
+    {...props}
+    // scope={components}
+  >
+    <LiveEditor />
+    <LiveError />
+    <LivePreview />
+  </LiveProvider>
+)
 
 export default ReactLive
