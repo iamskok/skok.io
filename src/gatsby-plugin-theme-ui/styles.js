@@ -68,7 +68,7 @@ export default {
     fontSize: 3,
     fontFamily: 'monospace',
     float: 'left',
-    minWidth: '100%'
+    minWidth: '100%',
   },
   inlineCode: {
     fontFamily: 'monospace',

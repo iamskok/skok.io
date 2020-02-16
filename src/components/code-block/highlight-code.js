@@ -1,63 +1,35 @@
-/** @jsx jsx */
 import Highlight, { Prism } from 'prism-react-renderer'
 import { jsx, Styled } from 'theme-ui'
+import React, { Fragment } from 'react'
 
 const HighlightCode = ({
   code,
   lang,
   theme,
   // shouldHighlightLine,
-  ...props
 }) => {
   console.log('3. HighlightCode code', code)
   return (
     <Highlight
       Prism={Prism}
       code={code}
-      language={lang}
       theme={theme}
-      {...props}
+      language={lang}
+      style={{zIndex: 9999}}
     >
-      {({
-        // className,
-        style,
-        tokens,
-        getLineProps,
-        getTokenProps
-      }) => (
-          <Styled.code
-            // className={className}
-            style={style}
-          >
-            {tokens.map((line, i) => {
-              return (
-                <div
-                  key={i}
-                  {...getLineProps({
-                    line,
-                    key: i,
-                    // className: shouldHighlightLine(i) ? 'highlight-line' : '',
-                  })}
-                >
-                  <span sx={{
-                    display: 'inline-block',
-                    width: '1.8em',
-                    userSelect: 'none',
-                    opacity: 0.3
-                  }}>
-                    {i + 1}
-                  </span>
-                  {line.map((token, key) => (
-                    <span
-                      {...getTokenProps({ token, key })}
-                      sx={{ display: 'inline-block' }}
-                    />
-                  ))}
-                </div>
-              )
-            })}
-          </Styled.code>
-        )}
+      {({ tokens, getLineProps, getTokenProps, style, className }) => (
+        <Styled.code style={style} className={className}>
+          {tokens.map((line, i) => (
+            // eslint-disable-next-line react/jsx-key
+            <div {...getLineProps({ line, key: i })}>
+              {line.map((token, key) => (
+                // eslint-disable-next-line react/jsx-key
+                <span {...getTokenProps({ token, key })} />
+              ))}
+            </div>
+          ))}
+        </Styled.code>
+      )}
     </Highlight>
   )
 }

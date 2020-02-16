@@ -4,6 +4,8 @@ import { Component } from 'react'
 // import PropTypes from 'prop-types';
 import Editor from 'react-simple-code-editor'
 import HighlightCode from './highlight-code'
+import Highlight, { Prism } from 'prism-react-renderer'
+import { Fragment } from 'react'
 // import calculateLinesToHighlight from '../../utils/calculate-lines-to-highlight'
 import { theme as liveTheme } from './vendors/react-live/constants/theme'
 
@@ -44,8 +46,27 @@ class CodeEditor extends Component {
       theme={this.props.theme || liveTheme}
       language={this.props.language}
       // shouldHighlightLine={}
-      {...this.props}
     />
+    // <Highlight
+    //   Prism={Prism}
+    //   code={code}
+    //   theme={this.props.theme || liveTheme}
+    //   language={this.props.language}
+    // >
+    //   {({ tokens, getLineProps, getTokenProps }) => (
+    //     <Fragment>
+    //       {tokens.map((line, i) => (
+    //         // eslint-disable-next-line react/jsx-key
+    //         <div {...getLineProps({ line, key: i })}>
+    //           {line.map((token, key) => (
+    //             // eslint-disable-next-line react/jsx-key
+    //             <span {...getTokenProps({ token, key })} />
+    //           ))}
+    //         </div>
+    //       ))}
+    //     </Fragment>
+    //   )}
+    // </Highlight>
   )
 
   render() {
@@ -59,23 +80,13 @@ class CodeEditor extends Component {
       ...rest
     } = this.props;
     const { code } = this.state;
-    console.log('2. editor code', code)
-
-    // const baseTheme =
-    //   theme && typeof theme.plain === 'object' ? theme.plain : {};
 
     return (
       <Editor
         value={code}
         highlight={this.highlightCode}
         onValueChange={this.updateContent}
-        // sx={{
-        //   whiteSpace: 'pre',
-        //   fontFamily: 'monospace',
-        //   ...baseTheme,
-        //   ...style,
-        //   fontSize: 3,
-        // }}
+        textareaClassName="react-simple-code-editor"
         {...rest}
       />
     );
