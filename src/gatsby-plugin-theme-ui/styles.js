@@ -55,6 +55,7 @@ export default {
     borderBottom: '1px solid',
   },
   pre: {
+    fontSize: 3,
     fontFamily: 'monospace',
     p: 3,
     color: 'secondary',
@@ -64,6 +65,7 @@ export default {
   },
   code: {
     ...prism,
+    fontSize: 3,
     fontFamily: 'monospace',
     float: 'left',
     minWidth: '100%'

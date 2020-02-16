@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import Code from '../components/code'
+import CodeBlock from '../components/code-block'
 import Pre from '../components/pre'
 
 export default {
-  code: props => <Code {...props} />,
+  code: props => <CodeBlock {...props} />,
   pre: props => <Pre {...props} />
 }

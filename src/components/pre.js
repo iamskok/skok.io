@@ -1,22 +1,22 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import Code from './code'
+import { jsx, Styled } from 'theme-ui'
+import CodeBlock from './code-block'
 import isPreWithCodeBlock from '../utils/is-pre-with-code-block'
 
 const Pre = props => {
   if (isPreWithCodeBlock(props)) {
     return (
-      <pre {...props}>
-        <Code {...props.children.props}>
+      <Styled.pre {...props}>
+        <CodeBlock {...props.children.props}>
           {props.children}
-        </Code>
-      </pre>
+        </CodeBlock>
+      </Styled.pre>
     )
   } else {
     return (
-      <pre {...props}>
+      <Styled.pre {...props}>
         {props.children.props.children}
-      </pre>
+      </Styled.pre>
     )
   }
 }
