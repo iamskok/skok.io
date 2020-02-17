@@ -45,7 +45,7 @@ class CodeEditor extends Component {
       // shouldHighlightLine={}
     />
   )
-
+  
   render() {
     // eslint-disable-next-line no-unused-vars
     const {
