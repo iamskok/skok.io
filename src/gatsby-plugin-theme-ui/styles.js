@@ -1,4 +1,4 @@
-import prism from './prism'
+import dracula from 'prism-react-renderer/themes/dracula'
 
 const heading = {
   fontFamily: 'heading',
@@ -9,6 +9,38 @@ const heading = {
 }
 
 export default {
+  root: {
+    '.npm__react-simple-code-editor__textarea': {
+      zIndex: 1,
+    }
+  },
+  prism: {
+    ...dracula
+  },
+  pre: {
+    fontSize: 3,
+    fontFamily: 'monospace',
+    p: 3,
+    // inherited by `react-simple-code-editor` textarea cursor
+    color: 'secondary',
+    bg: 'muted',
+    borderRadius: 4,
+    overflowX: 'auto',
+  },
+  code: {
+    fontSize: 3,
+    fontFamily: 'monospace',
+    float: 'left',
+    minWidth: '100%',
+    '.highlight-line': {
+      backgroundColor: 'primary',
+    }
+  },
+  inlineCode: {
+    fontFamily: 'monospace',
+    color: 'secondary',
+    backgroundColor: 'muted'
+  },
   h1: {
     ...heading,
     fontSize: [5, 6],
@@ -53,27 +85,6 @@ export default {
     mb: 5,
     border: 0,
     borderBottom: '1px solid',
-  },
-  pre: {
-    fontSize: 3,
-    fontFamily: 'monospace',
-    p: 3,
-    color: 'secondary',
-    bg: 'muted',
-    borderRadius: 4,
-    overflowX: 'auto',
-  },
-  code: {
-    ...prism,
-    fontSize: 3,
-    fontFamily: 'monospace',
-    float: 'left',
-    minWidth: '100%',
-  },
-  inlineCode: {
-    fontFamily: 'monospace',
-    color: 'secondary',
-    backgroundColor: 'muted'
   },
   strong: {
     fontWeight: 'bold',

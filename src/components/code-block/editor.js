@@ -4,8 +4,6 @@ import { Component } from 'react'
 // import PropTypes from 'prop-types';
 import Editor from 'react-simple-code-editor'
 import HighlightCode from './highlight-code'
-import Highlight, { Prism } from 'prism-react-renderer'
-import { Fragment } from 'react'
 // import calculateLinesToHighlight from '../../utils/calculate-lines-to-highlight'
 import { theme as liveTheme } from './vendors/react-live/constants/theme'
 
@@ -32,7 +30,6 @@ class CodeEditor extends Component {
   }
 
   updateContent = code => {
-    console.log('code', code)
     this.setState({ code }, () => {
       if (this.props.onChange) {
         this.props.onChange(this.state.code);
@@ -47,26 +44,6 @@ class CodeEditor extends Component {
       language={this.props.language}
       // shouldHighlightLine={}
     />
-    // <Highlight
-    //   Prism={Prism}
-    //   code={code}
-    //   theme={this.props.theme || liveTheme}
-    //   language={this.props.language}
-    // >
-    //   {({ tokens, getLineProps, getTokenProps }) => (
-    //     <Fragment>
-    //       {tokens.map((line, i) => (
-    //         // eslint-disable-next-line react/jsx-key
-    //         <div {...getLineProps({ line, key: i })}>
-    //           {line.map((token, key) => (
-    //             // eslint-disable-next-line react/jsx-key
-    //             <span {...getTokenProps({ token, key })} />
-    //           ))}
-    //         </div>
-    //       ))}
-    //     </Fragment>
-    //   )}
-    // </Highlight>
   )
 
   render() {
@@ -83,10 +60,10 @@ class CodeEditor extends Component {
 
     return (
       <Editor
+        // sx={{ '& > .npm__react-simple-code-editor__textarea': { zIndex: 1 } }}
         value={code}
         highlight={this.highlightCode}
         onValueChange={this.updateContent}
-        textareaClassName="react-simple-code-editor"
         {...rest}
       />
     );

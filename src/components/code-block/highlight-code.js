@@ -1,21 +1,19 @@
+/** @jsx jsx */
 import Highlight, { Prism } from 'prism-react-renderer'
 import { jsx, Styled } from 'theme-ui'
-import React, { Fragment } from 'react'
 
 const HighlightCode = ({
   code,
-  lang,
+  language,
   theme,
   // shouldHighlightLine,
 }) => {
-  console.log('3. HighlightCode code', code)
   return (
     <Highlight
       Prism={Prism}
       code={code}
       theme={theme}
-      language={lang}
-      style={{zIndex: 9999}}
+      language={language}
     >
       {({ tokens, getLineProps, getTokenProps, style, className }) => (
         <Styled.code style={style} className={className}>

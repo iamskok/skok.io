@@ -6,7 +6,6 @@ export default function LiveEditor(props) {
   return (
     <LiveContext.Consumer>
       {({ code, language, theme, disabled, onChange }) => {
-        console.log('1. LiveEditor code', code)
         return (
           <Editor
             theme={theme}
