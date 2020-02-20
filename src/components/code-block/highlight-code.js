@@ -39,7 +39,10 @@ const HighlightCode = ({
                   display: 'inline-block',
                   width: '1.8em',
                   userSelect: 'none',
-                  opacity: 0.3
+                  textAlign: 'center',
+                  opacity: 0.25,
+                  backgroundColor: 'black',
+                  mr: 2
                 }}>
                   {i + 1}
                 </span>

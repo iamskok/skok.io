@@ -4,6 +4,8 @@ export default {
   primary: '#33e',
   secondary: '#11a',
   muted: '#f6f6f6',
+  white: '#fff',
+  black: '#000',
   modes: {
     dark: {
       text: '#fff',

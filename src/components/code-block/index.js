@@ -16,13 +16,13 @@ const CodeBlock = ({
   metastring,
   ...props
 }) => {
+  const themeUI = useThemeUI()
   const [language] = className.replace(/language-/, '').split(' ')
   const lang = aliases[language] || language
   const code = children.props.children.trim()
-  const theme = useThemeUI()
-  const prismThemeUI = theme.theme.styles.prism
+  const prismThemeUI = themeUI.theme.styles.prism
 
-  if (props['react-live']) {
+  if (props[`react-live`]) {
     return (
       <LiveProvider
         code={code}
