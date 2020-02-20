@@ -8,7 +8,7 @@ const HighlightCode = ({
   language,
   theme,
   metastring,
-  lineNumbers = false
+  lineCount = false
 }) => {
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
 
@@ -20,16 +20,10 @@ const HighlightCode = ({
       language={language}
     >
       {({ tokens, getLineProps, getTokenProps, style, className }) => (
-        <Styled.code style={style} className={className}>
-          {/* {tokens.map((line, i) => (
-            // eslint-disable-next-line react/jsx-key
-            <div {...getLineProps({ line, key: i })}>
-              {line.map((token, key) => (
-                // eslint-disable-next-line react/jsx-key
-                <span {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))} */}
+        <Styled.code
+          className={className}
+          style={style}
+        >
           {tokens.map((line, i) => (
             <div
               key={i}
@@ -40,7 +34,7 @@ const HighlightCode = ({
               })}
             >
               {
-                lineNumbers &&
+                lineCount &&
                 <span sx={{
                   display: 'inline-block',
                   width: '1.8em',
@@ -58,7 +52,6 @@ const HighlightCode = ({
               ))}
             </div>
           ))}
-          
         </Styled.code>
       )}
     </Highlight>
