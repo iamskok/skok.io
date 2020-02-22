@@ -40,7 +40,7 @@ const CodeBlock = ({
         code={code}
         language={lang}
         theme={prismThemeUI}
-        lineCount={true}
+        lineNumbers={true}
       />
     )
   }
