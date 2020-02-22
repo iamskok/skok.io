@@ -1,5 +1,5 @@
 import React from 'react'
-import LiveContext from './vendors/react-live/components/Live/LiveContext'
+import { LiveContext } from 'react-live'
 import Editor from './editor'
 
 export default function LiveEditor(props) {

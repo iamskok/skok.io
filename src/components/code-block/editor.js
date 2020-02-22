@@ -4,8 +4,6 @@ import { Component } from 'react'
 // import PropTypes from 'prop-types';
 import Editor from 'react-simple-code-editor'
 import HighlightCode from './highlight-code'
-// import calculateLinesToHighlight from '../../utils/calculate-lines-to-highlight'
-import { theme as liveTheme } from './vendors/react-live/constants/theme'
 
 class CodeEditor extends Component {
   // static propTypes = {
@@ -40,7 +38,7 @@ class CodeEditor extends Component {
   highlightCode = code => (
     <HighlightCode
       code={code}
-      theme={this.props.theme || liveTheme}
+      theme={this.props.theme || {}}
       language={this.props.language}
       // shouldHighlightLine={}
     />

@@ -19,10 +19,16 @@ const HighlightCode = ({
       theme={theme}
       language={language}
     >
-      {({ tokens, getLineProps, getTokenProps, style, className }) => (
+      {({
+        tokens,
+        getLineProps,
+        getTokenProps,
+        style,
+        className
+      }) => (
         <Styled.code
-          className={className}
           style={style}
+          className={className}
         >
           {tokens.map((line, i) => (
             <div

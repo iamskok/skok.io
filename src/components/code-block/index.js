@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from 'theme-ui'
-import { LivePreview, LiveError, LiveProvider } from './vendors/react-live'
+import { LivePreview, LiveError, LiveProvider } from 'react-live'
 import LiveEditor from './live-editor'
 import HighlightCode from './highlight-code'
 
