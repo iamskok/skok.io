@@ -4,7 +4,7 @@ import { Component } from 'react'
 // import PropTypes from 'prop-types';
 import Editor from 'react-simple-code-editor'
 import HighlightCode from './highlight-code'
-
+ 
 class CodeEditor extends Component {
   // static propTypes = {
   //   code: PropTypes.string,
