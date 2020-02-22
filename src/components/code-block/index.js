@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from 'theme-ui'
-import { LivePreview, LiveError, LiveProvider } from 'react-live'
-import LiveEditor from './live-editor'
 import HighlightCode from './highlight-code'
+import ReactLiveEditor from './react-live-editor'
 
 const aliases = {
   js: 'javascript',
@@ -22,17 +21,16 @@ const CodeBlock = ({
   const code = children.props.children.trim()
   const prismThemeUI = themeUI.theme.styles.prism
 
-  if (props[`react-live`]) {
+  if (
+    props[`react-live`] &&
+    (language === `javascript` || language === `jsx`)
+  ) {
     return (
-      <LiveProvider
+      <ReactLiveEditor
         code={code}
         theme={prismThemeUI}
         metastring={metastring}
-      >
-        <LiveEditor />
-        <LiveError />
-        <LivePreview />
-      </LiveProvider>
+      />
     )
   } else {
     return (

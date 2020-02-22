@@ -64,7 +64,7 @@ class CodeEditor extends Component {
         sx={{
           '.npm__react-simple-code-editor__textarea': {
             zIndex: 1,
-            paddingLeft: `1.8em !important`
+            paddingLeft: '1.8em !important',
           }
         }}
         {...rest}
