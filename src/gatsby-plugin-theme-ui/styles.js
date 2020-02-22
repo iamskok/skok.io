@@ -17,7 +17,6 @@ export default {
     // inherited by `react-simple-code-editor` textarea cursor
     color: 'secondary',
     bg: 'muted',
-    borderRadius: 4,
     overflowX: 'auto',
   },
   code: {
