@@ -40,7 +40,7 @@ class CodeEditor extends Component {
       code={code}
       theme={this.props.theme || {}}
       language={this.props.language}
-      // lineNumbers={false}
+      lineNumbers={this.props.lineNumbers}
     />
   )
   

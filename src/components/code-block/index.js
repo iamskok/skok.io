@@ -30,6 +30,7 @@ const CodeBlock = ({
         code={code}
         theme={prismThemeUI}
         metastring={metastring}
+        lineNumbers={false}
       />
     )
   } else {
@@ -38,6 +39,7 @@ const CodeBlock = ({
         code={code}
         language={lang}
         theme={prismThemeUI}
+        metastring={metastring}
         lineNumbers={true}
       />
     )
