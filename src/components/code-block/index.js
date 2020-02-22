@@ -29,8 +29,6 @@ const CodeBlock = ({
       <ReactLiveEditor
         code={code}
         theme={prismThemeUI}
-        metastring={metastring}
-        lineNumbers={false}
       />
     )
   } else {

@@ -5,7 +5,13 @@ import Editor from './editor'
 export default function LiveEditor(props) {
   return (
     <LiveContext.Consumer>
-      {({ code, language, theme, disabled, onChange }) => {
+      {({
+        code,
+        language,
+        theme,
+        disabled,
+        onChange
+      }) => {
         return (
           <Editor
             theme={theme}
