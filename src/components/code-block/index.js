@@ -21,10 +21,7 @@ const CodeBlock = ({
   const code = children.props.children.trim()
   const prismThemeUI = themeUI.theme.styles.prism
 
-  if (
-    props[`react-live`] &&
-    (language === `javascript` || language === `jsx`)
-  ) {
+  if (props[`react-live`]) {
     return (
       <ReactLiveEditor
         code={code}
