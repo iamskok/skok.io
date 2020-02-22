@@ -9,18 +9,11 @@ const heading = {
 }
 
 export default {
-  root: {
-    '.npm__react-simple-code-editor__textarea': {
-      zIndex: 1,
-    }
-  },
   prism: {
     ...dracula
   },
   pre: {
-    fontSize: 3,
     fontFamily: 'monospace',
-    p: 3,
     // inherited by `react-simple-code-editor` textarea cursor
     color: 'secondary',
     bg: 'muted',
@@ -28,8 +21,7 @@ export default {
     overflowX: 'auto',
   },
   code: {
-    fontSize: 3,
-    fontFamily: 'monospace',
+    fontFamily: 'inherit',
     float: 'left',
     minWidth: '100%',
     '.highlight-line': {

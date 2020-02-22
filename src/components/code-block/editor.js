@@ -40,7 +40,7 @@ class CodeEditor extends Component {
       code={code}
       theme={this.props.theme || {}}
       language={this.props.language}
-      // shouldHighlightLine={}
+      // lineNumbers={false}
     />
   )
   
@@ -58,10 +58,15 @@ class CodeEditor extends Component {
 
     return (
       <Editor
-        // sx={{ '& > .npm__react-simple-code-editor__textarea': { zIndex: 1 } }}
         value={code}
         highlight={this.highlightCode}
         onValueChange={this.updateContent}
+        sx={{
+          '.npm__react-simple-code-editor__textarea': {
+            zIndex: 1,
+            paddingLeft: `1.8em !important`
+          }
+        }}
         {...rest}
       />
     );
