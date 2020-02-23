@@ -12,6 +12,9 @@ const useSiteMetadata = () => {
               label
               to
             }
+            codeBlock {
+              lineNumbers
+            }
           }
         }
       }
