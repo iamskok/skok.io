@@ -67,7 +67,7 @@ const HighlightCode = ({
         onClick={changePrismTheme}
         style={{
           zIndex: 9999,
-          pointerEvents: 'all',
+          pointerEvents: 'auto',
           position: 'absolute',
           top: 0,
           right: 0
