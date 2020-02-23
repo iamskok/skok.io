@@ -9,9 +9,33 @@ const HighlightCode = ({
   language,
   theme,
   metastring,
-  lineNumbers = true
+  lineNumbers: globalLineNumbers,
+  ...props
 }) => {
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
+  let showLineNumbers
+
+  const meta = metastring &&
+    metastring.split(` `).reduce((acc, cur) => {
+      if (cur.split(`=`).length > 1) {
+        const t = cur.split(`=`)
+        acc[t[0]] = t[1]
+        return acc
+      }
+      acc[cur] = true
+      return acc
+    }, {})
+
+  if (meta) {
+    Object.keys(meta).forEach(key => props[key] = meta[key])
+    const { lineNumbers } = meta
+
+    if (lineNumbers !== undefined) {
+      showLineNumbers = lineNumbers === 'true'
+    } else {
+      showLineNumbers = globalLineNumbers
+    }
+  }
 
   return (
     <Highlight
@@ -40,7 +64,7 @@ const HighlightCode = ({
                 className: shouldHighlightLine(i) ? 'highlight-line' : '',
               })}
             >
-              {lineNumbers && <LineNumber index={i}/>}
+              {showLineNumbers && <LineNumber index={i}/>}
               {line.map((token, key) => (
                 <span
                   {...getTokenProps({ token, key })}
