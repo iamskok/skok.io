@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, useThemeUI } from 'theme-ui'
+import { useThemeUI } from 'theme-ui'
+import React from 'react'
 import HighlightCode from './highlight-code'
 import ReactLiveEditor from './react-live-editor'
 import useSiteMetadata from '../../hooks/use-site-metadata'

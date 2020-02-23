@@ -1,4 +1,6 @@
 import dracula from 'prism-react-renderer/themes/dracula'
+import duotoneLight from 'prism-react-renderer/themes/duotoneLight'
+import vsDark from 'prism-react-renderer/themes/vsDark'
 
 const heading = {
   fontFamily: 'heading',
@@ -10,9 +12,14 @@ const heading = {
 
 export default {
   prism: {
-    ...dracula
+    ...dracula,
+    modes: [
+      duotoneLight,
+      vsDark
+    ]
   },
   pre: {
+    position: 'relative',
     fontFamily: 'monospace',
     // inherited by `react-simple-code-editor` textarea cursor
     color: 'secondary',
