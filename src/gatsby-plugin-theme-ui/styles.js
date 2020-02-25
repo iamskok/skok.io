@@ -16,7 +16,6 @@ export default {
     fontSize: 3,
     lineHeight: 1.5,
     fontFamily: 'monospace',
-    // inherited by `react-simple-code-editor` textarea cursor
     color: 'secondary',
     bg: 'muted',
     overflowX: 'auto',

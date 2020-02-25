@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, useThemeUI } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
 import Editor from 'react-simple-code-editor'
@@ -15,8 +15,7 @@ const CodeEditor = ({
   ...rest
 }) => {
   const [codeString, setCodeString] = useState(code)
-  const themeUI = useThemeUI()
-  const caretColor = themeUI.theme.colors.background
+  const caretColor = theme.plain.color
 
   useEffect(() => {
     onChange(codeString)
