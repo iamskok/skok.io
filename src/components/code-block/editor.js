@@ -1,77 +1,62 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { Component } from 'react'
+import { jsx, useThemeUI } from 'theme-ui'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
 import Editor from 'react-simple-code-editor'
 import HighlightCode from './highlight-code'
 
-class CodeEditor extends Component {
-  static propTypes = {
-    code: PropTypes.string,
-    // disabled: PropTypes.boolean,
-    language: PropTypes.string,
-    onChange: PropTypes.func,
-    style: PropTypes.object,
-    theme: PropTypes.object
-  };
+const CodeEditor = ({
+  code,
+  disabled,
+  language,
+  onChange,
+  style,
+  theme,
+  ...rest
+}) => {
+  const [codeString, setCodeString] = useState(code)
+  const themeUI = useThemeUI()
+  const caretColor = themeUI.theme.colors.background
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.code !== state.prevCodeProp) {
-      return { code: props.code, prevCodeProp: props.code }
-    }
+  useEffect(() => {
+    onChange(codeString)
+  }, [onChange, codeString])
 
-    return null
-  }
+  const updateContent = code => setCodeString(code)
 
-  state = {
-    code: ''
-  }
+  const highlightCode = () => (
+    <HighlightCode
+      code={codeString}
+      theme={theme}
+      language={language}
+      lineNumbers={false}
+    />
+  )
 
-  updateContent = code => {
-    this.setState({ code }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(this.state.code);
-      }
-    })
-  }
-
-  highlightCode = code => {
-    return (
-      <HighlightCode
-        code={code}
-        theme={this.props.theme || {}}
-        language={this.props.language}
-        lineNumbers={false}
-      />
-    )
-  }
-  
-  render() {
-    // eslint-disable-next-line no-unused-vars
-    const {
-      style,
-      code: _code,
-      onChange,
-      language,
-      theme,
-      ...rest
-    } = this.props;
-    const { code } = this.state;
-
-    return (
-      <Editor
-        value={code}
-        highlight={this.highlightCode}
-        onValueChange={this.updateContent}
-        sx={{
-          '.npm__react-simple-code-editor__textarea': {
-            zIndex: 1,
-          }
-        }}
-        {...rest}
-      />
-    );
-  }
+  return (
+    <Editor
+      disabled={disabled}
+      value={codeString}
+      highlight={highlightCode}
+      onValueChange={updateContent}
+      sx={{
+        caretColor,
+        '.npm__react-simple-code-editor__textarea': {
+          zIndex: 1,
+        }
+      }}
+      {...rest}
+    />
+  )
 }
 
-export default CodeEditor;
+CodeEditor.propTypes = {
+  code: PropTypes.string,
+  // disabled: PropTypes.boolean,
+  language: PropTypes.string,
+  onChange: PropTypes.func,
+  style: PropTypes.object,
+  theme: PropTypes.object
+}
+
+export default CodeEditor
