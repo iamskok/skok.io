@@ -61,7 +61,9 @@ const HighlightCode = ({
               {...getLineProps({
                 line,
                 key: i,
-                className: shouldHighlightLine(i) ? 'highlight-line' : '',
+                sx: {
+                  backgroundColor: shouldHighlightLine(i) ? `secondary` : ``
+                }
               })}
             >
               {showLineNumbers && <LineNumber index={i}/>}
