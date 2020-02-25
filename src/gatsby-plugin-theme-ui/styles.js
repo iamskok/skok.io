@@ -13,6 +13,8 @@ export default {
     ...dracula
   },
   pre: {
+    fontSize: 3,
+    lineHeight: 1.5,
     fontFamily: 'monospace',
     // inherited by `react-simple-code-editor` textarea cursor
     color: 'secondary',
@@ -23,11 +25,10 @@ export default {
     fontFamily: 'inherit',
     float: 'left',
     minWidth: '100%',
-    '.highlight-line': {
-      backgroundColor: 'primary',
-    }
   },
   inlineCode: {
+    fontSize: 3,
+    lineHeight: 1.5,
     fontFamily: 'monospace',
     color: 'secondary',
     backgroundColor: 'muted'
