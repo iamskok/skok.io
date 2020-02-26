@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import Highlight, { Prism } from 'prism-react-renderer'
 import { jsx, Styled } from 'theme-ui'
-import LineNumber from './line-number'
-import LineTokens from './line-tokens'
+import Line from './line'
 import calculateLinesToHighlight from '../../utils/calculate-lines-to-highlight'
 
 const HighlightCode = ({
@@ -14,7 +13,7 @@ const HighlightCode = ({
   ...props
 }) => {
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
-  let showLineNumbers
+  let showLineNumbers = undefined
 
   const meta = metastring &&
     metastring.split(` `).reduce((acc, cur) => {
@@ -58,22 +57,14 @@ const HighlightCode = ({
           // sx={{ paddingLeft: showLineNumbers ? 0 : 20 }}
         >
           {tokens.map((line, i) => (
-            <div
-              key={i}
-              {...getLineProps({
-                line,
-                key: i,
-                sx: {
-                  backgroundColor: shouldHighlightLine(i) ? `secondary` : ``
-                }
-              })}
-            >
-              {showLineNumbers && <LineNumber index={i}/>}
-              <LineTokens
-                line={line}
-                getTokenProps={getTokenProps}
-              />
-            </div>
+            <Line
+              line={line}
+              lineNumber={i}
+              getLineProps={getLineProps}
+              getTokenProps={getTokenProps}
+              showLineNumbers={showLineNumbers}
+              shouldHighlightLine={shouldHighlightLine}
+            />
           ))}
         </Styled.code>
       )}
