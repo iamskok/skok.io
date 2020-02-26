@@ -1,14 +1,14 @@
 const RE = /{([\d,-]+)}/
 
-const calculateLinesToHighlight = meta => {
-  if (RE.test(meta)) {
-    const lineNumbers = RE.exec(meta)[1]
+const calculateLinesToHighlight = metastring => {
+  if (RE.test(metastring)) {
+    const lineNumbers = RE.exec(metastring)[1]
       .split(`,`)
       .map(v => v.split(`-`)
       .map(y => parseInt(y, 10)))
 
     return index => {
-      const lineNumber = index + 1
+      const lineNumber = ++index
       const inRange = lineNumbers.some(([start, end]) =>
         end ?
         lineNumber >= start && lineNumber <= end :
