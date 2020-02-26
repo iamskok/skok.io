@@ -2,6 +2,7 @@
 import Highlight, { Prism } from 'prism-react-renderer'
 import { jsx, Styled } from 'theme-ui'
 import LineNumber from './line-number'
+import LineTokens from './line-tokens'
 import calculateLinesToHighlight from '../../utils/calculate-lines-to-highlight'
 
 const HighlightCode = ({
@@ -54,6 +55,7 @@ const HighlightCode = ({
         <Styled.code
           style={style}
           className={className}
+          // sx={{ paddingLeft: showLineNumbers ? 0 : 20 }}
         >
           {tokens.map((line, i) => (
             <div
@@ -67,12 +69,10 @@ const HighlightCode = ({
               })}
             >
               {showLineNumbers && <LineNumber index={i}/>}
-              {line.map((token, key) => (
-                <span
-                  {...getTokenProps({ token, key })}
-                  sx={{ display: 'inline-block' }}
-                />
-              ))}
+              <LineTokens
+                line={line}
+                getTokenProps={getTokenProps}
+              />
             </div>
           ))}
         </Styled.code>
