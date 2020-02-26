@@ -12,4 +12,4 @@ const isPreWithCodeBlock = preProps => {
   }
 }
 
-module.exports = isPreWithCodeBlock
+export default isPreWithCodeBlock

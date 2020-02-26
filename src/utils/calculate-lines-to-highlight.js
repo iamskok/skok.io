@@ -22,4 +22,4 @@ const calculateLinesToHighlight = meta => {
   }
 }
 
-module.exports = calculateLinesToHighlight
+export default calculateLinesToHighlight
