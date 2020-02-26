@@ -3,6 +3,7 @@ import Highlight, { Prism } from 'prism-react-renderer'
 import { jsx, Styled } from 'theme-ui'
 import Line from './line'
 import calculateLinesToHighlight from '../../utils/calculate-lines-to-highlight'
+import metastringToObject from '../../utils/metastring-to-object'
 
 const HighlightCode = ({
   code,
@@ -14,17 +15,7 @@ const HighlightCode = ({
 }) => {
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
   let showLineNumbers = undefined
-
-  const meta = metastring &&
-    metastring.split(` `).reduce((acc, cur) => {
-      if (cur.split(`=`).length > 1) {
-        const t = cur.split(`=`)
-        acc[t[0]] = t[1]
-        return acc
-      }
-      acc[cur] = true
-      return acc
-    }, {})
+  const meta = metastringToObject(metastring)
 
   if (meta) {
     Object.keys(meta).forEach(key => props[key] = meta[key])
