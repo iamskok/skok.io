@@ -12,10 +12,8 @@ const Line = ({
   showLineNumbers
 }) => (
   <div
-    key={lineNumber}
     {...getLineProps({
       line,
-      key: lineNumber,
       sx: {
         backgroundColor: shouldHighlightLine(lineNumber) ? `secondary` : ``
       }
