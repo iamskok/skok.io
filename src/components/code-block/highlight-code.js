@@ -13,9 +13,9 @@ const HighlightCode = ({
   lineNumbers: globalLineNumbers,
   ...props
 }) => {
+  const meta = metastringToObject(metastring)
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
   let showLineNumbers = undefined
-  const meta = metastringToObject(metastring)
 
   if (meta) {
     Object.keys(meta).forEach(key => props[key] = meta[key])
@@ -45,10 +45,10 @@ const HighlightCode = ({
         <Styled.code
           style={style}
           className={className}
-          // sx={{ paddingLeft: showLineNumbers ? 0 : 20 }}
         >
           {tokens.map((line, i) => (
             <Line
+              key={i}
               line={line}
               lineNumber={i}
               getLineProps={getLineProps}
