@@ -10,7 +10,7 @@ const LineNumber = ({ index }) => (
     opacity: 0.25,
     backgroundColor: 'black',
   }}>
-    {index + 1}
+    {++index}
   </span>
 )
 
