@@ -21,7 +21,7 @@ const CodeBlock = ({
   const [language] = className.replace(/language-/, '').split(' ')
   const lang = aliases[language] || language
   const code = children.props.children.trim()
-  const prismThemeUI = themeUI.theme.styles.prism
+  const prismThemeUI = themeUI.theme.prism
   const { lineNumbers } = codeBlock
 
   if (props[`react-live`]) {
@@ -44,4 +44,13 @@ const CodeBlock = ({
   }
 }
 
-export default CodeBlock
+export default props => (
+  <>
+    <button>
+      Button
+    </button>
+    <CodeBlock {...props} />
+  </>
+)
+
+// export default CodeBlock

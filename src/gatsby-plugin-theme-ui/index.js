@@ -1,5 +1,6 @@
 import colors from './colors'
 import styles from './styles'
+import prism from './prism'
 
 const theme = {
   initialColorMode: 'light',
@@ -22,6 +23,7 @@ const theme = {
     container: 768,
   },
   styles,
+  prism
 }
 
 export default theme

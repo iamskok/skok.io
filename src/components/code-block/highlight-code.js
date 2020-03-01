@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import Highlight, { Prism } from 'prism-react-renderer'
 import { jsx, Styled } from 'theme-ui'
-import React, { useState } from 'react'
+import { Fragment, useState } from 'react'
 import LineNumber from './line-number'
 import calculateLinesToHighlight from '../../utils/calculate-lines-to-highlight'
+import PrismContext from './prism-context'
 
 const HighlightCode = ({
   code,
@@ -13,6 +14,7 @@ const HighlightCode = ({
   lineNumbers: globalLineNumbers,
   ...props
 }) => {
+  console.log('defaultTheme', defaultTheme)
   const prismModes = defaultTheme.modes
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
   let showLineNumbers
@@ -20,9 +22,15 @@ const HighlightCode = ({
   const [prismTheme, setPrismTheme] = useState(defaultTheme)
 
   const changePrismTheme = () => {
-    if (prismModes.length > 0) {
+    console.log('prismModes', prismModes)
+    console.log('prismModes.length', Object.keys(prismModes).length)
+    const keys = Object.keys(prismModes).sort()
+    if (keys.length > 0) {
       let index = -1
-      prismModes.forEach((prismMode, i) => {
+
+      keys.forEach((key, i) => {
+        const prismMode = prismModes[key]
+        console.log('____prismMode', prismMode)
         if (prismMode === prismTheme) {
           index = i
           console.log('change prism theme index', index)
@@ -30,11 +38,11 @@ const HighlightCode = ({
       })
 
       if (index === -1) {
-        setPrismTheme(prismModes[0])
-      } else if (index === prismModes.length - 1) {
+        setPrismTheme(prismModes[keys[0]])
+      } else if (index === keys.length - 1) {
         setPrismTheme(defaultTheme)
       } else {
-        setPrismTheme(prismModes[index + 1])
+        setPrismTheme(prismModes[keys[index + 1]])
       }
     }
   }
@@ -61,59 +69,65 @@ const HighlightCode = ({
     }
   }
 
+  console.log('prismTheme', prismTheme)
+
   return (
-    <>
-      <button
-        onClick={changePrismTheme}
-        style={{
-          zIndex: 9999,
-          pointerEvents: 'auto',
-          position: 'absolute',
-          top: 0,
-          right: 0
-        }}
-      >
-        Change theme
-      </button>
-      <Highlight
-        Prism={Prism}
-        code={code}
-        theme={prismTheme}
-        language={language}
-      >
-        {({
-          tokens,
-          getLineProps,
-          getTokenProps,
-          style,
-          className
-        }) => (
-          <Styled.code
-            style={style}
-            className={className}
+    <PrismContext.Consumer>
+      {({ name }) => (
+        <Fragment>
+          <button
+            onClick={changePrismTheme}
+            style={{
+              zIndex: 9999,
+              pointerEvents: 'auto',
+              position: 'absolute',
+              top: 0,
+              right: 0
+            }}
           >
-            {tokens.map((line, i) => (
-              <div
-                key={i}
-                {...getLineProps({
-                  line,
-                  key: i,
-                  className: shouldHighlightLine(i) ? 'highlight-line' : '',
-                })}
+            Change theme --- {name}
+          </button>
+          <Highlight
+            Prism={Prism}
+            code={code}
+            theme={prismTheme}
+            language={language}
+          >
+            {({
+              tokens,
+              getLineProps,
+              getTokenProps,
+              style,
+              className
+            }) => (
+              <Styled.code
+                style={style}
+                className={className}
               >
-                {showLineNumbers && <LineNumber index={i}/>}
-                {line.map((token, key) => (
-                  <span
-                    {...getTokenProps({ token, key })}
-                    sx={{ display: 'inline-block' }}
-                  />
+                {tokens.map((line, i) => (
+                  <div
+                    key={i}
+                    {...getLineProps({
+                      line,
+                      key: i,
+                      className: shouldHighlightLine(i) ? 'highlight-line' : '',
+                    })}
+                  >
+                    {showLineNumbers && <LineNumber index={i} />}
+                    {line.map((token, key) => (
+                      <span
+                        {...getTokenProps({ token, key })}
+                        sx={{ display: 'inline-block' }}
+                      />
+                    ))}
+                  </div>
                 ))}
-              </div>
-            ))}
-          </Styled.code>
-        )}
-      </Highlight>
-    </>
+              </Styled.code>
+            )}
+          </Highlight>
+        </Fragment>
+      )}
+    </PrismContext.Consumer>
   )
 }
 
