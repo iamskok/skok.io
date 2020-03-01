@@ -33,20 +33,33 @@ const CodeEditor = ({
   )
 
   return (
-    <Editor
-      disabled={disabled}
-      value={codeString}
-      highlight={highlightCode}
-      onValueChange={updateContent}
-      sx={{
-        caretColor,
-        '.npm__react-simple-code-editor__textarea': {
-          zIndex: 1,
-          padding: `20px !important`
-        }
-      }}
-      {...rest}
-    />
+    <div sx={{
+      display: `flex`,
+      overflow: `hidden`
+    }}>
+      <div sx={{
+        flex: 1,
+        overflow: `auto`
+      }}>
+        <Editor
+          disabled={disabled}
+          value={codeString}
+          highlight={highlightCode}
+          onValueChange={updateContent}
+          sx={{
+            caretColor,
+            minWidth: `100%`,
+            float: `left`,
+            '& > textarea': {
+              zIndex: 1,
+              paddingX: `20px !important`,
+              whiteSpace: `pre !important`
+            },
+          }}
+          {...rest}
+        />
+      </div>
+    </div>
   )
 }
 
