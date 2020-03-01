@@ -45,7 +45,7 @@ const HighlightCode = ({
         <Styled.code
           style={style}
           className={className}
-          sx={{ padding: 20 }}
+          sx={{ paddingX: 20 }}
         >
           {tokens.map((line, i) => (
             <Line
