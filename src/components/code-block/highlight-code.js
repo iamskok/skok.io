@@ -2,8 +2,8 @@
 import Highlight, { Prism } from 'prism-react-renderer'
 import { jsx, Styled } from 'theme-ui'
 import Line from './line'
-import calculateLinesToHighlight from '../../utils/calculate-lines-to-highlight'
-import metastringToObject from '../../utils/metastring-to-object'
+import calculateLinesToHighlight from './utils/calculate-lines-to-highlight'
+import metastringToObject from './utils/metastring-to-object'
 
 const HighlightCode = ({
   code,
