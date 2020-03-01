@@ -45,12 +45,14 @@ const HighlightCode = ({
         <Styled.code
           style={style}
           className={className}
+          sx={{ padding: 20 }}
         >
           {tokens.map((line, i) => (
             <Line
               key={i}
               line={line}
               lineNumber={i}
+              totalLineLength={tokens.length - 1}
               getLineProps={getLineProps}
               getTokenProps={getTokenProps}
               showLineNumbers={showLineNumbers}

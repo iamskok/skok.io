@@ -9,17 +9,26 @@ const Line = ({
   getLineProps,
   getTokenProps,
   shouldHighlightLine,
-  showLineNumbers
+  showLineNumbers,
+  totalLineLength
 }) => (
   <div
     {...getLineProps({
       line,
       sx: {
-        backgroundColor: shouldHighlightLine(lineNumber) ? `secondary` : ``
+        backgroundColor: shouldHighlightLine(lineNumber) ? `secondary` : ``,
+        paddingX: shouldHighlightLine(lineNumber) ? 20 : ``,
+        marginX: shouldHighlightLine(lineNumber) ? -20 : ``,
       }
     })}
   >
-    { showLineNumbers && <LineNumber index={lineNumber} /> }
+    {
+      showLineNumbers &&
+      <LineNumber
+        index={lineNumber}
+        totalLineLength={totalLineLength}
+      />
+    }
     <LineTokens
       line={line}
       getTokenProps={getTokenProps}

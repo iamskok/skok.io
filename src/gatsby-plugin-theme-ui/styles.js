@@ -9,6 +9,9 @@ const heading = {
 }
 
 export default {
+  root: {
+    margin: 0,
+  },
   prism: {
     ...dracula
   },

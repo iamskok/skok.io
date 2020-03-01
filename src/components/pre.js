@@ -9,7 +9,9 @@ const Pre = props => {
   if (isPreWithCodeBlock(props)) {
     return (
       <Styled.pre {...props}>
-        <CodeBlock {...children.props}>
+        <CodeBlock
+        {...children.props}
+      >
           {children}
         </CodeBlock>
       </Styled.pre>
@@ -18,6 +20,7 @@ const Pre = props => {
     return (
       <Styled.pre
         {...props}
+        sx={{ padding: 20 }}
       >
         {children}
       </Styled.pre>
@@ -26,6 +29,7 @@ const Pre = props => {
     return (
       <Styled.pre
         {...props}
+        sx={{ padding: 20 }}
       >
         {children.props.children}
       </Styled.pre>

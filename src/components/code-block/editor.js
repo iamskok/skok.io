@@ -42,6 +42,7 @@ const CodeEditor = ({
         caretColor,
         '.npm__react-simple-code-editor__textarea': {
           zIndex: 1,
+          padding: `20px !important`
         }
       }}
       {...rest}
