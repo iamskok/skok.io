@@ -16,14 +16,18 @@ const Pre = props => {
     )
   } else if (isLiveError) {
     return (
-      <Styled.pre {...props}>
+      <Styled.pre
+        {...props}
+      >
         {children}
       </Styled.pre>
     )
   } else {
     return (
-      <Styled.pre {...props}>
-        {children.props.childrens}
+      <Styled.pre
+        {...props}
+      >
+        {children.props.children}
       </Styled.pre>
     )
   }
