@@ -14,19 +14,24 @@ const Line = ({
   // const highlight = shouldHighlightLine(lineNumber)
 
   return (
+    <div>
     <div
-      {...getLineProps({ line,lineNumber })}
+      {...getLineProps({
+        line,
+        key: lineNumber,
+      })}
       // sx={{
       //   backgroundColor: highlight ? `secondary` : ``,
       //   paddingX: highlight ? 20 : ``,
       //   marginX: highlight ? -20 : ``,
       // }}
     >
-      { showLineNumbers && <LineNumber index={lineNumber} /> }
+      {showLineNumbers && <LineNumber index={lineNumber} />}
       <LineTokens
         line={line}
         getTokenProps={getTokenProps}
       />
+    </div>
     </div>
   )
 }
