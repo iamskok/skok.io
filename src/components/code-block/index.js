@@ -28,18 +28,12 @@ const CodeBlock = ({
   const meta = metastringToObject(metastring)
   let showLineNumbers = undefined
 
-  if (meta) {
-    if (
-      meta.lineNumbers === true ||
-      lineNumbers === true
-    ) {
-      showLineNumbers = true
-    } else if (
-      meta.lineNumbers === false ||
-      lineNumbers === false
-    ) {
-      showLineNumbers = false
-    }
+  if (lineNumbers !== undefined) {
+    showLineNumbers = lineNumbers
+  }
+
+  if (meta && meta.lineNumbers !== undefined) {
+    showLineNumbers = meta.lineNumbers === `true`
   }
 
   if (props[`react-live`]) {
