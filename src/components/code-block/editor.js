@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useState, useEffect } from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import Editor from 'react-simple-code-editor'
 import HighlightCode from './highlight-code'
 

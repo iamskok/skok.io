@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
-const LineNumber = ({ index, totalLineLength }) => (
+const LineNumber = ({ index }) => (
   <span sx={{
     display: 'inline-block',
     width: 40,
@@ -11,7 +11,6 @@ const LineNumber = ({ index, totalLineLength }) => (
     backgroundColor: 'black',
     marginLeft: -20,
     marginRight: 20,
-    transform: `translateX(-20)`
   }}>
     {++index}
   </span>
