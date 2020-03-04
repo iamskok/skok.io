@@ -20,13 +20,13 @@ const HighlightCode = ({
       tokens,
       getLineProps,
       getTokenProps,
-      style,
-      className
+      style
     }) => (
       <Styled.code
-        style={style}
-        className={className}
-        sx={{ paddingX: 20 }}
+        sx={{
+          ...style,
+          paddingX: 20
+        }}
       >
         {tokens.map((line, i) => (
           <Line
@@ -36,7 +36,7 @@ const HighlightCode = ({
             getLineProps={getLineProps}
             getTokenProps={getTokenProps}
             showLineNumbers={showLineNumbers}
-            shouldHighlightLine={shouldHighlightLine}
+            highlight={shouldHighlightLine(i)}
           />
         ))}
       </Styled.code>

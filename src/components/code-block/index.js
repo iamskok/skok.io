@@ -16,6 +16,7 @@ const CodeBlock = ({
   className,
   title,
   metastring,
+  noInline,
   ...props
 }) => {
   const { theme: { styles } } = useThemeUI()
@@ -41,6 +42,10 @@ const CodeBlock = ({
       <ReactLiveEditor
         code={code}
         theme={prismThemeUI}
+        metastring={metastring}
+        showLineNumbers={showLineNumbers}
+        shouldHighlightLine={shouldHighlightLine}
+        noInline={noInline}
       />
     )
   } else {

@@ -8,32 +8,31 @@ const Line = ({
   lineNumber,
   getLineProps,
   getTokenProps,
-  // shouldHighlightLine,
   showLineNumbers,
-}) => {
-  // const highlight = shouldHighlightLine(lineNumber)
+  highlight
+}) => (
+  <div
+    {...getLineProps({
+      line,
+      key: lineNumber,
+    })}
+    sx={{
+      backgroundColor: highlight ? `secondary` : ``,
+      paddingX: highlight ? 20 : ``,
+      marginX: highlight ? -20 : ``,
+    }}
+  >
 
-  return (
-    <div>
-    <div
-      {...getLineProps({
-        line,
-        key: lineNumber,
-      })}
-      // sx={{
-      //   backgroundColor: highlight ? `secondary` : ``,
-      //   paddingX: highlight ? 20 : ``,
-      //   marginX: highlight ? -20 : ``,
-      // }}
-    >
-      {showLineNumbers && <LineNumber index={lineNumber} />}
-      <LineTokens
-        line={line}
-        getTokenProps={getTokenProps}
-      />
-    </div>
-    </div>
-  )
-}
+    {
+      showLineNumbers &&
+      <LineNumber index={lineNumber} />
+    }
+
+    <LineTokens
+      line={line}
+      getTokenProps={getTokenProps}
+    />
+  </div>
+)
 
 export default Line

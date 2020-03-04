@@ -12,6 +12,9 @@ const CodeEditor = ({
   onChange,
   style,
   theme,
+  metastring,
+  showLineNumbers,
+  shouldHighlightLine,
   ...rest
 }) => {
   const [codeString, setCodeString] = useState(code)
@@ -28,7 +31,9 @@ const CodeEditor = ({
       code={codeString}
       theme={theme}
       language={language}
-      lineNumbers={false}
+      metastring={metastring}
+      showLineNumbers={showLineNumbers}
+      shouldHighlightLine={shouldHighlightLine}
     />
   )
 
@@ -52,7 +57,8 @@ const CodeEditor = ({
             float: `left`,
             '& > textarea': {
               zIndex: 1,
-              paddingX: `20px !important`,
+              paddingLeft: showLineNumbers ? `60px !important` : `20px !important`,
+              paddingRight: `20px !important`,
               whiteSpace: `pre !important`
             },
           }}
