@@ -25,21 +25,19 @@ const CodeBlock = ({
   const code = children.props.children.trim()
   const prismThemeUI = styles.prism
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
-  const showLineNumbers = globalLineNumbers !== undefined ?
-    globalLineNumbers :
-    lineNumbers !== undefined ?
-    lineNumbers === `true` :
-    undefined
+  const showLineNumbers = lineNumbers !== undefined ?
+    lineNumbers === 'true' :
+    globalLineNumbers
 
   if (live) {
     return (
       <ReactLiveEditor
         code={code}
         theme={prismThemeUI}
+        noInline={noInline}
         metastring={metastring}
         lineNumbers={showLineNumbers}
         shouldHighlightLine={shouldHighlightLine}
-        noInline={noInline}
       />
     )
   } else {
