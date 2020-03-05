@@ -3,7 +3,7 @@ import { jsx, useThemeUI } from 'theme-ui'
 import HighlightCode from './highlight-code'
 import ReactLiveEditor from './react-live-editor'
 import useSiteMetadata from '../../hooks/use-site-metadata'
-import calculateLinesToHighlight from './utils/calculate-lines-to-highlight'
+import calculateLinesToHighlight from './calculate-lines-to-highlight'
 
 const aliases = {
   js: 'javascript',
