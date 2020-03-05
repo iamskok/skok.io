@@ -8,7 +8,7 @@ const Line = ({
   lineNumber,
   getLineProps,
   getTokenProps,
-  showLineNumbers,
+  lineNumbers,
   highlight
 }) => (
   <div
@@ -23,10 +23,7 @@ const Line = ({
     }}
   >
 
-    {
-      showLineNumbers &&
-      <LineNumber index={lineNumber} />
-    }
+    {lineNumbers && <LineNumber index={lineNumber} />}
 
     <LineTokens
       line={line}

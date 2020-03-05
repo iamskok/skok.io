@@ -7,7 +7,7 @@ const HighlightCode = ({
   code,
   language,
   theme,
-  showLineNumbers,
+  lineNumbers,
   shouldHighlightLine,
 }) => (
   <Highlight
@@ -35,7 +35,7 @@ const HighlightCode = ({
             lineNumber={i}
             getLineProps={getLineProps}
             getTokenProps={getTokenProps}
-            showLineNumbers={showLineNumbers}
+            lineNumbers={lineNumbers}
             highlight={shouldHighlightLine(i)}
           />
         ))}

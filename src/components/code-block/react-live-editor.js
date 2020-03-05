@@ -8,7 +8,7 @@ const ReactLiveEditor = ({
   theme,
   noInline,
   metastring,
-  showLineNumbers,
+  lineNumbers,
   shouldHighlightLine
 }) => (
   <LiveProvider
@@ -18,7 +18,7 @@ const ReactLiveEditor = ({
   >
     <LiveEditor
       metastring={metastring}
-      showLineNumbers={showLineNumbers}
+      lineNumbers={lineNumbers}
       shouldHighlightLine={shouldHighlightLine}
     />
     <LiveError />
