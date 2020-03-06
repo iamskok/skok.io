@@ -1,5 +1,3 @@
-import dracula from 'prism-react-renderer/themes/dracula'
-
 const heading = {
   fontFamily: 'heading',
   fontWeight: 'heading',
@@ -11,9 +9,6 @@ const heading = {
 export default {
   root: {
     margin: 0,
-  },
-  prism: {
-    ...dracula
   },
   pre: {
     fontSize: 3,

@@ -1,18 +1,25 @@
 import dark from 'prism-react-renderer/themes/duotoneDark'
 import light from 'prism-react-renderer/themes/duotoneLight'
+import colors from '../gatsby-plugin-theme-ui/colors'
+
+const { text, primary } = colors
+const {
+  text: darkModeText,
+  primary: darkModePrimary
+} = colors.modes.dark
 
 const prismThemes = {
   light: {
     ...light,
-    caret: '#000',
-    count: '#000',
-    lineHighlight: '#777',
+    caret: text,
+    count: text,
+    lineHighlight: primary
   },
   dark: {
     ...dark,
-    caret: '#fff',
-    count: '#fff',
-    lineHighlight: '#eee'
+    caret: darkModeText,
+    count: darkModeText,
+    lineHighlight: darkModePrimary
   }
 }
 
