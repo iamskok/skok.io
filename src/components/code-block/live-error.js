@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
+import React from 'react'
 import { LiveContext } from 'react-live'
 import Pre from '../pre'
 
@@ -13,7 +12,7 @@ const LiveError = props => (
       >
         {error}
       </Pre> :
-      null
+      <></>
     )}
   </LiveContext.Consumer>
 )
