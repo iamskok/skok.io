@@ -1,14 +1,11 @@
-/** @jsx jsx */
-import { jsx, useThemeUI } from 'theme-ui'
+import React from 'react'
 import HighlightCode from './highlight-code'
 import ReactLiveEditor from './react-live-editor'
 import useSiteMetadata from '../../hooks/use-site-metadata'
 import calculateLinesToHighlight from './calculate-lines-to-highlight'
-
-const aliases = {
-  js: 'javascript',
-  sh: 'bash',
-}
+import getLanguage from './get-language'
+import prismThemes from '../../prism/themes'
+import aliases from './aliases'
 
 const CodeBlock = ({
   children,
@@ -16,42 +13,37 @@ const CodeBlock = ({
   metastring,
   noInline,
   lineNumbers,
-  live
+  live,
 }) => {
-  const { theme: { styles } } = useThemeUI()
+  const theme = prismThemes.dark
   const { codeBlock: { lineNumbers: globalLineNumbers } } = useSiteMetadata()
-  const [language] = className.replace(/language-/, '').split(' ')
-  const lang = aliases[language] || language
+  const language = aliases[getLanguage(className)] || getLanguage(className)
   const code = children.props.children.trim()
-  const prismThemeUI = styles.prism
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
   const showLineNumbers = lineNumbers !== undefined ?
     lineNumbers === 'true' :
     globalLineNumbers
 
-  if (live) {
-    return (
-      <ReactLiveEditor
-        code={code}
-        theme={prismThemeUI}
-        noInline={noInline}
-        metastring={metastring}
-        lineNumbers={showLineNumbers}
-        shouldHighlightLine={shouldHighlightLine}
-      />
-    )
-  } else {
-    return (
-      <HighlightCode
-        code={code}
-        language={lang}
-        theme={prismThemeUI}
-        metastring={metastring}
-        lineNumbers={showLineNumbers}
-        shouldHighlightLine={shouldHighlightLine}
-      />
-    )
-  }
+  return (
+    live ?
+    <ReactLiveEditor
+      code={code}
+      theme={theme}
+      language={language}
+      noInline={noInline}
+      metastring={metastring}
+      lineNumbers={showLineNumbers}
+      shouldHighlightLine={shouldHighlightLine}
+    /> :
+    <HighlightCode
+      code={code}
+      language={language}
+      theme={theme}
+      metastring={metastring}
+      lineNumbers={showLineNumbers}
+      shouldHighlightLine={shouldHighlightLine}
+    />
+  )
 }
 
 export default CodeBlock

@@ -18,7 +18,7 @@ const CodeEditor = ({
   ...rest
 }) => {
   const [codeString, setCodeString] = useState(code)
-  const caretColor = theme.plain.color
+  const caretColor = theme.caret
 
   useEffect(() => {
     onChange(codeString)
@@ -55,6 +55,7 @@ const CodeEditor = ({
             caretColor,
             minWidth: `100%`,
             float: `left`,
+
             '& > textarea': {
               zIndex: 1,
               paddingLeft: lineNumbers ? `60px !important` : `20px !important`,

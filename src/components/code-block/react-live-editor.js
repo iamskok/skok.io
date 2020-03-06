@@ -7,6 +7,7 @@ const ReactLiveEditor = ({
   code,
   theme,
   noInline,
+  language,
   metastring,
   lineNumbers,
   shouldHighlightLine
@@ -17,6 +18,7 @@ const ReactLiveEditor = ({
     noInline={noInline}
   >
     <LiveEditor
+      language={language}
       metastring={metastring}
       lineNumbers={lineNumbers}
       shouldHighlightLine={shouldHighlightLine}
