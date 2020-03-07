@@ -115,3 +115,13 @@ exports.createPages = ({ actions, graphql }) =>
     createPosts(actions.createPage, edges)
     createBlog(actions.createPage, edges)
 })
+
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        buble$: path.resolve(__dirname, `node_modules/@philpl/buble/src/index.js`)
+      }
+    }
+  })
+}
