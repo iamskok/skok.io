@@ -3,14 +3,14 @@ import { jsx, Styled, useThemeUI } from 'theme-ui'
 import { Fragment } from 'react'
 import CodeBlock from './code-block'
 import isPreWithCodeBlock from '../utils/is-pre-with-code-block'
-import PrismContext from './code-block/prism-context'
+import { Consumer } from './code-block/theme-manager'
 
 const Pre = props => {
   const themeUI = useThemeUI()
   console.log('themeUI', themeUI)
   if (isPreWithCodeBlock(props)) {
     return (
-      <PrismContext.Consumer>
+      <Consumer>
         { ({name}) => (
           <Fragment>
             <button>{name}</button>
@@ -21,7 +21,7 @@ const Pre = props => {
             </Styled.pre>
           </Fragment>
         )}
-      </PrismContext.Consumer>
+      </Consumer>
     )
   } else {
     return (

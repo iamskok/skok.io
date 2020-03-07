@@ -4,7 +4,7 @@ import { jsx, Styled } from 'theme-ui'
 import { Fragment, useState } from 'react'
 import LineNumber from './line-number'
 import calculateLinesToHighlight from '../../utils/calculate-lines-to-highlight'
-import PrismContext from './prism-context'
+import { Consumer } from './theme-manager'
 
 const HighlightCode = ({
   code,
@@ -72,11 +72,12 @@ const HighlightCode = ({
   console.log('prismTheme', prismTheme)
 
   return (
-    <PrismContext.Consumer>
-      {({ name }) => (
+    <Consumer>
+      {({ name, add }) => (
         <Fragment>
           <button
-            onClick={changePrismTheme}
+            // onClick={changePrismTheme}
+            onClick={add}
             style={{
               zIndex: 9999,
               pointerEvents: 'auto',
@@ -127,7 +128,7 @@ const HighlightCode = ({
           </Highlight>
         </Fragment>
       )}
-    </PrismContext.Consumer>
+    </Consumer>
   )
 }
 

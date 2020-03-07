@@ -47,7 +47,7 @@ const CodeBlock = ({
 export default props => (
   <>
     <button>
-      Button
+      Button!
     </button>
     <CodeBlock {...props} />
   </>
