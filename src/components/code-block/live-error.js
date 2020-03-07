@@ -12,7 +12,7 @@ const LiveError = props => (
       >
         {error}
       </Pre> :
-      <></>
+      null
     )}
   </LiveContext.Consumer>
 )

@@ -6,6 +6,7 @@ import LiveError from './live-error'
 const ReactLiveEditor = ({
   code,
   theme,
+  scope,
   noInline,
   language,
   metastring,
@@ -15,6 +16,7 @@ const ReactLiveEditor = ({
   <LiveProvider
     code={code}
     theme={theme}
+    scope={scope}
     noInline={noInline}
   >
     <LiveEditor

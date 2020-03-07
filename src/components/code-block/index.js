@@ -6,6 +6,7 @@ import calculateLinesToHighlight from './calculate-lines-to-highlight'
 import getLanguage from './get-language'
 import prismThemes from '../../prism/themes'
 import aliases from './aliases'
+import scope from './scope'
 
 const CodeBlock = ({
   children,
@@ -29,6 +30,7 @@ const CodeBlock = ({
     <ReactLiveEditor
       code={code}
       theme={theme}
+      scope={scope}
       language={language}
       noInline={noInline}
       metastring={metastring}
