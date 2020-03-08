@@ -18,7 +18,8 @@ const CodeEditor = ({
   ...rest
 }) => {
   const [codeString, setCodeString] = useState(code)
-  const caretColor = theme.caret
+  console.log('Editor.js theme', theme)
+  // const caretColor = theme.caret
 
   useEffect(() => {
     onChange(codeString)
@@ -52,7 +53,6 @@ const CodeEditor = ({
           highlight={highlightCode}
           onValueChange={updateContent}
           sx={{
-            caretColor,
             minWidth: `100%`,
             float: `left`,
 
