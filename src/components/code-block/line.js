@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui'
 import LineNumber from './line-number'
 import LineTokens from './line-tokens'
+import { PrismThemeConsumer } from './prism-theme-provider'
 
 const Line = ({
   line,
@@ -11,25 +12,30 @@ const Line = ({
   lineNumbers,
   highlight
 }) => (
-  <div
-    {...getLineProps({
-      line,
-      key: lineNumber,
-    })}
-    sx={{
-      backgroundColor: highlight ? `secondary` : ``,
-      paddingX: highlight ? 20 : ``,
-      marginX: highlight ? -20 : ``,
-    }}
-  >
+  <PrismThemeConsumer>
+    {({ prismTheme }) => (
+      <div
+        {...getLineProps({
+          line,
+          key: lineNumber,
+        })}
+        sx={{
+          backgroundColor: highlight ? prismTheme.lineHighlight.backgroundColor : ``,
+          paddingX: highlight ? 20 : ``,
+          marginX: highlight ? -20 : ``,
+          transition: 'background-color 400ms ease, color 400ms ease'
+        }}
+      >
 
-    {lineNumbers && <LineNumber index={lineNumber} />}
+        {lineNumbers && <LineNumber index={lineNumber} />}
 
-    <LineTokens
-      line={line}
-      getTokenProps={getTokenProps}
-    />
-  </div>
+        <LineTokens
+          line={line}
+          getTokenProps={getTokenProps}
+        />
+      </div>
+    )}
+  </PrismThemeConsumer>
 )
 
 export default Line

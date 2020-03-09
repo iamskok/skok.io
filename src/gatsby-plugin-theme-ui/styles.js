@@ -23,7 +23,7 @@ export default {
     float: 'left',
     minWidth: '100%',
     whiteSpace: `pre`,
-    paddingY: 0
+    paddingY: 0,
   },
   inlineCode: {
     fontSize: 3,

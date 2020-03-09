@@ -1,4 +1,5 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import HighlightCode from './highlight-code'
 import ReactLiveEditor from './react-live-editor'
 import useSiteMetadata from '../../hooks/use-site-metadata'
@@ -28,7 +29,10 @@ const CodeBlock = ({
     <PrismThemeConsumer>
       {({ prismTheme, changePrismTheme }) => (
         <div>
-          <div>
+          <div sx={{
+            display: 'flex',
+            flexDirection: 'row-reverse'
+          }}>
             <button onClick={changePrismTheme}>
               Change theme
             </button>

@@ -6,9 +6,12 @@ const {
   Consumer: PrismThemeConsumer
 } = React.createContext({}); 
 
-const { modes: prismModes = {} } = prismThemes
+const {
+  modes: prismModes = {}
+} = prismThemes
+
 const themeKeys = Object.keys(prismModes).sort()
-console.log('themeKeys:', themeKeys)
+
 const PrismTheme = ({ children }) => {
   const [prismTheme, setPrismTheme] = useState(prismThemes)
 
@@ -35,7 +38,7 @@ const PrismTheme = ({ children }) => {
         changePrismTheme
       }}
     >
-      Hello: {children}
+      {children}
     </PrismThemeProvider>
   )
 }

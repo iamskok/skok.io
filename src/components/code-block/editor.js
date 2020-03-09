@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Editor from 'react-simple-code-editor'
 import HighlightCode from './highlight-code'
+import { PrismThemeConsumer } from './prism-theme-provider'
 
 const CodeEditor = ({
   code,
@@ -18,8 +19,6 @@ const CodeEditor = ({
   ...rest
 }) => {
   const [codeString, setCodeString] = useState(code)
-  console.log('Editor.js theme', theme)
-  // const caretColor = theme.caret
 
   useEffect(() => {
     onChange(codeString)
@@ -39,34 +38,39 @@ const CodeEditor = ({
   )
 
   return (
-    <div sx={{
-      display: `flex`,
-      overflow: `hidden`
-    }}>
-      <div sx={{
-        flex: 1,
-        overflow: `auto`
-      }}>
-        <Editor
-          disabled={disabled}
-          value={codeString}
-          highlight={highlightCode}
-          onValueChange={updateContent}
-          sx={{
-            minWidth: `100%`,
-            float: `left`,
+    <PrismThemeConsumer>
+      {({ prismTheme }) => (
+        <div sx={{
+          display: `flex`,
+          overflow: `hidden`
+        }}>
+          <div sx={{
+            flex: 1,
+            overflow: `auto`
+          }}>
+            <Editor
+              disabled={disabled}
+              value={codeString}
+              highlight={highlightCode}
+              onValueChange={updateContent}
+              sx={{
+                minWidth: `100%`,
+                float: `left`,
+                caretColor: prismTheme.caret.color,
 
-            '& > textarea': {
-              zIndex: 1,
-              paddingLeft: lineNumbers ? `60px !important` : `20px !important`,
-              paddingRight: `20px !important`,
-              whiteSpace: `pre !important`
-            },
-          }}
-          {...rest}
-        />
-      </div>
-    </div>
+                '& > textarea': {
+                  zIndex: 1,
+                  paddingLeft: lineNumbers ? `60px !important` : `20px !important`,
+                  paddingRight: `20px !important`,
+                  whiteSpace: `pre !important`
+                },
+              }}
+              {...rest}
+            />
+          </div>
+        </div>
+      )}
+    </PrismThemeConsumer>
   )
 }
 

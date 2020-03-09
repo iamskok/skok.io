@@ -1,24 +1,32 @@
 import dark from 'prism-react-renderer/themes/nightOwl'
 import light from 'prism-react-renderer/themes/nightOwlLight'
-import colors from '../gatsby-plugin-theme-ui/colors'
-
-const { text, primary } = colors
-const {
-  text: darkModeText,
-  primary: darkModePrimary
-} = colors.modes.dark
+// import colors from '../gatsby-plugin-theme-ui/colors'
 
 const prismThemes = {
   ...light,
-  caret: text,
-  count: text,
-  lineHighlight: primary,
+  caret: {
+    color: 'black',
+  },
+  count: {
+    color: 'black',
+    backgroundColor: '#b690ff',
+  },
+  lineHighlight: {
+    backgroundColor: '#fab3ff',
+  },
   modes: {
     dark: {
       ...dark,
-      caret: darkModeText,
-      count: darkModeText,
-      lineHighlight: darkModePrimary
+      caret: {
+        color: 'white',
+      },
+      count: {
+        color: 'white',
+        backgroundColor: '#4b0050',
+      },
+      lineHighlight: {
+        backgroundColor: '#5b00bf',
+      },
     }
   }
 }
