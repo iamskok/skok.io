@@ -12,7 +12,7 @@ const prismThemes = {
     backgroundColor: '#b690ff',
   },
   lineHighlight: {
-    backgroundColor: '#fab3ff',
+    backgroundColor: '#767eb3',
   },
   modes: {
     dark: {
@@ -25,7 +25,7 @@ const prismThemes = {
         backgroundColor: '#4b0050',
       },
       lineHighlight: {
-        backgroundColor: '#5b00bf',
+        backgroundColor: '#003a69',
       },
     }
   }
