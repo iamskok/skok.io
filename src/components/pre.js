@@ -1,21 +1,36 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, Button } from 'theme-ui'
 import CodeBlock from './code-block'
 import isPreWithCodeBlock from '../utils/is-pre-with-code-block'
+import { PrismThemeConsumer } from './code-block/prism-theme-provider'
 
 const Pre = props => {
   const { isLiveError, children } = props
 
   if (isPreWithCodeBlock(props)) {
     return (
-      <Styled.pre
-        {...props}
-        sx={{ backgroundColor: 'red' }}
-      >
-        <CodeBlock {...children.props}>
-          {children}
-        </CodeBlock>
-      </Styled.pre>
+      <PrismThemeConsumer>
+        {({ changePrismTheme }) => (
+          <div>
+            <div sx={{
+              display: 'flex',
+              flexDirection: 'row-reverse'
+            }}>
+              <Button onClick={changePrismTheme}>
+                Change theme
+              </Button>
+            </div>
+            <Styled.pre
+              {...props}
+              sx={{ marginTop: 0 }}
+            >
+              <CodeBlock {...children.props}>
+                {children}
+              </CodeBlock>
+            </Styled.pre>
+          </div>
+        )}
+      </PrismThemeConsumer>
     )
   } else if (isLiveError) {
     return (

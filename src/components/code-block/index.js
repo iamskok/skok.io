@@ -27,16 +27,7 @@ const CodeBlock = ({
 
   return (
     <PrismThemeConsumer>
-      {({ prismTheme, changePrismTheme }) => (
-        <div>
-          <div sx={{
-            display: 'flex',
-            flexDirection: 'row-reverse'
-          }}>
-            <button onClick={changePrismTheme}>
-              Change theme
-            </button>
-          </div>
+      {({ prismTheme }) => (
           <div>
             {
               live ?
@@ -60,7 +51,6 @@ const CodeBlock = ({
               />
             }
           </div>
-        </div>
       )}
     </PrismThemeConsumer>
   )
