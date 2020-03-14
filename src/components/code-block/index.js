@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Styled, Button } from 'theme-ui'
 import HighlightCode from './highlight-code'
 import ReactLiveEditor from './react-live-editor'
 import useSiteMetadata from '../../hooks/use-site-metadata'
@@ -27,8 +27,17 @@ const CodeBlock = ({
 
   return (
     <PrismThemeConsumer>
-      {({ prismTheme }) => (
-          <div>
+      {({ prismTheme, changePrismTheme }) => (
+        <div>
+          <div sx={{
+            display: 'flex',
+            flexDirection: 'row-reverse'
+          }}>
+            <Button onClick={changePrismTheme}>
+              Change theme
+            </Button>
+          </div>
+          <Styled.pre sx={{ marginTop: 0 }}>
             {
               live ?
               <ReactLiveEditor
@@ -50,7 +59,8 @@ const CodeBlock = ({
                 shouldHighlightLine={shouldHighlightLine}
               />
             }
-          </div>
+          </Styled.pre>
+        </div>
       )}
     </PrismThemeConsumer>
   )
