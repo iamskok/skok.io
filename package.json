@@ -5,11 +5,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "lh": "lighthousebot",
     "clean": "gatsby clean",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "lh": "lighthousebot"
+    "fresh": "gatsby clean && gatsby build && gatsby develop"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
