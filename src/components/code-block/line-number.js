@@ -10,8 +10,7 @@ const LineNumber = ({ index }) => (
         width: 40,
         userSelect: 'none',
         textAlign: 'center',
-        color: prismTheme.count.color,
-        backgroundColor: prismTheme.count.backgroundColor,
+        color: prismTheme.lineNumber.color,
         marginLeft: -20,
         marginRight: 20,
         transition: 'background-color 400ms ease, color 400ms ease'
