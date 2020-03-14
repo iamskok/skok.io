@@ -9,7 +9,10 @@ const ButtonCodeTheme = () => (
         title="Change Code Color Mode"
         sx={{
           cursor: 'pointer',
-          backgroundColor: 'secondary'
+          backgroundColor: 'secondary',
+          padding: 0,
+          width: 40,
+          height: 40,
         }}
         onClick={changePrismTheme}
       >
@@ -19,6 +22,10 @@ const ButtonCodeTheme = () => (
           height="24"
           viewBox="0 0 32 32"
           fill="currentcolor"
+          sx={{
+            display: 'flex',
+            margin: '0 auto'
+          }}
         >
           <circle
             cx="16"
