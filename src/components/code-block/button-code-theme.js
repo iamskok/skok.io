@@ -4,14 +4,14 @@ import { useState } from 'react'
 import { PrismThemeConsumer } from './prism-theme-provider'
 
 const ButtonCodeTheme = () => {
-  const [isRotated, setRotated] = useState(false)
-  const rotate = () => setRotated(!isRotated)
+  const [turnCounter, setTurnCounter] = useState(0)
+  const incrementTurnCounter = () => setTurnCounter(turnCounter + 1)
 
   return (
     <PrismThemeConsumer>
       {({ changePrismTheme }) => (
         <Button
-          title="Change Code Color Mode"
+          title="Change Code Theme Color"
           sx={{
             cursor: 'pointer',
             backgroundColor: 'secondary',
@@ -21,7 +21,7 @@ const ButtonCodeTheme = () => {
           }}
           onClick={() => {
             changePrismTheme();
-            rotate()
+            incrementTurnCounter();
           }}
         >
           <svg
@@ -34,7 +34,7 @@ const ButtonCodeTheme = () => {
               display: 'flex',
               margin: '0 auto',
               transition: 'transform 400ms ease',
-              transform: isRotated ? 'rotate(180deg)' : 'rotate(0deg)'
+              transform: `rotate(${turnCounter * 180}deg)`
             }}
           >
             <circle
@@ -54,7 +54,7 @@ const ButtonCodeTheme = () => {
             height: 1,
             overflow: 'hidden'
           }}>
-            Change Code Color Mode
+            Change Code Theme Color
           </span>
         </Button>
       )}
