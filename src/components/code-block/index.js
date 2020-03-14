@@ -1,10 +1,11 @@
 /** @jsx jsx */
-import { jsx, Styled, Button } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import HighlightCode from './highlight-code'
 import ReactLiveEditor from './react-live-editor'
 import useSiteMetadata from '../../hooks/use-site-metadata'
 import calculateLinesToHighlight from './calculate-lines-to-highlight'
 import getLanguage from './get-language'
+import ButtonCodeTheme from './button-code-theme'
 import aliases from './aliases'
 import scope from './scope'
 import { PrismThemeConsumer } from './prism-theme-provider'
@@ -27,15 +28,13 @@ const CodeBlock = ({
 
   return (
     <PrismThemeConsumer>
-      {({ prismTheme, changePrismTheme }) => (
+      {({ prismTheme }) => (
         <div>
           <div sx={{
             display: 'flex',
             flexDirection: 'row-reverse'
           }}>
-            <Button onClick={changePrismTheme}>
-              Change theme
-            </Button>
+            <ButtonCodeTheme />
           </div>
           <Styled.pre sx={{ marginTop: 0 }}>
             {
