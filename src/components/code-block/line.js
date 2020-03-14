@@ -20,9 +20,12 @@ const Line = ({
           key: lineNumber,
         })}
         sx={{
-          backgroundColor: highlight ? prismTheme.lineHighlight.backgroundColor : ``,
-          paddingX: highlight ? 20 : ``,
-          marginX: highlight ? -20 : ``,
+          backgroundColor: highlight ?
+            prismTheme.lineHighlight &&
+            prismTheme.lineHighlight.backgroundColor :
+            `transparent`,
+          paddingX: highlight ? 20 : `0`,
+          marginX: highlight ? -20 : `0`,
           transition: 'background-color 400ms ease, color 400ms ease'
         }}
       >

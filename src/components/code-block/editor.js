@@ -56,7 +56,7 @@ const CodeEditor = ({
               sx={{
                 minWidth: `100%`,
                 float: `left`,
-                caretColor: prismTheme.caret.color,
+                caretColor: (prismTheme.cursor && prismTheme.cursor.color) || `auto`,
 
                 '& > textarea': {
                   zIndex: 1,
