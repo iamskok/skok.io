@@ -13,7 +13,13 @@ const {
 const themeKeys = Object.keys(prismModes).sort()
 
 const PrismTheme = ({ children }) => {
-  const [prismTheme, setPrismTheme] = useState(prismThemes)
+  let currentPrismTheme = prismThemes
+  let prismThemeName = window.localStorage.getItem('prismTheme')
+  if (prismThemeName) {
+    currentPrismTheme = prismThemes.modes[prismThemeName]
+  }
+
+  const [prismTheme, setPrismTheme] = useState(currentPrismTheme)
 
   const changePrismTheme = () => {
     let index = -1
@@ -23,14 +29,19 @@ const PrismTheme = ({ children }) => {
         break
       }
     }
+
     let newPrismTheme = prismThemes
 
     if (index < themeKeys.length - 1) {
       newPrismTheme = prismModes[themeKeys[index + 1]]
+      window.localStorage.setItem('prismTheme', themeKeys[index + 1])
+    } else {
+      window.localStorage.removeItem('prismTheme')
     }
 
     setPrismTheme(newPrismTheme)
   }
+
   return (
     <PrismThemeProvider
       value={{
