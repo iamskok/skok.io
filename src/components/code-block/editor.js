@@ -76,7 +76,7 @@ const CodeEditor = ({
 
 CodeEditor.propTypes = {
   code: PropTypes.string,
-  // disabled: PropTypes.boolean,
+  disabled: PropTypes.bool,
   language: PropTypes.string,
   onChange: PropTypes.func,
   style: PropTypes.object,
