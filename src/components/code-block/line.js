@@ -30,11 +30,15 @@ const Line = ({
         }}
       >
 
-        {lineNumbers && <LineNumber index={lineNumber} />}
+        <LineNumber
+          index={lineNumber}
+          lineNumbers={lineNumbers}
+        />
 
         <LineTokens
           line={line}
           getTokenProps={getTokenProps}
+          lineNumbers={lineNumbers}
         />
       </div>
     )}
