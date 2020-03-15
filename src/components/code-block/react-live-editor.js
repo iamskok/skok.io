@@ -8,6 +8,7 @@ const ReactLiveEditor = ({
   theme,
   scope,
   noInline,
+  disabled,
   language,
   metastring,
   lineNumbers,
@@ -17,6 +18,7 @@ const ReactLiveEditor = ({
     code={code}
     theme={theme}
     scope={scope}
+    disabled={disabled}
     noInline={noInline}
   >
     <LiveEditor

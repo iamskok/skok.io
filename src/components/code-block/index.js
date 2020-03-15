@@ -4,6 +4,7 @@ import HighlightCode from './highlight-code'
 import ReactLiveEditor from './react-live-editor'
 import useSiteMetadata from '../../hooks/use-site-metadata'
 import calculateLinesToHighlight from './calculate-lines-to-highlight'
+import convertMetastringPropToBool from './convert-metastring-prop-to-bool'
 import getLanguage from './get-language'
 import ButtonCodeTheme from './button-code-theme'
 import aliases from './aliases'
@@ -14,17 +15,23 @@ const CodeBlock = ({
   children,
   className,
   metastring,
-  noInline,
   lineNumbers,
   live,
+  noInline,
+  disabled,
 }) => {
   const { codeBlock: { lineNumbers: globalLineNumbers } } = useSiteMetadata()
   const language = aliases[getLanguage(className)] || getLanguage(className)
   const code = children.props.children.trim()
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
-  const showLineNumbers = lineNumbers !== undefined ?
-    lineNumbers === 'true' :
+
+  const isLineNumbers = lineNumbers !== undefined ?
+    (lineNumbers === 'true' || lineNumbers === true) :
     globalLineNumbers
+
+  const isLive = convertMetastringPropToBool(live)
+  const isNoInline = convertMetastringPropToBool(noInline)
+  const isDisabled = convertMetastringPropToBool(disabled)
 
   return (
     <PrismThemeConsumer>
@@ -38,15 +45,16 @@ const CodeBlock = ({
           </div>
           <Styled.pre sx={{ marginTop: 0 }}>
             {
-              live ?
+              isLive ?
               <ReactLiveEditor
                 code={code}
                 theme={prismTheme}
                 scope={scope}
                 language={language}
-                noInline={noInline}
                 metastring={metastring}
-                lineNumbers={showLineNumbers}
+                disabled={isDisabled}
+                noInline={isNoInline}
+                lineNumbers={isLineNumbers}
                 shouldHighlightLine={shouldHighlightLine}
               /> :
               <HighlightCode
@@ -54,7 +62,7 @@ const CodeBlock = ({
                 language={language}
                 theme={prismTheme}
                 metastring={metastring}
-                lineNumbers={showLineNumbers}
+                lineNumbers={isLineNumbers}
                 shouldHighlightLine={shouldHighlightLine}
               />
             }

@@ -49,8 +49,8 @@ const CodeEditor = ({
             overflow: `auto`
           }}>
             <Editor
-              disabled={disabled}
               value={codeString}
+              disabled={disabled}
               highlight={highlightCode}
               onValueChange={updateContent}
               sx={{

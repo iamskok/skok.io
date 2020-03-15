@@ -11,7 +11,7 @@ const ButtonCodeTheme = () => {
     <PrismThemeConsumer>
       {({ changePrismTheme }) => (
         <Button
-          title="Change Code Theme Color"
+          title="Change Code Theme"
           sx={{
             cursor: 'pointer',
             backgroundColor: 'secondary',
@@ -54,7 +54,7 @@ const ButtonCodeTheme = () => {
             height: 1,
             overflow: 'hidden'
           }}>
-            Change Code Theme Color
+            Change Code Theme
           </span>
         </Button>
       )}
