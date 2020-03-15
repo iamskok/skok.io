@@ -1,0 +1,544 @@
+---
+title: Syntax highlighting
+date: 2020-03-14
+published: true
+---
+
+# Syntax highlighting
+
+## Yml
+
+```yml
+language: node_js
+node_js:
+  - "6"
+install:
+  - npm install
+script:
+  - npm test
+after_script:
+  - npm run coveralls
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+```
+
+## Vue
+
+```vue
+<template>
+  <div>
+    <button @click="getNewIntent" :class="{ disabled: uiState === 'listening' }"></button>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    aborted: {
+      type: Boolean,
+      default: false,
+      required: true
+    }
+  },
+  computed: {
+    uiState() {
+      return this.$store.state.uiState
+    }
+  },
+  methods: {
+    getNewIntent() {
+      this.$store.dispatch('getSpeech')
+      this.$emit('isaborted', false)
+    }
+  }
+}
+</script>
+
+<style scoped>
+button {
+  border-radius: 1000px;
+  background: teal;
+  margin-top: 10px;
+  transition: 0.3s all ease-out;
+}
+
+button.disabled {
+  background: #ccc;
+  cursor: none;
+}
+</style>
+```
+
+## TypeScript
+
+```typescript
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Person, SearchService } from '../shared'
+import { ActivatedRoute } from '@angular/router'
+import { Subscription } from 'rxjs'
+
+@Component({
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
+})
+export class SearchComponent implements OnInit, OnDestroy {
+  query: string
+  searchResults: Array<Person>
+  sub: Subscription
+
+  constructor(
+    private searchService: SearchService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      if (params['term']) {
+        this.query = decodeURIComponent(params['term'])
+        this.search()
+      }
+    })
+  }
+
+  search(): void {
+    this.searchService.search(this.query).subscribe(
+      (data: any) => {
+        this.searchResults = data
+      },
+      error => console.log(error)
+    )
+  }
+
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe()
+    }
+  }
+}
+```
+
+## Ruby
+
+```ruby
+module ExampleModule
+  class ExampleClass::ScopeResolution < NewScope::Operator
+
+    def initialize(options)
+      @@class_var = options[:class]
+      @instance_var = options[:instance]
+    end
+
+    def method
+      puts 'doing stuff'
+      yield if block_given?
+      other_method(:arg)
+    end
+
+    def self.class_method
+      return "I am a class method!"
+    end
+
+    private
+
+    def other_method(*args)
+      puts 'doing other stuff #{42}'
+    end
+
+    def self.private
+      [1, 2, 3].each do |item|
+        puts item
+      end
+    end
+
+    private_class_method :private
+
+    private
+
+    def user_params
+      params.require(:user).permit(:username, :email, :password)
+      params.pluck(:user)
+    end
+  end
+end
+
+ExampleModule::ExampleClass::ScopeResolution
+example_instance = ExampleModule::ExampleClass::ScopeResolution.new(:arg)
+
+example_instance.method(:arg) do
+  puts 'yielding in block!'
+end
+```
+
+## React
+
+```jsx
+import React from 'react';
+import calculate from '../logic/calculate';
+import './App.css';
+import ButtonPanel from './ButtonPanel';
+import Display from './Display';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      total: null,
+      next: null,
+      operation: null
+    }
+  }
+
+  handleClick = buttonName => {
+    this.setState(calculate(this.state, buttonName))
+  }
+
+  render() {
+    return (
+      <div className="component-app">
+        Tacos
+        <Display value={this.state.next || this.state.total || '0'} />
+        <ButtonPanel clickHandler={this.handleClick} />
+      </div>
+    )
+  }
+}
+export default App
+
+// Functional components 
+
+// I use this syntax when my component fits on one line
+const ListItem = props => <li className="list-item">{props.item.name}</li>
+
+// I use this when my component has no logic outside JSX
+const List = ({ items }) => (
+  <ul className="list">{items.map(item => <ListItem item={item} />)}</ul>
+)
+
+// I use this when the component needs logic outside JSX.
+const Body = props => {
+  let items = transformItems(props.rawItems)
+  return (
+    <div>
+      <h1>{props.header}</h1>
+      <List items={items} />
+    </div>
+  )
+}
+
+const Foo = () => <div>
+  <div></div>
+</div>
+
+// This is equivalent to the last example
+function Page(props, context) {
+  return (
+    <div>
+      <Body header="My List" rawItems={props.rawItems} />
+    </div>
+  )
+}
+// propTypes and contextTypes are supported
+Page.propTypes = {
+  rawItems: React.PropTypes.array.isRequired
+}
+```
+
+## Python
+
+```python
+from collections import deque
+
+
+def topo(G, ind=None, Q=[1]):
+    if ind == None:
+        ind = [0] * (len(G) + 1)  # this is a comment
+        for u in G:
+            for v in G[u]:
+                ind[v] += 1
+        Q = deque()
+        for i in G:
+            if ind[i] == 0:
+                Q.append(i)
+    if len(Q) == 0:
+        return
+    v = Q.popleft()
+    print(v)
+    for w in G[v]:
+        ind[w] -= 1
+        if ind[w] == 0:
+            Q.append(w)
+    topo(G, ind, Q)
+
+
+class SomeClass:
+    def create_arr(self): # An instance method
+        self.arr = []
+    
+    def insert_to_arr(self, value):  #An instance method
+        self.arr.append(value)
+        
+    @classmethod
+    def class_method(cls):
+        print("the class method was called")
+```
+
+## PHP
+
+```php
+<?php
+class HelloWorldTest extends PHPUnit_Framework_TestCase
+{
+    /**
+     * @var PDO
+     */
+    private $pdo;
+    public function setUp()
+    {
+        $this->pdo = new PDO($GLOBALS['db_dsn'], $GLOBALS['db_username'], $GLOBALS['db_password']);
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->pdo->query("CREATE TABLE hello (what VARCHAR(50) NOT NULL)");
+    }
+    public function tearDown()
+    {
+        $this->pdo->query("DROP TABLE hello");
+    }
+    public function testHelloWorld()
+    {
+        $helloWorld = new HelloWorld($this->pdo);
+        $this->assertEquals('Hello World', $helloWorld->hello());
+    }
+    public function testHello()  
+    {
+        $helloWorld = new HelloWorld($this->pdo);
+        $this->assertEquals('Hello Bar', $helloWorld->hello('Bar'));
+    }
+    public function testWhat()
+    {
+        $helloWorld = new HelloWorld($this->pdo);
+        $this->assertFalse($helloWorld->what());
+        $helloWorld->hello('Bar');
+        $this->assertEquals('Bar', $helloWorld->what());
+    }
+}
+?>
+```
+
+## JSON
+
+```json
+{
+  "env": {
+    "es6": true,
+    "mocha": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"]
+  }
+}
+```
+
+## Markdown
+
+```markdown
+# Night Owl Theme
+
+> Night Owl theme for VS Code.
+
+![Preview](images/preview.gif)
+
+# Installation
+
+1.  Install [Visual Studio Code](https://code.visualstudio.com/)
+2.  Launch Visual Studio Code
+3.  Choose **Extensions** from menu
+4.  Search for `night-owl`
+5.  Click **Install** to install it
+6.  Click **Reload** to reload the Code
+7.  File > Preferences > Color Theme > **Night Owl**
+
+-[ ] check check 12 12
+-[ ] check check 12 12
+
+Heading 1
+========
+
+Heading 2
+--------------
+
+### Heading 3
+```
+
+## JavaScript
+
+```js
+'use strict'
+class Sale {
+  constructor(price) {
+    ;[this.decoratorsList, this.price] = [[], price]
+  }
+
+  decorate(decorator) {
+    if (!Sale[decorator]) throw new Error(`decorator not exist: ${decorator}`)
+    this.decoratorsList.push(Sale[decorator])
+  }
+
+  getPrice() {
+    for (let decorator of this.decoratorsList) {
+      this.price = decorator(this.price)
+    }
+    return this.price.toFixed(2)
+  }
+
+  static quebec(price) {
+    // this is a comment
+    return price + price * 7.5 / 100
+  }
+
+  static fedtax(price) {
+    return price + price * 5 / 100
+  }
+}
+
+let sale = new Sale(100)
+sale.decorate('fedtax')
+sale.decorate('quebec')
+console.log(sale.getPrice()) //112.88
+
+getPrice()
+
+//deeply nested
+
+async function asyncCall() {
+  var result = await resolveAfter2Seconds();
+}
+
+const options = {
+  connections: {
+    compression: false
+  }
+}
+
+for (let i = 0; i < 10; i++) {
+  continue;
+}
+
+if (true) { }
+
+while (true) { }
+
+switch (2) {
+  case 2:
+    break;
+  default:
+    break;
+}
+
+class EditFishForm extends Component {
+  static propTypes = {
+    updateFish: PropTypes.func,
+    deleteFish: PropTypes.func,
+    index: PropTypes.string,
+    fish: PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string.isRequired
+    })
+  }
+}
+```
+
+## HTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">Tacos Tacos</div>
+
+  <p>Tacos tacos tacos</p>
+  <!--comment-->
+
+  <script>
+    var x = '100';
+    x.toString();
+
+  </script>
+</body>
+
+</html>
+```
+
+## Elm
+
+```elm.elm
+main : Program Never Model Msg
+main =
+    program
+        { init = init
+        , view = view
+        , update = update
+        , subscriptions = subscriptions
+        }
+```
+
+## CSS
+
+```css
+.someClass {
+  font-family: serif;
+}
+
+#someID {
+  background: yellow;
+}
+
+main {
+  margin-top: 20px;
+}
+```
+
+## Closure
+
+```closure
+(ns hello.world.clojure)
+
+(defn sum [& numbers]
+  (if (empty? numbers)
+    0
+    (reduce + 0 numbers)))
+
+(defn print-name [{:keys [first last age]}]
+  (println (str "Your name is " first " " last " and you are " age " years old.")))
+
+(defn set-age [person new-age]
+  (assoc person :age new-age))
+
+(defn hello-world []
+  (let [john {:first "John" :last "Smith" :age 65}
+        jack {:first "Jack" :last "Road" :age 76}
+        george {:first "George" :last "Way" :age 23}
+        george-junior (assoc george :age 6)
+        all-persons [john jack george george-junior]]
+
+    (doseq [person all-persons]
+      (print-name person))
+
+    (println (str "Total age is: " (apply sum (map :age all-persons))))))
+
+(hello-world)
+```
