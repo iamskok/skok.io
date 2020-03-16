@@ -38,8 +38,6 @@ const CodeBlock = ({
   const [lineNumbersState, setLineNumbersState] = useState(isLineNumbers)
   const toggleLineNumbers = () => setLineNumbersState(!lineNumbersState)
 
-  console.log('lineNumbersState', lineNumbersState)
-
   return (
     <PrismThemeConsumer>
       {({ prismTheme }) => (
