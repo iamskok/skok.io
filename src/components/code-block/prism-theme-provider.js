@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import prismThemes from '../../prism/themes'
 
+const LOCAL_STORAGE_KEY = `prism-theme-name`
+
+const isBrowser = () => typeof window !== 'undefined'
+
 const {
   Provider: PrismThemeProvider,
   Consumer: PrismThemeConsumer
-} = React.createContext({}); 
+} = React.createContext({})
 
 const {
   modes: prismModes = {}
@@ -15,8 +19,8 @@ const themeKeys = Object.keys(prismModes).sort()
 const PrismTheme = ({ children }) => {
   let currentPrismTheme = prismThemes
 
-  if (typeof window !== 'undefined' && window) {
-    const prismThemeName = window.localStorage.getItem('prismTheme')
+  if (isBrowser()) {
+    const prismThemeName = window.localStorage.getItem(LOCAL_STORAGE_KEY)
     if (prismThemeName) {
       currentPrismTheme = prismThemes.modes[prismThemeName]
     }
@@ -37,12 +41,12 @@ const PrismTheme = ({ children }) => {
 
     if (index < themeKeys.length - 1) {
       newPrismTheme = prismModes[themeKeys[index + 1]]
-      if (typeof window !== 'undefined' && window) {
-        window.localStorage.setItem('prismTheme', themeKeys[index + 1])
+      if (isBrowser()) {
+        window.localStorage.setItem(LOCAL_STORAGE_KEY, themeKeys[index + 1])
       }
     } else {
-      if (typeof window !== 'undefined' && window) {
-        window.localStorage.removeItem('prismTheme')
+      if (isBrowser()) {
+        window.localStorage.removeItem(LOCAL_STORAGE_KEY)
       }
     }
 
