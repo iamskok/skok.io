@@ -6,7 +6,6 @@ import ReactLiveEditor from './react-live-editor'
 import useSiteMetadata from '../../hooks/use-site-metadata'
 import calculateLinesToHighlight from './calculate-lines-to-highlight'
 import convertMetastringPropToBool from './convert-metastring-prop-to-bool'
-import copyToClipboard from './copy-to-clipboard';
 import getLanguage from './get-language'
 import ButtonCopyCode from './button-copy-code'
 import ButtonCodeTheme from './button-code-theme'
@@ -40,8 +39,6 @@ const CodeBlock = ({
   const [lineNumbersState, setLineNumbersState] = useState(isLineNumbers)
   const toggleLineNumbers = () => setLineNumbersState(!lineNumbersState)
 
-  const handleClickToCopy = () => copyToClipboard(code)
-
   return (
     <PrismThemeConsumer>
       {({ prismTheme }) => (
@@ -50,8 +47,8 @@ const CodeBlock = ({
             display: 'flex',
             flexDirection: 'row-reverse'
           }}>
-            <ButtonCopyCode onClick={handleClickToCopy}/>
-            <ButtonLineNumbers onClick={toggleLineNumbers}/>
+            <ButtonCopyCode code={code} />
+            <ButtonLineNumbers onClick={toggleLineNumbers} />
             <ButtonCodeTheme />
           </div>
           <Styled.pre sx={{ marginTop: 0 }}>

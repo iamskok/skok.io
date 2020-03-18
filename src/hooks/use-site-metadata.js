@@ -14,6 +14,7 @@ const useSiteMetadata = () => {
             }
             codeBlock {
               lineNumbers
+              copy
             }
           }
         }

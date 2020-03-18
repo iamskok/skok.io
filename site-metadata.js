@@ -8,6 +8,7 @@ module.exports = {
     },
   ],
   codeBlock: {
-    lineNumbers: true
+    lineNumbers: true,
+    copy: true
   },
 }

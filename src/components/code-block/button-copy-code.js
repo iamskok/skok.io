@@ -1,7 +1,10 @@
 /** @jsx jsx */
 import { jsx, Button } from 'theme-ui'
+import copyToClipboard from './copy-to-clipboard'
 
-const ButtonCopyCode = ({ onClick }) => {
+const ButtonCopyCode = ({ code }) => {
+  const handleCopy = () => copyToClipboard(code)
+
   return (
     <Button
       title="Copy code block"
@@ -9,7 +12,7 @@ const ButtonCopyCode = ({ onClick }) => {
         cursor: 'pointer',
         backgroundColor: 'secondary',
       }}
-      onClick={onClick}
+      onClick={handleCopy}
     >
       Copy
     </Button>
