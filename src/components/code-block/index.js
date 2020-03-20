@@ -7,9 +7,9 @@ import useSiteMetadata from '../../hooks/use-site-metadata'
 import calculateLinesToHighlight from './calculate-lines-to-highlight'
 import convertMetastringPropToBool from './convert-metastring-prop-to-bool'
 import getLanguage from './get-language'
-import ButtonCopyCode from './button-copy-code'
-import ButtonCodeTheme from './button-code-theme'
-import ButtonLineNumbers from './button-line-numbers'
+import CopyButton from './copy-button'
+import ThemeButton from './theme-button'
+import LineNumbersButton from './line-numbers-button'
 import aliases from './aliases'
 import scope from './scope'
 import { PrismThemeConsumer } from './prism-theme-provider'
@@ -58,9 +58,9 @@ const CodeBlock = ({
             display: 'flex',
             flexDirection: 'row-reverse'
           }}>
-            {isCopy && <ButtonCopyCode code={code} />}
-            <ButtonLineNumbers onClick={toggleLineNumbers} />
-            <ButtonCodeTheme />
+            {isCopy && <CopyButton code={code} />}
+            <LineNumbersButton onClick={toggleLineNumbers} />
+            <ThemeButton />
           </div>
           <Styled.pre sx={{ marginTop: 0 }}>
             {

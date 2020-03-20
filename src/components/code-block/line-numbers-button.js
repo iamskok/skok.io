@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Button } from 'theme-ui'
 
-const ButtonLineNumbers = ({ onClick }) => {
+const LineNumbersButton = ({ onClick }) => {
   return (
     <Button
       title="Toggle line numbers"
@@ -16,4 +16,4 @@ const ButtonLineNumbers = ({ onClick }) => {
   )
 }
 
-export default ButtonLineNumbers
+export default LineNumbersButton

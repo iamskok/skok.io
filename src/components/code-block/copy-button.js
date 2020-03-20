@@ -2,7 +2,7 @@
 import { jsx, Button } from 'theme-ui'
 import copyToClipboard from './copy-to-clipboard'
 
-const ButtonCopyCode = ({ code }) => {
+const CopyButton = ({ code }) => {
   const handleCopy = () => copyToClipboard(code)
 
   return (
@@ -19,4 +19,4 @@ const ButtonCopyCode = ({ code }) => {
   )
 }
 
-export default ButtonCopyCode
+export default CopyButton
