@@ -10,6 +10,7 @@ import getLanguage from './get-language'
 import CopyButton from './copy-button'
 import ThemeButton from './theme-button'
 import LineNumbersButton from './line-numbers-button'
+import FileName from './file-name'
 import aliases from './aliases'
 import scope from './scope'
 import { PrismThemeConsumer } from './prism-theme-provider'
@@ -22,7 +23,8 @@ const CodeBlock = ({
   live,
   noInline,
   disabled,
-  copy
+  copy,
+  fileName
 }) => {
   const {
     codeBlock: {
@@ -30,6 +32,8 @@ const CodeBlock = ({
       copy: globalCopy,
     }
   } = useSiteMetadata()
+
+  console.log('fileName', fileName)
 
   const language = aliases[getLanguage(className)] || getLanguage(className)
   const code = children.props.children.trim()
@@ -56,11 +60,21 @@ const CodeBlock = ({
         <div>
           <div sx={{
             display: 'flex',
-            flexDirection: 'row-reverse'
+            flexDirection: 'column',
           }}>
-            {isCopy && <CopyButton code={code} />}
-            <LineNumbersButton onClick={toggleLineNumbers} />
-            <ThemeButton />
+            <div sx={{
+              display: 'flex',
+              flexDirection: 'row-reverse'
+            }}>
+              {isCopy && <CopyButton code={code} />}
+              <LineNumbersButton onClick={toggleLineNumbers} />
+              <ThemeButton />
+            </div>
+
+            {
+              fileName &&
+              <FileName name={fileName} />
+            }
           </div>
           <Styled.pre sx={{ marginTop: 0 }}>
             {

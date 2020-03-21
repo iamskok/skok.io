@@ -13,6 +13,7 @@ const theme = {
     body: 1.5,
     heading: 1.25,
   },
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   fontWeights: {
     body: 400,
     heading: 700,

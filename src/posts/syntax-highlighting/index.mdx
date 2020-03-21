@@ -6,9 +6,15 @@ published: true
 
 # Syntax highlighting
 
+## HTML
+
+```html fileName=index.html
+<h1>Hello World</h1>
+```
+
 ## Yml
 
-```yml copy=true
+```yml copy=true fileName=config.yml
 language: node_js
 node_js:
   - "6"
@@ -26,7 +32,7 @@ notifications:
 
 ## Vue
 
-```vue copy=false
+```vue copy=false fileName=index.vue
 <template>
   <div>
     <button @click="getNewIntent" :class="{ disabled: uiState === 'listening' }"></button>
@@ -73,7 +79,7 @@ button.disabled {
 
 ## TypeScript
 
-```typescript
+```typescript fileName=/very/very/very/long/long/long/long/long/long/long/long/long/long/long/long/file/name.ts
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { Person, SearchService } from '../shared'
 import { ActivatedRoute } from '@angular/router'
@@ -122,7 +128,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
 ## Ruby
 
-```ruby
+```ruby fileName=index.html
 module ExampleModule
   class ExampleClass::ScopeResolution < NewScope::Operator
 
