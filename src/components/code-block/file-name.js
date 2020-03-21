@@ -24,7 +24,7 @@ const FileName = ({ name }) => (
             color: prismTheme.plain.color,
             transition: 'color 400ms ease',
           }}>
-            {name}
+            {name.trim()}
           </p>
         </div>
       </div>
