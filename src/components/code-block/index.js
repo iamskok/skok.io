@@ -33,8 +33,6 @@ const CodeBlock = ({
     }
   } = useSiteMetadata()
 
-  console.log('fileName', fileName)
-
   const language = aliases[getLanguage(className)] || getLanguage(className)
   const code = children.props.children.trim()
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
