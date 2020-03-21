@@ -71,6 +71,7 @@ const CodeBlock = ({
               display: 'flex',
               flexDirection: 'row-reverse'
             }}>
+              {isLanguageTab && <LanguageTab language={language} />}
               {isCopy && <CopyButton code={code} />}
               <LineNumbersButton onClick={toggleLineNumbers} />
               <ThemeButton />
@@ -105,15 +106,6 @@ const CodeBlock = ({
               />
             }
           </Styled.pre>
-          {
-            isLanguageTab &&
-            <div sx={{
-              display: 'flex',
-              flexDirection: 'row-reverse'
-            }}>
-              <LanguageTab language={language} />
-            </div>
-          }
         </div>
       )}
     </PrismThemeConsumer>

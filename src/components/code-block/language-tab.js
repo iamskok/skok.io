@@ -13,6 +13,10 @@ const LanguageTab = ({ language }) => (
         fontFamily: 'monospace',
         margin: '-20 0 0 0',
         transition: 'color 400ms ease, background 400ms ease',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
       }}>
         {language}
       </div>
