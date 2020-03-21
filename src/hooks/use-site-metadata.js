@@ -15,6 +15,7 @@ const useSiteMetadata = () => {
             codeBlock {
               lineNumbers
               copy
+              languageTab
             }
           }
         }

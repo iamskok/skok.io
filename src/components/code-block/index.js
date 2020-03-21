@@ -11,6 +11,7 @@ import CopyButton from './copy-button'
 import ThemeButton from './theme-button'
 import LineNumbersButton from './line-numbers-button'
 import FileName from './file-name'
+import LanguageTab from './language-tab'
 import aliases from './aliases'
 import scope from './scope'
 import { PrismThemeConsumer } from './prism-theme-provider'
@@ -24,12 +25,14 @@ const CodeBlock = ({
   noInline,
   disabled,
   copy,
-  fileName
+  fileName,
+  languageTab
 }) => {
   const {
     codeBlock: {
       lineNumbers: globalLineNumbers,
       copy: globalCopy,
+      languageTab: globalLanguageTab,
     }
   } = useSiteMetadata()
 
@@ -48,6 +51,10 @@ const CodeBlock = ({
   const isCopy = copy !== undefined ?
     (copy === 'true' || copy === true) :
     globalCopy
+
+  const isLanguageTab = languageTab !== undefined ?
+    (languageTab === 'true' || languageTab === true) :
+    globalLanguageTab
 
   const [lineNumbersState, setLineNumbersState] = useState(isLineNumbers)
   const toggleLineNumbers = () => setLineNumbersState(!lineNumbersState)
@@ -74,7 +81,7 @@ const CodeBlock = ({
               <FileName name={fileName} />
             }
           </div>
-          <Styled.pre sx={{ marginTop: 0 }}>
+          <Styled.pre sx={{ margin: 0 }}>
             {
               isLive ?
               <ReactLiveEditor
@@ -98,6 +105,15 @@ const CodeBlock = ({
               />
             }
           </Styled.pre>
+          {
+            isLanguageTab &&
+            <div sx={{
+              display: 'flex',
+              flexDirection: 'row-reverse'
+            }}>
+              <LanguageTab language={language} />
+            </div>
+          }
         </div>
       )}
     </PrismThemeConsumer>

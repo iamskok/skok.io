@@ -9,6 +9,7 @@ module.exports = {
   ],
   codeBlock: {
     lineNumbers: true,
-    copy: true
+    copy: true,
+    languageTab: true
   },
 }
