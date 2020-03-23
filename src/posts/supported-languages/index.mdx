@@ -18,6 +18,25 @@ published: true
 * TOML
 * Go
 * Rust
+* Diff
+* Git
+
+## diff
+
+```diff
+-    let foo = bar.baz([1, 2, 3]);
+-    foo = foo + 1;
++    const foo = bar.baz([1, 2, 3]) + 1;
+     console.log(`foo: ${foo}`);
+```
+
+## git
+
+```git
+git clone git@github.com:FormidableLabs/prism-react-renderer.git
+git config --global user.name "King Kong"
+git config --global user.email "king-kong@gmail.com"
+```
 
 ## Rust
 
