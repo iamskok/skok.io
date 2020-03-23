@@ -62,7 +62,9 @@ const CodeBlock = ({
   return (
     <PrismThemeConsumer>
       {({ prismTheme }) => (
-        <div>
+        <div sx={{
+          marginBottom: 20
+        }}>
           <div sx={{
             display: 'flex',
             flexDirection: 'column',
