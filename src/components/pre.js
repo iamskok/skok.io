@@ -25,7 +25,10 @@ const Pre = props => {
     return (
       <Styled.pre
         {...props}
-        sx={{ padding: 20 }}
+        sx={{
+          padding: 20,
+          marginBottom: 20
+        }}
       >
         {children.props.children}
       </Styled.pre>
