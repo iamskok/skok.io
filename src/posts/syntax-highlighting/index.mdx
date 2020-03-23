@@ -12,9 +12,33 @@ published: true
 <h1>Hello World</h1>
 ```
 
+## Markup
+
+```markup fileName=index.html
+<h1>Hello World</h1>
+```
+
 ## Yml
 
 ```yml copy=true fileName=config.yml
+language: node_js
+node_js:
+  - "6"
+install:
+  - npm install
+script:
+  - npm test
+after_script:
+  - npm run coveralls
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+```
+
+## YAML
+
+```yaml copy=true fileName=config.yml
 language: node_js
 node_js:
   - "6"
@@ -77,6 +101,55 @@ button.disabled {
 </style>
 ```
 
+## TS
+
+```ts fileName=/very/very/very/long/long/long/long/long/long/long/long/long/long/long/long/file/name.ts
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Person, SearchService } from '../shared'
+import { ActivatedRoute } from '@angular/router'
+import { Subscription } from 'rxjs'
+
+@Component({
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
+})
+export class SearchComponent implements OnInit, OnDestroy {
+  query: string
+  searchResults: Array<Person>
+  sub: Subscription
+
+  constructor(
+    private searchService: SearchService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      if (params['term']) {
+        this.query = decodeURIComponent(params['term'])
+        this.search()
+      }
+    })
+  }
+
+  search(): void {
+    this.searchService.search(this.query).subscribe(
+      (data: any) => {
+        this.searchResults = data
+      },
+      error => console.log(error)
+    )
+  }
+
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe()
+    }
+  }
+}
+```
+
 ## TypeScript
 
 ```typescript fileName=/very/very/very/long/long/long/long/long/long/long/long/long/long/long/long/file/name.ts
@@ -126,9 +199,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 }
 ```
 
-## Ruby
+## RB
 
-```ruby fileName=index.html
+```rb fileName=main.rb
 module ExampleModule
   class ExampleClass::ScopeResolution < NewScope::Operator
 
@@ -176,6 +249,78 @@ example_instance = ExampleModule::ExampleClass::ScopeResolution.new(:arg)
 example_instance.method(:arg) do
   puts 'yielding in block!'
 end
+```
+
+## Ruby
+
+```ruby fileName=main.rb
+module ExampleModule
+  class ExampleClass::ScopeResolution < NewScope::Operator
+
+    def initialize(options)
+      @@class_var = options[:class]
+      @instance_var = options[:instance]
+    end
+
+    def method
+      puts 'doing stuff'
+      yield if block_given?
+      other_method(:arg)
+    end
+
+    def self.class_method
+      return "I am a class method!"
+    end
+
+    private
+
+    def other_method(*args)
+      puts 'doing other stuff #{42}'
+    end
+
+    def self.private
+      [1, 2, 3].each do |item|
+        puts item
+      end
+    end
+
+    private_class_method :private
+
+    private
+
+    def user_params
+      params.require(:user).permit(:username, :email, :password)
+      params.pluck(:user)
+    end
+  end
+end
+
+ExampleModule::ExampleClass::ScopeResolution
+example_instance = ExampleModule::ExampleClass::ScopeResolution.new(:arg)
+
+example_instance.method(:arg) do
+  puts 'yielding in block!'
+end
+```
+
+## TSX
+
+```tsx
+import * as React from 'react';
+
+interface Props {
+  count?: number;
+}
+
+export default class Count extends React.Component<Props> {
+  static defaultProps: Props = {
+    count: 10
+  };
+
+  render () {
+    return <h1>{this.props.count}</h1>;
+  }
+}
 ```
 
 ## React
@@ -250,6 +395,45 @@ function Page(props, context) {
 Page.propTypes = {
   rawItems: React.PropTypes.array.isRequired
 }
+```
+
+## PY
+
+```py
+from collections import deque
+
+
+def topo(G, ind=None, Q=[1]):
+    if ind == None:
+        ind = [0] * (len(G) + 1)  # this is a comment
+        for u in G:
+            for v in G[u]:
+                ind[v] += 1
+        Q = deque()
+        for i in G:
+            if ind[i] == 0:
+                Q.append(i)
+    if len(Q) == 0:
+        return
+    v = Q.popleft()
+    print(v)
+    for w in G[v]:
+        ind[w] -= 1
+        if ind[w] == 0:
+            Q.append(w)
+    topo(G, ind, Q)
+
+
+class SomeClass:
+    def create_arr(self): # An instance method
+        self.arr = []
+    
+    def insert_to_arr(self, value):  #An instance method
+        self.arr.append(value)
+        
+    @classmethod
+    def class_method(cls):
+        print("the class method was called")
 ```
 
 ## Python

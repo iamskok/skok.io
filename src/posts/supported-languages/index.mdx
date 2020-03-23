@@ -1,0 +1,90 @@
+---
+title: Supported languages
+date: 2020-03-22
+published: true
+---
+
+* HTML - https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg
+* CSS - https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg
+* Sass - https://upload.wikimedia.org/wikipedia/commons/9/96/Sass_Logo_Color.svg
+* JavaScript - https://commons.wikimedia.org/wiki/File:JavaScript-logo.png
+* GraphQL - https://upload.wikimedia.org/wikipedia/commons/1/17/GraphQL_Logo.svg
+* React - https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg
+* Bash - https://upload.wikimedia.org/wikipedia/commons/4/4b/Bash_Logo_Colored.svg
+
+```jsx live
+() => (
+  <>
+    <h3>Change ME!</h3>
+    <p>jsx live</p>
+  </>
+)
+```
+
+```jsx
+const Banner = ({
+  title,
+  subtitle,
+  text
+}) => (
+  <div>
+    <h3>{title}</h3>
+    <p>{subtitle}</p>
+    <p>{text}</p>
+  </div>
+)
+```
+
+```html
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+```
+
+```css
+.block__element--modifier {
+  color: red;
+  background: block;
+}
+```
+
+```scss
+$danger-color: red;
+
+.danger {
+  background-color: $danger-color; 
+}
+```
+
+```js
+const string1 = 'Hello'
+const string2 = 'World'
+
+console.log(`${string1} ${string2}!`)
+```
+
+```graphql
+{
+  empireHero: hero(episode: EMPIRE) {
+    name
+  }
+  jediHero: hero(episode: JEDI) {
+    name
+  }
+}
+```
+
+```sh
+function fact {
+  result=1
+  n=$1
+  while [ "$n" -ge 1 ]
+  do
+    result=$(expr $n \* $result)
+    n=$(expr $n - 1)
+  done
+  echo $result
+}
+```
