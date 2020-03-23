@@ -1,9 +1,6 @@
 const aliases = {
-  js: `javascript`,
-  sh: `bash`,
-  py: `python`,
-  rb: `ruby`,
-  md: `markdown`
+  sh: `shell`,
+  gql: `graphql`
 }
 
 export default aliases
