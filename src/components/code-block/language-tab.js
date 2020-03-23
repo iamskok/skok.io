@@ -4,8 +4,8 @@ import { PrismThemeConsumer } from './prism-theme-provider'
 import languages from './languages'
 import languageIcons from './language-icons'
 
-const LanguageTab = ({ language }) => {
-  const icon = languageIcons[language]
+const LanguageTab = ({ language, aliases = {} }) => {
+  const icon = languageIcons[language] || languageIcons[aliases[language]]
   const humanReadableLanguage = languages[language]
 
   return (
@@ -28,15 +28,20 @@ const LanguageTab = ({ language }) => {
             icon ?
             <img
               src={icon}
-              alt={`${humanReadableLanguage} || ${language}`}
+              alt={`${(humanReadableLanguage || language)} logo`}
               sx={{
                 padding: 1,
                 width: 40,
                 height: 40,
               }}
             /> :
-            humanReadableLanguage ? humanReadableLanguage :
-            language
+            humanReadableLanguage ?
+            <div sx={{ padding: 1 }}>
+              {humanReadableLanguage}
+            </div> :
+            <div sx={{ padding: 1 }}>
+              {language}
+            </div>
           }
         </div>
       )}

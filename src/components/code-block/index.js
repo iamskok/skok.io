@@ -73,7 +73,13 @@ const CodeBlock = ({
               display: 'flex',
               flexDirection: 'row-reverse'
             }}>
-              {isLanguageTab && <LanguageTab language={language} />}
+              {
+                isLanguageTab &&
+                <LanguageTab
+                  language={getLanguage(className)}
+                  aliases={aliases}
+                />
+              }
               {isCopy && <CopyButton code={code} />}
               <LineNumbersButton onClick={toggleLineNumbers} />
               <ThemeButton />
