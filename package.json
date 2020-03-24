@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
+    "@loadable/component": "^5.12.0",
     "@mdx-js/mdx": "^1.5.7",
     "@mdx-js/react": "^1.5.7",
     "@philpl/buble": "https://github.com/kitten/buble.git",

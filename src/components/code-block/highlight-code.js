@@ -1,7 +1,13 @@
 /** @jsx jsx */
-import Highlight, { Prism } from 'prism-react-renderer'
 import { jsx, Styled } from 'theme-ui'
 import Line from './line'
+import loadable from "@loadable/component"
+
+const LazyHighlight = loadable(async () => {
+  const Module = await import(`prism-react-renderer`)
+  const { default: Highlight, Prism } = Module
+  return props => <Highlight Prism={Prism} {...props} />
+})
 
 const HighlightCode = ({
   code,
@@ -10,8 +16,7 @@ const HighlightCode = ({
   lineNumbers,
   shouldHighlightLine,
 }) => (
-  <Highlight
-    Prism={Prism}
+  <LazyHighlight
     code={code}
     theme={theme}
     language={language}
@@ -42,7 +47,7 @@ const HighlightCode = ({
         ))}
       </Styled.code>
     )}
-  </Highlight>
+  </LazyHighlight>
 )
 
 export default HighlightCode
