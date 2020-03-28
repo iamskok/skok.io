@@ -21,6 +21,10 @@ const prismThemes = {
     // editorLineNumber.foreground
     color: '#90a7b2',
   },
+  lineNumberActive: {
+    // editorLineNumber.activeForeground
+    color: '#403f53'
+  },
   lineHighlight: {
     // editor.lineHighlightBackground
     backgroundColor: '#0003',
@@ -36,6 +40,10 @@ const prismThemes = {
       lineNumber: {
         // editorLineNumber.foreground
         color: '#4b6479',
+      },
+      lineNumberActive: {
+        // editorLineNumber.activeForeground
+        color: '#c5e4fd'
       },
       lineHighlight: {
         // editor.lineHighlightBackground

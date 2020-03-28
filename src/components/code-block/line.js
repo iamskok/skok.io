@@ -33,6 +33,7 @@ const Line = ({
         <LineNumber
           index={lineNumber}
           lineNumbers={lineNumbers}
+          highlight={highlight}
         />
 
         <LineTokens
