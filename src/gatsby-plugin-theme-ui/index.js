@@ -7,10 +7,10 @@ const theme = {
   fonts: {
     body: 'system-ui, sans-serif',
     bodyStatic: `'Inter', system-ui, sans-serif`,
-    bodyVariable: `'Inter var', system-ui, sans-serif`,
+    bodyVariable: `'Inter var experimental', system-ui, sans-serif`,
     heading: 'system-ui, sans-serif',
     headingStatic: `'Inter', system-ui, sans-serif`,
-    headingVariable: `'Inter var', system-ui, sans-serif`,
+    headingVariable: `'Inter var experimental', system-ui, sans-serif`,
     monospace: 'Menlo, monospace',
   },
   lineHeights: {
@@ -22,9 +22,6 @@ const theme = {
     body: 400,
     heading: 700,
     bold: 700,
-  },
-  sizes: {
-    container: 768,
   },
   styles,
 }
