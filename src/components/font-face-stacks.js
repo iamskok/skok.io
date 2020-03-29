@@ -1,6 +1,6 @@
 import React from 'react'
 import { Global, css } from '@emotion/core'
-import interFontFaceStack from '../fonts'
+import interFontFaceStack from '../fonts/inter'
 
 const FontFaceStacks = () => (
   <Global
