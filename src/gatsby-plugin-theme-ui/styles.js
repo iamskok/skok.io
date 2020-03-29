@@ -1,5 +1,4 @@
 const heading = {
-  fontFamily: 'heading',
   fontWeight: 'heading',
   lineHeight: 'heading',
   mt: 4,
@@ -8,6 +7,12 @@ const heading = {
 
 export default {
   root: {
+    '*': {
+      fontFamily: 'bodyStatic',
+      '@supports (font-variation-settings: normal)': {
+        fontFamily: 'bodyVariable',
+      },
+    },
     margin: 0,
   },
   pre: {
