@@ -7,11 +7,9 @@ const heading = {
 
 export default {
   root: {
-    '*': {
-      fontFamily: 'bodyStatic',
-      '@supports (font-variation-settings: normal)': {
-        fontFamily: 'bodyVariable',
-      },
+    fontFamily: 'bodyStatic',
+    '@supports (font-variation-settings: normal)': {
+      fontFamily: 'bodyVariable',
     },
     margin: 0,
   },
