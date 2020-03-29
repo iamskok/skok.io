@@ -34,9 +34,9 @@ import interThinWoff from './Inter-Thin.woff'
 import interThinWoff2 from './Inter-Thin.woff2'
 import interThinItalicWoff from './Inter-ThinItalic.woff'
 import interThinItalicWoff2 from './Inter-ThinItalic.woff2'
-import interVarWoff2 from './Inter.var.woff2'
 import interItalicVarWoff2 from './Inter-italic.var.woff2'
 import interRomanVarWoff2 from './Inter-roman.var.woff2'
+import interVarWoff2 from './Inter.var.woff2'
 import interVvarWoff2 from './Inter-V.var.woff2'
 
 export {

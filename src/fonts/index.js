@@ -36,8 +36,8 @@ import {
   interThinItalicWoff,
   interThinItalicWoff2,
   interItalicVarWoff2,
-  interVarWoff2,
-  // interRomanVarWoff2,
+  interRomanVarWoff2,
+  // interVarWoff2,
   // interVvarWoff2,
 } from './inter/inter'
 
@@ -192,7 +192,7 @@ const interFontFaceStack = `
     font-display: swap;
     font-style: normal;
     font-named-instance: 'Regular';
-    src: url(${interVarWoff2}) format("woff2");
+    src: url(${interRomanVarWoff2}) format("woff2");
   }
   @font-face {
     font-family: 'Inter var';
@@ -203,5 +203,13 @@ const interFontFaceStack = `
     src: url(${interItalicVarWoff2}) format("woff2");
   }
 `
+// Inter var experimental
+// @font-face {
+//   font-family: 'Inter var experimental';
+//   font-weight: 100 900;
+//   font-display: swap;
+//   font-style: oblique 0deg 10deg;
+//   src: url(${interVarWoff2}) format("woff2");
+// }
 
 export default interFontFaceStack
