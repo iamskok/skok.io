@@ -60,6 +60,7 @@ const inter100 = `
       local('Inter-Thin'),
       url(${interThinWoff2}) format("woff2"),
       url(${interThinWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -73,6 +74,7 @@ const inter100i = `
       local('Inter-Thin-Italic'),
       url(${interThinItalicWoff2}) format("woff2"),
       url(${interThinItalicWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -86,6 +88,7 @@ const inter200 = `
       local('Inter-Extra-Light'),
       url(${interExtraLightWoff2}) format("woff2"),
       url(${interExtraLightWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 const inter200i = `
@@ -98,6 +101,7 @@ const inter200i = `
       local('Inter-Extra-Light-Italic'),
       url(${interExtraLightItalicWoff2}) format("woff2"),
       url(${interExtraLightItalicWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -111,6 +115,7 @@ const inter300 = `
       local('Inter-Light'),
       url(${interLightWoff2}) format("woff2"),
       url(${interLightWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -124,6 +129,7 @@ const inter300i = `
       local('Inter-Light-Italic'),
       url(${interLightItalicWoff2}) format("woff2"),
       url(${interLightItalicWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -137,6 +143,7 @@ const inter400 = `
       local('Inter-Regular'),
       url(${interRegularWoff2}) format("woff2"),
       url(${interRegularWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -150,6 +157,7 @@ const inter400i = `
       local('Inter-Italic'),
       url(${interItalicWoff2}) format("woff2"),
       url(${interItalicWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -163,6 +171,7 @@ const inter500 = `
       local('Inter-Medium'),
       url(${interMediumWoff2}) format("woff2"),
       url(${interMediumWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 const inter500i = `
@@ -175,6 +184,7 @@ const inter500i = `
       local('Inter-Italic'),
       url(${interMediumItalicWoff2}) format("woff2"),
       url(${interMediumItalicWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -188,6 +198,7 @@ const inter600 = `
        local('Inter-Semi-Bold'),
       url(${interSemiBoldWoff2}) format("woff2"),
       url(${interSemiBoldWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -201,6 +212,7 @@ const inter600i = `
       local('Inter-Semi-Bold-Italic'),
       url(${interSemiBoldItalicWoff2}) format("woff2"),
       url(${interSemiBoldItalicWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -214,6 +226,7 @@ const inter700 = `
       local('Inter-Bold'),
       url(${interBoldWoff2}) format("woff2"),
       url(${interBoldWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -227,6 +240,7 @@ const inter700i = `
       local('Inter-Bold-Italic'),
       url(${interBoldItalicWoff2}) format("woff2"),
       url(${interBoldItalicWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 const inter800 = `
@@ -239,6 +253,7 @@ const inter800 = `
       local('Inter-Extra-Bold'),
       url(${interExtraBoldWoff2}) format("woff2"),
       url(${interExtraBoldWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -252,6 +267,7 @@ const inter800i = `
       local('Inter-Extra-Bold-Italic'),
       url(${interExtraBoldItalicWoff2}) format("woff2"),
       url(${interExtraBoldItalicWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -265,6 +281,7 @@ const inter900 = `
       local('Inter-Black'),
       url(${interBlackWoff2}) format("woff2"),
       url(${interBlackWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 const inter900i = `
@@ -277,6 +294,7 @@ const inter900i = `
       local('Inter-Black-Italic'),
       url(${interBlackItalicWoff2}) format("woff2"),
       url(${interBlackItalicWoff}) format("woff");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -290,6 +308,7 @@ const interVariable = `
     src: local('Inter Roman Variable'),
       local('Inter-Roman-Variable'),
       url(${interRomanVarWoff2}) format("woff2");
+    unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -303,6 +322,7 @@ const interVariableItalic = `
     src: local('Inter Italic Variable'),
       local('Inter-Italic-Variable'),
       url(${interItalicVarWoff2}) format("woff2");
+      unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
@@ -315,6 +335,7 @@ const interVariableExperimental = `
     src: local('Inter Variable Experimental'),
       local('Inter-Variable-Experimental'),
       url(${interVarWoff2}) format("woff2");
+      unicode-range: U+A,U+20-3E,U+40-7E,U+A9,U+2026;
   }
 `
 
