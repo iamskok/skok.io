@@ -125,3 +125,12 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
     }
   })
 }
+
+// https://github.com/ChristopherBiscardi/gatsby-mdx/issues/176#issuecomment-429569578
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
+  })
+}
