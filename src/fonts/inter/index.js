@@ -1,53 +1,54 @@
 // 100 and 100i
-import interThinWoff from './Inter-Thin.woff'
-import interThinWoff2 from './Inter-Thin.woff2'
-import interThinItalicWoff from './Inter-ThinItalic.woff'
-import interThinItalicWoff2 from './Inter-ThinItalic.woff2'
+import interThinWoff from './Inter-Thin-subset.woff'
+import interThinWoff2 from './Inter-Thin-subset.woff2'
+import interThinItalicWoff from './Inter-ThinItalic-subset.woff'
+import interThinItalicWoff2 from './Inter-ThinItalic-subset.woff2'
 // 200 and 200i
-import interExtraLightWoff from './Inter-ExtraLight.woff'
-import interExtraLightWoff2 from './Inter-ExtraLight.woff2'
-import interExtraLightItalicWoff from './Inter-ExtraLightItalic.woff'
-import interExtraLightItalicWoff2 from './Inter-ExtraLightItalic.woff2'
+import interExtraLightWoff from './Inter-ExtraLight-subset.woff'
+import interExtraLightWoff2 from './Inter-ExtraLight-subset.woff2'
+import interExtraLightItalicWoff from './Inter-ExtraLightItalic-subset.woff'
+import interExtraLightItalicWoff2 from './Inter-ExtraLightItalic-subset.woff2'
 // 300 and 300i
-import interLightWoff from './Inter-Light.woff'
-import interLightWoff2 from './Inter-Light.woff2'
-import interLightItalicWoff from './Inter-LightItalic.woff'
-import interLightItalicWoff2 from './Inter-LightItalic.woff2'
+import interLightWoff from './Inter-Light-subset.woff'
+import interLightWoff2 from './Inter-Light-subset.woff2'
+import interLightItalicWoff from './Inter-LightItalic-subset.woff'
+import interLightItalicWoff2 from './Inter-LightItalic-subset.woff2'
 // 400 and 400i
-import interRegularWoff from './Inter-Regular.woff'
-import interRegularWoff2 from './Inter-Regular.woff2'
-import interItalicWoff from './Inter-Italic.woff'
-import interItalicWoff2 from './Inter-Italic.woff2'
+import interRegularWoff from './Inter-Regular-subset.woff'
+import interRegularWoff2 from './Inter-Regular-subset.woff2'
+import interItalicWoff from './Inter-Italic-subset.woff'
+import interItalicWoff2 from './Inter-Italic-subset.woff2'
 // 500 and 500i
-import interMediumWoff from './Inter-Medium.woff'
-import interMediumWoff2 from './Inter-Medium.woff2'
-import interMediumItalicWoff from './Inter-MediumItalic.woff'
-import interMediumItalicWoff2 from './Inter-MediumItalic.woff2'
+import interMediumWoff from './Inter-Medium-subset.woff'
+import interMediumWoff2 from './Inter-Medium-subset.woff2'
+import interMediumItalicWoff from './Inter-MediumItalic-subset.woff'
+import interMediumItalicWoff2 from './Inter-MediumItalic-subset.woff2'
 // 600 and 600i
-import interSemiBoldWoff from './Inter-SemiBold.woff'
-import interSemiBoldWoff2 from './Inter-SemiBold.woff2'
-import interSemiBoldItalicWoff from './Inter-SemiBoldItalic.woff'
-import interSemiBoldItalicWoff2 from './Inter-SemiBoldItalic.woff2'
+import interSemiBoldWoff from './Inter-SemiBold-subset.woff'
+import interSemiBoldWoff2 from './Inter-SemiBold-subset.woff2'
+import interSemiBoldItalicWoff from './Inter-SemiBoldItalic-subset.woff'
+import interSemiBoldItalicWoff2 from './Inter-SemiBoldItalic-subset.woff2'
 // 700 and 700i
-import interBoldWoff from './Inter-Bold.woff'
-import interBoldWoff2 from './Inter-Bold.woff2'
-import interBoldItalicWoff from './Inter-BoldItalic.woff'
-import interBoldItalicWoff2 from './Inter-BoldItalic.woff2'
+import interBoldWoff from './Inter-Bold-subset.woff'
+import interBoldWoff2 from './Inter-Bold-subset.woff2'
+import interBoldItalicWoff from './Inter-BoldItalic-subset.woff'
+import interBoldItalicWoff2 from './Inter-BoldItalic-subset.woff2'
 // 800 and 800i
-import interExtraBoldWoff from './Inter-ExtraBold.woff'
-import interExtraBoldWoff2 from './Inter-ExtraBold.woff2'
-import interExtraBoldItalicWoff from './Inter-ExtraBoldItalic.woff'
-import interExtraBoldItalicWoff2 from './Inter-ExtraBoldItalic.woff2'
+import interExtraBoldWoff from './Inter-ExtraBold-subset.woff'
+import interExtraBoldWoff2 from './Inter-ExtraBold-subset.woff2'
+import interExtraBoldItalicWoff from './Inter-ExtraBoldItalic-subset.woff'
+import interExtraBoldItalicWoff2 from './Inter-ExtraBoldItalic-subset.woff2'
 // 900 and 900i
-import interBlackWoff from './Inter-Black.woff'
-import interBlackWoff2 from './Inter-Black.woff2'
-import interBlackItalicWoff from './Inter-BlackItalic.woff'
-import interBlackItalicWoff2 from './Inter-BlackItalic.woff2'
+import interBlackWoff from './Inter-Black-subset.woff'
+import interBlackWoff2 from './Inter-Black-subset.woff2'
+import interBlackItalicWoff from './Inter-BlackItalic-subset.woff'
+import interBlackItalicWoff2 from './Inter-BlackItalic-subset.woff2'
 // Single axis variable
-import interItalicVarWoff2 from './Inter-italic.var.woff2'
-import interRomanVarWoff2 from './Inter-roman.var.woff2'
+import interVarItalicWoff2 from './Inter-VarItalic-subset.woff2'
+import interVarRomanWoff2 from './Inter-VarRoman-subset.woff2'
 // Variable experimental
-import interVarWoff2 from './Inter.var.woff2'
+// import interVarWoff2 from './Inter.var.woff2'
+import interVarExperimentalWoff2 from './Inter-VarExperimental-subset.woff2'
 // import interVvarWoff2 from './Inter-V.var.woff2'
 
 const inter100 = `
@@ -289,7 +290,7 @@ const interVariable = `
     font-named-instance: 'Regular';
     src: local('Inter Roman Variable'),
       local('Inter-Roman-Variable'),
-      url(${interRomanVarWoff2}) format("woff2");
+      url(${interVarRomanWoff2}) format("woff2");
   }
 `
 
@@ -302,7 +303,7 @@ const interVariableItalic = `
     font-named-instance: 'Italic';
     src: local('Inter Italic Variable'),
       local('Inter-Italic-Variable'),
-      url(${interItalicVarWoff2}) format("woff2");
+      url(${interVarItalicWoff2}) format("woff2");
   }
 `
 
@@ -314,7 +315,7 @@ const interVariableExperimental = `
     font-style: oblique 0deg 10deg;
     src: local('Inter Variable Experimental'),
       local('Inter-Variable-Experimental'),
-      url(${interVarWoff2}) format("woff2");
+      url(${interVarExperimentalWoff2}) format("woff2");
   }
 `
 
