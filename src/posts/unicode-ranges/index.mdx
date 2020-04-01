@@ -11,7 +11,21 @@ abcdefghijklmnopqrstuvwxyz
 `~!@#$%^&*()<>_-=+|\/[]{}'":;.,
 ```
 
-`U+A,U+20-3E,U+40-7E,U+A9,U+2026`
+* `U+20-7E` - [Basic Latin](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
+* `U+00A9` - `©`
+* `U+2026` - elepsis `…`
+* `U+A` - newline
+* `U+00A0` -  Non-breaking space
+
+Parse unicode ranges `glyphhanger https://deploy-preview-28--skok.netlify.com/blog/unicode-ranges --spider --spider-limit=100`
+
+```sh
+pyftsubset Inter-VarRoman.otf \
+  --unicodes="U+20-7E,U+00A9,U+2026,U+A,U+00A0" \
+  --layout-features="calt,ss01,ss02,zero" \
+  --flavor="woff2" \
+  --output-file="Inter-VarRoman-subset.woff2"
+```
 
 ## Contextual alternates
 
