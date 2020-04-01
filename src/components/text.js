@@ -5,7 +5,7 @@ const Text = ({children, weight, italic }) => (
   <p sx={{
     fontWeight: weight,
     fontStyle: italic ? 'italic' : 'normal',
-    fontSize: 24
+    fontSize: 24,
   }}>
     {children}
   </p>
