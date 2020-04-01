@@ -6,9 +6,6 @@ const Text = ({children, weight, italic }) => (
     fontWeight: weight,
     fontStyle: italic ? 'italic' : 'normal',
     fontSize: 24,
-    '@supports (font-variation-settings: normal)': {
-      fontVariationSettings: italic ? `"slnt" -10` : '',
-    }
   }}>
     {children}
   </p>
