@@ -57,8 +57,8 @@ const inter100 = `
     font-display: swap;
     src: local('Inter Thin'),
       local('Inter-Thin'),
-      url(${interThinWoff2}) format("woff2"),
-      url(${interThinWoff}) format("woff");
+      url(${interThinWoff2}) format('woff2'),
+      url(${interThinWoff}) format('woff');
   }
 `
 
@@ -70,8 +70,8 @@ const inter100i = `
     font-display: swap;
     src: local('Inter Thin Italic'),
       local('Inter-Thin-Italic'),
-      url(${interThinItalicWoff2}) format("woff2"),
-      url(${interThinItalicWoff}) format("woff");
+      url(${interThinItalicWoff2}) format('woff2'),
+      url(${interThinItalicWoff}) format('woff');
   }
 `
 
@@ -83,8 +83,8 @@ const inter200 = `
     font-display: swap;
     src: local('Inter Extra Light'),
       local('Inter-Extra-Light'),
-      url(${interExtraLightWoff2}) format("woff2"),
-      url(${interExtraLightWoff}) format("woff");
+      url(${interExtraLightWoff2}) format('woff2'),
+      url(${interExtraLightWoff}) format('woff');
   }
 `
 const inter200i = `
@@ -95,8 +95,8 @@ const inter200i = `
     font-display: swap;
     src: local('Inter Extra Light Italic'),
       local('Inter-Extra-Light-Italic'),
-      url(${interExtraLightItalicWoff2}) format("woff2"),
-      url(${interExtraLightItalicWoff}) format("woff");
+      url(${interExtraLightItalicWoff2}) format('woff2'),
+      url(${interExtraLightItalicWoff}) format('woff');
   }
 `
 
@@ -108,8 +108,8 @@ const inter300 = `
     font-display: swap;
     src: local('Inter Light'),
       local('Inter-Light'),
-      url(${interLightWoff2}) format("woff2"),
-      url(${interLightWoff}) format("woff");
+      url(${interLightWoff2}) format('woff2'),
+      url(${interLightWoff}) format('woff');
   }
 `
 
@@ -121,8 +121,8 @@ const inter300i = `
     font-display: swap;
     src: local('Inter Light Italic'),
       local('Inter-Light-Italic'),
-      url(${interLightItalicWoff2}) format("woff2"),
-      url(${interLightItalicWoff}) format("woff");
+      url(${interLightItalicWoff2}) format('woff2'),
+      url(${interLightItalicWoff}) format('woff');
   }
 `
 
@@ -134,8 +134,8 @@ const inter400 = `
     font-display: swap;
     src: local('Inter Regular'),
       local('Inter-Regular'),
-      url(${interRegularWoff2}) format("woff2"),
-      url(${interRegularWoff}) format("woff");
+      url(${interRegularWoff2}) format('woff2'),
+      url(${interRegularWoff}) format('woff');
   }
 `
 
@@ -147,8 +147,8 @@ const inter400i = `
     font-display: swap;
     src: local('Inter Italic'),
       local('Inter-Italic'),
-      url(${interItalicWoff2}) format("woff2"),
-      url(${interItalicWoff}) format("woff");
+      url(${interItalicWoff2}) format('woff2'),
+      url(${interItalicWoff}) format('woff');
   }
 `
 
@@ -160,8 +160,8 @@ const inter500 = `
     font-display: swap;
     src: local('Inter Medium'),
       local('Inter-Medium'),
-      url(${interMediumWoff2}) format("woff2"),
-      url(${interMediumWoff}) format("woff");
+      url(${interMediumWoff2}) format('woff2'),
+      url(${interMediumWoff}) format('woff');
   }
 `
 const inter500i = `
@@ -172,8 +172,8 @@ const inter500i = `
     font-display: swap;
     src: local('Inter Italic'),
       local('Inter-Italic'),
-      url(${interMediumItalicWoff2}) format("woff2"),
-      url(${interMediumItalicWoff}) format("woff");
+      url(${interMediumItalicWoff2}) format('woff2'),
+      url(${interMediumItalicWoff}) format('woff');
   }
 `
 
@@ -185,8 +185,8 @@ const inter600 = `
     font-display: swap;
     src: local('Inter Semi Bold'),
        local('Inter-Semi-Bold'),
-      url(${interSemiBoldWoff2}) format("woff2"),
-      url(${interSemiBoldWoff}) format("woff");
+      url(${interSemiBoldWoff2}) format('woff2'),
+      url(${interSemiBoldWoff}) format('woff');
   }
 `
 
@@ -198,8 +198,8 @@ const inter600i = `
     font-display: swap;
     src: local('Inter Semi Bold Italic'),
       local('Inter-Semi-Bold-Italic'),
-      url(${interSemiBoldItalicWoff2}) format("woff2"),
-      url(${interSemiBoldItalicWoff}) format("woff");
+      url(${interSemiBoldItalicWoff2}) format('woff2'),
+      url(${interSemiBoldItalicWoff}) format('woff');
   }
 `
 
@@ -211,8 +211,8 @@ const inter700 = `
     font-display: swap;
     src: local('Inter Bold'),
       local('Inter-Bold'),
-      url(${interBoldWoff2}) format("woff2"),
-      url(${interBoldWoff}) format("woff");
+      url(${interBoldWoff2}) format('woff2'),
+      url(${interBoldWoff}) format('woff');
   }
 `
 
@@ -224,8 +224,8 @@ const inter700i = `
     font-display: swap;
     src: local('Inter Bold Italic'),
       local('Inter-Bold-Italic'),
-      url(${interBoldItalicWoff2}) format("woff2"),
-      url(${interBoldItalicWoff}) format("woff");
+      url(${interBoldItalicWoff2}) format('woff2'),
+      url(${interBoldItalicWoff}) format('woff');
   }
 `
 const inter800 = `
@@ -236,8 +236,8 @@ const inter800 = `
     font-display: swap;
     src: local('Inter Extra Bold'),
       local('Inter-Extra-Bold'),
-      url(${interExtraBoldWoff2}) format("woff2"),
-      url(${interExtraBoldWoff}) format("woff");
+      url(${interExtraBoldWoff2}) format('woff2'),
+      url(${interExtraBoldWoff}) format('woff');
   }
 `
 
@@ -249,8 +249,8 @@ const inter800i = `
     font-display: swap;
     src: local('Inter Extra Bold Italic'),
       local('Inter-Extra-Bold-Italic'),
-      url(${interExtraBoldItalicWoff2}) format("woff2"),
-      url(${interExtraBoldItalicWoff}) format("woff");
+      url(${interExtraBoldItalicWoff2}) format('woff2'),
+      url(${interExtraBoldItalicWoff}) format('woff');
   }
 `
 
@@ -262,8 +262,8 @@ const inter900 = `
     font-display: swap;
     src: local('Inter Black'),
       local('Inter-Black'),
-      url(${interBlackWoff2}) format("woff2"),
-      url(${interBlackWoff}) format("woff");
+      url(${interBlackWoff2}) format('woff2'),
+      url(${interBlackWoff}) format('woff');
   }
 `
 const inter900i = `
@@ -274,8 +274,8 @@ const inter900i = `
     font-display: swap;
     src: local('Inter Black Italic'),
       local('Inter-Black-Italic'),
-      url(${interBlackItalicWoff2}) format("woff2"),
-      url(${interBlackItalicWoff}) format("woff");
+      url(${interBlackItalicWoff2}) format('woff2'),
+      url(${interBlackItalicWoff}) format('woff');
   }
 `
 
@@ -288,7 +288,8 @@ const interVariable = `
     font-named-instance: 'Regular';
     src: local('Inter Roman Variable'),
       local('Inter-Roman-Variable'),
-      url(${interVarRomanWoff2}) format("woff2");
+      url(${interVarRomanWoff2}) format('woff2-variations'),
+      url(${interVarRomanWoff2}) format('woff2');
   }
 `
 
@@ -301,7 +302,8 @@ const interVariableItalic = `
     font-named-instance: 'Italic';
     src: local('Inter Italic Variable'),
       local('Inter-Italic-Variable'),
-      url(${interVarItalicWoff2}) format("woff2");
+      url(${interVarItalicWoff2}) format('woff2-variations'),
+      url(${interVarItalicWoff2}) format('woff2');
   }
 `
 
@@ -313,7 +315,8 @@ const interVariableExperimental = `
     font-style: oblique 0deg 10deg;
     src: local('Inter Variable Experimental'),
       local('Inter-Variable-Experimental'),
-      url(${interVarExperimentalWoff2}) format("woff2");
+      url(${interVarExperimentalWoff2}) format('woff2-variations'),
+      url(${interVarExperimentalWoff2}) format('woff2');
   }
 `
 
