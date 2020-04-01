@@ -47,9 +47,7 @@ import interBlackItalicWoff2 from './Inter-BlackItalic-subset.woff2'
 import interVarItalicWoff2 from './Inter-VarItalic-subset.woff2'
 import interVarRomanWoff2 from './Inter-VarRoman-subset.woff2'
 // Variable experimental
-// import interVarWoff2 from './Inter.var.woff2'
 import interVarExperimentalWoff2 from './Inter-VarExperimental-subset.woff2'
-// import interVvarWoff2 from './Inter-V.var.woff2'
 
 const inter100 = `
   @font-face {
