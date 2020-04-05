@@ -63,7 +63,7 @@ const inter100 = `
 const inter100i = `
   @font-face {
     font-family: 'Inter';
-    font-style: normal;
+    font-style: italic;
     font-weight: 100;
     font-display: swap;
     src: url(${interThinItalicWoff2}) format('woff2'),
@@ -163,7 +163,7 @@ const inter600 = `
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src:  url(${interSemiBoldWoff2}) format('woff2'),
+    src: url(${interSemiBoldWoff2}) format('woff2'),
       url(${interSemiBoldWoff}) format('woff');
   }
 `
