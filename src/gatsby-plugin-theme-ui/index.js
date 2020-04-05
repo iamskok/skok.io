@@ -5,12 +5,10 @@ const theme = {
   initialColorMode: 'light',
   colors,
   fonts: {
-    body: 'system-ui, sans-serif',
+    body: `'Inter var', system-ui, sans-serif`,
     bodyStatic: `'Inter', system-ui, sans-serif`,
-    bodyVariable: `'Inter var', system-ui, sans-serif`,
-    heading: 'system-ui, sans-serif',
+    heading: `'Inter var', system-ui, sans-serif`,
     headingStatic: `'Inter', system-ui, sans-serif`,
-    headingVariable: `'Inter var', system-ui, sans-serif`,
     monospace: 'Menlo, monospace',
   },
   lineHeights: {

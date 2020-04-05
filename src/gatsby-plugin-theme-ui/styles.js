@@ -9,7 +9,7 @@ export default {
   root: {
     fontFamily: 'bodyStatic',
     '@supports (font-variation-settings: normal)': {
-      fontFamily: 'bodyVariable',
+      fontFamily: 'body',
     },
     margin: 0,
   },
