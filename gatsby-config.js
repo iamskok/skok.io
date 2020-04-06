@@ -41,6 +41,6 @@ module.exports = {
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-webpack-size`,
-    `gatsby-plugin-preload-fonts`
+    `@skok/gatsby-plugin-preload-fonts`,
   ]
 }
