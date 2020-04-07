@@ -12,16 +12,14 @@ const Header = () => {
       justifyContent: 'space-between'
     }}>
       <Link to={`/`}>skok.io</Link>
-      {
-        navigation.map(({ to, label }) => (
-          <Link
-            key={`${label}`}
-            to={`${to}`}
-          >
-            {label}
-          </Link>
-        ))
-      }
+      { navigation.map(({ to, label }) => (
+        <Link
+          key={`${label}`}
+          to={`${to}`}
+        >
+          {label}
+        </Link>
+      )) }
     </nav>
   )
 }
