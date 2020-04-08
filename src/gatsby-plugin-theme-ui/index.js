@@ -9,7 +9,8 @@ const theme = {
     bodyStatic: `'Inter', system-ui, sans-serif`,
     heading: `'Inter var', system-ui, sans-serif`,
     headingStatic: `'Inter', system-ui, sans-serif`,
-    monospace: 'Menlo, monospace',
+    monospace: `'Fira Code VF', monospace`,
+    monospaceStatic: `'Fira Code', monospace`,
   },
   lineHeights: {
     body: 1.5,
