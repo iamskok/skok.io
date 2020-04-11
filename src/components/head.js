@@ -1,9 +1,9 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Helmet } from 'react-helmet'
-// import interWoff2 from '../fonts/inter/Inter-VarRoman-subset.woff2'
-import interFontFaceStack from '../fonts/inter'
-import firaCodeFontFaceStack from '../fonts/fira-code'
+import interSubset from '../fonts/inter/inter-var-critical-subset.woff2'
+import inter from '../fonts/inter'
+import firaCode from '../fonts/fira-code'
 
 const query = graphql`
   query HeadQuery {
@@ -35,17 +35,34 @@ export default props => {
       <meta name='twitter:title' content={title} />
       <meta name='twitter:description' content={description} />
       <meta name='twitter:creator' content={meta.author} />
-      {/* <link
-        href={interWoff2}
+      <link
+        href={interSubset}
         as="font"
         type="font/woff2"
         rel="preload"
         crossorigin="anonymous"
-      /> */}
-      <style>
+      />
+      <style type="text/css">
         {`
-          ${interFontFaceStack}
-          ${firaCodeFontFaceStack}
+          ${inter}
+          ${firaCode}
+
+          body {
+            font-family: system-ui, sans-serif;
+          }
+
+          .fonts-stage-1 body {
+            font-family: 'Inter var critical';
+          }
+
+          .fonts-stage-2 body {
+            font-family: 'Inter var';
+          }
+
+          .fonts-stage-2 code,
+          .fonts-stage-2 pre {
+            font-family: 'Fira Code VF';
+          }
         `}
       </style>
     </Helmet>

@@ -6,23 +6,17 @@ const heading = {
 }
 
 const fontFamilyMonospace = {
-  fontFamily: 'monospaceStatic',
-  '@supports (font-variation-settings: normal)': {
-    fontFamily: 'monospace',
-  },
+  fontFamily: 'monospace'
 }
 
 const fontFamilyBody = {
-  fontFamily: 'bodyStatic',
-  '@supports (font-variation-settings: normal)': {
-    fontFamily: 'body',
-  },
+  fontFamily: 'body'
 }
 
 export default {
   root: {
     margin: 0,
-    ...fontFamilyBody
+    // ...fontFamilyBody
   },
   pre: {
     fontSize: 3,
@@ -30,21 +24,21 @@ export default {
     color: 'secondary',
     bg: 'muted',
     overflowX: 'auto',
-    ...fontFamilyMonospace
+    // ...fontFamilyMonospace
   },
   code: {
     float: 'left',
     minWidth: '100%',
     whiteSpace: `pre`,
     paddingY: 0,
-    ...fontFamilyMonospace
+    // ...fontFamilyMonospace
   },
   inlineCode: {
     fontSize: 3,
     lineHeight: 1.5,
     color: 'secondary',
     backgroundColor: 'muted',
-    ...fontFamilyMonospace
+    // ...fontFamilyMonospace
   },
   h1: {
     ...heading,

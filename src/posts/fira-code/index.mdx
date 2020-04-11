@@ -4,6 +4,8 @@ date: 2020-04-07
 published: true
 ---
 
+import {Text} from "../../components/text"
+
 ## Basic
 
 ```
@@ -102,3 +104,238 @@ a:b a:A B:b A:B :a :A a: A:
 ⎜ 4 ⎟ ⎢ d ⎥ ⎪ y ⎪
 ⎝ 5 ⎠ ⎣ e ⎦ ⎩ x ⎭
 ```
+
+* Glyphhanger `U+A,U+20-5F,U+61-7E,U+A9,U+1405,U+140A,U+1E9E,U+2016,U+21A9,U+21DE,U+21DF,U+21E4,U+21E5,U+2227,U+2228,U+2234,U+2235,U+2262,U+22A2-22AF,U+2300,U+2303-2306,U+2318,U+2324,U+2325,U+2387,U+2388,U+238B,U+239B-23AD,U+23CF,U+2400-2426,U+2504-250B,U+254C-254F,U+256D-2570,U+2580-2590,U+2594,U+2595,U+2610-2612,U+2713,U+27F0-27FF`
+* [`Fira Code` font features](https://github.com/tonsky/FiraCode/wiki/How-to-enable-stylistic-sets)
+
+```sh
+pyftsubset FiraCode-VF.woff2 \
+  --unicodes="U+20-7E" \
+  --layout-features="salt,calt,case,cpsp,ss01,ss02,ss03,ss04,ss05,ss06" \
+  --flavor="woff2" \
+  --output-file="FiraCode-VF-subset.woff2"
+```
+
+```
+'common': ['ccmp', 'liga', 'locl', 'mark', 'mkmk', 'rlig'], 
+'horizontal': ['calt', 'clig', 'curs', 'kern', 'rclt'], 
+'vertical': ['valt', 'vert', 'vkrn', 'vpal', 'vrt2'], 
+'ltr': ['ltra', 'ltrm'], 
+```
+
+```
++ aalt - Special feature: used to present user with choice all alternate forms of the character
++ calt - This feature, in specified situations, replaces default glyphs with alternate forms which provide better joining behavior. 
++ case - Replace characters, especially punctuation, with forms better suited for all-capital text, cf. titl
+- dnom - Converts to appropriate fraction denominator form, invoked by frac
+frac
+locl
+numr
+onum
+ordn
+salt
+ss01
+ss02
+ss03
+ss04
+ss05
+ss06
+ss19
+ss20
+subs
+sups
+tnum
+zero
+cpsp
+?+ mark - Fine positioning of a mark glyph to a base character. Characters like `i`.
+?+ mkmk - Fine positioning of a mark glyph to another mark character
+```
+
+To find out all OpenType features I used https://fontdrop.info/, navigated in 'Data' => 'Glyph Substitution Table' => 'features'
+
+```
+aalt
+calt
+case
+dnom
+frac
+locl
+numr
+onum
+ordn
+salt
+sinf
+ss01
+ss02
+ss03
+ss04
+ss05
+ss06
+ss07
+subs
+sups
+tnum
+zero
+```
+
+
+U+20-7E
+
+```sh
+pyftsubset FiraCode-VF.woff2 \
+  --unicodes="U+20-7E" \
+  --layout-features="ss01,ss02,ss03,ss04,ss05,ss06,ss07,calt,case,cpsp" \
+  --flavor="woff2" \
+  --output-file="FiraCode-VF-subset-main.woff2"
+```
+
+In FiraCode `salt` and `ss01` is the same thing.
+
+1. unicodes U+20-7E
+2. frac,onum,ordn,tnum,zero,numr,dnom,sinf,subs,sups
+3. 1 + 2
+4. locl
+5. mark, mkmk
+6. aalt
+7. salt
+8. case
+9. cpsp
+10. calt
+11. only ss01,ss02,ss03,ss04,ss05,ss06,ss07,calt,salt,case,cpsp.aalt
+12. only ss01,ss02,ss03,ss04,ss05,ss06,ss07,calt,salt,case,cpsp
+13. only ss01,ss02,ss03,ss04,ss05,ss06,ss07,calt,case,cpsp
+14. only ss01,ss02,ss03,ss04,ss05,ss06,ss07,calt,case
+15. only ss01,ss02,ss03,ss04,ss05,ss06,ss07,calt
+
+_required layout features_
+
+`locl` - localized forms
+`mark` - mark positioning
+`mkmk` - mark to mark positioning
+aalt
+calt
+case
+
+_off by default_
+
+salt,calt,case,cpsp
+ss01
+ss02
+ss03
+ss04
+ss05
+ss06
+
+## Fira Code enabled stylistic sets
+
+### `ss01`
+
+* <Text weight={400} mono={true}>r</Text>
+* <Text weight={400} mono={true} ss={true}>r</Text>
+
+### `ss02`
+
+* <Text weight={400} mono={true}>{'<= >='}</Text>
+* <Text weight={400} mono={true} ss={true}>{'<= >='}</Text>
+
+### `ss03`
+
+* <Text weight={400} mono={true}>&</Text>
+* <Text weight={400} mono={true} ss={true}>&</Text>
+
+### `ss04`
+
+* <Text weight={400} mono={true}>$</Text>
+* <Text weight={400} mono={true} ss={true}>$</Text>
+
+### `ss05`
+
+* <Text weight={400} mono={true}>@</Text>
+* <Text weight={400} mono={true} ss={true}>@</Text>
+
+### `ss06`
+
+* <Text weight={400} mono={true}>\\</Text>
+* <Text weight={400} mono={true} ss={true}>\\</Text>
+
+## Fira Code font weights
+
+<Text weight={700} mono={true} ss={true}>
+  {`ABCDEFGHIJKLMNOPQRSTUVWXYZ`}<br/>
+  {`abcdefghijklmnopqrstuvwxyz`}<br/>
+  {`1234567890`}<br/>
+  {`!@#$%^&*()`}<br/>
+  {`-_=+|\/{}[]:;"'~<>?`}
+</Text>
+
+<Text weight={700} italic={true} mono={true}>
+  {`ABCDEFGHIJKLMNOPQRSTUVWXYZ`}<br/>
+  {`abcdefghijklmnopqrstuvwxyz`}<br/>
+  {`1234567890`}<br/>
+  {`!@#$%^&*()`}<br/>
+  {`-_=+|\/{}[]:;"'~<>?`}
+</Text>
+
+<Text weight={600} mono={true}>
+  {`ABCDEFGHIJKLMNOPQRSTUVWXYZ`}<br/>
+  {`abcdefghijklmnopqrstuvwxyz`}<br/>
+  {`1234567890`}<br/>
+  {`!@#$%^&*()`}<br/>
+  {`-_=+|\/{}[]:;"'~<>?`}
+</Text>
+
+<Text weight={600} italic={true} mono={true}>
+  {`ABCDEFGHIJKLMNOPQRSTUVWXYZ`}<br/>
+  {`abcdefghijklmnopqrstuvwxyz`}<br/>
+  {`1234567890`}<br/>
+  {`!@#$%^&*()`}<br/>
+  {`-_=+|\/{}[]:;"'~<>?`}
+</Text>
+
+<Text weight={500} mono={true}>
+  {`ABCDEFGHIJKLMNOPQRSTUVWXYZ`}<br/>
+  {`abcdefghijklmnopqrstuvwxyz`}<br/>
+  {`1234567890`}<br/>
+  {`!@#$%^&*()`}<br/>
+  {`-_=+|\/{}[]:;"'~<>?`}
+</Text>
+
+<Text weight={500} italic={true} mono={true}>
+  {`ABCDEFGHIJKLMNOPQRSTUVWXYZ`}<br/>
+  {`abcdefghijklmnopqrstuvwxyz`}<br/>
+  {`1234567890`}<br/>
+  {`!@#$%^&*()`}<br/>
+  {`-_=+|\/{}[]:;"'~<>?`}
+</Text>
+
+<Text weight={400} mono={true}>
+  {`ABCDEFGHIJKLMNOPQRSTUVWXYZ`}<br/>
+  {`abcdefghijklmnopqrstuvwxyz`}<br/>
+  {`1234567890`}<br/>
+  {`!@#$%^&*()`}<br/>
+  {`-_=+|\/{}[]:;"'~<>?`}
+</Text>
+
+<Text weight={400} italic={true} mono={true}>
+  {`ABCDEFGHIJKLMNOPQRSTUVWXYZ`}<br/>
+  {`abcdefghijklmnopqrstuvwxyz`}<br/>
+  {`1234567890`}<br/>
+  {`!@#$%^&*()`}<br/>
+  {`-_=+|\/{}[]:;"'~<>?`}
+</Text>
+
+<Text weight={300} mono={true}>
+  {`ABCDEFGHIJKLMNOPQRSTUVWXYZ`}<br/>
+  {`abcdefghijklmnopqrstuvwxyz`}<br/>
+  {`1234567890`}<br/>
+  {`!@#$%^&*()`}<br/>
+  {`-_=+|\/{}[]:;"'~<>?`}
+</Text>
+
+<Text weight={300} italic={true} mono={true}>
+  {`ABCDEFGHIJKLMNOPQRSTUVWXYZ`}<br/>
+  {`abcdefghijklmnopqrstuvwxyz`}<br/>
+  {`1234567890`}<br/>
+  {`!@#$%^&*()`}<br/>
+  {`-_=+|\/{}[]:;"'~<>?`}
+</Text>
