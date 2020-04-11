@@ -51,16 +51,12 @@ export default props => {
             font-family: system-ui, sans-serif;
           }
 
-          .fonts-stage-1 body {
-            font-family: 'Inter var critical';
-          }
-
           .fonts-stage-2 body {
             font-family: 'Inter var';
           }
 
-          .fonts-stage-2 code,
-          .fonts-stage-2 pre {
+          .fonts-stage-2 pre,
+          .fonts-stage-2 code {
             font-family: 'Fira Code VF';
           }
         `}
