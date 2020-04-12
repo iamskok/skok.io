@@ -70,13 +70,13 @@ export default props => {
 
           .fonts-loaded body {
             font-family: 'Inter var';
-            fontFeatureSettings: 'kern', 'calt', 'ss01', 'ss02', 'ss03',
+            font-feature-settings: 'kern', 'calt', 'ss01', 'ss02', 'ss03',
           }
 
           .fonts-loaded pre,
           .fonts-loaded code {
             font-family: 'Fira Code VF';
-            fontFeatureSettings: 'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06',
+            font-feature-settings: 'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06',
           }
         `}
       </style>
