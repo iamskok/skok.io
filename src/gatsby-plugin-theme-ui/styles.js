@@ -6,7 +6,8 @@ const heading = {
 }
 
 const fontFamilyMonospace = {
-  fontFamily: 'monospace'
+  fontFamily: 'monospace',
+  fontFeatureSettings: `'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06'`,
 }
 
 const fontFamilyBody = {
@@ -16,7 +17,8 @@ const fontFamilyBody = {
 export default {
   root: {
     margin: 0,
-    ...fontFamilyBody
+    // ...fontFamilyBody,
+    fontFeatureSettings: `'kern', 'calt', 'ss01', 'ss02', 'ss03'`,
   },
   pre: {
     fontSize: 3,
@@ -24,21 +26,21 @@ export default {
     color: 'secondary',
     bg: 'muted',
     overflowX: 'auto',
-    ...fontFamilyMonospace
+    // ...fontFamilyMonospace,
   },
   code: {
     float: 'left',
     minWidth: '100%',
     whiteSpace: `pre`,
     paddingY: 0,
-    ...fontFamilyMonospace
+    // ...fontFamilyMonospace,
   },
   inlineCode: {
     fontSize: 3,
     lineHeight: 1.5,
     color: 'secondary',
     backgroundColor: 'muted',
-    ...fontFamilyMonospace
+    // ...fontFamilyMonospace,
   },
   h1: {
     ...heading,
@@ -84,22 +86,6 @@ export default {
     mb: 5,
     border: 0,
     borderBottom: '1px solid',
-  },
-  strong: {
-    fontWeight: '700',
-    opacity: 0.5
-  },
-  b: {
-    fontWeight: '700',
-    opacity: 0.5
-  },
-  em: {
-    fontStyle: 'italic',
-    opacity: 0.5
-  },
-  i: {
-    fontStyle: 'italic',
-    opacity: 0.5
   },
   table: {
     width: '100%',

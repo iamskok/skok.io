@@ -1,7 +1,10 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import interSubset from '../fonts/inter/inter-critical-subset.woff2'
+// import interSubset from '../fonts/inter/inter-critical-subset.woff2'
+import interWoff2 from '../fonts/inter/inter-var-subset.woff2'
+import interItalicWoff2 from '../fonts/inter/inter-var-italic-subset.woff2'
+import firaCodeWoff2 from '../fonts/fira-code/fira-code-vf-subset.woff2'
 import inter from '../fonts/inter'
 import firaCode from '../fonts/fira-code'
 
@@ -35,12 +38,33 @@ export default props => {
       <meta name='twitter:title' content={title} />
       <meta name='twitter:description' content={description} />
       <meta name='twitter:creator' content={meta.author} />
-      <link
+      {/* <link
         href={interSubset}
         as="font"
         type="font/woff2"
         rel="preload"
-        crossorigin="anonymous"
+        crossOrigin="anonymous"
+      /> */}
+      <link
+        href={interWoff2}
+        as="font"
+        type="font/woff2"
+        rel="preload"
+        crossOrigin="anonymous"
+      />
+      <link
+        href={interItalicWoff2}
+        as="font"
+        type="font/woff2"
+        rel="preload"
+        crossOrigin="anonymous"
+      />
+      <link
+        href={firaCodeWoff2}
+        as="font"
+        type="font/woff2"
+        rel="preload"
+        crossOrigin="anonymous"
       />
       <style type="text/css">
         {`
@@ -49,7 +73,7 @@ export default props => {
 
           body {
             color: blue;
-            font-family: system-ui, sans-serif;
+            font-family: serif;
           }
 
           .fonts-stage-1 body {
