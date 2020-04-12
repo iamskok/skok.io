@@ -10,7 +10,7 @@ const fontFamilyMonospace = {
 }
 
 const fontFamilyBody = {
-  fontFamily: 'inherit'
+  fontFamily: 'body'
 }
 
 export default {
@@ -86,7 +86,20 @@ export default {
     borderBottom: '1px solid',
   },
   strong: {
-    fontWeight: 'bold',
+    fontWeight: '700',
+    opacity: 0.5
+  },
+  b: {
+    fontWeight: '700',
+    opacity: 0.5
+  },
+  em: {
+    fontStyle: 'italic',
+    opacity: 0.5
+  },
+  i: {
+    fontStyle: 'italic',
+    opacity: 0.5
   },
   table: {
     width: '100%',

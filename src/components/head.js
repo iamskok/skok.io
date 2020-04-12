@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import interSubset from '../fonts/inter/inter-var-critical-subset.woff2'
+import interSubset from '../fonts/inter/inter-critical-subset-3.woff2'
 import inter from '../fonts/inter'
 import firaCode from '../fonts/fira-code'
 
@@ -48,11 +48,27 @@ export default props => {
           ${firaCode}
 
           body {
+            color: blue;
             font-family: system-ui, sans-serif;
           }
 
+          .fonts-stage-1 body {
+            color: rebeccapurple;
+            font-family: 'Inter var critical';
+          }
+
           .fonts-stage-2 body {
+            color: green;
             font-family: 'Inter var';
+          }
+
+          .fonts-stage-2 i,
+          .fonts-stage-2 em,
+          .fonts-stage-2 i strong,
+          .fonts-stage-2 em strong,
+          .fonts-stage-2 strong i,
+          .fonts-stage-2 strong em {
+            font-family: 'Inter var italic';
           }
 
           .fonts-stage-2 pre,

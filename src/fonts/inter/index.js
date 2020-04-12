@@ -1,18 +1,18 @@
-import interVarCritical from './inter-var-critical-subset.woff2'
+import interCritical from './inter-critical-subset-3.woff2'
 import interVar from './inter-var-subset.woff2'
 import interVarItalic from './inter-var-italic-subset.woff2'
 
-const critical = `
-  @font-face {
-    font-family: 'Inter var critical';
-    font-weight: 100 900;
-    font-display: swap;
-    font-style: normal;
-    src: url(${interVarCritical}) format('woff2-variations'),
-      url(${interVarCritical}) format('woff2');
-    unicode-range: U+20-7E;
-  }
-`
+// const critical = `
+//   @font-face {
+//     font-family: 'Inter var critical';
+//     font-weight: 100 900;
+//     font-display: swap;
+//     font-style: normal;
+//     src: url(${interVarCritical}) format('woff2-variations'),
+//       url(${interVarCritical}) format('woff2');
+//     unicode-range: U+20-7E;
+//   }
+// `
 
 const regular = `
   @font-face {
@@ -36,7 +36,8 @@ const italic = `
   }
 `
 const inter = (
-  critical +
+  // critical +
+  interCritical +
   regular +
   italic
 )
