@@ -6,11 +6,9 @@ const theme = {
   colors,
   fonts: {
     // body: `'Inter var', system-ui, sans-serif`,
-    // bodyItalic: `'Inter var italic', system-ui, sans-serif`,
     // heading: `'Inter var', system-ui, sans-serif`,
     // monospace: `'Fira Code VF', monospace`,
     body: `system-ui, sans-serif`,
-    bodyItalic: `system-ui, sans-serif`,
     heading: `system-ui, sans-serif`,
     monospace: `monospace`,
   },
