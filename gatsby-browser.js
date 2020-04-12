@@ -18,7 +18,6 @@ const onClientEntry = () => {
             document.fonts.load(`italic 400 1em 'Inter var'`),
             document.fonts.load(`400 1em 'Fira Code VF'`)
           ]).then(() => {
-            alert('all fonts')
             document.documentElement.className += ` fonts-loaded-2`
 
             // Optimization for Repeat Views
