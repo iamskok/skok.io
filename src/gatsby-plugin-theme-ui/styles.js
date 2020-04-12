@@ -5,20 +5,20 @@ const heading = {
   mb: 3,
 }
 
-const fontFamilyMonospace = {
-  fontFamily: 'monospace',
-  fontFeatureSettings: `'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06'`,
-}
+// const fontFamilyMonospace = {
+//   fontFamily: 'monospace',
+//   fontFeatureSettings: `'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06'`,
+// }
 
-const fontFamilyBody = {
-  fontFamily: 'body'
-}
+// const fontFamilyBody = {
+//   fontFamily: 'body',
+//   fontFeatureSettings: `'kern', 'calt', 'ss01', 'ss02', 'ss03'`,
+// }
 
 export default {
   root: {
     margin: 0,
     // ...fontFamilyBody,
-    fontFeatureSettings: `'kern', 'calt', 'ss01', 'ss02', 'ss03'`,
   },
   pre: {
     fontSize: 3,

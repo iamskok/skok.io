@@ -1,6 +1,6 @@
 import firaCodeVF from './fira-code-vf-subset.woff2'
 
-const firaCode = `
+const firaCodeFontFace = `
   @font-face {
     font-family: 'Fira Code VF';
     font-weight: 300 700;
@@ -11,4 +11,4 @@ const firaCode = `
   }
 `
 
-export default firaCode
+export default firaCodeFontFace

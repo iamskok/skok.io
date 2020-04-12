@@ -1,12 +1,12 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Helmet } from 'react-helmet'
-// import interSubset from '../fonts/inter/inter-critical-subset.woff2'
 import interWoff2 from '../fonts/inter/inter-var-subset.woff2'
 import interItalicWoff2 from '../fonts/inter/inter-var-italic-subset.woff2'
 import firaCodeWoff2 from '../fonts/fira-code/fira-code-vf-subset.woff2'
-import inter from '../fonts/inter'
-import firaCode from '../fonts/fira-code'
+
+import interFontFace from '../fonts/inter'
+import firaCodeFontFace from '../fonts/fira-code'
 
 const query = graphql`
   query HeadQuery {
@@ -38,13 +38,6 @@ export default props => {
       <meta name='twitter:title' content={title} />
       <meta name='twitter:description' content={description} />
       <meta name='twitter:creator' content={meta.author} />
-      {/* <link
-        href={interSubset}
-        as="font"
-        type="font/woff2"
-        rel="preload"
-        crossOrigin="anonymous"
-      /> */}
       <link
         href={interWoff2}
         as="font"
@@ -68,27 +61,22 @@ export default props => {
       />
       <style type="text/css">
         {`
-          ${inter}
-          ${firaCode}
+          ${interFontFace}
+          ${firaCodeFontFace}
 
           body {
-            color: blue;
-            font-family: serif;
+            font-family: system-ui, sans-serif;
           }
 
-          .fonts-stage-1 body {
-            color: rebeccapurple;
-            font-family: 'Inter critical';
-          }
-
-          .fonts-stage-2 body {
-            color: green;
+          .fonts-loaded body {
             font-family: 'Inter var';
+            fontFeatureSettings: "'kern', 'calt', 'ss01', 'ss02', 'ss03'",
           }
 
-          .fonts-stage-2 pre,
-          .fonts-stage-2 code {
+          .fonts-loaded pre,
+          .fonts-loaded code {
             font-family: 'Fira Code VF';
+            fontFeatureSettings: "'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06'",
           }
         `}
       </style>
