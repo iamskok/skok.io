@@ -5923,6 +5923,11 @@ gatsby-page-utils@^0.0.41:
     lodash "^4.17.15"
     micromatch "^3.1.10"
 
+gatsby-plugin-force-file-loader@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-force-file-loader/-/gatsby-plugin-force-file-loader-0.1.0.tgz#7cb9f509504479557af48a4c6e364ec884da7889"
+  integrity sha512-ZCHWKWa21/m/fTxhiJZN7KxpDYKonEj1svRjvK29n8XtzlOC/qKrPu9jX1/JL/2+7de+tRnjFF1Ds94P+0wwzw==
+
 gatsby-plugin-mdx@^1.0.77:
   version "1.0.77"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx/-/gatsby-plugin-mdx-1.0.77.tgz#f4be74c60c20113967da5d40cdaea51ffa45dea2"

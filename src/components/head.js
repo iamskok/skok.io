@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Helmet } from 'react-helmet'
+import interCriticalWoff2 from '../fonts/inter/inter-critical-subset.woff2'
 import interFontFace from '../fonts/inter'
 import firaCodeFontFace from '../fonts/fira-code'
 
@@ -34,6 +35,13 @@ export default props => {
       <meta name='twitter:title' content={title} />
       <meta name='twitter:description' content={description} />
       <meta name='twitter:creator' content={meta.author} />
+      <link
+        href={interCriticalWoff2}
+        as="font"
+        type="font/woff2"
+        rel="preload"
+        crossOrigin="anonymous"
+      />
       <style type="text/css">
         {`
           ${interFontFace}

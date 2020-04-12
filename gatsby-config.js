@@ -37,6 +37,14 @@ module.exports = {
         useMozJpeg: true
       }
     },
+    {
+      resolve: `gatsby-plugin-force-file-loader`,
+      options: {
+        rules: [
+          'fonts',
+        ],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-react-helmet`,
