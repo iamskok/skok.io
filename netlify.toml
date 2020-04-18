@@ -1,0 +1,4 @@
+[[headers]]
+  for = "/static/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31557600"
