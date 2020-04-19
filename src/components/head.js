@@ -87,7 +87,6 @@ export default props => {
               if ('fonts' in document) {
                 // Optimization for Repeat Views
                 if (sessionStorage.fontsLoaded) {
-                  console.log('sessionStorage is not empty')
                   document.documentElement.classList.add('fonts-loaded')
                   return
                 }
