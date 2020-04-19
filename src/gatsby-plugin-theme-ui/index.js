@@ -2,15 +2,17 @@ import colors from './colors'
 import styles from './styles'
 
 const theme = {
-  initialColorMode: 'light',
   colors,
+  styles,
   fonts: {
-    // body: `'Inter var', system-ui, sans-serif`,
-    // heading: `'Inter var', system-ui, sans-serif`,
-    // monospace: `'Fira Code VF', monospace`,
-    body: `system-ui, sans-serif`,
-    heading: `system-ui, sans-serif`,
-    monospace: `monospace`,
+    body: `'Inter var', system-ui, sans-serif`,
+    heading: `'Inter var', system-ui, sans-serif`,
+    monospace: `'Fira Code VF', monospace`,
+    safe: {
+      body: `system-ui, sans-serif`,
+      heading: `system-ui, sans-serif`,
+      monospace: `monospace`,
+    }
   },
   lineHeights: {
     body: 1.5,
@@ -22,7 +24,6 @@ const theme = {
     heading: 700,
     bold: 700,
   },
-  styles,
 }
 
 export default theme
