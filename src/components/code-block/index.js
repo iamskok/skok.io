@@ -12,7 +12,6 @@ import ThemeButton from './theme-button'
 import LineNumbersButton from './line-numbers-button'
 import FileName from './file-name'
 import LanguageTab from './language-tab'
-import aliases from './aliases'
 import scope from './scope'
 import { PrismThemeConsumer } from './prism-theme-provider'
 
@@ -36,7 +35,7 @@ const CodeBlock = ({
     }
   } = useSiteMetadata()
 
-  const language = aliases[getLanguage(className)] || getLanguage(className)
+  const language = getLanguage(className)
   const code = children.props.children.trim()
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
 
@@ -75,10 +74,7 @@ const CodeBlock = ({
             }}>
               {
                 isLanguageTab &&
-                <LanguageTab
-                  language={getLanguage(className)}
-                  aliases={aliases}
-                />
+                <LanguageTab language={getLanguage(className)} />
               }
               {isCopy && <CopyButton code={code} />}
               <LineNumbersButton onClick={toggleLineNumbers} />

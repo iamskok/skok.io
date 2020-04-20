@@ -25,7 +25,7 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-mdx',
+      resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins
@@ -37,9 +37,20 @@ module.exports = {
         useMozJpeg: true
       }
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-theme-ui',
-    'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-svgr-svgo`,
+      options: {
+        urlSvgOptions: [
+          {
+            test: /\.svg$/,
+            svgo: false,
+          },
+        ],
+      }
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-webpack-size`,
   ]
 }
