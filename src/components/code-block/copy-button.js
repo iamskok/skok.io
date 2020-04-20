@@ -14,6 +14,7 @@ const CopyButton = ({ code }) => {
         cursor: 'pointer',
         color: 'background',
         backgroundColor: 'secondary',
+        marginX: 1
       }}
       onClick={handleCopy}
     >

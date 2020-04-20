@@ -19,6 +19,7 @@ const ThemeButton = () => {
             padding: 0,
             width: 40,
             height: 40,
+            marginX: 1
           }}
           onClick={() => {
             changePrismTheme()

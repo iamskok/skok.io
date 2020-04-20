@@ -14,32 +14,21 @@ const LanguageTab = ({ language }) => {
         <div sx={{
           color: prismTheme.plain.color,
           backgroundColor: prismTheme.plain.backgroundColor,
-          fontSize: 2,
-          lineHeight: 1.5,
-          fontFamily: 'monospace',
-          margin: '-20 0 0 0',
           transition: 'color 400ms ease, background 400ms ease',
           display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center'
+          position: 'absolute',
+          left: 0
         }}>
           {
-            LanguageIcon ?
+            LanguageIcon &&
             <LanguageIcon
               sx={{
                 padding: 1,
                 width: 40,
                 height: 40,
               }}
-            /> :
-            humanReadableLanguage ?
-            <div sx={{ padding: 1 }}>
-              {humanReadableLanguage}
-            </div> :
-            <div sx={{ padding: 1 }}>
-              {language}
-            </div>
+              alt={humanReadableLanguage || language}
+            />
           }
         </div>
       )}

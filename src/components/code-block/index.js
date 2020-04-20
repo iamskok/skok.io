@@ -70,7 +70,10 @@ const CodeBlock = ({
           }}>
             <div sx={{
               display: 'flex',
-              flexDirection: 'row-reverse'
+              flexDirection: 'row-reverse',
+              backgroundColor: `${prismTheme.plain.backgroundColor}`,
+              transition: 'background 400ms ease',
+              paddingY: 1
             }}>
               {
                 isLanguageTab &&
@@ -80,7 +83,6 @@ const CodeBlock = ({
               <LineNumbersButton onClick={toggleLineNumbers} />
               <ThemeButton />
             </div>
-
             {
               fileName &&
               <FileName name={fileName} />

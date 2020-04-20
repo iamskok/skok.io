@@ -11,6 +11,7 @@ const LineNumbersButton = ({ onClick }) => {
         cursor: 'pointer',
         color: 'background',
         backgroundColor: 'secondary',
+        marginX: 1
       }}
       onClick={onClick}
     >
