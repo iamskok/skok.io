@@ -37,6 +37,9 @@ export default props => {
       <meta name='twitter:title' content={title} />
       <meta name='twitter:description' content={description} />
       <meta name='twitter:creator' content={meta.author} />
+      <script>
+        {`document.documentElement.classList.add('fonts-stage-1')`}
+      </script>
       <link
         href={interWoff2}
         as="font"
@@ -58,9 +61,6 @@ export default props => {
         rel="preload"
         crossOrigin="anonymous"
       />
-      <script>
-        {`document.documentElement.classList.add('fonts-stage-1')`}
-      </script>
       <style type="text/css">
         {`
           ${interFontFace}
