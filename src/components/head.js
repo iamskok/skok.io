@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet'
 import interWoff2 from '../fonts/inter/inter-var-subset.woff2'
 import interItalicWoff2 from '../fonts/inter/inter-var-italic-subset.woff2'
 import firaCodeWoff2 from '../fonts/fira-code/fira-code-vf-subset.woff2'
-
 import interFontFace from '../fonts/inter'
 import firaCodeFontFace from '../fonts/fira-code'
 
@@ -81,8 +80,8 @@ export default props => {
         `}
       </style>
       <script>
-        {`
-          window.addEventListener('load', () => {
+        {/* {`
+          window.addEventListener('load', event => {
             (() => {
               if ('fonts' in document) {
                 // Optimization for Repeat Views
@@ -104,11 +103,7 @@ export default props => {
               }
             })()
           })
-
-          if (sessionStorage.fontsLoaded) {
-            document.documentElement.classList.add('fonts-loaded')
-          }
-        `}
+        `} */}
       </script>
     </Helmet>
   )
