@@ -3,7 +3,7 @@ import {
   jsx,
   ThemeProvider,
 } from 'theme-ui'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import PrismThemeProvider from './code-block/prism-theme-provider'
 import theme from '../gatsby-plugin-theme-ui'
 import components from '../gatsby-plugin-theme-ui/components'
@@ -27,14 +27,14 @@ const Wrapper = ({ element }) => {
   }, [setCurrentTheme])
 
   return (
-    <>
+    <Fragment>
       {jsx(ThemeProvider, {
         theme: currentTheme,
         components,
       },
         element
       )}
-    </>
+    </Fragment>
   )
 }
 
