@@ -3,7 +3,7 @@ import {
   jsx,
   ThemeProvider,
 } from 'theme-ui'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import PrismThemeProvider from './code-block/prism-theme-provider'
 import theme from '../gatsby-plugin-theme-ui'
 import components from '../gatsby-plugin-theme-ui/components'
@@ -24,7 +24,7 @@ const Wrapper = ({ element }) => {
     typeof sessionStorage !== 'undefined' &&
     sessionStorage.getItem('fontsLoaded') &&
     setCurrentTheme(theme)
-  })
+  }, [setCurrentTheme])
 
   return (
     <>
