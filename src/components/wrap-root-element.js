@@ -21,20 +21,11 @@ const themeUI = {...theme}
 
 const ThemeUIProvider = ({ element }) => {
   const [theme, setTheme] = useState(safeFontsTheme)
-  console.log('currentTheme2', theme.fonts.body)
-
-  // const updateTheme = () => {
-  //   setTheme(themeUI)
-  //   document.documentElement.classList.remove('fonts-stage-1')
-  //   document.documentElement.classList.remove('fonts-stage-2')
-  //   console.log('set theme fired')
-  // }
   const updateTheme = useCallback(
     () => {
       setTheme(themeUI)
       document.documentElement.classList.remove('fonts-stage-1')
       document.documentElement.classList.remove('fonts-stage-2')
-      console.log('set theme fired')
     },
     [setTheme],
   )
@@ -46,8 +37,6 @@ const ThemeUIProvider = ({ element }) => {
     sessionStorage.getItem('fontsLoaded') &&
     updateTheme()
   }, [updateTheme])
-
-  console.log('currentTheme4', theme.fonts.body)
 
   return (
     <Fragment>
@@ -61,10 +50,8 @@ const ThemeUIProvider = ({ element }) => {
   )
 }
 
-export const wrapRootElement = ({ element }) => {
-  return (
-    <PrismThemeProvider>
-      <ThemeUIProvider element={element} />
-    </PrismThemeProvider>
-  )
-}
+export const wrapRootElement = ({ element }) => (
+  <PrismThemeProvider>
+    <ThemeUIProvider element={element} />
+  </PrismThemeProvider>
+)
