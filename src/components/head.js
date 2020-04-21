@@ -80,16 +80,13 @@ export default props => {
         `}
       </style>
       <script>
-        {/* {`
-          window.addEventListener('load', event => {
-            (() => {
+        {`
+          window.addEventListener('load', (() => {
+            if (sessionStorage.fontsLoaded) {
+              document.documentElement.classList.add('fonts-loaded')
+              return
+            } else {
               if ('fonts' in document) {
-                // Optimization for Repeat Views
-                if (sessionStorage.fontsLoaded) {
-                  document.documentElement.classList.add('fonts-loaded')
-                  return
-                }
-
                 Promise.all([
                   document.fonts.load('400 1em "Inter var"'),
                   document.fonts.load('italic 400 1em "Inter var"'),
@@ -100,10 +97,11 @@ export default props => {
                   // Optimization for Repeat Views
                   sessionStorage.fontsLoaded = true
                 })
+                console.log('head - done', Date.now())
               }
-            })()
-          })
-        `} */}
+            }
+          })())
+        `}
       </script>
     </Helmet>
   )
