@@ -30,8 +30,7 @@ const ThemeUIProvider = ({ element }) => {
     [setTheme],
   )
 
-  typeof window !== 'undefined' &&
-  useEventListener(window, 'fontsLoaded', updateTheme)
+  useEventListener(typeof window !== 'undefined' && window, 'fontsLoaded', updateTheme)
 
   useEffect(() => {
     sessionStorage.getItem('fontsLoaded') &&
