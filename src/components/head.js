@@ -58,22 +58,25 @@ export default props => {
         rel="preload"
         crossOrigin="anonymous"
       />
+      <script>
+        {`document.documentElement.classList.add('fonts-stage-1')`}
+      </script>
       <style type="text/css">
         {`
           ${interFontFace}
           ${firaCodeFontFace}
 
-          body {
+          .fonts-stage-1 body {
             font-family: system-ui, sans-serif;
           }
 
-          .fonts-loaded body {
+          .fonts-stage-2 body {
             font-family: 'Inter var';
             font-feature-settings: 'kern', 'calt', 'ss01', 'ss02', 'ss03';
           }
 
-          .fonts-loaded pre,
-          .fonts-loaded code {
+          .fonts-stage-2 pre,
+          .fonts-stage-2 code {
             font-family: 'Fira Code VF';
             font-feature-settings: 'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06';
           }
@@ -83,7 +86,7 @@ export default props => {
         {`
           window.addEventListener('load', (() => {
             if (sessionStorage.fontsLoaded) {
-              document.documentElement.classList.add('fonts-loaded')
+              document.documentElement.classList.add('fonts-stage-2')
               return
             } else {
               if ('fonts' in document) {
@@ -92,12 +95,14 @@ export default props => {
                   document.fonts.load('italic 400 1em "Inter var"'),
                   document.fonts.load('400 1em "Fira Code VF"')
                 ]).then(() => {
-                  document.documentElement.classList.add('fonts-loaded')
+                  document.documentElement.classList.add('fonts-stage-2')
 
                   // Optimization for Repeat Views
                   sessionStorage.fontsLoaded = true
+
+                  const fontsLoadedEvent = new CustomEvent('fontsLoaded')
+                  window.dispatchEvent(fontsLoadedEvent)
                 })
-                console.log('head - done', Date.now())
               }
             }
           })())
