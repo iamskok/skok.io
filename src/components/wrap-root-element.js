@@ -9,6 +9,7 @@ import theme from '../gatsby-plugin-theme-ui'
 import components from '../gatsby-plugin-theme-ui/components'
 import useEventListener from '../hooks/use-event-listener'
 
+const themeUI = { ...theme }
 const { fonts: { safe: safeFonts } } = { ...theme }
 const safeFontsTheme = {
   ...Object.assign(
@@ -17,24 +18,27 @@ const safeFontsTheme = {
     { fonts: safeFonts }
   )
 }
-const themeUI = {...theme}
 
 const ThemeUIProvider = ({ element }) => {
   const [theme, setTheme] = useState(safeFontsTheme)
+
   const updateTheme = useCallback(
     () => {
       setTheme(themeUI)
-      document.documentElement.classList.remove('fonts-stage-1')
-      document.documentElement.classList.remove('fonts-stage-2')
+      document.documentElement.classList.remove('font-loading-stage-1')
+      document.documentElement.classList.remove('font-loading-stage-2')
     },
     [setTheme],
   )
 
-  useEventListener(typeof window !== 'undefined' && window, 'fontsLoaded', updateTheme)
+  useEventListener(
+    typeof window !== 'undefined' && window,
+    'FONTS_ARE_LOADED',
+    updateTheme
+  )
 
   useEffect(() => {
-    sessionStorage.getItem('fontsLoaded') &&
-    updateTheme()
+    sessionStorage.getItem('areFontsLoaded') && updateTheme()
   }, [updateTheme])
 
   return (

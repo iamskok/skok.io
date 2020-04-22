@@ -38,45 +38,104 @@ export default props => {
       <meta name='twitter:description' content={description} />
       <meta name='twitter:creator' content={meta.author} />
       <script>
-        {`document.documentElement.classList.add('fonts-stage-1')`}
+        {`document.documentElement.classList.add('font-loading-stage-1')`}
       </script>
-      <link
+      <script id="connection-type-checker">
+        {`
+          (() => {
+            const isSaveData = navigator.connection &&
+              navigator.connection.saveData
+            const connectionType = navigator.connection &&
+              navigator.connection.effectiveType
+            const isSlowConnectionType = ['slow-2g', '2g', '3g',]
+              .indexOf(connectionType) === -1 ? false : true
+
+            if (!isSlowConnectionType && !isSaveData) {
+              // const inter = document.getElementById('inter')
+              // const interItalic = document.getElementById('inter-italic')
+              // const firaCode = document.getElementById('fira-code')
+
+              // inter.setAttribute('media', 'all')
+              // interItalic.setAttribute('media', 'all')
+              // firaCode.setAttribute('media', 'all')
+
+              const inter = document.createElement('link')
+              const interItalic = document.createElement('link')
+              const firaCode = document.createElement('link')
+
+              inter.as = 'font'
+              inter.type = 'font/woff2'
+              inter.rel = 'preload'
+              inter.crossOrigin = 'anonymous'
+              inter.href='${interWoff2}'
+
+              interItalic.as = 'font'
+              interItalic.type = 'font/woff2'
+              interItalic.rel = 'preload'
+              interItalic.crossOrigin = 'anonymous'
+              interItalic.href='${interItalicWoff2}'
+
+              firaCode.as = 'font'
+              firaCode.type = 'font/woff2'
+              firaCode.rel = 'preload'
+              firaCode.crossOrigin = 'anonymous'
+              firaCode.href='${firaCodeWoff2}'
+
+              const insertAfter = (newNode, referenceNode) => referenceNode
+                .parentNode.insertBefore(newNode, referenceNode.nextSibling)
+
+              const target = document.getElementById('connection-type-checker')
+
+              insertAfter(inter, target)
+              insertAfter(interItalic, target)
+              insertAfter(firaCode, target)
+            }
+          })()
+        `}
+      </script>
+      {/* <link
+        id="inter"
         href={interWoff2}
         as="font"
         type="font/woff2"
         rel="preload"
         crossOrigin="anonymous"
+        media="print"
       />
       <link
+        id="inter-italic"
         href={interItalicWoff2}
         as="font"
         type="font/woff2"
         rel="preload"
         crossOrigin="anonymous"
+        media="print"
       />
       <link
+        id="fira-code"
         href={firaCodeWoff2}
         as="font"
         type="font/woff2"
         rel="preload"
         crossOrigin="anonymous"
-      />
+        media="print"
+      /> */}
       <style type="text/css">
         {`
           ${interFontFace}
           ${firaCodeFontFace}
 
-          .fonts-stage-1 body {
+          .font-loading-stage-1 body {
             font-family: system-ui, sans-serif;
           }
 
-          .fonts-stage-2 body {
+          .font-loading-stage-2 body {
             font-family: 'Inter var';
             font-feature-settings: 'kern', 'calt', 'ss01', 'ss02', 'ss03';
           }
 
-          .fonts-stage-2 pre,
-          .fonts-stage-2 code {
+          .font-loading-stage-2 pre,
+          .font-loading-stage-2 code {
             font-family: 'Fira Code VF';
             font-feature-settings: 'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06';
           }
@@ -85,22 +144,30 @@ export default props => {
       <script>
         {`
           window.addEventListener('load', (() => {
-            if (sessionStorage.fontsLoaded) {
-              document.documentElement.classList.add('fonts-stage-2')
+            if (sessionStorage.areFontsLoaded) {
+              document.documentElement.classList.add('font-loading-stage-2')
               return
             } else {
-              if ('fonts' in document) {
+              const isSaveData = navigator.connection &&
+                navigator.connection.saveData
+              const connectionType = navigator.connection &&
+                navigator.connection.effectiveType
+              const isSlowConnectionType = ['slow-2g', '2g', '3g',]
+                .indexOf(connectionType) === -1 ? false : true
+
+              if ('fonts' in document && !isSaveData && !isSlowConnectionType) {
                 Promise.all([
                   document.fonts.load('400 1em "Inter var"'),
                   document.fonts.load('italic 400 1em "Inter var"'),
                   document.fonts.load('400 1em "Fira Code VF"')
                 ]).then(() => {
-                  document.documentElement.classList.add('fonts-stage-2')
+                  document.documentElement.classList.add('font-loading-stage-2')
 
-                  // Optimization for Repeat Views
-                  sessionStorage.fontsLoaded = true
+                  // Optimization for repeat views
+                  sessionStorage.areFontsLoaded = true
 
-                  const fontsLoadedEvent = new CustomEvent('fontsLoaded')
+                  // Dispatch event to notify ThemeUIProvider component
+                  const fontsLoadedEvent = new CustomEvent('FONTS_ARE_LOADED')
                   window.dispatchEvent(fontsLoadedEvent)
                 })
               }

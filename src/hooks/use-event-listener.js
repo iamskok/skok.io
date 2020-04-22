@@ -8,9 +8,9 @@ const useEventListener = (
 ) => {
   useEffect(() => {
     target.addEventListener(type, listener, ...options)
-    return () => {
-      target.removeEventListener(type, listener, ...options)
-    }
+    return () => target.removeEventListener(
+      type, listener, ...options
+    )
   }, [target, type, listener, options])
 }
 
