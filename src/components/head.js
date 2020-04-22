@@ -73,7 +73,7 @@ export default props => {
           ${firaCodeFontFace}
 
           .font-loading-stage-1 body {
-            font-family: system-ui, sans-serif;
+            font-family: -apple-system, system-ui, sans-serif;
           }
 
           .font-loading-stage-2 body {

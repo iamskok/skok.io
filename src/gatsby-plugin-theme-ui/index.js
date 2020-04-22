@@ -9,8 +9,8 @@ const theme = {
     heading: `'Inter var'`,
     monospace: `'Fira Code VF'`,
     safe: {
-      body: `system-ui, sans-serif`,
-      heading: `system-ui, sans-serif`,
+      body: `-apple-system, system-ui, sans-serif`,
+      heading: `-apple-system, system-ui, sans-serif`,
       monospace: `monospace`,
     }
   },
