@@ -96,7 +96,6 @@ export default props => {
               return
             } else {
               if ('fonts' in document) {
-                console.log('fonts from head', Date.now())
                 Promise.all([
                   document.fonts.load('400 1em "Inter var"'),
                   document.fonts.load('italic 400 1em "Inter var"'),
