@@ -40,67 +40,14 @@ export default props => {
       <script>
         {`document.documentElement.classList.add('font-loading-stage-1')`}
       </script>
-      <script id="connection-type-checker">
-        {`
-          (() => {
-            const isSaveData = navigator.connection &&
-              navigator.connection.saveData
-            const connectionType = navigator.connection &&
-              navigator.connection.effectiveType
-            const isSlowConnectionType = ['slow-2g', '2g', '3g',]
-              .indexOf(connectionType) === -1 ? false : true
-
-            if (!isSlowConnectionType && !isSaveData) {
-              // const inter = document.getElementById('inter')
-              // const interItalic = document.getElementById('inter-italic')
-              // const firaCode = document.getElementById('fira-code')
-
-              // inter.setAttribute('media', 'all')
-              // interItalic.setAttribute('media', 'all')
-              // firaCode.setAttribute('media', 'all')
-
-              const inter = document.createElement('link')
-              const interItalic = document.createElement('link')
-              const firaCode = document.createElement('link')
-
-              inter.as = 'font'
-              inter.type = 'font/woff2'
-              inter.rel = 'preload'
-              inter.crossOrigin = 'anonymous'
-              inter.href='${interWoff2}'
-
-              interItalic.as = 'font'
-              interItalic.type = 'font/woff2'
-              interItalic.rel = 'preload'
-              interItalic.crossOrigin = 'anonymous'
-              interItalic.href='${interItalicWoff2}'
-
-              firaCode.as = 'font'
-              firaCode.type = 'font/woff2'
-              firaCode.rel = 'preload'
-              firaCode.crossOrigin = 'anonymous'
-              firaCode.href='${firaCodeWoff2}'
-
-              const insertAfter = (newNode, referenceNode) => referenceNode
-                .parentNode.insertBefore(newNode, referenceNode.nextSibling)
-
-              const target = document.getElementById('connection-type-checker')
-
-              insertAfter(inter, target)
-              insertAfter(interItalic, target)
-              insertAfter(firaCode, target)
-            }
-          })()
-        `}
-      </script>
-      {/* <link
+      <link
         id="inter"
         href={interWoff2}
         as="font"
         type="font/woff2"
         rel="preload"
         crossOrigin="anonymous"
-        media="print"
+        media="all"
       />
       <link
         id="inter-italic"
@@ -109,7 +56,7 @@ export default props => {
         type="font/woff2"
         rel="preload"
         crossOrigin="anonymous"
-        media="print"
+        media="all"
       />
       <link
         id="fira-code"
@@ -118,8 +65,8 @@ export default props => {
         type="font/woff2"
         rel="preload"
         crossOrigin="anonymous"
-        media="print"
-      /> */}
+        media="all"
+      />
       <style type="text/css">
         {`
           ${interFontFace}
@@ -148,14 +95,8 @@ export default props => {
               document.documentElement.classList.add('font-loading-stage-2')
               return
             } else {
-              const isSaveData = navigator.connection &&
-                navigator.connection.saveData
-              const connectionType = navigator.connection &&
-                navigator.connection.effectiveType
-              const isSlowConnectionType = ['slow-2g', '2g', '3g',]
-                .indexOf(connectionType) === -1 ? false : true
-
-              if ('fonts' in document && !isSaveData && !isSlowConnectionType) {
+              if ('fonts' in document) {
+                console.log('fonts from head', Date.now())
                 Promise.all([
                   document.fonts.load('400 1em "Inter var"'),
                   document.fonts.load('italic 400 1em "Inter var"'),
