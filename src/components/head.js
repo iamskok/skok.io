@@ -40,33 +40,6 @@ export default props => {
       <script>
         {`document.documentElement.classList.add('font-loading-stage-1')`}
       </script>
-      <link
-        id="inter"
-        href={interWoff2}
-        as="font"
-        type="font/woff2"
-        rel="preload"
-        crossOrigin="anonymous"
-        media="all"
-      />
-      <link
-        id="inter-italic"
-        href={interItalicWoff2}
-        as="font"
-        type="font/woff2"
-        rel="preload"
-        crossOrigin="anonymous"
-        media="all"
-      />
-      <link
-        id="fira-code"
-        href={firaCodeWoff2}
-        as="font"
-        type="font/woff2"
-        rel="preload"
-        crossOrigin="anonymous"
-        media="all"
-      />
       <style type="text/css">
         {`
           ${interFontFace}
