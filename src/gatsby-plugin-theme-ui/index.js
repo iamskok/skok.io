@@ -2,8 +2,8 @@ import colors from './colors'
 import styles from './styles'
 
 const theme = {
-  initialColorMode: 'light',
   colors,
+  styles,
   fonts: {
     body: 'system-ui, sans-serif',
     heading: 'system-ui, sans-serif',
@@ -22,7 +22,6 @@ const theme = {
   sizes: {
     container: 768,
   },
-  styles,
 }
 
 export default theme

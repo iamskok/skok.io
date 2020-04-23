@@ -62,7 +62,8 @@ const CodeEditor = ({
                   zIndex: 1,
                   paddingLeft: lineNumbers ? `60px !important` : `20px !important`,
                   paddingRight: `20px !important`,
-                  whiteSpace: `pre !important`
+                  whiteSpace: `pre !important`,
+                  outlineStyle: 'solid'
                 },
               }}
               {...rest}

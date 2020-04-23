@@ -3,7 +3,7 @@ import { jsx, IconButton } from 'theme-ui'
 import { useState } from 'react'
 import { PrismThemeConsumer } from './prism-theme-provider'
 
-const ThemeButton = () => {
+const ThemeToggleButton = () => {
   const [turnCounter, setTurnCounter] = useState(0)
   const incrementTurnCounter = () => setTurnCounter(turnCounter + 1)
 
@@ -54,4 +54,4 @@ const ThemeButton = () => {
   )
 }
 
-export default ThemeButton
+export default ThemeToggleButton

@@ -1,0 +1,54 @@
+---
+title: Code block examples
+date: 2020-04-23
+published: true
+---
+
+## API
+
+* Language first argument (local)
+* Highlight line numbers object which has the form of `{1-3,5}` (local)
+* `languageTab` show or hide language icon (local and global)
+* `lineNumbers` show or hide line numbers (local and global)
+* `lineNumbersButton`
+* `themeToggleButton`
+* `copyButton` show or hide copy button (local and global).
+* `fileName` show or hide file name (local).
+* `live` convert code block to a [react-live](https://github.com/FormidableLabs/react-live#api) example (local).
+* `noInline` doesn’t evaluate and mount the inline code (local).
+* `disabled` disable editing on the `<LiveEditor />` (local).
+
+* Local can be configured on per component bases via
+fenced code block or JSX.
+* Global site wide configuration done in `gatsby-config.js` which can be overwritten locally
+
+## Examples
+
+```jsx live {2} fileName=thisissomeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeextremelylongfilename.js
+render(
+  <h1>Hello World</h1>
+)
+```
+
+```js {7-11}
+import styled from 'styled-components';
+
+const headerProps = { text: 'I\'m styled!' };
+
+const scope = {styled, headerProps};
+
+const code = `
+  const Header = styled.div\`
+    color: palevioletred;
+    font-size: 18px;
+  \`
+
+  render(<Header>{headerProps.text}</Header>)
+`
+
+<LiveProvider code={code} scope={scope} noInline={true}>
+  <LiveEditor />
+  <LiveError />
+  <LivePreview />
+</LiveProvider>
+```

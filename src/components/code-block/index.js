@@ -8,7 +8,7 @@ import calculateLinesToHighlight from './calculate-lines-to-highlight'
 import convertMetastringPropToBool from './convert-metastring-prop-to-bool'
 import getLanguage from './get-language'
 import CopyButton from './copy-button'
-import ThemeButton from './theme-button'
+import ThemeToggleButton from './theme-toggle-button'
 import LineNumbersButton from './line-numbers-button'
 import FileName from './file-name'
 import LanguageTab from './language-tab'
@@ -20,17 +20,21 @@ const CodeBlock = ({
   className,
   metastring,
   lineNumbers,
+  lineNumbersButton,
+  themeToggleButton,
   live,
   noInline,
   disabled,
-  copy,
+  copyButton,
   fileName,
   languageTab
 }) => {
   const {
     codeBlock: {
       lineNumbers: globalLineNumbers,
-      copy: globalCopy,
+      lineNumbersButton: globalLineNumbersButton,
+      themeToggleButton: globalThemeToggleButton,
+      copyButton: globalCopyButton,
       languageTab: globalLanguageTab,
     }
   } = useSiteMetadata()
@@ -45,15 +49,25 @@ const CodeBlock = ({
 
   const isLineNumbers = lineNumbers !== undefined ?
     (lineNumbers === 'true' || lineNumbers === true) :
-    globalLineNumbers
+    globalLineNumbers 
 
-  const isCopy = copy !== undefined ?
-    (copy === 'true' || copy === true) :
-    globalCopy
+  const isLineNumbersButton = lineNumbersButton !== undefined ?
+    (lineNumbersButton === 'true' || lineNumbersButton === true) :
+    globalLineNumbersButton 
+
+  const isThemeToggleButton = themeToggleButton !== undefined ?
+    (themeToggleButton === 'true' || themeToggleButton === true) :
+    globalThemeToggleButton 
+
+  const isCopyButton = copyButton !== undefined ?
+    (copyButton === 'true' || copyButton === true) :
+    globalCopyButton
 
   const isLanguageTab = languageTab !== undefined ?
     (languageTab === 'true' || languageTab === true) :
     globalLanguageTab
+
+  const isFileName = !!fileName
 
   const [lineNumbersState, setLineNumbersState] = useState(isLineNumbers)
   const toggleLineNumbers = () => setLineNumbersState(!lineNumbersState)
@@ -62,55 +76,51 @@ const CodeBlock = ({
     <PrismThemeConsumer>
       {({ prismTheme }) => (
         <div sx={{
-          marginBottom: 20
+          marginBottom: 20,
+          position: 'relative'
         }}>
+          {isLanguageTab && <LanguageTab language={getLanguage(className)} />}
           <div sx={{
             display: 'flex',
             flexDirection: 'column',
           }}>
             <div sx={{
               display: 'flex',
-              flexDirection: 'row-reverse',
               backgroundColor: `${prismTheme.plain.backgroundColor}`,
               transition: 'background 400ms ease',
+              flexDirection: !isFileName && 'row-reverse',
               paddingY: 1
             }}>
-              {
-                isLanguageTab &&
-                <LanguageTab language={getLanguage(className)} />
-              }
-              {isCopy && <CopyButton code={code} />}
-              <LineNumbersButton onClick={toggleLineNumbers} />
-              <ThemeButton />
+              {isFileName && <FileName name={fileName} />}
+              <div>
+                {isLineNumbersButton && <LineNumbersButton
+                  onClick={toggleLineNumbers} />}
+                {isThemeToggleButton && <ThemeToggleButton />}
+                {isCopyButton && <CopyButton code={code} />}
+              </div>
             </div>
-            {
-              fileName &&
-              <FileName name={fileName} />
-            }
           </div>
           <Styled.pre sx={{ margin: 0 }}>
-            {
-              isLive ?
-              <ReactLiveEditor
-                code={code}
-                theme={prismTheme}
-                scope={scope}
-                language={language}
-                metastring={metastring}
-                disabled={isDisabled}
-                noInline={isNoInline}
-                lineNumbers={lineNumbersState}
-                shouldHighlightLine={shouldHighlightLine}
-              /> :
-              <HighlightCode
-                code={code}
-                language={language}
-                theme={prismTheme}
-                metastring={metastring}
-                lineNumbers={lineNumbersState}
-                shouldHighlightLine={shouldHighlightLine}
-              />
-            }
+            {isLive ?
+            <ReactLiveEditor
+              code={code}
+              theme={prismTheme}
+              scope={scope}
+              language={language}
+              metastring={metastring}
+              disabled={isDisabled}
+              noInline={isNoInline}
+              lineNumbers={lineNumbersState}
+              shouldHighlightLine={shouldHighlightLine}
+            /> :
+            <HighlightCode
+              code={code}
+              language={language}
+              theme={prismTheme}
+              metastring={metastring}
+              lineNumbers={lineNumbersState}
+              shouldHighlightLine={shouldHighlightLine}
+            />}
           </Styled.pre>
         </div>
       )}

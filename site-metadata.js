@@ -9,7 +9,9 @@ module.exports = {
   ],
   codeBlock: {
     lineNumbers: true,
-    copy: true,
+    lineNumbersButton: true,
+    themeToggleButton: true,
+    copyButton: true,
     languageTab: true
   },
 }
