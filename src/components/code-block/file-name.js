@@ -5,19 +5,23 @@ import { PrismThemeConsumer } from './prism-theme-provider'
 const FileName = ({ name }) => (
   <PrismThemeConsumer>
     {({ prismTheme }) => (
-      <div sx={{ overflowX: 'hidden' }}>
+      <div sx={{
+        overflowX: 'hidden',
+        display: 'flex',
+        flex: 1
+      }}>
         <div sx={{
           overflowX: 'scroll',
           backgroundColor: prismTheme.plain.backgroundColor,
-          transition: 'background-color 400ms ease'
+          transition: 'background-color 400ms ease',
+          padding: 1
         }}>
           <p sx={{
-            paddingLeft: 20,
-            paddingBottom: 20,
             fontSize: 4,
             lineHeight: 1.5,
-            fontFamily: 'monospace',
+            fontFamily: 'heading',
             fontWeight: 'bold',
+            fontStyle: 'italic',
             display: 'flex',
             flex: 1,
             margin: 0,

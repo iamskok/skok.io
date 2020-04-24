@@ -24,6 +24,9 @@ const theme = {
     heading: 700,
     bold: 700,
   },
+  sizes: {
+    container: 768,
+  },
 }
 
 export default theme

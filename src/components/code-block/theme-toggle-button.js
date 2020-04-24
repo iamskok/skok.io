@@ -1,35 +1,36 @@
 /** @jsx jsx */
-import { jsx, Button } from 'theme-ui'
+import { jsx, IconButton } from 'theme-ui'
 import { useState } from 'react'
 import { PrismThemeConsumer } from './prism-theme-provider'
 
-const ThemeButton = () => {
+const ThemeToggleButton = () => {
   const [turnCounter, setTurnCounter] = useState(0)
   const incrementTurnCounter = () => setTurnCounter(turnCounter + 1)
 
   return (
     <PrismThemeConsumer>
       {({ changePrismTheme }) => (
-        <Button
-          title="Change Code Theme"
+        <IconButton
+          aria-label='Change code block syntax highlighting theme'
           sx={{
             cursor: 'pointer',
+            color: 'background',
             backgroundColor: 'secondary',
             padding: 0,
             width: 40,
             height: 40,
+            marginX: 1
           }}
           onClick={() => {
-            changePrismTheme();
-            incrementTurnCounter();
+            changePrismTheme()
+            incrementTurnCounter()
           }}
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 32 32"
-            fill="currentcolor"
+            width='24'
+            height='24'
+            viewBox='0 0 32 32'
+            fill='currentcolor'
             sx={{
               display: 'flex',
               margin: '0 auto',
@@ -38,28 +39,19 @@ const ThemeButton = () => {
             }}
           >
             <circle
-              cx="16"
-              cy="16"
-              r="14"
-              fill="none"
-              stroke="currentcolor"
-              strokeWidth="4"
+              cx='16'
+              cy='16'
+              r='14'
+              fill='none'
+              stroke='currentcolor'
+              strokeWidth='4'
             ></circle>
-            <path d="M 16 0 A 16 16 0 0 0 16 32 z"></path>
+            <path d='M 16 0 A 16 16 0 0 0 16 32 z'></path>
           </svg>
-          <span sx={{
-            position: 'absolute',
-            top: -9999,
-            width: 1,
-            height: 1,
-            overflow: 'hidden'
-          }}>
-            Change Code Theme
-          </span>
-        </Button>
+        </IconButton>
       )}
     </PrismThemeConsumer>
   )
 }
 
-export default ThemeButton
+export default ThemeToggleButton

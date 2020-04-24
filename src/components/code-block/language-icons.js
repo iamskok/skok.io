@@ -1,43 +1,44 @@
-import react from './icons/react.svg'
-import shell from './icons/shell.svg'
-import sass from './icons/sass.svg'
-import html from './icons/html.svg'
-import css from './icons/css.svg'
-import graphql from './icons/graphql.svg'
-import js from './icons/js.svg'
-import vue from './icons/vue.svg'
-import ts from './icons/ts.svg'
-import gatsby from './icons/gatsby.svg'
-import netlify from './icons/netlify.svg'
-import rust from './icons/rust.svg'
-import toml from './icons/toml.svg'
-import json from './icons/json.svg'
-import php from './icons/php.svg'
-import go from './icons/go.svg'
-import python from './icons/python.svg'
-import rb from './icons/rb.svg'
+import ReactIcon from './icons/react.inline.svg'
+import ShellIcon from './icons/shell.inline.svg'
+import SassIcon from './icons/sass.inline.svg'
+import HtmlIcon from './icons/html.inline.svg'
+import CssIcon from './icons/css.inline.svg'
+import GraphqlIcon from './icons/graphql.inline.svg'
+import JsIcon from './icons/js.inline.svg'
+import VueIcon from './icons/vue.inline.svg'
+import TsIcon from './icons/ts.inline.svg'
+import RustIcon from './icons/rust.inline.svg'
+import TomlIcon from './icons/toml.inline.svg'
+import JsonIcon from './icons/json.inline.svg'
+import PhpIcon from './icons/php.inline.svg'
+import GoIcon from './icons/go.inline.svg'
+import PythonIcon from './icons/python.inline.svg'
+import RbIcon from './icons/rb.inline.svg'
 
 const languageIcons = {
-  js,
-  ts,
-  sass,
-  css,
-  graphql,
-  html,
-  shell,
-  vue,
-  gatsby,
-  rust,
-  toml,
-  json,
-  php,
-  go,
-  python,
-  rb,
-  netlify,
-  jsx: react,
-  tsx: ts,
-  scss: sass,
+  js: JsIcon,
+  ts: TsIcon,
+  sass: SassIcon,
+  css: CssIcon,
+  graphql: GraphqlIcon,
+  html: HtmlIcon,
+  shell: ShellIcon,
+  vue: VueIcon,
+  rust: RustIcon,
+  toml: TomlIcon,
+  json: JsonIcon,
+  php: PhpIcon,
+  go: GoIcon,
+  python: PythonIcon,
+  rb: RbIcon,
+  jsx: ReactIcon,
+  tsx: TsIcon,
+  scss: SassIcon,
+  sh: ShellIcon,
+  gql: GraphqlIcon,
+  py: PythonIcon,
+  ruby: RbIcon,
+  typescript: TsIcon,
 }
 
 export default languageIcons

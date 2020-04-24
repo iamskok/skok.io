@@ -25,7 +25,7 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-mdx',
+      resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins
@@ -35,6 +35,17 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         useMozJpeg: true
+      }
+    },
+    {
+      resolve: `gatsby-plugin-svgr-svgo`,
+      options: {
+        urlSvgOptions: [
+          {
+            test: /\.svg$/,
+            svgo: false,
+          },
+        ],
       }
     },
     `gatsby-transformer-sharp`,
