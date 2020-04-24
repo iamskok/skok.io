@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import Highlight, { Prism } from 'prism-react-renderer'
+import Highlight, { Prism } from '@skok/prism-react-renderer'
 import { jsx, Styled } from 'theme-ui'
 import Line from './line'
 
