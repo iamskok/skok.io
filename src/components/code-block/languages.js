@@ -1,4 +1,5 @@
-// https://github.com/PrismJS/prism/blob/master/plugins/show-language/prism-show-language.js
+// List of human readable language names
+// [Original list was taken from here](https://github.com/PrismJS/prism/blob/master/plugins/show-language/prism-show-language.js)
 
 const languages = {
   'html': `HTML`,

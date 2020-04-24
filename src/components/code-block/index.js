@@ -5,7 +5,7 @@ import HighlightCode from './highlight-code'
 import ReactLiveEditor from './react-live-editor'
 import useSiteMetadata from '../../hooks/use-site-metadata'
 import calculateLinesToHighlight from './calculate-lines-to-highlight'
-import convertMetastringPropToBool from './convert-metastring-prop-to-bool'
+import isFeatureEnabled from './is-feature-enabled'
 import getLanguage from './get-language'
 import CopyButton from './copy-button'
 import ThemeToggleButton from './theme-toggle-button'
@@ -43,30 +43,15 @@ const CodeBlock = ({
   const code = children.props.children.trim()
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
 
-  const isLive = convertMetastringPropToBool(live)
-  const isNoInline = convertMetastringPropToBool(noInline)
-  const isDisabled = convertMetastringPropToBool(disabled)
-
-  const isLineNumbers = lineNumbers !== undefined ?
-    (lineNumbers === 'true' || lineNumbers === true) :
-    globalLineNumbers 
-
-  const isLineNumbersButton = lineNumbersButton !== undefined ?
-    (lineNumbersButton === 'true' || lineNumbersButton === true) :
-    globalLineNumbersButton 
-
-  const isThemeToggleButton = themeToggleButton !== undefined ?
-    (themeToggleButton === 'true' || themeToggleButton === true) :
-    globalThemeToggleButton 
-
-  const isCopyButton = copyButton !== undefined ?
-    (copyButton === 'true' || copyButton === true) :
-    globalCopyButton
-
-  const isLanguageTab = languageTab !== undefined ?
-    (languageTab === 'true' || languageTab === true) :
-    globalLanguageTab
-
+  // Get all enabled features
+  const isLive = isFeatureEnabled(live)
+  const isNoInline = isFeatureEnabled(noInline)
+  const isDisabled = isFeatureEnabled(disabled)
+  const isLineNumbers = isFeatureEnabled(lineNumbers, globalLineNumbers)
+  const isLineNumbersButton = isFeatureEnabled(lineNumbersButton, globalLineNumbersButton)
+  const isThemeToggleButton = isFeatureEnabled(themeToggleButton, globalThemeToggleButton)
+  const isCopyButton = isFeatureEnabled(copyButton, globalCopyButton)
+  const isLanguageTab = isFeatureEnabled(languageTab, globalLanguageTab)
   const isFileName = !!fileName
 
   const [lineNumbersState, setLineNumbersState] = useState(isLineNumbers)
@@ -79,7 +64,9 @@ const CodeBlock = ({
           marginBottom: 20,
           position: 'relative'
         }}>
-          {isLanguageTab && <LanguageTab language={getLanguage(className)} />}
+          {isLanguageTab && !isLive &&
+          <LanguageTab language={getLanguage(className)} />}
+
           <div sx={{
             display: 'flex',
             flexDirection: 'column',

@@ -12,15 +12,16 @@ const LanguageTab = ({ language }) => {
       display: 'flex',
       position: 'absolute',
       right: 1,
-      bottom: 1
+      bottom: 1,
+      zIndex: 1
     }}>
       {
         LanguageIcon &&
         <LanguageIcon
           alt={humanReadableLanguage || language}
           sx={{
-            width: 40,
-            height: 40,
+            width: 30,
+            height: 30,
           }}
         />
       }
