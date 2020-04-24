@@ -62,7 +62,7 @@ const CodeBlock = ({
       {({ prismTheme }) => (
         <div sx={{
           marginBottom: 20,
-          position: 'relative'
+          position: 'relative',
         }}>
           {isLanguageTab && !isLive &&
           <LanguageTab language={getLanguage(className)} />}
@@ -74,7 +74,7 @@ const CodeBlock = ({
             <div sx={{
               display: 'flex',
               backgroundColor: `${prismTheme.plain.backgroundColor}`,
-              transition: 'background 400ms ease',
+              transition: 'background-color 400ms ease',
               flexDirection: !isFileName && 'row-reverse',
               paddingY: 1
             }}>
@@ -87,7 +87,13 @@ const CodeBlock = ({
               </div>
             </div>
           </div>
-          <Styled.pre sx={{ margin: 0 }}>
+          <Styled.pre
+            sx={{
+              margin: 0,
+              backgroundColor: prismTheme.plain.backgroundColor,
+              transition: 'background-color 400ms ease',
+            }}
+          >
             {isLive ?
             <ReactLiveEditor
               code={code}
