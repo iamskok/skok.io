@@ -73,7 +73,7 @@ const CodeBlock = ({
           }}>
             <div sx={{
               display: 'flex',
-              backgroundColor: `${prismTheme.plain.backgroundColor}`,
+              backgroundColor: prismTheme.plain.backgroundColor,
               transition: 'background-color 400ms ease',
               flexDirection: !isFileName && 'row-reverse',
               paddingY: 1
