@@ -1,0 +1,4 @@
+[[headers]]
+  for = "/static/*.woff2"
+  [headers.values]
+    Cache-Control = "max-age=31536000, immutable"

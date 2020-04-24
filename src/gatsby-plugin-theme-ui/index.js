@@ -5,9 +5,14 @@ const theme = {
   colors,
   styles,
   fonts: {
-    body: 'system-ui, sans-serif',
-    heading: 'system-ui, sans-serif',
-    monospace: 'Menlo, monospace',
+    body: `'Inter var'`,
+    heading: `'Inter var'`,
+    monospace: `'Fira Code VF'`,
+    safe: {
+      body: `-apple-system, system-ui, sans-serif`,
+      heading: `-apple-system, system-ui, sans-serif`,
+      monospace: `monospace`,
+    }
   },
   lineHeights: {
     body: 1.5,

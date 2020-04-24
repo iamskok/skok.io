@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import prismThemes from '../../prism/themes'
 
 const LOCAL_STORAGE_KEY = `prism-theme-name`
@@ -18,15 +18,14 @@ const themeKeys = Object.keys(prismModes).sort()
 
 const PrismTheme = ({ children }) => {
   let currentPrismTheme = prismThemes
+  const [prismTheme, setPrismTheme] = useState(currentPrismTheme)
 
-  if (isBrowser()) {
+  useEffect(() => {
     const prismThemeName = window.localStorage.getItem(LOCAL_STORAGE_KEY)
     if (prismThemeName) {
-      currentPrismTheme = prismThemes.modes[prismThemeName]
+      setPrismTheme(prismThemes.modes[prismThemeName])
     }
-  }
-
-  const [prismTheme, setPrismTheme] = useState(currentPrismTheme)
+  }, [setPrismTheme])
 
   const changePrismTheme = () => {
     let index = -1
