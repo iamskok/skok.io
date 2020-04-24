@@ -22,7 +22,6 @@ const LineNumber = ({ index, lineNumbers, highlight = false }) => (
         marginRight: 20,
         transition: 'background-color 400ms ease, color 400ms ease, transform 400ms ease',
         transform: lineNumbers ? 'translate3d(0, 0, 0)' : 'translate3d(-40px, 0, 0)',
-        willChange: 'transform'
       }}>
         {++index}
       </span>
