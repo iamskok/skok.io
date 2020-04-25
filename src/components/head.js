@@ -72,6 +72,10 @@ export default props => {
           ${interFontFace}
           ${firaCodeFontFace}
 
+          html {
+            font-size: 125%;
+          }
+
           .font-loading-stage-1 body {
             font-family: -apple-system, system-ui, sans-serif;
           }
