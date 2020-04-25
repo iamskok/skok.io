@@ -2,7 +2,6 @@ import colors from './colors'
 import styles from './styles'
 
 const theme = {
-  // useColorSchemeMediaQuery: true,
   colors,
   styles,
   fonts: {

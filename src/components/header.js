@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui'
 import { Link } from 'gatsby'
 import useSiteMetadata from '../hooks/use-site-metadata'
-import ThemeToggleButton from './theme-toggle-button'
+import ColorModeButton from './color-mode-button'
 
 const Header = () => {
   const { navigation } = useSiteMetadata()
@@ -21,7 +21,7 @@ const Header = () => {
           {label}
         </Link>
       )) }
-      <ThemeToggleButton />
+      <ColorModeButton />
     </nav>
   )
 }

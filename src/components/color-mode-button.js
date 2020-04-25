@@ -3,9 +3,9 @@
 import { jsx, IconButton, useColorMode } from 'theme-ui'
 // import useSiteMetadata from '../hooks/use-site-metadata'
 
-const ThemeToggleButton = props => {
+const ColorModeButton = props => {
   // const { colorModes } = useSiteMetadata()
-  const colorModes = [`default`, `dark`, `system`, `deep`]
+  const colorModes = [`default`, `dark`, `deep`, `swiss`]
   const [colorMode, setColorMode] = useColorMode()
   // const [turn, setTurn] = useState(0)
   // const turnButton = () => setTurn(turn < 1 ? 1 : 0)
@@ -17,6 +17,8 @@ const ThemeToggleButton = props => {
       onClick={() => {
         const index = colorModes.indexOf(colorMode)
         const next = colorModes[(index + 1) % colorModes.length]
+        console.log('current', colorModes[index])
+        console.log('next', next)
         setColorMode(next)
         // turnButton()
       }}
@@ -54,4 +56,4 @@ const ThemeToggleButton = props => {
   )
 }
 
-export default ThemeToggleButton
+export default ColorModeButton

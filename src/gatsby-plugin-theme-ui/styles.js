@@ -44,9 +44,9 @@ export default {
   },
   a: {
     color: 'primary',
-    // '&:hover': {
-    //   color: 'secondary',
-    // }
+    '&:hover': {
+      color: 'secondary',
+    }
   },
   h1: {
     ...heading,
