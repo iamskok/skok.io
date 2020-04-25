@@ -2,6 +2,7 @@
 import {
   jsx,
   ThemeProvider,
+  ColorModeProvider
 } from 'theme-ui'
 import { useState, useEffect, useCallback, Fragment } from 'react'
 import PrismThemeProvider from './code-block/prism-theme-provider'
@@ -53,8 +54,16 @@ const ThemeUIProvider = ({ element }) => {
   )
 }
 
+const ThemeUIColorModeProvider = ({ children }) => (
+  <ColorModeProvider>
+    {children}
+  </ColorModeProvider>
+)
+
 export const wrapRootElement = ({ element }) => (
   <PrismThemeProvider>
-    <ThemeUIProvider element={element} />
+    <ThemeUIProvider element={element}>
+      {ThemeUIColorModeProvider}
+    </ThemeUIProvider>
   </PrismThemeProvider>
 )

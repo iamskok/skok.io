@@ -14,4 +14,20 @@ module.exports = {
     copyButton: true,
     languageTab: true
   },
+  colorModes: [
+    `default`,
+    `dark`,
+    `funk`,
+    `base`,
+    `system`,
+    `future`,
+    `roboto`,
+    `dark`,
+    `deep`,
+    `swiss`,
+    `tosh`,
+    `bootstrap`,
+    `bulma`,
+    `tailwind`,
+  ]
 }

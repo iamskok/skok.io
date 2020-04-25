@@ -5,5 +5,5 @@ import Pre from '../components/pre'
 
 export default {
   code: props => <CodeBlock {...props} />,
-  pre: props => <Pre {...props} />
+  pre: props => <Pre {...props} />,
 }

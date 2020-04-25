@@ -47,7 +47,6 @@ export default props => {
         type="font/woff2"
         rel="preload"
         crossOrigin="anonymous"
-        media="all"
       />
       <link
         id="inter-italic"
@@ -56,7 +55,6 @@ export default props => {
         type="font/woff2"
         rel="preload"
         crossOrigin="anonymous"
-        media="all"
       />
       <link
         id="fira-code"
@@ -65,7 +63,6 @@ export default props => {
         type="font/woff2"
         rel="preload"
         crossOrigin="anonymous"
-        media="all"
       />
       <style type="text/css">
         {`

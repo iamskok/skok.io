@@ -42,6 +42,12 @@ export default {
     backgroundColor: 'muted',
     ...fontFamilyMonospace,
   },
+  a: {
+    color: 'primary',
+    // '&:hover': {
+    //   color: 'secondary',
+    // }
+  },
   h1: {
     ...heading,
     fontSize: [5, 6],
@@ -70,12 +76,6 @@ export default {
     fontSize: [2, 3],
     m: 0,
     mb: 4,
-  },
-  a: {
-    color: 'primary',
-    '&:hover': {
-      color: 'secondary',
-    }
   },
   img: {
     maxWidth: '100%',

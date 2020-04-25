@@ -19,6 +19,7 @@ const useSiteMetadata = () => {
               copyButton
               languageTab
             }
+            colorModes
           }
         }
       }
