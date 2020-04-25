@@ -1,4 +1,5 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx, Styled } from 'theme-ui'
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import Layout from '../components/layout';
@@ -24,19 +25,19 @@ const Blog = ({
             />
           )}
 
-          <h2>
+          <Styled.h2>
             <Link to={post.fields.slug}>
               {post.frontmatter.title}
             </Link>
-          </h2>
+          </Styled.h2>
 
           <small>{post.frontmatter.date}</small>
 
-          <p>{post.excerpt}</p>
+          <Styled.p>{post.excerpt}</Styled.p>
 
-          <Link to={post.fields.slug}>
+          <Styled.a to={post.fields.slug}>
             Continue Reading
-          </Link>
+          </Styled.a>
         </div>
       ))}
 
