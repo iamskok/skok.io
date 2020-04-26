@@ -17,7 +17,11 @@ const Blog = ({
 
   return (
     <Layout>
-      {posts.map(({ node: post }) => (
+      <Styled.h1 sx={{fontStyle: `italic`}}>
+        Blog
+      </Styled.h1>
+
+      { posts.map(({ node: post }) => (
         <div key={post.id}>
           {post.frontmatter.cover && (
             <Img
@@ -39,7 +43,7 @@ const Blog = ({
             Continue Reading
           </Link>
         </div>
-      ))}
+      )) }
 
       <hr />
 
