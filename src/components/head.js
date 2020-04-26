@@ -1,10 +1,12 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import amstelvarWoff2 from '../fonts/amstelvar/amstelvar-subset.woff2'
+// import amstelvarWoff2 from '../fonts/amstelvar/amstelvar-subset.woff2'
+import amstelvarRomanWoff2 from '../fonts/amstelvar/amstelvar-roman-subset.woff2'
+import amstelvarItalicWoff2 from '../fonts/amstelvar/amstelvar-italic-subset.woff2'
 import interWoff2 from '../fonts/inter/inter-subset.woff2'
 import firaCodeWoff2 from '../fonts/fira-code/fira-code-vf-subset.woff2'
-import amstelvarFontFace from '../fonts/amstelvar'
+import amstelvarFontFaces from '../fonts/amstelvar'
 import interFontFace from '../fonts/inter'
 import firaCodeFontFace from '../fonts/fira-code'
 
@@ -42,7 +44,14 @@ export default props => {
         {`document.documentElement.classList.add('font-loading-stage-1')`}
       </script>
       <link
-        href={amstelvarWoff2}
+        href={amstelvarRomanWoff2}
+        as="font"
+        type="font/woff2"
+        rel="preload"
+        crossOrigin="anonymous"
+      />
+      <link
+        href={amstelvarItalicWoff2}
         as="font"
         type="font/woff2"
         rel="preload"
@@ -64,7 +73,7 @@ export default props => {
       />
       <style type="text/css">
         {`
-          ${amstelvarFontFace}
+          ${amstelvarFontFaces}
           ${interFontFace}
           ${firaCodeFontFace}
 
@@ -108,6 +117,7 @@ export default props => {
                 Promise.all([
                   document.fonts.load('400 1em "Inter var"'),
                   document.fonts.load('400 1em "Amstelvar"'),
+                  document.fonts.load('italic 400 1em "Amstelvar"'),
                   document.fonts.load('400 1em "Fira Code VF"')
                 ]).then(() => {
                   document.documentElement.classList.add('font-loading-stage-2')
