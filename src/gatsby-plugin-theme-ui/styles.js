@@ -67,12 +67,12 @@ export default {
     paddingLeft: rythm,
   },
   ul: {
-    margin: `0 0 ${rythm} 0`,
+    margin: `0 0 ${(unitless(rythm) * 2) + 'rem'} 0`,
     paddingLeft: rythm,
     // listStylePosition: `outside`
   },
   ol: {
-    margin: `0 0 ${rythm} 0`,
+    margin: `0 0 ${(unitless(rythm) * 2) + 'rem'} 0`,
     paddingLeft: rythm,
     // listStylePosition: `outside`
   },
@@ -128,8 +128,4 @@ export default {
     borderBottomWidth: `1px`,
     borderBottomStyle: `solid`
   },
-  del: {
-    color: `muted`
-  }
-  // buttons
 }
