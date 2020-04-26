@@ -19,6 +19,13 @@ const text = {
     variant: `text.heading`,
     color: `primary`
   },
+  italic: {
+    fontStyle: `italic`,
+    '@supports (font-variation-settings: normal)': {
+      fontVariationSettings: `'slnt' -10`,
+      fontStyle: `oblique 10deg`
+    }
+  }
 }
 
 export default text
