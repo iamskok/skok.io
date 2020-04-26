@@ -1,83 +1,83 @@
 import { baseThemeSettings } from './index'
 import unitless from '../utils/unitless'
 
-const { rythm, lineHeight: baseLineHeight } = baseThemeSettings
-
-const heading = {
-  fontWeight: `heading`,
-  lineHeight: `heading`,
-  marginTop: (unitless(rythm) * 3) + `rem`,
-  marginBottom: rythm,
-}
-
-const monospaceFont = {
-  fontFamily: `monospace`,
-  fontFeatureSettings: `'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06'`,
-}
+const {
+  rythm,
+  lineHeight: baseLineHeight
+} = baseThemeSettings
 
 export default {
   root: {
     margin: 0,
+    paddingX: (unitless(rythm) / 2) + `rem`,
     fontFamily: `body`,
+    lineHeight: baseLineHeight,
     fontFeatureSettings: `'kern', 'calt', 'ss01', 'ss02', 'ss03'`,
   },
   pre: {
+    variant: `text.code`,
     margin: `0 0 ${rythm} 0`,
-    fontSize: 3,
-    lineHeight: baseLineHeight,
     color: `secondary`,
     bg: `muted`,
     overflowX: `auto`,
-    ...monospaceFont,
   },
   code: {
+    variant: `text.code`,
     float: `left`,
     minWidth: `100%`,
     whiteSpace: `pre`,
     paddingY: 0,
-    ...monospaceFont,
   },
   inlineCode: {
-    fontSize: 3,
-    lineHeight: baseLineHeight,
+    variant: `text.code`,
     color: `secondary`,
     backgroundColor: `muted`,
-    ...monospaceFont,
   },
   h1: {
-    ...heading,
+    variant: `text.display`,
     fontSize: 5,
     lineHeight: 5
   },
   h2: {
-    ...heading,
+    variant: `text.heading`,
     fontSize: 4,
     lineHeight: 4,
   },
   h3: {
-    ...heading,
+    variant: `text.heading`,
     fontSize: 3,
     lineHeight: 3,
   },
   h4: {
-    ...heading,
+    variant: `text.heading`,
     fontSize: 2,
     lineHeight: 2,
   },
   h5: {
-    ...heading,
+    variant: `text.heading`,
     fontSize: 1,
     lineHeight: 1,
   },
   h6: {
-    ...heading,
+    variant: `text.heading`,
     fontSize: 0,
     lineHeight: 0,
   },
-  p: {
-    fontSize: 3,
+  blockquote: {
+    paddingLeft: rythm,
+  },
+  ul: {
     margin: `0 0 ${rythm} 0`,
-    lineHeight: baseLineHeight,
+    paddingLeft: rythm,
+    // listStylePosition: `outside`
+  },
+  ol: {
+    margin: `0 0 ${rythm} 0`,
+    paddingLeft: rythm,
+    // listStylePosition: `outside`
+  },
+  p: {
+    margin: `0 0 ${rythm} 0`,
     '& > img': {
       marginBottom: 0
     },
@@ -102,7 +102,7 @@ export default {
   },
   table: {
     width: `100%`,
-    marginY: 4,
+    margin: `0 0 ${rythm} 0`,
     borderCollapse: `separate`,
     borderSpacing: 0,
   },

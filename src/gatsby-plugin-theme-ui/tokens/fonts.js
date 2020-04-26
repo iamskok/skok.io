@@ -1,11 +1,11 @@
 const fonts = {
   body: `'Inter var'`,
   heading: `'Inter var'`,
-  monospace: `'Fira Code VF'`,
+  code: `'Fira Code VF'`,
   safe: {
     body: `system-ui, -apple-system, sans-serif`,
     heading: `system-ui, -apple-system, sans-serif`,
-    monospace: `monospace`,
+    code: `monospace`,
   }
 }
 

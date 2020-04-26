@@ -1,4 +1,5 @@
 import base from './tokens/base'
+import text from './tokens/text'
 import colors from './tokens/colors'
 import fonts from './tokens/fonts'
 import fontWeights from './tokens/font-weights'
@@ -12,6 +13,7 @@ const theme = {
   fonts,
   fontWeights,
   lineHeights,
+  text,
   styles,
 }
 
