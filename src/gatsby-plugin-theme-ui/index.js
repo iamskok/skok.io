@@ -4,7 +4,7 @@ import colors from './tokens/colors'
 import fonts from './tokens/fonts'
 import fontWeights from './tokens/font-weights'
 import fontSizes from './tokens/font-sizes'
-import { lineHeights } from './tokens/lineHeightHeadings'
+import { lineHeights } from './tokens/line-height-headings'
 import styles from './styles'
 
 const theme = {

@@ -128,4 +128,8 @@ export default {
     borderBottomWidth: `1px`,
     borderBottomStyle: `solid`
   },
+  del: {
+    color: `muted`
+  }
+  // buttons
 }
