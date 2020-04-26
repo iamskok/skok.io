@@ -12,7 +12,7 @@ const FileName = ({ name }) => (
       }}>
         <div sx={{
           overflowX: 'scroll',
-          marginLeft: 2
+          marginLeft: 3
         }}>
           <p sx={{
             fontSize: 4,
