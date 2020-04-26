@@ -1,11 +1,10 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Helmet } from 'react-helmet'
-// import amstelvarWoff2 from '../fonts/amstelvar/amstelvar-subset.woff2'
-import amstelvarRomanWoff2 from '../fonts/amstelvar/amstelvar-roman-subset.woff2'
-import amstelvarItalicWoff2 from '../fonts/amstelvar/amstelvar-italic-subset.woff2'
+import amstelvarRomanWoff2 from '../fonts/amstelvar/amstelvar-roman-subs.woff2'
+import amstelvarItalicWoff2 from '../fonts/amstelvar/amstelvar-italic-subs.woff2'
 import interWoff2 from '../fonts/inter/inter-subset.woff2'
-import firaCodeWoff2 from '../fonts/fira-code/fira-code-vf-subset.woff2'
+import firaCodeWoff2 from '../fonts/fira-code/fira-code-subset.woff2'
 import amstelvarFontFaces from '../fonts/amstelvar'
 import interFontFace from '../fonts/inter'
 import firaCodeFontFace from '../fonts/fira-code'
@@ -71,12 +70,15 @@ export default props => {
         rel="preload"
         crossOrigin="anonymous"
       />
-      <style type="text/css">
+      <style type="text/css" name="font-faces">
         {`
           ${amstelvarFontFaces}
           ${interFontFace}
           ${firaCodeFontFace}
-
+        `}
+      </style>
+      <style type="text/css" name="font-loading">
+        {`
           html {
             font-size: 125%;
           }
@@ -106,7 +108,7 @@ export default props => {
           }
         `}
       </style>
-      <script>
+      <script name="font-face-observer">
         {`
           window.addEventListener('load', (() => {
             if (sessionStorage.areFontsLoaded) {
@@ -115,9 +117,9 @@ export default props => {
             } else {
               if ('fonts' in document) {
                 Promise.all([
-                  document.fonts.load('400 1em "Inter var"'),
                   document.fonts.load('400 1em "Amstelvar"'),
                   document.fonts.load('italic 400 1em "Amstelvar"'),
+                  document.fonts.load('400 1em "Inter var"'),
                   document.fonts.load('400 1em "Fira Code VF"')
                 ]).then(() => {
                   document.documentElement.classList.add('font-loading-stage-2')

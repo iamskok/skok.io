@@ -56,7 +56,7 @@ export default {
   h1: {
     variant: `text.display`,
     fontSize: 5,
-    lineHeight: 5
+    lineHeight: 5,
   },
   h2: {
     variant: `text.heading`,
@@ -139,10 +139,10 @@ export default {
     variant: `text.italic`
   },
   b: {
-    fontWeight: `bold`
+    variant: `text.bold`
   },
   strong: {
-    fontWeight: `bold`
+    variant: `text.bold`
   },
   table: {
     width: `100%`,

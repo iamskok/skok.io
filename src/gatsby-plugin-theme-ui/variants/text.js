@@ -13,7 +13,10 @@ const text = {
     fontWeight: `heading`,
     marginTop: (unitless(rythm) * 3) + `rem`,
     marginBottom: rythm,
-    fontFeatureSettings: `'kern', 'calt', 'ss01', 'ss02', 'ss03'`,
+    fontFeatureSettings: `'kern', 'pnum'`,
+    '& > em, & > em > b, & > b > em, & > strong > em, & > em > strong, & > i, & > i > b, & > b > i, & > strong > i, & > i > strong': {
+      variant: `text.italicHeading`
+    }
   },
   display: {
     variant: `text.heading`,
@@ -21,10 +24,19 @@ const text = {
   },
   italic: {
     fontStyle: `italic`,
+    fontSynthesis: `none`,
     '@supports (font-variation-settings: normal)': {
       fontVariationSettings: `'slnt' -10`,
-      fontStyle: `oblique 10deg`
+      fontStyle: `oblique 10deg`,
     }
+  },
+  italicHeading: {
+    fontStyle: `italic`,
+    fontSynthesis: `none`,
+  },
+  bold: {
+    fontWeight: `bold`,
+    fontSynthesis: `none`
   }
 }
 

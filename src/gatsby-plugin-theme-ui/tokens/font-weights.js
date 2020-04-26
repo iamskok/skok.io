@@ -1,7 +1,7 @@
 const fontWeights = {
-  body: 400,
-  heading: 700,
-  bold: 700,
+  body: 350,
+  heading: 625,
+  bold: 775,
 }
 
 export default fontWeights

@@ -4,17 +4,27 @@ date: 2020-04-25
 published: true
 ---
 
-## Subsetting
+## Header ~~without~~ with _italics_, **bold** & **_italic+bold_** (Amstelvar)
 
-* `U+20-7E` - [Basic Latin](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
-* `U+00A9` - `©`
+## 123456789
 
+Some random _italic_, **bold**, **_italic+bold_** (Inter var experimental). 
 
 ```
-pyftsubset amstelvar-italic-webfont \
+// Fira Code
+pyftsubset Amstelvar-Roman.woff2 \
   --unicodes="U+20-7E" \
   --layout-features="kern,pnum" \
   --flavor="woff2" \
   --no-subset-tables+="FFTM" \
-  --output-file="amstelvar-italic-subset.woff2"
+  --output-file="amstelvar.woff2"
+```
+
+```shell
+pyftsubset Amstelvar-Roman.woff2 \
+  --unicodes="U+20-7E" \
+  --layout-features="kern,pnum" \
+  --flavor="woff2" \
+  --no-subset-tables+="FFTM" \
+  --output-file="amstelvar.woff2"
 ```
