@@ -1,8 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import interWoff2 from '../fonts/inter/inter-var-subset.woff2'
-import interItalicWoff2 from '../fonts/inter/inter-var-italic-subset.woff2'
+import interWoff2 from '../fonts/inter/inter-subset.woff2'
 import firaCodeWoff2 from '../fonts/fira-code/fira-code-vf-subset.woff2'
 import interFontFace from '../fonts/inter'
 import firaCodeFontFace from '../fonts/fira-code'
@@ -47,16 +46,6 @@ export default props => {
         type="font/woff2"
         rel="preload"
         crossOrigin="anonymous"
-        media="all"
-      />
-      <link
-        id="inter-italic"
-        href={interItalicWoff2}
-        as="font"
-        type="font/woff2"
-        rel="preload"
-        crossOrigin="anonymous"
-        media="all"
       />
       <link
         id="fira-code"
@@ -65,7 +54,6 @@ export default props => {
         type="font/woff2"
         rel="preload"
         crossOrigin="anonymous"
-        media="all"
       />
       <style type="text/css">
         {`
