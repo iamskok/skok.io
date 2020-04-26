@@ -35,9 +35,9 @@ const Blog = ({
 
           <Styled.p>{post.excerpt}</Styled.p>
 
-          <Styled.a to={post.fields.slug}>
+          <Link to={post.fields.slug}>
             Continue Reading
-          </Styled.a>
+          </Link>
         </div>
       ))}
 
