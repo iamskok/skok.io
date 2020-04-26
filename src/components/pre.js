@@ -24,7 +24,7 @@ const Pre = props => {
         {...props}
         sx={{
           padding: rythm,
-          marginBottom: rythm
+          marginBottom: rythm,
         }}
       >
         {children}
@@ -36,7 +36,7 @@ const Pre = props => {
         {...props}
         sx={{
           padding: rythm,
-          marginBottom: rythm
+          marginBottom: rythm,
         }}
       >
         {children.props.children}
