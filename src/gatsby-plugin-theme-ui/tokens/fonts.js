@@ -1,6 +1,6 @@
 const fonts = {
   body: `'Inter var'`,
-  heading: `'Inter var'`,
+  heading: `'Amstelvar'`,
   code: `'Fira Code VF'`,
   safe: {
     body: `system-ui, -apple-system, sans-serif`,

@@ -1,0 +1,20 @@
+---
+title: Amstelvar font family
+date: 2020-04-25
+published: true
+---
+
+## Subsetting
+
+* `U+20-7E` - [Basic Latin](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
+* `U+00A9` - `©`
+
+
+```
+pyftsubset amstelvar-italic-webfont \
+  --unicodes="U+20-7E" \
+  --layout-features="kern,pnum" \
+  --flavor="woff2" \
+  --no-subset-tables+="FFTM" \
+  --output-file="amstelvar-italic-subset.woff2"
+```

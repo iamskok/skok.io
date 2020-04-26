@@ -9,8 +9,8 @@ const text = {
     fontFeatureSettings: `'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06'`,
   },
   heading: {
+    fontFamily: `heading`,
     fontWeight: `heading`,
-    lineHeight: `heading`,
     marginTop: (unitless(rythm) * 3) + `rem`,
     marginBottom: rythm,
     fontFeatureSettings: `'kern', 'calt', 'ss01', 'ss02', 'ss03'`,

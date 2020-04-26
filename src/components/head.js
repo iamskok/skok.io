@@ -1,8 +1,10 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Helmet } from 'react-helmet'
+import amstelvarWoff2 from '../fonts/amstelvar/amstelvar-subset.woff2'
 import interWoff2 from '../fonts/inter/inter-subset.woff2'
 import firaCodeWoff2 from '../fonts/fira-code/fira-code-vf-subset.woff2'
+import amstelvarFontFace from '../fonts/amstelvar'
 import interFontFace from '../fonts/inter'
 import firaCodeFontFace from '../fonts/fira-code'
 
@@ -40,7 +42,13 @@ export default props => {
         {`document.documentElement.classList.add('font-loading-stage-1')`}
       </script>
       <link
-        id="inter"
+        href={amstelvarWoff2}
+        as="font"
+        type="font/woff2"
+        rel="preload"
+        crossOrigin="anonymous"
+      />
+      <link
         href={interWoff2}
         as="font"
         type="font/woff2"
@@ -48,7 +56,6 @@ export default props => {
         crossOrigin="anonymous"
       />
       <link
-        id="fira-code"
         href={firaCodeWoff2}
         as="font"
         type="font/woff2"
@@ -57,6 +64,7 @@ export default props => {
       />
       <style type="text/css">
         {`
+          ${amstelvarFontFace}
           ${interFontFace}
           ${firaCodeFontFace}
 
@@ -66,6 +74,15 @@ export default props => {
 
           .font-loading-stage-1 body {
             font-family: -apple-system, system-ui, sans-serif;
+          }
+
+          .font-loading-stage-2 h1,
+          .font-loading-stage-2 h2,
+          .font-loading-stage-2 h3,
+          .font-loading-stage-2 h4,
+          .font-loading-stage-2 h5,
+          .font-loading-stage-2 h6 {
+            font-family: 'Amstelvar';
           }
 
           .font-loading-stage-2 body {
@@ -90,7 +107,7 @@ export default props => {
               if ('fonts' in document) {
                 Promise.all([
                   document.fonts.load('400 1em "Inter var"'),
-                  document.fonts.load('italic 400 1em "Inter var"'),
+                  document.fonts.load('400 1em "Amstelvar"'),
                   document.fonts.load('400 1em "Fira Code VF"')
                 ]).then(() => {
                   document.documentElement.classList.add('font-loading-stage-2')
