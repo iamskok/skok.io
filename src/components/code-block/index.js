@@ -15,6 +15,7 @@ import LanguageTab from './language-tab'
 import scope from './scope'
 import { PrismThemeConsumer } from './prism-theme-provider'
 import { baseThemeSettings } from '../../gatsby-plugin-theme-ui'
+import unitless from '../../utils/unitless'
 
 const { rythm } = baseThemeSettings
 
@@ -66,6 +67,7 @@ const CodeBlock = ({
         <div sx={{
           marginBottom: rythm,
           position: 'relative',
+          marginX: -1 * (unitless(rythm) / 2) + 'rem',
         }}>
           {isLanguageTab && !isLive &&
           <LanguageTab language={getLanguage(className)} />}
@@ -73,16 +75,17 @@ const CodeBlock = ({
           <div sx={{
             display: 'flex',
             flexDirection: 'column',
+            backgroundColor: prismTheme.plain.backgroundColor,
+            transition: 'background-color 400ms ease',
           }}>
             <div sx={{
               display: 'flex',
-              backgroundColor: prismTheme.plain.backgroundColor,
-              transition: 'background-color 400ms ease',
+              alignItems: 'center',
               flexDirection: !isFileName && 'row-reverse',
-              paddingY: 1
+              paddingY: 2
             }}>
               {isFileName && <FileName name={fileName} />}
-              <div>
+              <div sx={{ marginX: 2 }}>
                 {isLineNumbersButton && <LineNumbersButton
                   onClick={toggleLineNumbers} />}
                 {isThemeToggleButton && <ThemeToggleButton />}

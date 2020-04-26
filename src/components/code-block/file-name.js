@@ -12,13 +12,10 @@ const FileName = ({ name }) => (
       }}>
         <div sx={{
           overflowX: 'scroll',
-          backgroundColor: prismTheme.plain.backgroundColor,
-          transition: 'background-color 400ms ease',
-          padding: 1
+          marginLeft: 2
         }}>
           <p sx={{
             fontSize: 4,
-            lineHeight: 1.5,
             fontFamily: 'heading',
             fontWeight: 'bold',
             fontStyle: 'italic',
