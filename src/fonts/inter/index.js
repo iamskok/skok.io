@@ -1,4 +1,4 @@
-import inter from './inter-subset.woff2'
+import interWoff2 from './inter-subset.woff2'
 
 const interFontFace = `
   @font-face {
@@ -6,8 +6,8 @@ const interFontFace = `
     font-weight: 100 900;
     font-display: swap;
     font-style: oblique 0deg 10deg;
-    src: url(${inter}) format('woff2-variations'),
-      url(${inter}) format('woff2');
+    src: url(${interWoff2}) format('woff2-variations'),
+      url(${interWoff2}) format('woff2');
   }
 `
 
