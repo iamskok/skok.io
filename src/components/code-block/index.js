@@ -14,6 +14,9 @@ import FileName from './file-name'
 import LanguageTab from './language-tab'
 import scope from './scope'
 import { PrismThemeConsumer } from './prism-theme-provider'
+import { baseThemeSettings } from '../../gatsby-plugin-theme-ui'
+
+const { rythm } = baseThemeSettings
 
 const CodeBlock = ({
   children,
@@ -61,7 +64,7 @@ const CodeBlock = ({
     <PrismThemeConsumer>
       {({ prismTheme }) => (
         <div sx={{
-          marginBottom: 20,
+          marginBottom: rythm,
           position: 'relative',
         }}>
           {isLanguageTab && !isLive &&
