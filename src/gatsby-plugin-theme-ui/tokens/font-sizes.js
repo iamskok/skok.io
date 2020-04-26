@@ -1,4 +1,4 @@
-import calcfontSizes from '../utils/calc-font-sizes'
+import calcfontSizes from '../../utils/calc-font-sizes'
 
 const ratio = 1.2
 const range = [-2, 6]
