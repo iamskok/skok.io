@@ -1,9 +1,11 @@
 /** @jsx jsx */
+import { jsx, ThemeProvider } from 'theme-ui'
 import {
-  jsx,
-  ThemeProvider,
-} from 'theme-ui'
-import { useState, useEffect, useCallback, Fragment } from 'react'
+  useState,
+  useEffect,
+  useCallback,
+  Fragment
+} from 'react'
 import PrismThemeProvider from './code-block/prism-theme-provider'
 import theme from '../gatsby-plugin-theme-ui'
 import components from '../gatsby-plugin-theme-ui/components'
