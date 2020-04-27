@@ -1,87 +1,47 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
-import { graphql } from 'gatsby'
-import Layout from '../components/layout'
+import { jsx, Card, Button, Styled } from 'theme-ui'
+import Img from 'gatsby-image'
 import Link from '../components/link'
-import BlogPostCard from '../components/blog-post-card'
+import { baseThemeSettings } from '../gatsby-plugin-theme-ui/index'
 
-const Blog = ({
-  data: { allMdx },
-  pageContext: { pagination },
-}) => {
-  const {
-    page,
-    nextPagePath,
-    previousPagePath
-  } = pagination
+const { lineHeight } = baseThemeSettings
 
-  const posts = page.map(id =>
-    allMdx.edges.find(edge => edge.node.id === id)
-  )
-
+const BlogPostCard = ({ post }) => {
   return (
-    <Layout>
-      <Styled.h1>
-        Blog
-      </Styled.h1>
+    <Card as="article">
+      <Link
+        to={ post.fields.slug }
+        sx={{
+          textDecoration: 'none'
+        }}
+      >
+        { post.frontmatter.cover &&
+          <Img
+            sizes={{
+              ...post.frontmatter.cover.childImageSharp.sizes,
+              aspectRatio: 16 / 9
+            }}
+          />
+        }
 
-      { posts.map(({ node: post }) => (
-        <BlogPostCard
-          key={post.id}
-          post={post}
-        />
-      )) }
+        <Styled.h2 sx={{
+          color: 'text',
+          marginTop: 0,
+          lineHeight
+        }}>
+          { post.frontmatter.title }
+        </Styled.h2>
 
-      <hr />
+        <Styled.p sx={{ color: 'text' }}>
+          { post.excerpt }
+        </Styled.p>
 
-      <div>
-        <ul>
-          { nextPagePath && (
-            <li>
-              <Link to={ nextPagePath }>
-                Next Page
-              </Link>
-            </li>
-          ) }
-
-          { previousPagePath && (
-            <li>
-              <Link to={ previousPagePath }>
-                Previous Page
-              </Link>
-            </li>
-          ) }
-        </ul>
-      </div>
-    </Layout>
+        <Button as="div">
+          Read more
+        </Button>
+      </Link>
+    </Card>
   )
 }
 
-export default Blog
-
-export const pageQuery = graphql`
-  query {
-    allMdx {
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 300)
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            cover {
-              childImageSharp {
-                sizes(maxWidth: 900) {
-                  ...GatsbyImageSharpSizes
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
+export default BlogPostCard
