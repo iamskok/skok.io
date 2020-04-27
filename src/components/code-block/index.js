@@ -61,6 +61,14 @@ const CodeBlock = ({
   const [lineNumbersState, setLineNumbersState] = useState(isLineNumbers)
   const toggleLineNumbers = () => setLineNumbersState(!lineNumbersState)
 
+  const [scrollbar, setScrollbar] = useState(false)
+  const addScrollbar = () => {
+    setScrollbar(true)
+    setTimeout(() => {
+      setScrollbar(false)
+    }, 5000)
+  }
+
   return (
     <PrismThemeConsumer>
       {({ prismTheme }) => (
@@ -94,10 +102,17 @@ const CodeBlock = ({
             </div>
           </div>
           <Styled.pre
+            onScroll={ addScrollbar }
             sx={{
               margin: 0,
               backgroundColor: prismTheme.plain.backgroundColor,
               transition: 'background-color 400ms ease',
+              '&::-webkit-scrollbar': {
+                height: `5px`,
+              },
+              '&::-webkit-scrollbar-thumb': {
+                background: scrollbar ? prismTheme.plain.color : `rgba(0,0,0,0)`,
+              }
             }}
           >
             {isLive ?
