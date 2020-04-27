@@ -24,8 +24,8 @@ const Line = ({
             prismTheme.lineHighlight &&
             prismTheme.lineHighlight.backgroundColor :
             `transparent`,
-          paddingX: highlight ? 20 : `0`,
-          marginX: highlight ? -20 : `0`,
+          paddingX: highlight ? 3 : `0`,
+          marginX: highlight ? 3 * -1 : `0`,
           transition: 'background-color 400ms ease, color 400ms ease'
         }}
       >

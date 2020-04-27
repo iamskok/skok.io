@@ -23,7 +23,7 @@ const Pre = props => {
       <Styled.pre
         {...props}
         sx={{
-          padding: rythm,
+          padding: 3,
           marginBottom: rythm,
         }}
       >
@@ -35,7 +35,7 @@ const Pre = props => {
       <Styled.pre
         {...props}
         sx={{
-          padding: rythm,
+          padding: 3,
           marginBottom: rythm,
         }}
       >

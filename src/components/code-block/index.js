@@ -15,7 +15,6 @@ import LanguageTab from './language-tab'
 import scope from './scope'
 import { PrismThemeConsumer } from './prism-theme-provider'
 import { baseThemeSettings } from '../../gatsby-plugin-theme-ui'
-import unitless from '../../utils/unitless'
 
 const { rythm } = baseThemeSettings
 
@@ -75,7 +74,7 @@ const CodeBlock = ({
         <div sx={{
           marginBottom: rythm,
           position: 'relative',
-          marginX: -1 * (unitless(rythm) / 2) + 'rem',
+          marginX: 3 * -1,
         }}>
           {isLanguageTab && !isLive &&
           <LanguageTab language={getLanguage(className)} />}
