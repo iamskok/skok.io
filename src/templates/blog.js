@@ -1,15 +1,19 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import Layout from '../components/layout';
-import Link from '../components/link';
+import { graphql } from 'gatsby'
+import Layout from '../components/layout'
+import Link from '../components/link'
+import BlogPostCard from '../components/blog-post-card'
 
 const Blog = ({
   data: { allMdx },
   pageContext: { pagination },
 }) => {
-  const { page, nextPagePath, previousPagePath } = pagination;
+  const {
+    page,
+    nextPagePath,
+    previousPagePath
+  } = pagination
 
   const posts = page.map(id =>
     allMdx.edges.find(edge => edge.node.id === id)
@@ -17,54 +21,36 @@ const Blog = ({
 
   return (
     <Layout>
-      <Styled.h1 sx={{fontStyle: `italic`}}>
+      <Styled.h1>
         Blog
       </Styled.h1>
 
       { posts.map(({ node: post }) => (
-        <div key={post.id}>
-          {post.frontmatter.cover && (
-            <Img
-              sizes={post.frontmatter.cover.childImageSharp.sizes}
-            />
-          )}
-
-          <Styled.h2>
-            <Link to={post.fields.slug}>
-              {post.frontmatter.title}
-            </Link>
-          </Styled.h2>
-
-          <small>{post.frontmatter.date}</small>
-
-          <Styled.p>{post.excerpt}</Styled.p>
-
-          <Link to={post.fields.slug}>
-            Continue Reading
-          </Link>
-        </div>
+        <BlogPostCard
+          key={post.id}
+          post={post}
+        />
       )) }
 
       <hr />
 
       <div>
-        Pagination:
         <ul>
-          {nextPagePath && (
+          { nextPagePath && (
             <li>
-              <Link to={nextPagePath}>
+              <Link to={ nextPagePath }>
                 Next Page
               </Link>
             </li>
-          )}
+          ) }
 
-          {previousPagePath && (
+          { previousPagePath && (
             <li>
-              <Link to={previousPagePath}>
+              <Link to={ previousPagePath }>
                 Previous Page
               </Link>
             </li>
-          )}
+          ) }
         </ul>
       </div>
     </Layout>

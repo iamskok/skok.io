@@ -35,7 +35,6 @@ const {
 export default {
   root: {
     margin: 0,
-    paddingX: (unitless(rythm) / 2) + `rem`,
     fontFamily: `body`,
     lineHeight: baseLineHeight,
     fontFeatureSettings: `'kern', 'calt', 'ss01', 'ss02', 'ss03'`,

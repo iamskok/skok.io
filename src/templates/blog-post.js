@@ -29,7 +29,7 @@ export default props => {
         sx={{
           display: 'flex',
         }}
-        py={4}>
+      >
         {prev && (
           <Styled.a
             as={Link}
