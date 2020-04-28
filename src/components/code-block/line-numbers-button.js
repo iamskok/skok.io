@@ -5,12 +5,12 @@ const LineNumbersButton = ({ onClick }) => {
   return (
     <IconButton
       aria-label='Toggle line numbers'
-      sx={{ variant: 'buttons.icon' }}
-      onClick={onClick}
+      sx={{ variant: 'buttons.codeBlock' }}
+      onClick={ onClick }
     >
       <svg
         viewBox='0 0 12 16'
-        sx={{ variant: 'buttons.svgIcon' }}
+        sx={{ variant: 'buttons.iconSvgSm' }}
       >
         <path
           fillRule='evenodd'
