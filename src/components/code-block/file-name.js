@@ -18,7 +18,8 @@ const FileName = ({ name }) => {
         <div sx={{
           overflowX: 'hidden',
           display: 'flex',
-          flex: 1
+          flex: 1,
+          borderBottom: `1px solid ${prismTheme.plain.color}`
         }}>
           <div
             onScroll={ addScrollbar }

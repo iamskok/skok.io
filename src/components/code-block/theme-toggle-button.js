@@ -13,7 +13,7 @@ const ThemeToggleButton = () => {
         <IconButton
           aria-label='Change code block syntax highlighting theme'
           sx={{
-            variant: 'buttons.codeBlock',
+            variant: 'buttons.icon',
           }}
           onClick={() => {
             changePrismTheme()
@@ -23,7 +23,7 @@ const ThemeToggleButton = () => {
           <svg
             viewBox='0 0 32 32'
             sx={{
-              variant: 'buttons.iconSvgSm',
+              variant: 'buttons.iconSvg',
               transition: 'transform 400ms ease',
               transform: `rotate(${turnCounter * 180}deg)`
             }}

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, Box } from 'theme-ui'
 import { useState } from 'react'
 import HighlightCode from './highlight-code'
 import ReactLiveEditor from './react-live-editor'
@@ -85,19 +85,20 @@ const CodeBlock = ({
             backgroundColor: prismTheme.plain.backgroundColor,
             transition: 'background-color 400ms ease',
           }}>
+            {isFileName && <FileName name={fileName} />}
             <div sx={{
               display: 'flex',
-              alignItems: 'center',
-              flexDirection: !isFileName && 'row-reverse',
-              paddingY: 2
+              padding: 1,
             }}>
-              {isFileName && <FileName name={fileName} />}
-              <div sx={{ marginX: 2 }}>
-                {isLineNumbersButton && <LineNumbersButton
-                  onClick={toggleLineNumbers} />}
+              <Box sx={{
+                marginLeft: `auto`
+              }}>
+                { isLineNumbersButton &&
+                  <LineNumbersButton onClick={toggleLineNumbers} />
+                }
                 {isThemeToggleButton && <ThemeToggleButton />}
                 {isCopyButton && <CopyButton code={code} />}
-              </div>
+              </Box>
             </div>
           </div>
           <Styled.pre

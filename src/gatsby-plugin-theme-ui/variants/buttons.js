@@ -11,25 +11,15 @@ const buttons = {
     width: `iconButton`,
     cursor: `pointer`,
     color: `primary`,
+    transition: `color 400ms ease`,
+    '&:hover': {
+      color: `secondary`
+    }
   },
   iconSvg: {
     height: `icon`,
     width: `icon`,
     fill: `currentColor`,
-  },
-  codeBlock: {
-    variant: `buttons.icon`,
-    height: `iconButtonSm`,
-    width: `iconButtonSm`,
-    opacity: 0.5,
-    '&:hover': {
-      opacity: 1,
-    }
-  },
-  iconSvgSm: {
-    variant: `buttons.iconSvg`,
-    height: `iconSm`,
-    width: `iconSm`,
   },
 }
 

@@ -8,12 +8,12 @@ const CopyButton = ({ code }) => {
   return (
     <IconButton
       aria-label="Copy code block to clipboard"
-      sx={{ variant: 'buttons.codeBlock' }}
+      sx={{ variant: 'buttons.icon' }}
       onClick={handleCopy}
     >
       <svg
         viewBox='0 0 14 16'
-        sx={{ variant: 'buttons.iconSvgSm' }}
+        sx={{ variant: 'buttons.iconSvg' }}
       >
         <path
           fillRule='evenodd'
