@@ -31,11 +31,13 @@ const Header = () => {
           listStyle: `none`,
         }}>
           { navigation.map(({ to, label }) => (
-            <li sx={{
-              display: `inline-block`
-            }}>
+            <li
+              key={label}
+              sx={{
+                display: `inline-block`
+              }}
+            >
               <Link
-                key={label}
                 to={to}
                 sx={{
                   variant: `links.nav`
