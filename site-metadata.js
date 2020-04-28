@@ -21,17 +21,5 @@ module.exports = {
   colorModes: [
     `default`,
     `dark`,
-    `funk`,
-    `base`,
-    `system`,
-    `future`,
-    `roboto`,
-    `dark`,
-    `deep`,
-    `swiss`,
-    `tosh`,
-    `bootstrap`,
-    `bulma`,
-    `tailwind`,
   ]
 }
