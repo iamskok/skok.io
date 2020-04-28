@@ -13,31 +13,39 @@ const Header = () => {
       sx={{
         display: `flex`,
         alignItems: `center`,
+        paddingY: 1
     }}>
       <Link
         to={`/`}
         sx={{
           variant: `links.nav`,
-          marginLeft: 2 * -1
+          margin: 0
         }}
       >
         skok.io
       </Link>
-      <Box
-        marginLeft="auto"
-        marginRight="1"
-      >
-        { navigation.map(({ to, label }) => (
-          <Link
-            key={`${label}`}
-            to={`${to}`}
-            sx={{
-              variant: `links.nav`
-            }}
-          >
-            {label}
-          </Link>
-        )) }
+      <Box marginLeft="auto">
+        <ul sx={{
+          padding: 0,
+          margin: 0,
+          listStyle: `none`,
+        }}>
+          { navigation.map(({ to, label }) => (
+            <li sx={{
+              display: `inline-block`
+            }}>
+              <Link
+                key={label}
+                to={to}
+                sx={{
+                  variant: `links.nav`
+                }}
+              >
+                {label}
+              </Link>
+            </li>
+          )) }
+        </ul>
       </Box>
       <ColorModeButton />
     </Flex>
