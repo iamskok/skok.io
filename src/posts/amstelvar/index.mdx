@@ -20,11 +20,17 @@ pyftsubset Amstelvar-Roman.woff2 \
   --output-file="amstelvar.woff2"
 ```
 
-```shell
+```shell {3}
 pyftsubset Amstelvar-Roman.woff2 \
   --unicodes="U+20-7E" \
   --layout-features="kern,pnum" \
   --flavor="woff2" \
   --no-subset-tables+="FFTM" \
   --output-file="amstelvar.woff2"
+```
+
+```jsx live {1}
+<h1>Hello</h1>
+<h1>Hello</h1>
+<h1>Hello</h1>
 ```

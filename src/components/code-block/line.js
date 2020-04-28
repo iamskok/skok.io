@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, useThemeUI } from 'theme-ui'
 import LineNumber from './line-number'
 import LineTokens from './line-tokens'
 import { PrismThemeConsumer } from './prism-theme-provider'
@@ -11,39 +11,48 @@ const Line = ({
   getTokenProps,
   lineNumbers,
   highlight
-}) => (
-  <PrismThemeConsumer>
-    {({ prismTheme }) => (
-      <div
-        {...getLineProps({
-          line,
-          key: lineNumber,
-        })}
-        sx={{
-          backgroundColor: highlight ?
-            prismTheme.lineHighlight &&
-            prismTheme.lineHighlight.backgroundColor :
-            `transparent`,
-          paddingX: highlight ? 3 : `0`,
-          marginX: highlight ? 3 * -1 : `0`,
-          transition: 'background-color 400ms ease, color 400ms ease'
-        }}
-      >
+}) => {
+  const {
+    theme: {
+      sizes: {
+        lineNumber: lineNumberWidth
+      }
+    }
+  } = useThemeUI()
 
-        <LineNumber
-          index={lineNumber}
-          lineNumbers={lineNumbers}
-          highlight={highlight}
-        />
+  return (
+    <PrismThemeConsumer>
+      {({ prismTheme }) => (
+        <div
+          {...getLineProps({
+            line,
+            key: lineNumber,
+          })}
+          sx={{
+            backgroundColor: highlight ?
+              prismTheme.lineHighlight &&
+              prismTheme.lineHighlight.backgroundColor :
+              `transparent`,
+            transition: `background-color 400ms ease, color 400ms ease, transform 400ms ease`,
+            transform: lineNumbers ? `translateX(0)` : `translateX(${-1 * lineNumberWidth + 'px'})`,
+          }}
+        >
 
-        <LineTokens
-          line={line}
-          getTokenProps={getTokenProps}
-          lineNumbers={lineNumbers}
-        />
-      </div>
-    )}
-  </PrismThemeConsumer>
-)
+          <LineNumber
+            index={lineNumber}
+            lineNumbers={lineNumbers}
+            highlight={highlight}
+          />
+
+          <LineTokens
+            line={line}
+            getTokenProps={getTokenProps}
+            lineNumbers={lineNumbers}
+          />
+        </div>
+      )}
+    </PrismThemeConsumer>
+  )
+}
 
 export default Line

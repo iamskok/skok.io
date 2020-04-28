@@ -1,12 +1,11 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { PrismThemeConsumer } from './prism-theme-provider'
-import { baseThemeSettings } from '../../gatsby-plugin-theme-ui'
-import unitless from '../../utils/unitless'
 
-const { rythm } = baseThemeSettings
-
-const LineNumber = ({ index, lineNumbers, highlight = false }) => (
+const LineNumber = ({
+  index,
+  highlight = false
+}) => (
   <PrismThemeConsumer>
     {({ prismTheme }) => (
       <span sx={{
@@ -14,6 +13,7 @@ const LineNumber = ({ index, lineNumbers, highlight = false }) => (
         width: 'lineNumber',
         userSelect: 'none',
         textAlign: 'center',
+        marginRight: 2,
         color: (
           highlight &&
           prismTheme.lineNumberActive &&
@@ -24,10 +24,6 @@ const LineNumber = ({ index, lineNumbers, highlight = false }) => (
           prismTheme.lineNumber.color
         ) ||
         prismTheme.plain.color,
-        marginLeft: unitless(rythm) * -1 + 'rem',
-        marginRight: rythm,
-        transition: 'background-color 400ms ease, color 400ms ease, transform 400ms ease',
-        transform: lineNumbers ? 'translate3d(0, 0, 0)' : 'translate3d(-40px, 0, 0)',
       }}>
         {++index}
       </span>

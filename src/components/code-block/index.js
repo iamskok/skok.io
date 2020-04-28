@@ -74,7 +74,6 @@ const CodeBlock = ({
         <div sx={{
           marginBottom: rythm,
           position: 'relative',
-          marginX: 3 * -1,
         }}>
           {isLanguageTab && !isLive &&
           <LanguageTab language={getLanguage(className)} />}

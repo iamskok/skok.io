@@ -24,7 +24,7 @@ const Pre = props => {
         {...props}
         sx={{
           padding: 3,
-          marginBottom: rythm,
+          marginBottom: 0,
         }}
       >
         {children}

@@ -25,7 +25,6 @@ const FileName = ({ name }) => {
             onScroll={ addScrollbar }
             sx={{
               overflowX: 'scroll',
-              marginLeft: 3,
               '&::-webkit-scrollbar': {
                 height: `5px`,
               },
@@ -35,10 +34,8 @@ const FileName = ({ name }) => {
             }}
           >
             <p sx={{
-              fontSize: 4,
-              fontFamily: 'heading',
-              fontWeight: 'bold',
-              fontStyle: 'italic',
+              fontSize: 3,
+              fontFamily: 'code',
               display: 'flex',
               flex: 1,
               margin: 0,

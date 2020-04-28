@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, useThemeUI } from 'theme-ui'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Editor from 'react-simple-code-editor'
@@ -19,6 +19,15 @@ const CodeEditor = ({
   ...rest
 }) => {
   const [codeString, setCodeString] = useState(code)
+
+  const {
+    theme: {
+      space,
+      sizes: {
+        lineNumber: lineNumberWidth
+      }
+    }
+  } = useThemeUI()
 
   useEffect(() => {
     onChange(codeString)
@@ -56,12 +65,15 @@ const CodeEditor = ({
               sx={{
                 minWidth: `100%`,
                 float: `left`,
-                caretColor: (prismTheme.cursor && prismTheme.cursor.color) || `auto`,
-
+                caretColor: (
+                  prismTheme.cursor &&
+                  prismTheme.cursor.color
+                ) || `auto`,
                 '& > textarea': {
                   zIndex: 1,
-                  paddingLeft: lineNumbers ? `60px !important` : `20px !important`,
-                  paddingRight: `20px !important`,
+                  paddingLeft: lineNumbers ?
+                    `${lineNumberWidth + space[2] + 'px'} !important` :
+                    `${space[2] + 'px'} !important`,
                   whiteSpace: `pre !important`,
                   outlineStyle: 'solid'
                 },
