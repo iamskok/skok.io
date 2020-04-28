@@ -1,14 +1,13 @@
 /** @jsx jsx */
-// import { useState } from 'react'
+import { useState } from 'react'
 import { jsx, IconButton, useColorMode } from 'theme-ui'
-// import useSiteMetadata from '../hooks/use-site-metadata'
+import useSiteMetadata from '../hooks/use-site-metadata'
 
 const ColorModeButton = props => {
-  // const { colorModes } = useSiteMetadata()
-  const colorModes = [`default`, `dark`, `deep`, `swiss`]
+  const { colorModes } = useSiteMetadata()
   const [colorMode, setColorMode] = useColorMode()
-  // const [turn, setTurn] = useState(0)
-  // const turnButton = () => setTurn(turn < 1 ? 1 : 0)
+  const [turn, setTurn] = useState(0)
+  const turnButton = () => setTurn(turn < 1 ? 1 : 0)
 
   return (
     <IconButton
@@ -17,16 +16,14 @@ const ColorModeButton = props => {
       onClick={() => {
         const index = colorModes.indexOf(colorMode)
         const next = colorModes[(index + 1) % colorModes.length]
-        console.log('current', colorModes[index])
-        console.log('next', next)
         setColorMode(next)
-        // turnButton()
+        turnButton()
       }}
       sx={{
-        cursor: 'pointer',
+        cursor: `pointer`,
         padding: 0,
-        width: 40,
-        height: 40,
+        width: `iconButton`,
+        height: `iconButton`,
         marginX: 0,
       }}
     >
@@ -36,10 +33,10 @@ const ColorModeButton = props => {
         viewBox='0 0 32 32'
         fill='currentcolor'
         sx={{
-          display: 'flex',
-          margin: '0 auto',
-          transition: 'transform 400ms ease',
-          // transform: `rotate(${turn * 180}deg)`
+          display: `flex`,
+          margin: `0 auto`,
+          transition: `transform 400ms ease`,
+          transform: `rotate(${turn * 180}deg)`
         }}
       >
         <circle
