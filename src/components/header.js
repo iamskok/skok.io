@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Flex, Box } from 'theme-ui'
 import { Link } from 'gatsby'
 import useSiteMetadata from '../hooks/use-site-metadata'
 import ColorModeButton from './color-mode-button'
@@ -8,21 +8,39 @@ const Header = () => {
   const { navigation } = useSiteMetadata()
 
   return (
-    <nav sx={{
-      display: 'flex',
-      justifyContent: 'space-between'
+    <Flex
+      as="header"
+      sx={{
+        display: `flex`,
+        alignItems: `center`,
     }}>
-      <Link to={`/`}>skok.io</Link>
-      { navigation.map(({ to, label }) => (
-        <Link
-          key={`${label}`}
-          to={`${to}`}
-        >
-          {label}
-        </Link>
-      )) }
+      <Link
+        to={`/`}
+        sx={{
+          variant: `links.nav`,
+          marginLeft: 2 * -1
+        }}
+      >
+        skok.io
+      </Link>
+      <Box
+        marginLeft="auto"
+        marginRight="1"
+      >
+        { navigation.map(({ to, label }) => (
+          <Link
+            key={`${label}`}
+            to={`${to}`}
+            sx={{
+              variant: `links.nav`
+            }}
+          >
+            {label}
+          </Link>
+        )) }
+      </Box>
       <ColorModeButton />
-    </nav>
+    </Flex>
   )
 }
 

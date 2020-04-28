@@ -27,7 +27,7 @@ const ColorModeButton = props => {
         padding: 0,
         width: 40,
         height: 40,
-        marginX: 1,
+        marginX: 0,
       }}
     >
       <svg
