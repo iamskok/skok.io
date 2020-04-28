@@ -2,9 +2,6 @@
 import Highlight, { Prism } from '@skok/prism-react-renderer'
 import { jsx, Styled } from 'theme-ui'
 import Line from './line'
-import { baseThemeSettings } from '../../gatsby-plugin-theme-ui'
-
-const { rythm } = baseThemeSettings
 
 const HighlightCode = ({
   code,
