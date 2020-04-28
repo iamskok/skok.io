@@ -1,4 +1,4 @@
-import firaCodeVF from './fira-code-vf-subset.woff2'
+import firaCodeWoff2 from './fira-code-subset.woff2'
 
 const firaCodeFontFace = `
   @font-face {
@@ -6,8 +6,8 @@ const firaCodeFontFace = `
     font-weight: 300 700;
     font-display: swap;
     font-style: normal;
-    src: url(${firaCodeVF}) format('woff2-variations'),
-      url(${firaCodeVF}) format('woff2');
+    src: url(${firaCodeWoff2}) format('woff2-variations'),
+      url(${firaCodeWoff2}) format('woff2');
   }
 `
 

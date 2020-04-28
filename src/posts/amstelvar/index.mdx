@@ -1,0 +1,30 @@
+---
+title: Amstelvar font family
+date: 2020-04-25
+published: true
+---
+
+## Header ~~without~~ with _italics_, **bold** & **_italic+bold_** (Amstelvar)
+
+## 123456789
+
+Some random _italic_, **bold**, **_italic+bold_** (Inter var experimental). 
+
+```
+// Fira Code
+pyftsubset Amstelvar-Roman.woff2 \
+  --unicodes="U+20-7E" \
+  --layout-features="kern,pnum" \
+  --flavor="woff2" \
+  --no-subset-tables+="FFTM" \
+  --output-file="amstelvar.woff2"
+```
+
+```shell
+pyftsubset Amstelvar-Roman.woff2 \
+  --unicodes="U+20-7E" \
+  --layout-features="kern,pnum" \
+  --flavor="woff2" \
+  --no-subset-tables+="FFTM" \
+  --output-file="amstelvar.woff2"
+```

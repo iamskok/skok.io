@@ -1,9 +1,12 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx, Styled } from 'theme-ui'
 import Layout from '../components/layout'
 
 const IndexPage = () => (
   <Layout>
-    <h1>Index Page</h1>
+    <Styled.h1>
+      Index Page
+    </Styled.h1>
   </Layout>
 )
 

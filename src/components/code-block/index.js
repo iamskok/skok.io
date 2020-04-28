@@ -14,6 +14,9 @@ import FileName from './file-name'
 import LanguageTab from './language-tab'
 import scope from './scope'
 import { PrismThemeConsumer } from './prism-theme-provider'
+import { baseThemeSettings } from '../../gatsby-plugin-theme-ui'
+
+const { rythm } = baseThemeSettings
 
 const CodeBlock = ({
   children,
@@ -57,12 +60,21 @@ const CodeBlock = ({
   const [lineNumbersState, setLineNumbersState] = useState(isLineNumbers)
   const toggleLineNumbers = () => setLineNumbersState(!lineNumbersState)
 
+  const [scrollbar, setScrollbar] = useState(false)
+  const addScrollbar = () => {
+    setScrollbar(true)
+    setTimeout(() => {
+      setScrollbar(false)
+    }, 5000)
+  }
+
   return (
     <PrismThemeConsumer>
       {({ prismTheme }) => (
         <div sx={{
-          marginBottom: 20,
+          marginBottom: rythm,
           position: 'relative',
+          marginX: 3 * -1,
         }}>
           {isLanguageTab && !isLive &&
           <LanguageTab language={getLanguage(className)} />}
@@ -70,16 +82,17 @@ const CodeBlock = ({
           <div sx={{
             display: 'flex',
             flexDirection: 'column',
+            backgroundColor: prismTheme.plain.backgroundColor,
+            transition: 'background-color 400ms ease',
           }}>
             <div sx={{
               display: 'flex',
-              backgroundColor: prismTheme.plain.backgroundColor,
-              transition: 'background-color 400ms ease',
+              alignItems: 'center',
               flexDirection: !isFileName && 'row-reverse',
-              paddingY: 1
+              paddingY: 2
             }}>
               {isFileName && <FileName name={fileName} />}
-              <div>
+              <div sx={{ marginX: 2 }}>
                 {isLineNumbersButton && <LineNumbersButton
                   onClick={toggleLineNumbers} />}
                 {isThemeToggleButton && <ThemeToggleButton />}
@@ -88,10 +101,17 @@ const CodeBlock = ({
             </div>
           </div>
           <Styled.pre
+            onScroll={ addScrollbar }
             sx={{
               margin: 0,
               backgroundColor: prismTheme.plain.backgroundColor,
               transition: 'background-color 400ms ease',
+              '&::-webkit-scrollbar': {
+                height: `5px`,
+              },
+              '&::-webkit-scrollbar-thumb': {
+                background: scrollbar ? prismTheme.plain.color : `rgba(0,0,0,0)`,
+              }
             }}
           >
             {isLive ?

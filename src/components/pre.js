@@ -2,13 +2,19 @@
 import { jsx, Styled } from 'theme-ui'
 import CodeBlock from './code-block'
 import isPreWithCodeBlock from '../utils/is-pre-with-code-block'
+import { baseThemeSettings } from '../gatsby-plugin-theme-ui'
+
+const { rythm } = baseThemeSettings
 
 const Pre = props => {
   const { isLiveError, children } = props
 
   if (isPreWithCodeBlock(props)) {
     return (
-      <CodeBlock {...children.props}>
+      <CodeBlock
+        {...children.props}
+        sx={{ marginBottom: rythm }}
+      >
         {children}
       </CodeBlock>
     )
@@ -16,7 +22,10 @@ const Pre = props => {
     return (
       <Styled.pre
         {...props}
-        sx={{ padding: 20 }}
+        sx={{
+          padding: 3,
+          marginBottom: rythm,
+        }}
       >
         {children}
       </Styled.pre>
@@ -26,8 +35,8 @@ const Pre = props => {
       <Styled.pre
         {...props}
         sx={{
-          padding: 20,
-          marginBottom: 20
+          padding: 3,
+          marginBottom: rythm,
         }}
       >
         {children.props.children}

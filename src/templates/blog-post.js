@@ -22,14 +22,14 @@ export default props => {
   return (
     <Layout>
       {cover && <Img sizes={cover.childImageSharp.sizes} />}
-      <h1>{title}</h1>
+      <Styled.h1>{title}</Styled.h1>
       <time>{date}</time>
       {children}
       <div
         sx={{
           display: 'flex',
         }}
-        py={4}>
+      >
         {prev && (
           <Styled.a
             as={Link}

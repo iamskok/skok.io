@@ -25,7 +25,7 @@ const HighlightCode = ({
       <Styled.code
         sx={{
           ...style,
-          paddingX: 20,
+          paddingX: 3,
           transition: 'background-color 400ms ease'
         }}
       >
