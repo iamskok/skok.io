@@ -34,7 +34,7 @@ const Line = ({
               prismTheme.lineHighlight.backgroundColor :
               `transparent`,
             transition: `background-color 400ms ease, color 400ms ease, transform 400ms ease`,
-            transform: lineNumbers ? `translateX(0)` : `translateX(${-1 * lineNumberWidth + 'px'})`,
+            transform: lineNumbers ? `translate3d(0, 0, 0)` : `translate3d(${-1 * lineNumberWidth + 'px'}, 0, 0)`,
           }}
         >
 
