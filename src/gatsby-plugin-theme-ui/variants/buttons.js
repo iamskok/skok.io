@@ -10,20 +10,27 @@ const buttons = {
     height: `iconButton`,
     width: `iconButton`,
     cursor: `pointer`,
-    color: `background`,
-    backgroundColor: `secondary`,
-    marginX: 2,
-    opacity: 0.75,
-    transition: `opacity 400ms ease`,
-    '&:hover': {
-      opacity: 1
-    }
+    color: `primary`,
   },
-  svgIcon: {
+  iconSvg: {
     height: `icon`,
     width: `icon`,
     fill: `currentColor`,
-  }
+  },
+  codeBlock: {
+    variant: `buttons.icon`,
+    height: `iconButtonSm`,
+    width: `iconButtonSm`,
+    opacity: 0.5,
+    '&:hover': {
+      opacity: 1,
+    }
+  },
+  iconSvgSm: {
+    variant: `buttons.iconSvg`,
+    height: `iconSm`,
+    width: `iconSm`,
+  },
 }
 
 export default buttons

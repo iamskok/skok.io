@@ -9,6 +9,7 @@ const cards = {
     borderRadius: 1,
     boxShadow: `default`,
     transition: `box-shadow 400ms ease`,
+    backgroundColor: `backgroundLight` || `background`,
     '&:hover': {
       boxShadow: `active`,
     }

@@ -3,7 +3,7 @@ const links = {
     color: `primary`,
     textDecoration: `none`,
     textTransform: `uppercase`,
-    paddingX: 2
+    marginX: 2
   }
 }
 
