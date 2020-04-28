@@ -63,7 +63,8 @@ const CodeEditor = ({
               highlight={highlightCode}
               onValueChange={updateContent}
               sx={{
-                minWidth: `100%`,
+                minWidth: `calc(100% + ${lineNumberWidth + 'px'}) !important`,
+                // minWidth: `100%`,
                 float: `left`,
                 caretColor: (
                   prismTheme.cursor &&
