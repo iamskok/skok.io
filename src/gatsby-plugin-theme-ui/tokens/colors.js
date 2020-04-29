@@ -1,13 +1,31 @@
 export default {
   // Swiss
-  text: 'hsl(10, 20%, 20%)',
-  background: 'hsl(10, 10%, 98%)',
-  primary: 'hsl(10, 80%, 50%)',
-  secondary: 'hsl(10, 60%, 50%)',
-  highlight: 'hsl(10, 40%, 90%)',
-  accent: 'hsl(250, 60%, 30%)',
-  muted: 'hsl(10, 20%, 94%)',
-  gray: 'hsl(10, 20%, 50%)',
+  // text: '#111',
+  // background: '#fff',
+  // primary: '#ff0063',
+  // secondary: '#810066',
+  // highlight: '#900c3f',
+  // accent: 'hsl(250, 60%, 30%)',
+  // muted: '#ffe7ff',
+  // gray: '#d9e8f7',
+
+  // text: "#111",
+  // background: "#fff",
+  // primary: "#0659f3",
+  // secondary: "#30c",
+  // muted: "#f6f6f6",
+  // gray: '#e9e9e9',
+
+  "text": "#454f5b",
+  "background": "#fff",
+  "primary": "#5c6ac4",
+  "secondary": "#006fbb",
+  "highlight": "#47c1bf",
+  "muted": "#e6e6e6",
+  "gray": "#a9a9a9",
+  "accent": "#f49342",
+  "darken": "#00044c",
+
   modes: {
     // Deep
     dark: {

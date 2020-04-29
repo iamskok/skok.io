@@ -27,8 +27,12 @@ const Line = ({
         key: lineNumber,
       })}
       sx={{
-        backgroundColor: highlight ? darken(`gray`, 0.1) : `transparent`,
-        transform: lineNumbers ? `translate3d(0, 0, 0)` : `translate3d(${-1 * lineNumberWidth + 'px'}, 0, 0)`,
+        backgroundColor: highlight ?
+          darken(`gray`, 0.1) :
+          `transparent`,
+        transform: lineNumbers ?
+          `translate3d(0, 0, 0)` :
+          `translate3d(${-1 * lineNumberWidth + 'px'}, 0, 0)`,
         transition: `background-color 400ms ease,
           color 400ms ease,
           transform 400ms ease`,
