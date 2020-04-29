@@ -2,6 +2,7 @@ const buttons = {
   primary: {
     color: 'background',
     bg: 'primary',
+    '-webkit-tap-highlight-color': `secondary`,
     '&:hover': {
       bg: 'secondary',
     }
