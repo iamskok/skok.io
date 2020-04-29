@@ -49,6 +49,7 @@ export default {
   },
   a: {
     color: `primary`,
+    '-webkit-tap-highlight-color': `secondary`,
     '&:hover': {
       color: `secondary`,
       textDecoration: `none`,
