@@ -14,7 +14,6 @@ module.exports = {
   codeBlock: {
     lineNumbers: true,
     lineNumbersButton: true,
-    themeToggleButton: true,
     copyButton: true,
     languageTab: true
   },

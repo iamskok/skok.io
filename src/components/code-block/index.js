@@ -8,12 +8,10 @@ import calculateLinesToHighlight from './calculate-lines-to-highlight'
 import isFeatureEnabled from './is-feature-enabled'
 import getLanguage from './get-language'
 import CopyButton from './copy-button'
-import ThemeToggleButton from './theme-toggle-button'
 import LineNumbersButton from './line-numbers-button'
 import FileName from './file-name'
 import LanguageTab from './language-tab'
 import scope from './scope'
-import { PrismThemeConsumer } from './prism-theme-provider'
 import { baseThemeSettings } from '../../gatsby-plugin-theme-ui'
 
 const { rythm } = baseThemeSettings
@@ -24,7 +22,6 @@ const CodeBlock = ({
   metastring,
   lineNumbers,
   lineNumbersButton,
-  themeToggleButton,
   live,
   noInline,
   disabled,
@@ -36,7 +33,6 @@ const CodeBlock = ({
     codeBlock: {
       lineNumbers: globalLineNumbers,
       lineNumbersButton: globalLineNumbersButton,
-      themeToggleButton: globalThemeToggleButton,
       copyButton: globalCopyButton,
       languageTab: globalLanguageTab,
     }
@@ -52,7 +48,6 @@ const CodeBlock = ({
   const isDisabled = isFeatureEnabled(disabled)
   const isLineNumbers = isFeatureEnabled(lineNumbers, globalLineNumbers)
   const isLineNumbersButton = isFeatureEnabled(lineNumbersButton, globalLineNumbersButton)
-  const isThemeToggleButton = isFeatureEnabled(themeToggleButton, globalThemeToggleButton)
   const isCopyButton = isFeatureEnabled(copyButton, globalCopyButton)
   const isLanguageTab = isFeatureEnabled(languageTab, globalLanguageTab)
   const isFileName = !!fileName
@@ -69,76 +64,70 @@ const CodeBlock = ({
   }
 
   return (
-    <PrismThemeConsumer>
-      {({ prismTheme }) => (
-        <div sx={{
-          marginBottom: rythm,
-          position: 'relative',
-        }}>
-          {isLanguageTab && !isLive &&
-          <LanguageTab language={getLanguage(className)} />}
+  <div sx={{
+    marginBottom: rythm,
+    position: 'relative',
+  }}>
+    {isLanguageTab && !isLive &&
+    <LanguageTab language={getLanguage(className)} />}
 
-          <div sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            backgroundColor: prismTheme.plain.backgroundColor,
-            transition: 'background-color 400ms ease',
-          }}>
-            {isFileName && <FileName name={fileName} />}
-            <div sx={{
-              display: 'flex',
-              padding: 1,
-            }}>
-              <Box sx={{
-                marginLeft: `auto`
-              }}>
-                { isLineNumbersButton &&
-                  <LineNumbersButton onClick={toggleLineNumbers} />
-                }
-                {isThemeToggleButton && <ThemeToggleButton />}
-                {isCopyButton && <CopyButton code={code} />}
-              </Box>
-            </div>
-          </div>
-          <Styled.pre
-            onScroll={ addScrollbar }
-            sx={{
-              margin: 0,
-              backgroundColor: prismTheme.plain.backgroundColor,
-              transition: 'background-color 400ms ease',
-              '&::-webkit-scrollbar': {
-                height: `5px`,
-              },
-              '&::-webkit-scrollbar-thumb': {
-                background: scrollbar ? prismTheme.plain.color : `rgba(0,0,0,0)`,
-              }
-            }}
-          >
-            {isLive ?
-            <ReactLiveEditor
-              code={code}
-              theme={prismTheme}
-              scope={scope}
-              language={language}
-              metastring={metastring}
-              disabled={isDisabled}
-              noInline={isNoInline}
-              lineNumbers={lineNumbersState}
-              shouldHighlightLine={shouldHighlightLine}
-            /> :
-            <HighlightCode
-              code={code}
-              language={language}
-              theme={prismTheme}
-              metastring={metastring}
-              lineNumbers={lineNumbersState}
-              shouldHighlightLine={shouldHighlightLine}
-            />}
-          </Styled.pre>
-        </div>
-      )}
-    </PrismThemeConsumer>
-  )
-}
+    <div sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      transition: 'background-color 400ms ease',
+      backgroundColor: `muted`
+    }}>
+      {isFileName && <FileName name={fileName} />}
+      <div sx={{
+        display: 'flex',
+        padding: 1,
+      }}>
+        <Box sx={{
+          marginLeft: `auto`
+        }}>
+          { isLineNumbersButton &&
+            <LineNumbersButton onClick={toggleLineNumbers} />
+          }
+          {isCopyButton && <CopyButton code={code} />}
+        </Box>
+      </div>
+    </div>
+    <Styled.pre
+      onScroll={ addScrollbar }
+      sx={{
+        margin: 0,
+        transition: 'background-color 400ms ease',
+        '&::-webkit-scrollbar': {
+          height: `5px`,
+        },
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: scrollbar ? `primary` : `rgba(0,0,0,0)`,
+        }
+      }}
+    >
+      {isLive ?
+      <ReactLiveEditor
+        code={code}
+        theme={undefined}
+        scope={scope}
+        language={language}
+        metastring={metastring}
+        disabled={isDisabled}
+        noInline={isNoInline}
+        lineNumbers={lineNumbersState}
+        shouldHighlightLine={shouldHighlightLine}
+      /> :
+      <HighlightCode
+        code={code}
+        language={language}
+        theme={undefined}
+        metastring={metastring}
+        lineNumbers={lineNumbersState}
+        shouldHighlightLine={shouldHighlightLine}
+      />}
+    </Styled.pre>
+  </div>
+)}
+
 
 export default CodeBlock

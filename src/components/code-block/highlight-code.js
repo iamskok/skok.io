@@ -6,7 +6,6 @@ import Line from './line'
 const HighlightCode = ({
   code,
   language,
-  theme,
   lineNumbers,
   shouldHighlightLine,
 }) => {
@@ -22,7 +21,7 @@ const HighlightCode = ({
     <Highlight
       Prism={Prism}
       code={code}
-      theme={theme}
+      theme={undefined}
       language={language}
     >
       {({

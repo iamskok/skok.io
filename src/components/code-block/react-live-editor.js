@@ -5,7 +5,7 @@ import LiveError from './live-error'
 
 const ReactLiveEditor = ({
   code,
-  theme,
+  // theme,
   scope,
   noInline,
   disabled,
@@ -16,7 +16,7 @@ const ReactLiveEditor = ({
 }) => (
   <LiveProvider
     code={code}
-    theme={theme}
+    theme={undefined}
     scope={scope}
     disabled={disabled}
     noInline={noInline}

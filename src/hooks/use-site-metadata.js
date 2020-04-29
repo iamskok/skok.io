@@ -15,7 +15,6 @@ const useSiteMetadata = () => {
             codeBlock {
               lineNumbers
               lineNumbersButton
-              themeToggleButton
               copyButton
               languageTab
             }

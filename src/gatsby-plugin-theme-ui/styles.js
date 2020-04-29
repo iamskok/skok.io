@@ -1,5 +1,6 @@
 import { baseThemeSettings } from './index'
 import unitless from '../utils/unitless'
+import prism from '@theme-ui/prism/presets/theme-ui'
 
 const {
   rythm,
@@ -100,6 +101,7 @@ export default {
     minWidth: `100%`,
     whiteSpace: `pre`,
     paddingY: 0,
+    ...prism
   },
   inlineCode: {
     variant: `text.code`,

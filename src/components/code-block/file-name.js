@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { PrismThemeConsumer } from './prism-theme-provider'
 import { useState } from 'react'
 
 const FileName = ({ name }) => {
@@ -13,41 +12,40 @@ const FileName = ({ name }) => {
   }
 
   return (
-    <PrismThemeConsumer>
-      {({ prismTheme }) => (
-        <div sx={{
-          overflowX: 'hidden',
-          display: 'flex',
+    <div sx={{
+      overflowX: `hidden`,
+      display: `flex`,
+      flex: 1,
+      border: 0,
+      borderBottomWidth: 1,
+      borderStyle: `solid`,
+      borderColor: `primary`,
+    }}>
+      <div
+        onScroll={ addScrollbar }
+        sx={{
+          overflowX: 'scroll',
+          '&::-webkit-scrollbar': {
+            height: `5px`,
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: scrollbar ? `primary` : `rgba(0,0,0,0)`,
+          }
+        }}
+      >
+        <p sx={{
+          fontSize: 2,
+          fontFamily: `code`,
+          display: `flex`,
           flex: 1,
-          borderBottom: `1px solid ${prismTheme.plain.color}`
+          margin: 0,
+          color: `secondary`,
+          transition: `color 400ms ease`,
         }}>
-          <div
-            onScroll={ addScrollbar }
-            sx={{
-              overflowX: 'scroll',
-              '&::-webkit-scrollbar': {
-                height: `5px`,
-              },
-              '&::-webkit-scrollbar-thumb': {
-                background: scrollbar ? prismTheme.plain.color : `rgba(0,0,0,0)`,
-              }
-            }}
-          >
-            <p sx={{
-              fontSize: 3,
-              fontFamily: 'code',
-              display: 'flex',
-              flex: 1,
-              margin: 0,
-              color: prismTheme.plain.color,
-              transition: 'color 400ms ease',
-            }}>
-              { name.trim() }
-            </p>
-          </div>
-        </div>
-      )}
-    </PrismThemeConsumer>
+          { name.trim() }
+        </p>
+      </div>
+    </div>
   )
 }
 

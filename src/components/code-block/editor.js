@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Editor from 'react-simple-code-editor'
 import HighlightCode from './highlight-code'
-import { PrismThemeConsumer } from './prism-theme-provider'
 
 const CodeEditor = ({
   code,
@@ -23,6 +22,9 @@ const CodeEditor = ({
   const {
     theme: {
       space,
+      colors: {
+        primary: primaryColor
+      },
       sizes: {
         lineNumber: lineNumberWidth
       }
@@ -38,7 +40,7 @@ const CodeEditor = ({
   const highlightCode = () => (
     <HighlightCode
       code={codeString}
-      theme={theme}
+      theme={undefined}
       language={language}
       metastring={metastring}
       lineNumbers={lineNumbers}
@@ -47,43 +49,36 @@ const CodeEditor = ({
   )
 
   return (
-    <PrismThemeConsumer>
-      {({ prismTheme }) => (
-        <div sx={{
-          display: `flex`,
-          overflow: `hidden`
-        }}>
-          <div sx={{
-            flex: 1,
-            overflow: `auto`
-          }}>
-            <Editor
-              value={codeString}
-              disabled={disabled}
-              highlight={highlightCode}
-              onValueChange={updateContent}
-              sx={{
-                minWidth: `100%`,
-                float: `left`,
-                caretColor: (
-                  prismTheme.cursor &&
-                  prismTheme.cursor.color
-                ) || `auto`,
-                '& > textarea': {
-                  zIndex: 1,
-                  paddingLeft: lineNumbers ?
-                    `${lineNumberWidth + space[2] + 'px'} !important` :
-                    `${space[2] + 'px'} !important`,
-                  whiteSpace: `pre !important`,
-                  outlineStyle: 'solid'
-                },
-              }}
-              {...rest}
-            />
-          </div>
-        </div>
-      )}
-    </PrismThemeConsumer>
+    <div sx={{
+      display: `flex`,
+      overflow: `hidden`
+    }}>
+      <div sx={{
+        flex: 1,
+        overflow: `auto`
+      }}>
+        <Editor
+          value={codeString}
+          disabled={disabled}
+          highlight={highlightCode}
+          onValueChange={updateContent}
+          sx={{
+            minWidth: `100%`,
+            float: `left`,
+            caretColor: `${primaryColor}`,
+            '& > textarea': {
+              zIndex: 1,
+              paddingLeft: lineNumbers ?
+                `${lineNumberWidth + space[2] + 'px'} !important` :
+                `${space[2] + 'px'} !important`,
+              whiteSpace: `pre !important`,
+              outlineStyle: 'solid'
+            },
+          }}
+          {...rest}
+        />
+      </div>
+    </div>
   )
 }
 
