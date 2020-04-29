@@ -10,21 +10,21 @@ const Link = ({ children, to, ...other }) => {
   if (internal) {
     return (
       <GatsbyLink
-        to={to}
-        {...other}
-        sx={linkStyles}
+        to={ to }
+        { ...other }
+        sx={ linkStyles }
       >
-        {children}
+        { children }
       </GatsbyLink>
     )
   }
 
   return (
     <Styled.a
-      href={to}
-      {...other}
+      href={ to }
+      { ...other }
     >
-      {children}
+      { children }
     </Styled.a>
   )
 }

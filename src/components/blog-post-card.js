@@ -1,14 +1,27 @@
 /** @jsx jsx */
-import { jsx, Card, Button, Styled } from 'theme-ui'
+import { jsx, Card, Styled } from 'theme-ui'
+import { useState } from 'react'
 import Img from 'gatsby-image'
 import Link from '../components/link'
+import StyledButton from '../components/button'
 import { baseThemeSettings } from '../gatsby-plugin-theme-ui/index'
 
 const { lineHeight } = baseThemeSettings
 
 const BlogPostCard = ({ post }) => {
+  const [touchStart, setTouchStart] = useState(false)
+  const addShadow = () => setTouchStart(true)
+  const removeShadow = () => setTouchStart(false)
+
   return (
-    <Card as="article">
+    <Card
+      as="article"
+      onTouchStart={ addShadow }
+      onTouchEnd={ removeShadow }
+      sx={{
+        boxShadow: touchStart ? `active` : `default`
+      }}
+    >
       <Link
         to={ post.fields.slug }
         sx={{
@@ -36,9 +49,9 @@ const BlogPostCard = ({ post }) => {
           { post.excerpt }
         </Styled.p>
 
-        <Button as="div">
+        <StyledButton as="div">
           Read more
-        </Button>
+        </StyledButton>
       </Link>
     </Card>
   )

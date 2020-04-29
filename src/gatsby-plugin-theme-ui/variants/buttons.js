@@ -1,9 +1,10 @@
 const buttons = {
   primary: {
-    color: 'background',
-    bg: 'primary',
+    color: `background`,
+    bg: `primary`,
+    cursor: `pointer`,
     '&:hover': {
-      bg: 'secondary',
+      bg: `secondary`,
     }
   },
   icon: {
