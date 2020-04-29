@@ -3,6 +3,7 @@ const sizes = {
   iconButton: 40,
   lineNumber: 42,
   container: 800,
+  scrollBar: 4
 }
 
 export default sizes
