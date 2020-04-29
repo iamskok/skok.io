@@ -74,7 +74,6 @@ const CodeBlock = ({
     <div sx={{
       display: 'flex',
       flexDirection: 'column',
-      transition: 'background-color 400ms ease',
       backgroundColor: `muted`
     }}>
       {isFileName && <FileName name={fileName} />}
@@ -96,7 +95,6 @@ const CodeBlock = ({
       onScroll={ addScrollbar }
       sx={{
         margin: 0,
-        transition: 'background-color 400ms ease',
         '&::-webkit-scrollbar': {
           height: `5px`,
         },

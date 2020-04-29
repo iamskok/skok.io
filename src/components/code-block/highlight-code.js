@@ -25,7 +25,6 @@ const HighlightCode = ({
         <Styled.code
           sx={{
             ...style,
-            transition: 'background-color 400ms ease'
           }}
         >
           { tokens.map((line, i) => (

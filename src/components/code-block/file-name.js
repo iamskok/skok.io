@@ -14,8 +14,6 @@ const FileName = ({ name }) => {
   return (
     <div sx={{
       overflowX: `hidden`,
-      display: `flex`,
-      flex: 1,
       border: 0,
       borderBottomWidth: 1,
       borderStyle: `solid`,
@@ -25,8 +23,9 @@ const FileName = ({ name }) => {
         onScroll={ addScrollbar }
         sx={{
           overflowX: 'scroll',
+          paddingTop: 1,
           '&::-webkit-scrollbar': {
-            height: `5px`,
+            height: `scrollBar`,
           },
           '&::-webkit-scrollbar-thumb': {
             backgroundColor: scrollbar ? `primary` : `rgba(0,0,0,0)`,
@@ -40,7 +39,6 @@ const FileName = ({ name }) => {
           flex: 1,
           margin: 0,
           color: `secondary`,
-          transition: `color 400ms ease`,
         }}>
           { name.trim() }
         </p>

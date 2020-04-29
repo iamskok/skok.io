@@ -6,6 +6,7 @@ import fonts from './tokens/fonts'
 import fontSizes from './tokens/font-sizes'
 import fontWeights from './tokens/font-weights'
 import lineHeights from './tokens/line-height-headings'
+import borderWidths from './tokens/border-widths'
 import radii from './tokens/radii'
 import shadows from './tokens/shadows'
 import text from './variants/text'
@@ -22,6 +23,7 @@ const theme = {
   fontSizes,
   fontWeights,
   lineHeights,
+  borderWidths,
   radii,
   shadows,
   text,

@@ -7,7 +7,6 @@ const LiveEditor = props => (
     {({
       code,
       language,
-      // theme,
       disabled,
       onChange
     }) => (

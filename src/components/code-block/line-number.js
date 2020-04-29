@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { lighten } from '@theme-ui/color'
 
 const LineNumber = ({
   index,
@@ -12,7 +11,8 @@ const LineNumber = ({
     userSelect: 'none',
     textAlign: 'center',
     marginRight: 2,
-    color: highlight ? lighten(`primary`, 0.15) : `primary`
+    color: highlight ? `prismHighlightNumber` : `primary`,
+    marginLeft: highlight && -1
   }}>
     {++index}
   </span>

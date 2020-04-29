@@ -1,6 +1,6 @@
 import { baseThemeSettings } from './index'
 import unitless from '../utils/unitless'
-import prism from '@theme-ui/prism/presets/theme-ui'
+import prism from './prism'
 
 const {
   rythm,
@@ -39,6 +39,7 @@ export default {
     fontFamily: `body`,
     lineHeight: baseLineHeight,
     fontFeatureSettings: `'kern', 'calt', 'ss01', 'ss02', 'ss03'`,
+    transition: `color 400ms ease, background-color 400ms ease`,
   },
   p: {
     margin: `0 0 ${rythm} 0`,

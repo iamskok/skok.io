@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from 'theme-ui'
-import { darken } from '@theme-ui/color'
 import LineNumber from './line-number'
 import LineTokens from './line-tokens'
 
@@ -27,15 +26,15 @@ const Line = ({
         key: lineNumber,
       })}
       sx={{
-        backgroundColor: highlight ?
-          darken(`gray`, 0.1) :
-          `transparent`,
+        backgroundColor: highlight ? `prismHighlight` : `transparent`,
         transform: lineNumbers ?
           `translate3d(0, 0, 0)` :
           `translate3d(${-1 * lineNumberWidth + 'px'}, 0, 0)`,
-        transition: `background-color 400ms ease,
-          color 400ms ease,
-          transform 400ms ease`,
+        transition: `transform 400ms ease`,
+        border: highlight && 0,
+        borderLeftWidth: highlight && 2,
+        borderStyle: highlight && `solid`,
+        borderColor: highlight && `prismHighlightNumber`
       }}
     >
 
