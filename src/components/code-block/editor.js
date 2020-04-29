@@ -67,12 +67,12 @@ const CodeEditor = ({
             float: `left`,
             caretColor: `${primaryColor}`,
             '& > textarea': {
-              zIndex: 1,
+              zIndex: `editor`,
               paddingLeft: lineNumbers ?
                 `${lineNumberWidth + space[2] + 'px'} !important` :
                 `${space[2] + 'px'} !important`,
               whiteSpace: `pre !important`,
-              outlineStyle: 'solid'
+              outlineStyle: `solid`
             },
           }}
           {...rest}

@@ -9,6 +9,7 @@ import lineHeights from './tokens/line-height-headings'
 import borderWidths from './tokens/border-widths'
 import radii from './tokens/radii'
 import shadows from './tokens/shadows'
+import zIndices from './tokens/z-indices'
 import text from './variants/text'
 import buttons from './variants/buttons'
 import links from './variants/links'
@@ -26,6 +27,7 @@ const theme = {
   borderWidths,
   radii,
   shadows,
+  zIndices,
   text,
   buttons,
   links,

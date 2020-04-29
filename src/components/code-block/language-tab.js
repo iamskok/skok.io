@@ -13,7 +13,7 @@ const LanguageTab = ({ language }) => {
       position: 'absolute',
       right: 1,
       bottom: 1,
-      zIndex: 1,
+      zIndex: `languageTab`,
       pointerEvents: 'none'
     }}>
       {
