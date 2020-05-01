@@ -22,7 +22,7 @@ const Header = () => {
           margin: 0
         }}
       >
-        skok.io
+        VS
       </Link>
       <Box marginLeft="auto">
         <ul sx={{
