@@ -27,7 +27,6 @@ const Line = ({
       }) }
       sx={{
         width: `calc(100% + ${lineNumberWidth + 1 + 'px'})`,
-        marginRight: -lineNumberWidth,
         backgroundColor: highlight ? `prismHighlight` : `transparent`,
         transition: `transform 400ms ease`,
         border: highlight && 0,
