@@ -8,6 +8,8 @@ import firaCodeWoff2 from '../fonts/fira-code/fira-code-subset.woff2'
 import amstelvarFontFaces from '../fonts/amstelvar'
 import interFontFace from '../fonts/inter'
 import firaCodeFontFace from '../fonts/fira-code'
+import fonts from '../theme/fonts'
+import fontObserver from '../utils/font-observer'
 
 const query = graphql`
   query HeadQuery {
@@ -40,7 +42,7 @@ export default props => {
       <meta name='twitter:description' content={description} />
       <meta name='twitter:creator' content={meta.author} />
       <script>
-        {`document.documentElement.classList.add('font-loading-stage-1')`}
+        {` document.documentElement.classList.add('font-loading-stage-1') `}
       </script>
       <link
         href={amstelvarRomanWoff2}
@@ -77,64 +79,14 @@ export default props => {
           ${firaCodeFontFace}
         `}
       </style>
-      <style type="text/css" name="font-loading">
-        {`
-          html {
-            font-size: 125%;
-          }
-
-          .font-loading-stage-1 body {
-            font-family: -apple-system, system-ui, sans-serif;
-          }
-
-          .font-loading-stage-2 h1,
-          .font-loading-stage-2 h2,
-          .font-loading-stage-2 h3,
-          .font-loading-stage-2 h4,
-          .font-loading-stage-2 h5,
-          .font-loading-stage-2 h6 {
-            font-family: 'Amstelvar';
-          }
-
-          .font-loading-stage-2 body {
-            font-family: 'Inter var';
-            font-feature-settings: 'kern', 'calt', 'ss01', 'ss02', 'ss03';
-          }
-
-          .font-loading-stage-2 pre,
-          .font-loading-stage-2 code {
-            font-family: 'Fira Code VF';
-            font-feature-settings: 'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06';
-          }
-        `}
+      <style type="text/css" name="font-size">
+        {` html { font-size: 125%; } `}
+      </style>
+      <style type="text/css" name="font-loading-stage">
+        {` ${fonts} `}
       </style>
       <script name="font-face-observer">
-        {`
-          window.addEventListener('load', (() => {
-            if (sessionStorage.areFontsLoaded) {
-              document.documentElement.classList.add('font-loading-stage-2')
-              return
-            } else {
-              if ('fonts' in document) {
-                Promise.all([
-                  document.fonts.load('400 1em "Amstelvar"'),
-                  document.fonts.load('italic 400 1em "Amstelvar"'),
-                  document.fonts.load('400 1em "Inter var"'),
-                  document.fonts.load('400 1em "Fira Code VF"')
-                ]).then(() => {
-                  document.documentElement.classList.add('font-loading-stage-2')
-
-                  // Optimization for repeat views
-                  sessionStorage.areFontsLoaded = true
-
-                  // Dispatch event to notify ThemeUIProvider component
-                  const fontsLoadedEvent = new CustomEvent('FONTS_ARE_LOADED')
-                  window.dispatchEvent(fontsLoadedEvent)
-                })
-              }
-            }
-          })())
-        `}
+        {` window.addEventListener('load', ${fontObserver}) `}
       </script>
     </Helmet>
   )
