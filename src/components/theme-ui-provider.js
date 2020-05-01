@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, ThemeProvider } from 'theme-ui'
 import { useState, useEffect, useCallback, Fragment } from 'react'
-import theme from '../gatsby-plugin-theme-ui'
-import components from '../gatsby-plugin-theme-ui/components'
+import theme from '../theme'
+import components from '../theme/components'
 import useEventListener from '../hooks/use-event-listener'
 
 const themeUI = { ...theme }
@@ -31,13 +31,13 @@ const ThemeUIProvider = ({ element }) => {
 
   useEventListener(
     typeof window !== 'undefined' && window,
-    'FONTS_ARE_LOADED',
+    'FONTS_LOADED',
     updateTheme
   )
 
   useEffect(() => {
     updateTheme()
-    sessionStorage.getItem('areFontsLoaded')
+    sessionStorage.getItem('fontsLoaded')
   }, [updateTheme])
 
   return (

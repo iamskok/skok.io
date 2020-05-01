@@ -1,5 +1,5 @@
-import { baseThemeSettings } from '../gatsby-plugin-theme-ui'
-import fontSizes from '../gatsby-plugin-theme-ui/tokens/font-sizes'
+import { baseThemeSettings } from '../theme'
+import fontSizes from '../theme/tokens/font-sizes'
 import unitless from '../utils/unitless'
 
 const rythm = unitless(baseThemeSettings.rythm)

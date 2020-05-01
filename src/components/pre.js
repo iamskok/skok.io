@@ -3,7 +3,7 @@ import { jsx, Styled } from 'theme-ui'
 import { useState } from 'react'
 import CodeBlock from './code-block'
 import isPreWithCodeBlock from '../utils/is-pre-with-code-block'
-import { baseThemeSettings } from '../gatsby-plugin-theme-ui'
+import { baseThemeSettings } from '../theme'
 
 const { rythm } = baseThemeSettings
 

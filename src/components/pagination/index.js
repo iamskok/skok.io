@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Flex } from 'theme-ui'
 import Link from './link'
-import { baseThemeSettings } from '../../gatsby-plugin-theme-ui/index'
+import { baseThemeSettings } from '../../theme'
 
 const { rythm } = baseThemeSettings
 
@@ -10,19 +10,28 @@ const Pagination = ({ next, previous }) => (
     justifyContent: `space-between`,
     marginBottom: rythm
   }}>
-    { previous &&
-      <Link 
-        to={ previous }
-        text="Previous"
-      />
-    }
+    <Flex sx={{
+      flex: 1
+    }}>
+      { previous &&
+        <Link
+          to={previous}
+          text="Previous"
+        />
+      }
+    </Flex>
 
-    { next &&
-      <Link
-        to={ next }
-        text="Next"
-      />
-    }
+    <Flex sx={{
+      flex: 1,
+      flexDirection: `row-reverse`
+    }}>
+      { next &&
+        <Link
+          to={ next }
+          text="Next"
+        />
+      }
+    </Flex>
   </Flex>
 )
 

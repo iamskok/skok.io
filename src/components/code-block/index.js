@@ -12,7 +12,7 @@ import LineNumbersButton from './line-numbers-button'
 import FileName from './file-name'
 import LanguageTab from './language-tab'
 import scope from './scope'
-import { baseThemeSettings } from '../../gatsby-plugin-theme-ui'
+import { baseThemeSettings } from '../../theme'
 
 const { rythm } = baseThemeSettings
 

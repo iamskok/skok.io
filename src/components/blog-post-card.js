@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Img from 'gatsby-image'
 import Link from '../components/link'
 import StyledButton from '../components/button'
-import { baseThemeSettings } from '../gatsby-plugin-theme-ui/index'
+import { baseThemeSettings } from '../theme'
 
 const { lineHeight } = baseThemeSettings
 
