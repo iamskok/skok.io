@@ -28,11 +28,9 @@ const HighlightCode = ({
         tokens,
         getLineProps,
         getTokenProps,
-        style
       }) => (
         <Styled.code
           sx={{
-            ...style,
             transition: `transform 400ms ease`,
             transform: lineNumbers ?
               `translate3d(0, 0, 0)` :
