@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import Highlight, { Prism } from '@skok/prism-react-renderer'
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, useThemeUI } from 'theme-ui'
 import Line from './line'
 
 const HighlightCode = ({
@@ -9,6 +9,14 @@ const HighlightCode = ({
   lineNumbers,
   shouldHighlightLine,
 }) => {
+  const {
+    theme: {
+      sizes: {
+        lineNumber: lineNumberWidth
+      }
+    }
+  } = useThemeUI()
+
   return (
     <Highlight
       Prism={Prism}
@@ -22,7 +30,14 @@ const HighlightCode = ({
         getTokenProps,
         style
       }) => (
-        <Styled.code sx={{ ...style }}>
+        <Styled.code
+          sx={{
+            ...style,
+            transition: `transform 400ms ease`,
+            transform: lineNumbers ?
+              `translate3d(0, 0, 0)` :
+              `translate3d(${-lineNumberWidth + 'px'}, 0, 0)`,
+        }}>
           { tokens.map((line, i) => (
             <Line
               key={i}
@@ -30,7 +45,6 @@ const HighlightCode = ({
               lineNumber={i}
               getLineProps={getLineProps}
               getTokenProps={getTokenProps}
-              lineNumbers={lineNumbers}
               highlight={shouldHighlightLine(i)}
             />
           )) }

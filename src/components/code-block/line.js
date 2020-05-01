@@ -26,12 +26,8 @@ const Line = ({
         key: lineNumber,
       }) }
       sx={{
-        // marginRight: -lineNumberWidth,
-        width: `calc(100% + ${lineNumberWidth + 'px'})`,
+        width: `calc(100% + ${lineNumberWidth + 1 + 'px'})`,
         backgroundColor: highlight ? `prismHighlight` : `transparent`,
-        transform: lineNumbers ?
-          `translate3d(0, 0, 0)` :
-          `translate3d(${-lineNumberWidth + 'px'}, 0, 0)`,
         transition: `transform 400ms ease`,
         border: highlight && 0,
         borderLeftWidth: highlight && 2,
@@ -49,7 +45,6 @@ const Line = ({
       <LineTokens
         line={line}
         getTokenProps={getTokenProps}
-        lineNumbers={lineNumbers}
       />
     </Box>
   )
