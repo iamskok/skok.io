@@ -2,7 +2,7 @@
 import { jsx, Styled } from 'theme-ui'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
-import Link from '../components/link'
+import Pagination from '../components/pagination'
 import BlogPostCard from '../components/blog-post-card'
 
 const Blog = ({
@@ -27,32 +27,15 @@ const Blog = ({
 
       { posts.map(({ node: post }) => (
         <BlogPostCard
-          key={post.id}
-          post={post}
+          key={ post.id }
+          post={ post }
         />
       )) }
 
-      <hr />
-
-      <div>
-        <ul>
-          { nextPagePath && (
-            <li>
-              <Link to={ nextPagePath }>
-                Next Page
-              </Link>
-            </li>
-          ) }
-
-          { previousPagePath && (
-            <li>
-              <Link to={ previousPagePath }>
-                Previous Page
-              </Link>
-            </li>
-          ) }
-        </ul>
-      </div>
+      <Pagination
+        previous={ previousPagePath }
+        next={ nextPagePath }
+      />
     </Layout>
   )
 }

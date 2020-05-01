@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
+import Pagination from '../components/pagination'
 
 export default props => {
   const {
@@ -17,47 +18,35 @@ export default props => {
     date,
     cover
   } = mdx.frontmatter
-  const children = <MDXRenderer children={mdx.body} />
+  const children = <MDXRenderer children={ mdx.body } />
 
   return (
     <Layout>
-      {cover && <Img sizes={cover.childImageSharp.sizes} />}
-      <Styled.h1>{title}</Styled.h1>
-      <time>{date}</time>
-      {children}
-      <div
-        sx={{
-          display: 'flex',
-        }}
-      >
-        {prev && (
-          <Styled.a
-            as={Link}
-            to={prev.fields.slug}
-            sx={{
-              fontSize: 4,
-              fontWeight: 'bold',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}>
-            Previous
-          </Styled.a>
-        )}
-        <div sx={{ m: 'auto' }} />
-        {next && (
-          <Styled.a
-            as={Link}
-            to={next.fields.slug}
-            sx={{
-              fontSize: 4,
-              fontWeight: 'bold',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}>
-            Next
-          </Styled.a>
-        )}
-      </div>
+      { cover &&
+        <Img sizes={cover.childImageSharp.sizes} />
+      }
+      <Styled.h1>
+        { title }
+      </Styled.h1>
+
+      <time>
+        { date }
+      </time>
+
+      { children }
+
+      <Pagination
+        previous={
+          prev &&
+          prev.fields &&
+          prev.fields.slug
+        }
+        next={
+          next &&
+          next.fields &&
+          next.fields.slug
+        }
+      />
     </Layout>
   )
 }
