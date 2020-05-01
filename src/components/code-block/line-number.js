@@ -11,7 +11,7 @@ const LineNumber = ({
     userSelect: 'none',
     textAlign: 'center',
     marginRight: 2,
-    color: highlight ? `prismHighlightNumber` : `primary`,
+    color: highlight ? `codeHighlightNumber` : `primary`,
     marginLeft: highlight && -1
   }}>
     {++index}

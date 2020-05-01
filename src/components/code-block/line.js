@@ -27,12 +27,12 @@ const Line = ({
       }) }
       sx={{
         width: `calc(100% + ${lineNumberWidth + 1 + 'px'})`,
-        backgroundColor: highlight ? `prismHighlight` : `transparent`,
+        backgroundColor: highlight ? `codeHighlight` : `transparent`,
         transition: `transform 400ms ease`,
         border: highlight && 0,
         borderLeftWidth: highlight && 2,
         borderStyle: highlight && `solid`,
-        borderColor: highlight && `prismHighlightNumber`
+        borderColor: highlight && `codeHighlightNumber`
       }}
     >
 
