@@ -7,7 +7,8 @@ import firaCodeWoff2 from '../fonts/fira-code/fira-code-subset.woff2'
 import amstelvarFontFaces from '../fonts/amstelvar'
 import interFontFace from '../fonts/inter'
 import firaCodeFontFace from '../fonts/fira-code'
-import fonts from '../theme/fonts'
+import fonts from '../theme/styles/fonts'
+import pageHeight from '../theme/styles/page-height'
 import fontObserver from '../utils/font-observer'
 import useSiteMetadata from '../hooks/use-site-metadata'
 
@@ -72,19 +73,12 @@ const Head = props => {
       <style type="text/css" name="font-loading-stage">
         {` ${fonts} `}
       </style>
+      <style name="page-height">
+        {` ${pageHeight} `}
+      </style>
       <script name="font-face-observer">
         {` window.addEventListener('load', ${fontObserver}) `}
       </script>
-      <style>
-        {`
-          html,
-          body,
-          #___gatsby,
-          #gatsby-focus-wrapper {
-            height: 100%
-          }
-        `}
-      </style>
     </Helmet>
   )
 }

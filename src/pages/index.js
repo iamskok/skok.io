@@ -30,7 +30,6 @@ const IndexPage = () => (
       >
         I move <span sx={{
           textDecoration: `underline`,
-          textDecorationColor: `colors.primary`
         }}>pixels</span> on the web.
       </Styled.h2>
     </Flex>
