@@ -38,7 +38,7 @@
     "react-helmet": "^6.0.0",
     "react-live": "^2.2.2",
     "react-simple-code-editor": "^0.11.0",
-    "theme-ui": "0.4.0-alpha.0"
+    "theme-ui": "0.4.0-highlight.0"
   },
   "devDependencies": {
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
