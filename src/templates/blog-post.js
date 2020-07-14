@@ -5,6 +5,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import Pagination from '../components/pagination'
+import TweetableSelection from '../components/tweetable-selection'
 
 export default props => {
   const {
@@ -22,6 +23,7 @@ export default props => {
 
   return (
     <Layout>
+      <TweetableSelection />
       { cover &&
         <Img sizes={cover.childImageSharp.sizes} />
       }

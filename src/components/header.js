@@ -14,7 +14,8 @@ const Header = () => {
         display: `flex`,
         alignItems: `center`,
         paddingY: 1
-    }}>
+      }}
+    >
       <Link
         to={`/`}
         sx={{
