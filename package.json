@@ -4,6 +4,15 @@
   "description": "Vladimir Skok's development blog",
   "main": "index.js",
   "license": "MIT",
+  "author": "Vladimir Skok <skok@vova.io>",
+  "bugs": {
+    "url": "https://github.com/iamskok/skok.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamskok/skok.io.git"
+  },
+  "homepage": "https://skok.netlify.app",
   "scripts": {
     "lint": "eslint --fix --cache .",
     "format": "prettier --write \"**/*.{js,jsx,json}\"",
@@ -46,6 +55,8 @@
     "theme-ui": "0.4.0-rc.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-extra-rules": "^0.0.0-development",
@@ -54,6 +65,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.8",
+    "husky": "^4.2.5",
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
     "wait-for-netlify-preview": "1.2.1"
   }
