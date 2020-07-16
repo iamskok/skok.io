@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint --fix --cache .",
     "format": "prettier --write \"**/*.{js,jsx,json}\"",
     "lh": "lighthousebot",
     "clean": "gatsby clean",
@@ -21,6 +21,7 @@
     "@philpl/buble": "https://github.com/kitten/buble.git",
     "@skok/prism-react-renderer": "^1.0.3",
     "@svgr/webpack": "^5.3.1",
+    "@theme-ui/color-modes": "^0.3.1",
     "@theme-ui/presets": "^0.3.0",
     "@theme-ui/prism": "^0.3.0",
     "gatsby": "^2.19.32",
@@ -36,6 +37,7 @@
     "lodash": "^4.17.19",
     "minimist": "^1.2.5",
     "modularscale": "^2.0.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
@@ -46,6 +48,7 @@
   "devDependencies": {
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-extra-rules": "^0.0.0-development",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
