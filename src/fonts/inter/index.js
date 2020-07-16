@@ -1,4 +1,4 @@
-import interWoff2 from './inter-subset.woff2'
+import interWoff2 from "./inter-subset.woff2"
 
 const interFontFace = `
   @font-face {

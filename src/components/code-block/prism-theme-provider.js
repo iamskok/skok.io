@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import prismThemes from '../../prism/themes'
+import React, { useState, useEffect } from "react"
+import prismThemes from "../../prism/themes"
 
 const LOCAL_STORAGE_KEY = `prism-theme-name`
 
-const isBrowser = () => typeof window !== 'undefined'
+const isBrowser = () => typeof window !== "undefined"
 
 const {
   Provider: PrismThemeProvider,
-  Consumer: PrismThemeConsumer
+  Consumer: PrismThemeConsumer,
 } = React.createContext({})
 
-const {
-  modes: prismModes = {}
-} = prismThemes
+const { modes: prismModes = {} } = prismThemes
 
 const themeKeys = Object.keys(prismModes).sort()
 
@@ -41,7 +39,10 @@ const PrismTheme = ({ children }) => {
     if (index < themeKeys.length - 1) {
       newPrismTheme = prismModes[themeKeys[index + 1]]
       if (isBrowser()) {
-        window.localStorage.setItem(LOCAL_STORAGE_KEY, themeKeys[index + 1])
+        window.localStorage.setItem(
+          LOCAL_STORAGE_KEY,
+          themeKeys[index + 1]
+        )
       }
     } else {
       if (isBrowser()) {
@@ -56,7 +57,7 @@ const PrismTheme = ({ children }) => {
     <PrismThemeProvider
       value={{
         prismTheme,
-        changePrismTheme
+        changePrismTheme,
       }}
     >
       {children}
@@ -65,7 +66,4 @@ const PrismTheme = ({ children }) => {
 }
 
 export default PrismTheme
-export {
-  PrismThemeConsumer,
-  PrismThemeProvider
-}
+export { PrismThemeConsumer, PrismThemeProvider }

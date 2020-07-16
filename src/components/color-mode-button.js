@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { useState } from 'react'
-import { jsx, IconButton, useColorMode } from 'theme-ui'
-import useSiteMetadata from '../hooks/use-site-metadata'
+import { useState } from "react"
+import { jsx, IconButton, useColorMode } from "theme-ui"
+import useSiteMetadata from "../hooks/use-site-metadata"
 
 const ColorModeButton = props => {
   const { colorModes } = useSiteMetadata()
@@ -36,7 +36,7 @@ const ColorModeButton = props => {
           display: `flex`,
           margin: `0 auto`,
           transition: `transform 400ms ease`,
-          transform: `rotate(${turn * 180}deg)`
+          transform: `rotate(${turn * 180}deg)`,
         }}
       >
         <circle
@@ -44,7 +44,7 @@ const ColorModeButton = props => {
           cy='16'
           r='14'
           fill='none'
-          stroke='currentcolor'
+          stroke='currentColor'
           strokeWidth='4'
         ></circle>
         <path d='M 16 0 A 16 16 0 0 0 16 32 z'></path>

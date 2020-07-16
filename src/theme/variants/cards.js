@@ -1,5 +1,5 @@
-import { baseThemeSettings } from '../index'
-import unitless from '../../utils/unitless'
+import { baseThemeSettings } from "../index"
+import unitless from "../../utils/unitless"
 
 const { rythm } = baseThemeSettings
 const cards = {
@@ -10,10 +10,10 @@ const cards = {
     boxShadow: `default`,
     transition: `box-shadow 400ms ease`,
     backgroundColor: `backgroundLight` || `background`,
-    '&:hover': {
+    "&:hover": {
       boxShadow: `active`,
-    }
-  }
+    },
+  },
 }
 
 export default cards

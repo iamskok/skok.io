@@ -4,22 +4,19 @@ module.exports = {
   author: `Vladimir Skok`,
   navigation: [
     {
-      to: '/blog',
-      label: 'blog'
+      to: "/blog",
+      label: "blog",
     },
     {
-      to: '/about',
-      label: 'about'
+      to: "/about",
+      label: "about",
     },
   ],
   codeBlock: {
     lineNumbers: true,
     lineNumbersButton: true,
     copyButton: true,
-    languageTab: true
+    languageTab: true,
   },
-  colorModes: [
-    `default`,
-    `dark`,
-  ]
+  colorModes: [`default`, `dark`],
 }

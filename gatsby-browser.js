@@ -1,3 +1,3 @@
-import { wrapRootElement } from './src/components/wrap-root-element'
+import { wrapRootElement } from "./src/components/wrap-root-element"
 
 export { wrapRootElement }

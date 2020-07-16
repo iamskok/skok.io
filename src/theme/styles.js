@@ -1,11 +1,8 @@
-import { baseThemeSettings } from './index'
-import unitless from '../utils/unitless'
-import prism from './prism'
+import { baseThemeSettings } from "./index"
+import unitless from "../utils/unitless"
+import prism from "./prism"
 
-const {
-  rythm,
-  lineHeight: baseLineHeight
-} = baseThemeSettings
+const { rythm, lineHeight: baseLineHeight } = baseThemeSettings
 
 // * root (theme-ui-specific)
 // * p(paragraph)
@@ -39,18 +36,18 @@ export default {
     fontFamily: `body`,
     lineHeight: baseLineHeight,
     fontFeatureSettings: `'kern', 'calt', 'ss01', 'ss02', 'ss03'`,
-    minHeight: `100%`
+    minHeight: `100%`,
   },
   p: {
     margin: `0 0 ${rythm} 0`,
-    '& > img': {
-      marginBottom: 0
+    "& > img": {
+      marginBottom: 0,
     },
   },
   a: {
     color: `primary`,
-    'WebkitTapHighlightColor': `transparent`,
-    '&:hover': {
+    WebkitTapHighlightColor: `transparent`,
+    "&:hover": {
       color: `secondary`,
       textDecoration: `none`,
     },
@@ -103,7 +100,7 @@ export default {
     minWidth: `100%`,
     whiteSpace: `pre`,
     paddingY: 0,
-    ...prism
+    ...prism,
   },
   inlineCode: {
     variant: `text.code`,
@@ -111,41 +108,41 @@ export default {
     backgroundColor: `muted`,
   },
   ol: {
-    margin: `0 0 ${(unitless(rythm) * 2) + 'rem'} 0`,
+    margin: `0 0 ${unitless(rythm) * 2 + "rem"} 0`,
     paddingLeft: rythm,
     // listStylePosition: `outside`,
   },
   ul: {
-    margin: `0 0 ${(unitless(rythm) * 2) + 'rem'} 0`,
+    margin: `0 0 ${unitless(rythm) * 2 + "rem"} 0`,
     paddingLeft: rythm,
-    listStyleType: `square`
+    listStyleType: `square`,
     // listStylePosition: `outside`
   },
   li: {
-    '& > ul, & > ol': {
-      marginBottom: 0
-    }
+    "& > ul, & > ol": {
+      marginBottom: 0,
+    },
   },
   blockquote: {
     paddingLeft: rythm,
   },
   hr: {
-    marginTop: (unitless(rythm) * 3) + `rem`,
-    marginBottom: (unitless(rythm) * 3) + `rem`,
+    marginTop: unitless(rythm) * 3 + `rem`,
+    marginBottom: unitless(rythm) * 3 + `rem`,
     border: 0,
     borderBottom: `1px solid`,
   },
   i: {
-    variant: `text.italic`
+    variant: `text.italic`,
   },
   em: {
-    variant: `text.italic`
+    variant: `text.italic`,
   },
   b: {
-    variant: `text.bold`
+    variant: `text.bold`,
   },
   strong: {
-    variant: `text.bold`
+    variant: `text.bold`,
   },
   table: {
     width: `100%`,
@@ -162,7 +159,7 @@ export default {
     paddingLeft: 0,
     borderColor: `inherit`,
     borderBottomWidth: `2px`,
-    borderBottomStyle: `solid`
+    borderBottomStyle: `solid`,
   },
   td: {
     textAlign: `left`,
@@ -173,6 +170,6 @@ export default {
     paddingLeft: 0,
     borderColor: `inherit`,
     borderBottomWidth: `1px`,
-    borderBottomStyle: `solid`
+    borderBottomStyle: `solid`,
   },
 }

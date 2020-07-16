@@ -12,7 +12,7 @@ const fontObserver = () => {
           document.fonts.load(`400 1em "Amstelvar"`),
           document.fonts.load(`italic 400 1em "Amstelvar"`),
           document.fonts.load(`400 1em "Inter var"`),
-          document.fonts.load(`400 1em "Fira Code VF"`)
+          document.fonts.load(`400 1em "Fira Code VF"`),
         ]).then(() => {
           document.documentElement.classList.add(`font-loading-stage-2`)
 

@@ -1,18 +1,18 @@
 /** @jsx jsx */
-import { jsx, Styled, Box } from 'theme-ui'
-import { useState } from 'react'
-import HighlightCode from './highlight-code'
-import ReactLiveEditor from './react-live-editor'
-import useSiteMetadata from '../../hooks/use-site-metadata'
-import calculateLinesToHighlight from './calculate-lines-to-highlight'
-import isFeatureEnabled from './is-feature-enabled'
-import getLanguage from './get-language'
-import CopyButton from './copy-button'
-import LineNumbersButton from './line-numbers-button'
-import FileName from './file-name'
-import LanguageTab from './language-tab'
-import scope from './scope'
-import { baseThemeSettings } from '../../theme'
+import { jsx, Styled, Box } from "theme-ui"
+import { useState } from "react"
+import HighlightCode from "./highlight-code"
+import ReactLiveEditor from "./react-live-editor"
+import useSiteMetadata from "../../hooks/use-site-metadata"
+import calculateLinesToHighlight from "./calculate-lines-to-highlight"
+import isFeatureEnabled from "./is-feature-enabled"
+import getLanguage from "./get-language"
+import CopyButton from "./copy-button"
+import LineNumbersButton from "./line-numbers-button"
+import FileName from "./file-name"
+import LanguageTab from "./language-tab"
+import scope from "./scope"
+import { baseThemeSettings } from "../../theme"
 
 const { rythm } = baseThemeSettings
 
@@ -27,7 +27,7 @@ const CodeBlock = ({
   disabled,
   copyButton,
   fileName,
-  languageTab
+  languageTab,
 }) => {
   const {
     codeBlock: {
@@ -35,7 +35,7 @@ const CodeBlock = ({
       lineNumbersButton: globalLineNumbersButton,
       copyButton: globalCopyButton,
       languageTab: globalLanguageTab,
-    }
+    },
   } = useSiteMetadata()
 
   const language = getLanguage(className)
@@ -47,7 +47,10 @@ const CodeBlock = ({
   const isNoInline = isFeatureEnabled(noInline)
   const isDisabled = isFeatureEnabled(disabled)
   const isLineNumbers = isFeatureEnabled(lineNumbers, globalLineNumbers)
-  const isLineNumbersButton = isFeatureEnabled(lineNumbersButton, globalLineNumbersButton)
+  const isLineNumbersButton = isFeatureEnabled(
+    lineNumbersButton,
+    globalLineNumbersButton
+  )
   const isCopyButton = isFeatureEnabled(copyButton, globalCopyButton)
   const isLanguageTab = isFeatureEnabled(languageTab, globalLanguageTab)
   const isFileName = !!fileName
@@ -64,68 +67,79 @@ const CodeBlock = ({
   }
 
   return (
-    <div sx={{
-      marginBottom: rythm,
-      position: 'relative',
-    }}>
-      {isLanguageTab && !isLive &&
-      <LanguageTab language={getLanguage(className)} />}
+    <div
+      sx={{
+        marginBottom: rythm,
+        position: "relative",
+      }}
+    >
+      {isLanguageTab && !isLive && (
+        <LanguageTab language={getLanguage(className)} />
+      )}
 
-      <div sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: `muted`
-      }}>
+      <div
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: `muted`,
+        }}
+      >
         {isFileName && <FileName name={fileName} />}
-        <div sx={{
-          display: 'flex',
-          padding: 1,
-        }}>
-          <Box sx={{
-            marginLeft: `auto`
-          }}>
-            { isLineNumbersButton &&
+        <div
+          sx={{
+            display: "flex",
+            padding: 1,
+          }}
+        >
+          <Box
+            sx={{
+              marginLeft: `auto`,
+            }}
+          >
+            {isLineNumbersButton && (
               <LineNumbersButton
                 onClick={toggleLineNumbers}
                 lineNumbers={lineNumbersState}
               />
-            }
+            )}
             {isCopyButton && <CopyButton code={code} />}
           </Box>
         </div>
       </div>
       <Styled.pre
-        onScroll={ addScrollbar }
+        onScroll={addScrollbar}
         sx={{
           margin: 0,
-          '&::-webkit-scrollbar': {
+          "&::-webkit-scrollbar": {
             height: `5px`,
           },
-          '&::-webkit-scrollbar-thumb': {
+          "&::-webkit-scrollbar-thumb": {
             backgroundColor: scrollbar ? `primary` : `rgba(0,0,0,0)`,
-          }
+          },
         }}
       >
-        {isLive ?
-        <ReactLiveEditor
-          code={code}
-          theme={undefined}
-          scope={scope}
-          language={language}
-          metastring={metastring}
-          disabled={isDisabled}
-          noInline={isNoInline}
-          lineNumbers={lineNumbersState}
-          shouldHighlightLine={shouldHighlightLine}
-        /> :
-        <HighlightCode
-          code={code}
-          language={language}
-          theme={undefined}
-          metastring={metastring}
-          lineNumbers={lineNumbersState}
-          shouldHighlightLine={shouldHighlightLine}
-        />}
+        {isLive ? (
+          <ReactLiveEditor
+            code={code}
+            theme={undefined}
+            scope={scope}
+            language={language}
+            metastring={metastring}
+            disabled={isDisabled}
+            noInline={isNoInline}
+            lineNumbers={lineNumbersState}
+            shouldHighlightLine={shouldHighlightLine}
+          />
+        ) : (
+          <HighlightCode
+            code={code}
+            language={language}
+            theme={undefined}
+            metastring={metastring}
+            lineNumbers={lineNumbersState}
+            shouldHighlightLine={shouldHighlightLine}
+          />
+        )}
       </Styled.pre>
     </div>
   )

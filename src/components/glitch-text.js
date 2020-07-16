@@ -1,10 +1,9 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { keyframes } from '@emotion/core'
-import getRandomInt from '../utils/get-random-int'
+import { jsx } from "theme-ui"
+import { keyframes } from "@emotion/core"
+import getRandomInt from "../utils/get-random-int"
 
-const maxClipPath = limit =>
-  1 / (2 - (4 * (1 - limit)) ** 0.25) * 100
+const maxClipPath = limit => (1 / (2 - (4 * (1 - limit)) ** 0.25)) * 100
 
 const randClipPath = (maxClipPath, limit) =>
   getRandomInt(1, maxClipPath(limit)) + `%`
@@ -12,9 +11,7 @@ const randClipPath = (maxClipPath, limit) =>
 const randTextShadow = (minShadow, maxShadow) => {
   const shadow = getRandomInt(minShadow, maxShadow)
 
-  return shadow === 0 ?
-    randPosition() :
-    shadow + `px`
+  return shadow === 0 ? randPosition() : shadow + `px`
 }
 
 const randColor = colors => colors[getRandomInt(0, colors.length - 1)]
@@ -22,9 +19,7 @@ const randColor = colors => colors[getRandomInt(0, colors.length - 1)]
 const randPosition = (minPos, maxPos) => {
   const pos = getRandomInt(minPos, maxPos)
 
-  return pos === 0 ?
-    randPosition() :
-    pos + `px`
+  return pos === 0 ? randPosition() : pos + `px`
 }
 
 const clipPath = (maxClipPath, limit) => `inset(
@@ -36,8 +31,10 @@ const textShadow = (minShadow, maxShadow, colors) => `
   ${randTextShadow(minShadow, maxShadow)} 0 ${randColor(colors)}
 `
 
-const keys = keyframesNum => Array.from({ length: keyframesNum + 1 })
-  .map((_, i) => i * (100 / (keyframesNum + 1)) + '%')
+const keys = keyframesNum =>
+  Array.from({ length: keyframesNum + 1 }).map(
+    (_, i) => i * (100 / (keyframesNum + 1)) + "%"
+  )
 
 const getAnimation = (
   keyframesNum,
@@ -98,11 +95,11 @@ const GlitchText = ({
   return (
     <span
       sx={{
-        '@media not screen and (prefers-reduced-motion: reduce)': {
+        "@media not screen and (prefers-reduced-motion: reduce)": {
           position: `relative`,
           display: `inline-block`,
 
-          '&::before, &::after': {
+          "&::before, &::after": {
             content: `"${text}"`,
             position: `absolute`,
             top: 0,
@@ -111,7 +108,7 @@ const GlitchText = ({
             height: `100%`,
           },
 
-          '&::before': {
+          "&::before": {
             backgroundColor,
             animationName: glitch1,
             animationTimingFunction: `linear`,
@@ -119,14 +116,14 @@ const GlitchText = ({
             animationIterationCount: `infinite`,
           },
 
-          '&::after': {
+          "&::after": {
             backgroundColor,
             animationName: glitch2,
             animationTimingFunction: `linear`,
             animationDuration: duration,
             animationIterationCount: `infinite`,
-          }
-        }
+          },
+        },
       }}
       {...props}
     >

@@ -1,4 +1,4 @@
-import ms from 'modularscale'
+import ms from "modularscale"
 
 // Calculate font sizes based on the ratio
 // for every value with-in the range

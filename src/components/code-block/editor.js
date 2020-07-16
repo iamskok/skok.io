@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import { jsx, useThemeUI } from 'theme-ui'
-import { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import Editor from 'react-simple-code-editor'
-import HighlightCode from './highlight-code'
+import { jsx, useThemeUI } from "theme-ui"
+import { useState, useEffect } from "react"
+import PropTypes from "prop-types"
+import Editor from "react-simple-code-editor"
+import HighlightCode from "./highlight-code"
 
 const CodeEditor = ({
   code,
@@ -22,13 +22,9 @@ const CodeEditor = ({
   const {
     theme: {
       space,
-      colors: {
-        primary: primaryColor
-      },
-      sizes: {
-        lineNumber: lineNumberWidth
-      }
-    }
+      colors: { primary: primaryColor },
+      sizes: { lineNumber: lineNumberWidth },
+    },
   } = useThemeUI()
 
   useEffect(() => {
@@ -49,14 +45,18 @@ const CodeEditor = ({
   )
 
   return (
-    <div sx={{
-      display: `flex`,
-      overflow: `hidden`
-    }}>
-      <div sx={{
-        flex: 1,
-        overflow: `auto`
-      }}>
+    <div
+      sx={{
+        display: `flex`,
+        overflow: `hidden`,
+      }}
+    >
+      <div
+        sx={{
+          flex: 1,
+          overflow: `auto`,
+        }}
+      >
         <Editor
           value={codeString}
           disabled={disabled}
@@ -66,13 +66,13 @@ const CodeEditor = ({
             minWidth: `100%`,
             float: `left`,
             caretColor: `${primaryColor}`,
-            '& > textarea': {
+            "& > textarea": {
               zIndex: `editor`,
-              paddingLeft: lineNumbers ?
-                `${lineNumberWidth + space[2] + 'px'} !important` :
-                `${space[2] + 'px'} !important`,
+              paddingLeft: lineNumbers
+                ? `${lineNumberWidth + space[2] + "px"} !important`
+                : `${space[2] + "px"} !important`,
               whiteSpace: `pre !important`,
-              outlineStyle: `solid`
+              outlineStyle: `solid`,
             },
           }}
           {...rest}
@@ -88,7 +88,7 @@ CodeEditor.propTypes = {
   language: PropTypes.string,
   onChange: PropTypes.func,
   style: PropTypes.object,
-  theme: PropTypes.object
+  theme: PropTypes.object,
 }
 
 export default CodeEditor

@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
-import { useState } from 'react'
-import CodeBlock from './code-block'
-import isPreWithCodeBlock from '../utils/is-pre-with-code-block'
-import { baseThemeSettings } from '../theme'
+import { jsx, Styled } from "theme-ui"
+import { useState } from "react"
+import CodeBlock from "./code-block"
+import isPreWithCodeBlock from "../utils/is-pre-with-code-block"
+import { baseThemeSettings } from "../theme"
 
 const { rythm } = baseThemeSettings
 
@@ -19,18 +19,15 @@ const Pre = props => {
 
   if (isPreWithCodeBlock(props)) {
     return (
-      <CodeBlock
-        {...children.props}
-        sx={{ marginBottom: rythm }}
-      >
-        { children }
+      <CodeBlock {...children.props} sx={{ marginBottom: rythm }}>
+        {children}
       </CodeBlock>
     )
   } else if (isLiveError) {
     return (
       <Styled.pre
-        {...props }
-        onScroll={ addScrollbar }
+        {...props}
+        onScroll={addScrollbar}
         sx={{
           padding: 3,
           marginBottom: 0,
@@ -38,34 +35,34 @@ const Pre = props => {
           borderTopWidth: 1,
           borderStyle: `solid`,
           borderColor: `primary`,
-          '&::-webkit-scrollbar': {
+          "&::-webkit-scrollbar": {
             height: `5px`,
           },
-          '&::-webkit-scrollbar-thumb': {
+          "&::-webkit-scrollbar-thumb": {
             backgroundColor: scrollbar ? `primary` : `rgba(0,0,0,0)`,
-          }
+          },
         }}
       >
-        { children }
+        {children}
       </Styled.pre>
     )
   } else {
     return (
       <Styled.pre
-        {...props }
-        onScroll={ addScrollbar }
+        {...props}
+        onScroll={addScrollbar}
         sx={{
           padding: 3,
           marginBottom: rythm,
-          '&::-webkit-scrollbar': {
+          "&::-webkit-scrollbar": {
             height: `5px`,
           },
-          '&::-webkit-scrollbar-thumb': {
+          "&::-webkit-scrollbar-thumb": {
             backgroundColor: scrollbar ? `primary` : `rgba(0,0,0,0)`,
-          }
+          },
         }}
       >
-        { children.props.children }
+        {children.props.children}
       </Styled.pre>
     )
   }

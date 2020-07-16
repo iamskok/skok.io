@@ -1,15 +1,10 @@
-import React from 'react'
-import { LiveContext } from 'react-live'
-import Editor from './editor'
+import React from "react"
+import { LiveContext } from "react-live"
+import Editor from "./editor"
 
 const LiveEditor = props => (
   <LiveContext.Consumer>
-    {({
-      code,
-      language,
-      disabled,
-      onChange
-    }) => (
+    {({ code, language, disabled, onChange }) => (
       <Editor
         theme={undefined}
         code={code}

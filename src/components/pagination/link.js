@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import Link from '../link'
-import { useState } from 'react'
+import { jsx } from "theme-ui"
+import Link from "../link"
+import { useState } from "react"
 
 const PaginationLink = ({ to, text }) => {
   const [touchStart, setTouchStart] = useState(false)
@@ -10,9 +10,9 @@ const PaginationLink = ({ to, text }) => {
 
   return (
     <Link
-      to={ to }
-      onTouchStart={ addColor }
-      onTouchEnd={ removeColor }
+      to={to}
+      onTouchStart={addColor}
+      onTouchEnd={removeColor}
       sx={{
         fontSize: 4,
         fontWeight: `bold`,
@@ -21,7 +21,7 @@ const PaginationLink = ({ to, text }) => {
         transition: `color 400ms ease`,
       }}
     >
-      { text }
+      {text}
     </Link>
   )
 }

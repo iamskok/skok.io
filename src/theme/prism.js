@@ -1,73 +1,73 @@
 const prism = {
-  '.changed': {
-    'color': `codeChanged`,
+  ".changed": {
+    color: `codeChanged`,
   },
-  '.deleted': {
-    'color': `codeDeleted`,
+  ".deleted": {
+    color: `codeDeleted`,
   },
-  '.inserted': {
-    'color': `codeInserted`,
+  ".inserted": {
+    color: `codeInserted`,
   },
-  '.attr-name': {
-    'color': `codeAttrName`,
+  ".attr-name": {
+    color: `codeAttrName`,
   },
-  '.comment': {
-    'color': `codeComment`,
+  ".comment": {
+    color: `codeComment`,
   },
-  '.string': {
-    'color': `codeString`,
+  ".string": {
+    color: `codeString`,
   },
-  '.url': {
-    'color': `codeUrl`,
+  ".url": {
+    color: `codeUrl`,
   },
-  '.variable': {
-    'color': `codeVariable`,
+  ".variable": {
+    color: `codeVariable`,
   },
-  '.number': {
-    'color': `codeNumber`,
+  ".number": {
+    color: `codeNumber`,
   },
-  '.builtin': {
-    'color': `codeBuiltIn`,
+  ".builtin": {
+    color: `codeBuiltIn`,
   },
-  '.char': {
-    'color': `codeChar`,
+  ".char": {
+    color: `codeChar`,
   },
-  '.constant': {
-    'color': `codeConstant`,
+  ".constant": {
+    color: `codeConstant`,
   },
-  '.function': {
-    'color': `codeFunction`,
+  ".function": {
+    color: `codeFunction`,
   },
-  '.punctuation': {
-    'color': `codePunctuation`,
+  ".punctuation": {
+    color: `codePunctuation`,
   },
-  '.selector': {
-    'color': `codeSelector`,
+  ".selector": {
+    color: `codeSelector`,
   },
-  '.doctype': {
-    'color': `codeDoctype`,
+  ".doctype": {
+    color: `codeDoctype`,
   },
-  '.class-name': {
-    'color': `codeClassName`,
+  ".class-name": {
+    color: `codeClassName`,
   },
-  '.tag': {
-    'color': `codeTag`,
+  ".tag": {
+    color: `codeTag`,
   },
-  '.operator': {
-    'color': `codeOperator`,
+  ".operator": {
+    color: `codeOperator`,
   },
-  '.keyword': {
-    'color': `codeKeyword`,
+  ".keyword": {
+    color: `codeKeyword`,
   },
-  '.boolean': {
-    'color': `codeBoolean`,
+  ".boolean": {
+    color: `codeBoolean`,
   },
-  '.property': {
-    'color': `codeProperty`,
+  ".property": {
+    color: `codeProperty`,
   },
-  '.namespace': {
-    'color': `codeNamespace`,
-  }
+  ".namespace": {
+    color: `codeNamespace`,
+  },
 }
 
 export default prism

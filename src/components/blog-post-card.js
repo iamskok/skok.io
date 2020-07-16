@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { jsx, Card, Styled } from 'theme-ui'
-import { useState } from 'react'
-import Img from 'gatsby-image'
-import Link from '../components/link'
-import StyledButton from '../components/button'
-import { baseThemeSettings } from '../theme'
+import { jsx, Card, Styled } from "theme-ui"
+import { useState } from "react"
+import Img from "gatsby-image"
+import Link from "../components/link"
+import StyledButton from "../components/button"
+import { baseThemeSettings } from "../theme"
 
 const { lineHeight } = baseThemeSettings
 
@@ -15,43 +15,41 @@ const BlogPostCard = ({ post }) => {
 
   return (
     <Card
-      as="article"
-      onTouchStart={ addShadow }
-      onTouchEnd={ removeShadow }
+      as='article'
+      onTouchStart={addShadow}
+      onTouchEnd={removeShadow}
       sx={{
-        boxShadow: touchStart ? `active` : `default`
+        boxShadow: touchStart ? `active` : `default`,
       }}
     >
       <Link
-        to={ post.fields.slug }
+        to={post.fields.slug}
         sx={{
-          textDecoration: 'none'
+          textDecoration: "none",
         }}
       >
-        { post.frontmatter.cover &&
+        {post.frontmatter.cover && (
           <Img
             sizes={{
               ...post.frontmatter.cover.childImageSharp.sizes,
-              aspectRatio: 16 / 9
+              aspectRatio: 16 / 9,
             }}
           />
-        }
+        )}
 
-        <Styled.h2 sx={{
-          color: 'text',
-          marginTop: 0,
-          lineHeight
-        }}>
-          { post.frontmatter.title }
+        <Styled.h2
+          sx={{
+            color: "text",
+            marginTop: 0,
+            lineHeight,
+          }}
+        >
+          {post.frontmatter.title}
         </Styled.h2>
 
-        <Styled.p sx={{ color: 'text' }}>
-          { post.excerpt }
-        </Styled.p>
+        <Styled.p sx={{ color: "text" }}>{post.excerpt}</Styled.p>
 
-        <StyledButton as="div">
-          Read more
-        </StyledButton>
+        <StyledButton as='div'>Read more</StyledButton>
       </Link>
     </Card>
   )

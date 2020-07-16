@@ -1,7 +1,7 @@
-import React from 'react'
-import { LivePreview, LiveProvider } from 'react-live'
-import LiveEditor from './live-editor'
-import LiveError from './live-error'
+import React from "react"
+import { LivePreview, LiveProvider } from "react-live"
+import LiveEditor from "./live-editor"
+import LiveError from "./live-error"
 
 const ReactLiveEditor = ({
   code,
@@ -12,7 +12,7 @@ const ReactLiveEditor = ({
   language,
   metastring,
   lineNumbers,
-  shouldHighlightLine
+  shouldHighlightLine,
 }) => (
   <LiveProvider
     code={code}

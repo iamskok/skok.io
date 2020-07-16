@@ -1,5 +1,5 @@
-const path = require('path')
-const siteMetadata = require('./site-metadata')
+const path = require("path")
+const siteMetadata = require("./site-metadata")
 
 const gatsbyRemarkPlugins = [
   {
@@ -9,9 +9,9 @@ const gatsbyRemarkPlugins = [
       withWebp: true,
       quality: 100,
       loading: `lazy`,
-      linkImagesToOriginal: false
-    }
-  }
+      linkImagesToOriginal: false,
+    },
+  },
 ]
 
 module.exports = {
@@ -21,21 +21,21 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
-        path: path.resolve(`./src/posts`)
-      }
+        path: path.resolve(`./src/posts`),
+      },
     },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        gatsbyRemarkPlugins
-      }
+        gatsbyRemarkPlugins,
+      },
     },
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
-        useMozJpeg: true
-      }
+        useMozJpeg: true,
+      },
     },
     {
       resolve: `gatsby-plugin-svgr-svgo`,
@@ -46,10 +46,10 @@ module.exports = {
             svgo: false,
           },
         ],
-      }
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-webpack-size`,
-  ]
+  ],
 }

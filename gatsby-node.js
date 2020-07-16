@@ -1,36 +1,31 @@
-const { createFilePath } = require('gatsby-source-filesystem')
-const path = require('path')
-const PAGINATION_OFFSET = 8;
+const { createFilePath } = require("gatsby-source-filesystem")
+const path = require("path")
+const PAGINATION_OFFSET = 8
 
 // Here we're adding extra stuff to the "node" (like the slug)
 // so we can query later for all blogs and get their slug
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-  if (node.internal.type === 'Mdx') {
+  if (node.internal.type === "Mdx") {
     const value = createFilePath({ node, getNode })
     createNodeField({
       // Individual MDX node
       node,
       // Name of the field you are adding
-      name: 'slug',
+      name: "slug",
       // Generated value based on filepath with "blog" prefix
-      value: `/blog${value}`
+      value: `/blog${value}`,
     })
   }
 }
 
 const createBlog = (createPage, edges) => {
-  createPaginatedPages(createPage, edges, '/blog')
+  createPaginatedPages(createPage, edges, "/blog")
 }
 
-const createPaginatedPages = (
-  createPage,
-  edges,
-  pathPrefix,
-  context,
-) => {
+const createPaginatedPages = (createPage, edges, pathPrefix, context) => {
   const pages = edges.reduce((acc, value, index) => {
-    const pageIndex = Math.floor(index / PAGINATION_OFFSET);
+    const pageIndex = Math.floor(index / PAGINATION_OFFSET)
 
     if (!acc[pageIndex]) {
       acc[pageIndex] = []
@@ -58,16 +53,16 @@ const createPaginatedPages = (
           pageCount: pages.length,
           pathPrefix,
         },
-        ...context
-      }
+        ...context,
+      },
     })
   })
 }
 
 const createPosts = (createPage, edges) => {
   edges.forEach(({ node }, i) => {
-    const prev = i === 0 ? null : edges[i - 1].node;
-    const next = i === edges.length - 1 ? null : edges[i + 1].node;
+    const prev = i === 0 ? null : edges[i - 1].node
+    const next = i === edges.length - 1 ? null : edges[i + 1].node
 
     createPage({
       path: node.fields.slug,
@@ -75,8 +70,8 @@ const createPosts = (createPage, edges) => {
       context: {
         id: node.id,
         prev,
-        next
-      }
+        next,
+      },
     })
   })
 }
@@ -114,15 +109,18 @@ exports.createPages = ({ actions, graphql }) =>
 
     createPosts(actions.createPage, edges)
     createBlog(actions.createPage, edges)
-})
+  })
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        buble$: path.resolve(__dirname, `node_modules/@philpl/buble/src/index.js`)
-      }
-    }
+        buble$: path.resolve(
+          __dirname,
+          `node_modules/@philpl/buble/src/index.js`
+        ),
+      },
+    },
   })
 }
 
@@ -130,7 +128,7 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
     },
   })
 }

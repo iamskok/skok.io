@@ -1,60 +1,40 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
-import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import Img from 'gatsby-image'
-import Layout from '../components/layout'
-import Pagination from '../components/pagination'
-import TweetableSelection from '../components/tweetable-selection'
+import { jsx, Styled } from "theme-ui"
+import { graphql } from "gatsby"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import Img from "gatsby-image"
+import Layout from "../components/layout"
+import Pagination from "../components/pagination"
+import TweetableSelection from "../components/tweetable-selection"
 
-export default props => {
-  const {
-    prev,
-    next,
-  } = props.pageContext
+const BlogPost = ({ pageContext, data }) => {
+  const { prev, next } = pageContext
 
-  const { mdx } = props.data
-  const {
-    title,
-    date,
-    cover
-  } = mdx.frontmatter
-  const children = <MDXRenderer children={ mdx.body } />
+  const { mdx } = data
+  const { title, date, cover } = mdx.frontmatter
 
   return (
     <Layout>
       <TweetableSelection />
-      { cover &&
-        <Img sizes={cover.childImageSharp.sizes} />
-      }
-      <Styled.h1>
-        { title }
-      </Styled.h1>
+      {cover && <Img sizes={cover.childImageSharp.sizes} />}
+      <Styled.h1>{title}</Styled.h1>
 
-      <time>
-        { date }
-      </time>
-
-      { children }
+      <time>{date}</time>
+      {/* eslint react/no-children-prop: 0 */}
+      <MDXRenderer children={mdx.body} />
 
       <Pagination
-        previous={
-          prev &&
-          prev.fields &&
-          prev.fields.slug
-        }
-        next={
-          next &&
-          next.fields &&
-          next.fields.slug
-        }
+        previous={prev && prev.fields && prev.fields.slug}
+        next={next && next.fields && next.fields.slug}
       />
     </Layout>
   )
 }
 
+export default BlogPost
+
 export const pageQuery = graphql`
-  query ($id: String!) {
+  query($id: String!) {
     mdx(id: { eq: $id }) {
       id
       body

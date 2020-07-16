@@ -2,6 +2,8 @@
 // based on local and global configurations
 
 const isFeatureEnabled = (localConfig, globalConfig = false) =>
-  localConfig !== undefined ? localConfig === true || localConfig === 'true' : globalConfig
+  localConfig !== undefined
+    ? localConfig === true || localConfig === "true"
+    : globalConfig
 
 export default isFeatureEnabled

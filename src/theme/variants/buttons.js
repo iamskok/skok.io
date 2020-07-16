@@ -3,9 +3,9 @@ const buttons = {
     color: `background`,
     bg: `primary`,
     cursor: `pointer`,
-    '&:hover': {
+    "&:hover": {
       bg: `secondary`,
-    }
+    },
   },
   icon: {
     height: `iconButton`,
@@ -13,9 +13,9 @@ const buttons = {
     cursor: `pointer`,
     color: `primary`,
     transition: `color 400ms ease`,
-    '&:hover': {
-      color: `secondary`
-    }
+    "&:hover": {
+      color: `secondary`,
+    },
   },
   iconSvg: {
     height: `icon`,

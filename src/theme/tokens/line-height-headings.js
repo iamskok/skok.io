@@ -1,4 +1,4 @@
-import calcHeadingLineHeights from '../../utils/calc-heading-line-heights'
+import calcHeadingLineHeights from "../../utils/calc-heading-line-heights"
 
 const lineHeights = calcHeadingLineHeights()
 

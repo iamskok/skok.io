@@ -1,4 +1,4 @@
-import firaCodeWoff2 from './fira-code-subset.woff2'
+import firaCodeWoff2 from "./fira-code-subset.woff2"
 
 const firaCodeFontFace = `
   @font-face {

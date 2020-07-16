@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { useState } from 'react'
+import { jsx } from "theme-ui"
+import { useState } from "react"
 
 const FileName = ({ name }) => {
   const [scrollbar, setScrollbar] = useState(false)
@@ -12,35 +12,39 @@ const FileName = ({ name }) => {
   }
 
   return (
-    <div sx={{
-      overflowX: `hidden`,
-      border: 0,
-      borderBottomWidth: 1,
-      borderStyle: `solid`,
-      borderColor: `primary`,
-    }}>
+    <div
+      sx={{
+        overflowX: `hidden`,
+        border: 0,
+        borderBottomWidth: 1,
+        borderStyle: `solid`,
+        borderColor: `primary`,
+      }}
+    >
       <div
-        onScroll={ addScrollbar }
+        onScroll={addScrollbar}
         sx={{
-          overflowX: 'scroll',
+          overflowX: "scroll",
           paddingTop: 1,
-          '&::-webkit-scrollbar': {
+          "&::-webkit-scrollbar": {
             height: `scrollBar`,
           },
-          '&::-webkit-scrollbar-thumb': {
+          "&::-webkit-scrollbar-thumb": {
             backgroundColor: scrollbar ? `primary` : `rgba(0,0,0,0)`,
-          }
+          },
         }}
       >
-        <p sx={{
-          fontSize: 2,
-          fontFamily: `code`,
-          display: `flex`,
-          flex: 1,
-          margin: 0,
-          color: `secondary`,
-        }}>
-          { name.trim() }
+        <p
+          sx={{
+            fontSize: 2,
+            fontFamily: `code`,
+            display: `flex`,
+            flex: 1,
+            margin: 0,
+            color: `secondary`,
+          }}
+        >
+          {name.trim()}
         </p>
       </div>
     </div>

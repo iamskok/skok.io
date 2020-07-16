@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { jsx, useThemeUI, Box } from 'theme-ui'
-import LineNumber from './line-number'
-import LineTokens from './line-tokens'
+import { jsx, useThemeUI, Box } from "theme-ui"
+import LineNumber from "./line-number"
+import LineTokens from "./line-tokens"
 
 const Line = ({
   line,
@@ -9,14 +9,12 @@ const Line = ({
   getLineProps,
   getTokenProps,
   lineNumbers,
-  highlight
+  highlight,
 }) => {
   const {
     theme: {
-      sizes: {
-        lineNumber: lineNumberWidth
-      }
-    }
+      sizes: { lineNumber: lineNumberWidth },
+    },
   } = useThemeUI()
 
   return (
@@ -24,28 +22,24 @@ const Line = ({
       {...getLineProps({
         line,
         key: lineNumber,
-      }) }
+      })}
       sx={{
-        width: `calc(100% + ${lineNumberWidth + 1 + 'px'})`,
+        width: `calc(100% + ${lineNumberWidth + 1 + "px"})`,
         backgroundColor: highlight ? `codeHighlight` : `transparent`,
         transition: `transform 400ms ease`,
         border: highlight && 0,
         borderLeftWidth: highlight && 2,
         borderStyle: highlight && `solid`,
-        borderColor: highlight && `codeHighlightNumber`
+        borderColor: highlight && `codeHighlightNumber`,
       }}
     >
-
       <LineNumber
         index={lineNumber}
         lineNumbers={lineNumbers}
         highlight={highlight}
       />
 
-      <LineTokens
-        line={line}
-        getTokenProps={getTokenProps}
-      />
+      <LineTokens line={line} getTokenProps={getTokenProps} />
     </Box>
   )
 }
