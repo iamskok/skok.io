@@ -34,14 +34,14 @@ const IndexPage = () => (
       >
         I move{" "}
         <GlitchText
-          text='pixels'
-          duration='5000ms'
+          text="pixels"
+          duration="5000ms"
           keyframesNum={20}
           limit={0.2}
           colors={["red", "green", "blue"]}
           position={[-5, 5]}
           shadow={[-2, 2]}
-          backgroundColor='background'
+          backgroundColor="background"
         >
           pixels
         </GlitchText>{" "}

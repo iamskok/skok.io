@@ -15,7 +15,7 @@ const BlogPostCard = ({ post }) => {
 
   return (
     <Card
-      as='article'
+      as="article"
       onTouchStart={addShadow}
       onTouchEnd={removeShadow}
       sx={{
@@ -49,7 +49,7 @@ const BlogPostCard = ({ post }) => {
 
         <Styled.p sx={{ color: "text" }}>{post.excerpt}</Styled.p>
 
-        <StyledButton as='div'>Read more</StyledButton>
+        <StyledButton as="div">Read more</StyledButton>
       </Link>
     </Card>
   )

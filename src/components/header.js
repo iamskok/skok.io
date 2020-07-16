@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <Flex
-      as='header'
+      as="header"
       sx={{
         display: `flex`,
         alignItems: `center`,
@@ -25,7 +25,7 @@ const Header = () => {
       >
         VS
       </Link>
-      <Box marginLeft='auto'>
+      <Box marginLeft="auto">
         <ul
           sx={{
             padding: 0,

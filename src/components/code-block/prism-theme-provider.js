@@ -39,10 +39,7 @@ const PrismTheme = ({ children }) => {
     if (index < themeKeys.length - 1) {
       newPrismTheme = prismModes[themeKeys[index + 1]]
       if (isBrowser()) {
-        window.localStorage.setItem(
-          LOCAL_STORAGE_KEY,
-          themeKeys[index + 1]
-        )
+        window.localStorage.setItem(LOCAL_STORAGE_KEY, themeKeys[index + 1])
       }
     } else {
       if (isBrowser()) {

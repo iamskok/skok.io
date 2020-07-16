@@ -18,68 +18,62 @@ const Head = props => {
   return (
     <Helmet>
       <title>{title}</title>
+      <meta name="description" content={description || props.description} />
+      <meta name="og:title" content={title || props.title} />
+      <meta name="og:description" content={description || props.description} />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content={title || props.title} />
       <meta
-        name='description'
+        name="twitter:description"
         content={description || props.description}
       />
-      <meta name='og:title' content={title || props.title} />
-      <meta
-        name='og:description'
-        content={description || props.description}
-      />
-      <meta name='twitter:card' content='summary' />
-      <meta name='twitter:title' content={title || props.title} />
-      <meta
-        name='twitter:description'
-        content={description || props.description}
-      />
-      <meta name='twitter:creator' content={author || props.author} />
+      <meta name="twitter:creator" content={author || props.author} />
       <script>
         {` document.documentElement.classList.add('font-loading-stage-1') `}
       </script>
       <link
         href={amstelvarRomanWoff2}
-        as='font'
-        type='font/woff2'
-        rel='preload'
-        crossOrigin='anonymous'
+        as="font"
+        type="font/woff2"
+        rel="preload"
+        crossOrigin="anonymous"
       />
       <link
         href={amstelvarItalicWoff2}
-        as='font'
-        type='font/woff2'
-        rel='preload'
-        crossOrigin='anonymous'
+        as="font"
+        type="font/woff2"
+        rel="preload"
+        crossOrigin="anonymous"
       />
       <link
         href={interWoff2}
-        as='font'
-        type='font/woff2'
-        rel='preload'
-        crossOrigin='anonymous'
+        as="font"
+        type="font/woff2"
+        rel="preload"
+        crossOrigin="anonymous"
       />
       <link
         href={firaCodeWoff2}
-        as='font'
-        type='font/woff2'
-        rel='preload'
-        crossOrigin='anonymous'
+        as="font"
+        type="font/woff2"
+        rel="preload"
+        crossOrigin="anonymous"
       />
-      <style type='text/css' name='font-faces'>
+      <style type="text/css" name="font-faces">
         {`
           ${amstelvarFontFaces}
           ${interFontFace}
           ${firaCodeFontFace}
         `}
       </style>
-      <style type='text/css' name='font-size'>
+      <style type="text/css" name="font-size">
         {` html { font-size: 125%; } `}
       </style>
-      <style type='text/css' name='font-loading-stage'>
+      <style type="text/css" name="font-loading-stage">
         {` ${fonts} `}
       </style>
-      <style name='page-height'>{` ${pageHeight} `}</style>
-      <script name='font-face-observer'>
+      <style name="page-height">{` ${pageHeight} `}</style>
+      <script name="font-face-observer">
         {` window.addEventListener('load', ${fontObserver}) `}
       </script>
     </Helmet>

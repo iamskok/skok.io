@@ -38,8 +38,7 @@ const createPaginatedPages = (createPage, edges, pathPrefix, context) => {
 
   pages.forEach((page, index) => {
     const previousPagePath = `${pathPrefix}/${index + 1}`
-    const nextPagePath =
-      index === 1 ? pathPrefix : `${pathPrefix}/${index - 1}`
+    const nextPagePath = index === 1 ? pathPrefix : `${pathPrefix}/${index - 1}`
 
     createPage({
       path: index > 0 ? `${pathPrefix}/${index}` : `${pathPrefix}`,

@@ -8,9 +8,7 @@ import BlogPostCard from "../components/blog-post-card"
 const Blog = ({ data: { allMdx }, pageContext: { pagination } }) => {
   const { page, nextPagePath, previousPagePath } = pagination
 
-  const posts = page.map(id =>
-    allMdx.edges.find(edge => edge.node.id === id)
-  )
+  const posts = page.map(id => allMdx.edges.find(edge => edge.node.id === id))
 
   return (
     <Layout>

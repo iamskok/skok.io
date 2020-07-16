@@ -9,9 +9,7 @@ const calculateLinesToHighlight = metastring => {
     return index => {
       const lineNumber = ++index
       const isInRange = lineNumbers.some(([start, end]) =>
-        end
-          ? lineNumber >= start && lineNumber <= end
-          : lineNumber === start
+        end ? lineNumber >= start && lineNumber <= end : lineNumber === start
       )
 
       return isInRange

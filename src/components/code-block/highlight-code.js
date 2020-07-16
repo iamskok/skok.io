@@ -16,12 +16,7 @@ const HighlightCode = ({
   } = useThemeUI()
 
   return (
-    <Highlight
-      Prism={Prism}
-      code={code}
-      theme={undefined}
-      language={language}
-    >
+    <Highlight Prism={Prism} code={code} theme={undefined} language={language}>
       {({ tokens, getLineProps, getTokenProps }) => (
         <Styled.code
           sx={{

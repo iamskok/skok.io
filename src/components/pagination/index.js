@@ -17,7 +17,7 @@ const Pagination = ({ next, previous }) => (
         flex: 1,
       }}
     >
-      {previous && <Link to={previous} text='Previous' />}
+      {previous && <Link to={previous} text="Previous" />}
     </Flex>
 
     <Flex
@@ -26,7 +26,7 @@ const Pagination = ({ next, previous }) => (
         flexDirection: `row-reverse`,
       }}
     >
-      {next && <Link to={next} text='Next' />}
+      {next && <Link to={next} text="Next" />}
     </Flex>
   </Flex>
 )

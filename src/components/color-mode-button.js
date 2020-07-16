@@ -12,7 +12,7 @@ const ColorModeButton = props => {
   return (
     <IconButton
       {...props}
-      aria-label='Toggle website theme'
+      aria-label="Toggle website theme"
       onClick={() => {
         const index = colorModes.indexOf(colorMode)
         const next = colorModes[(index + 1) % colorModes.length]
@@ -28,10 +28,10 @@ const ColorModeButton = props => {
       }}
     >
       <svg
-        width='24'
-        height='24'
-        viewBox='0 0 32 32'
-        fill='currentcolor'
+        width="24"
+        height="24"
+        viewBox="0 0 32 32"
+        fill="currentcolor"
         sx={{
           display: `flex`,
           margin: `0 auto`,
@@ -40,14 +40,14 @@ const ColorModeButton = props => {
         }}
       >
         <circle
-          cx='16'
-          cy='16'
-          r='14'
-          fill='none'
-          stroke='currentColor'
-          strokeWidth='4'
+          cx="16"
+          cy="16"
+          r="14"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="4"
         ></circle>
-        <path d='M 16 0 A 16 16 0 0 0 16 32 z'></path>
+        <path d="M 16 0 A 16 16 0 0 0 16 32 z"></path>
       </svg>
     </IconButton>
   )
