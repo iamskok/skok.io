@@ -85,7 +85,10 @@ const CodeBlock = ({
             marginLeft: `auto`
           }}>
             { isLineNumbersButton &&
-              <LineNumbersButton onClick={toggleLineNumbers} />
+              <LineNumbersButton
+                onClick={toggleLineNumbers}
+                lineNumbers={lineNumbersState}
+              />
             }
             {isCopyButton && <CopyButton code={code} />}
           </Box>
