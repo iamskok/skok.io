@@ -5,6 +5,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "lint:js": "eslint .",
+    "format:js": "prettier --write \"**/*.{js,jsx,json}\"",
+    "lint": "yarn format:js && yarn lint:js",
     "lh": "lighthousebot",
     "clean": "gatsby clean",
     "start": "gatsby develop",
@@ -42,6 +45,13 @@
     "theme-ui": "0.4.0-rc.1"
   },
   "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
     "wait-for-netlify-preview": "1.2.1"
   }
