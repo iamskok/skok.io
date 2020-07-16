@@ -3,5 +3,6 @@ yarn-error.log
 public
 TODO.md
 .cache
+.eslintcache
 .netlify
 .DS_Store
