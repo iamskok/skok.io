@@ -1,4 +1,4 @@
 {
-  "*.+(js|jsx)": ["yarn lint", "git add"],
-  "*.+(json|md|mdx)": ["yarn format", "git add"]
+  "*.+(js|jsx)": ["yarn lint"],
+  "*.+(json|md|mdx)": ["yarn format"]
 }
