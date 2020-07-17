@@ -6,28 +6,26 @@ published: true
 
 ## API
 
-* Language - first argument (local).
-* Line numbers highlight - object which has the form of `{1-3,5}` (local).
-* `languageTab` - show or hide language icon (local and global).
-* `lineNumbers` - show or hide line numbers (local and global).
-* `lineNumbersButton` - show or hide line numbers button (local and global).
-* `themeToggleButton` - show or hide line numbers button (local and global).
-* `copyButton` - show or hide copy button (local and global).
-* `fileName` - show or hide file name (local).
-* `live` - convert code block to a [react-live](https://github.com/FormidableLabs/react-live) example (local).
-* [`noInline`](https://github.com/FormidableLabs/react-live#api) - doesn’t evaluate and mount the inline code (local).
-* [`disabled`](https://github.com/FormidableLabs/react-live#api) - disable editing on the `<LiveEditor />` (local).
+- Language - first argument (local).
+- Line numbers highlight - object which has the form of `{1-3,5}` (local).
+- `languageTab` - show or hide language icon (local and global).
+- `lineNumbers` - show or hide line numbers (local and global).
+- `lineNumbersButton` - show or hide line numbers button (local and global).
+- `themeToggleButton` - show or hide line numbers button (local and global).
+- `copyButton` - show or hide copy button (local and global).
+- `fileName` - show or hide file name (local).
+- `live` - convert code block to a [react-live](https://github.com/FormidableLabs/react-live) example (local).
+- [`noInline`](https://github.com/FormidableLabs/react-live#api) - doesn’t evaluate and mount the inline code (local).
+- [`disabled`](https://github.com/FormidableLabs/react-live#api) - disable editing on the `<LiveEditor />` (local).
 
 1. Local refers to the settings made on the component level (fenced code block or JSX).
 2. Global refers to the site wide configuration which is handled by `gatsby-config.js`.
-It can be overwritten by local settings.
+   It can be overwritten by local settings.
 
 ## Examples
 
 ```jsx {2} noInline=true fileName=thisissomeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeextremelylongfilename.js
-render(
-  <h1>Hello World</h1>
-)
+render(<h1>Hello World</h1>)
 ```
 
 ```js {7-11}

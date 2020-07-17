@@ -59,7 +59,10 @@ notifications:
 ```vue copy=false fileName=index.vue
 <template>
   <div>
-    <button @click="getNewIntent" :class="{ disabled: uiState === 'listening' }"></button>
+    <button
+      @click="getNewIntent"
+      :class="{ disabled: uiState === 'listening' }"
+    ></button>
   </div>
 </template>
 
@@ -69,20 +72,20 @@ export default {
     aborted: {
       type: Boolean,
       default: false,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     uiState() {
       return this.$store.state.uiState
-    }
+    },
   },
   methods: {
     getNewIntent() {
-      this.$store.dispatch('getSpeech')
-      this.$emit('isaborted', false)
-    }
-  }
+      this.$store.dispatch("getSpeech")
+      this.$emit("isaborted", false)
+    },
+  },
 }
 </script>
 
@@ -104,15 +107,15 @@ button.disabled {
 ## TS
 
 ```ts fileName=/very/very/very/long/long/long/long/long/long/long/long/long/long/long/long/file/name.ts
-import { Component, OnInit, OnDestroy } from '@angular/core'
-import { Person, SearchService } from '../shared'
-import { ActivatedRoute } from '@angular/router'
-import { Subscription } from 'rxjs'
+import { Component, OnInit, OnDestroy } from "@angular/core"
+import { Person, SearchService } from "../shared"
+import { ActivatedRoute } from "@angular/router"
+import { Subscription } from "rxjs"
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  selector: "app-search",
+  templateUrl: "./search.component.html",
+  styleUrls: ["./search.component.css"],
 })
 export class SearchComponent implements OnInit, OnDestroy {
   query: string
@@ -126,8 +129,8 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      if (params['term']) {
-        this.query = decodeURIComponent(params['term'])
+      if (params["term"]) {
+        this.query = decodeURIComponent(params["term"])
         this.search()
       }
     })
@@ -153,15 +156,15 @@ export class SearchComponent implements OnInit, OnDestroy {
 ## TypeScript
 
 ```typescript fileName=/very/very/very/long/long/long/long/long/long/long/long/long/long/long/long/file/name.ts
-import { Component, OnInit, OnDestroy } from '@angular/core'
-import { Person, SearchService } from '../shared'
-import { ActivatedRoute } from '@angular/router'
-import { Subscription } from 'rxjs'
+import { Component, OnInit, OnDestroy } from "@angular/core"
+import { Person, SearchService } from "../shared"
+import { ActivatedRoute } from "@angular/router"
+import { Subscription } from "rxjs"
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  selector: "app-search",
+  templateUrl: "./search.component.html",
+  styleUrls: ["./search.component.css"],
 })
 export class SearchComponent implements OnInit, OnDestroy {
   query: string
@@ -175,8 +178,8 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      if (params['term']) {
-        this.query = decodeURIComponent(params['term'])
+      if (params["term"]) {
+        this.query = decodeURIComponent(params["term"])
         this.search()
       }
     })
@@ -306,19 +309,19 @@ end
 ## TSX
 
 ```tsx
-import * as React from 'react';
+import * as React from "react"
 
 interface Props {
-  count?: number;
+  count?: number
 }
 
 export default class Count extends React.Component<Props> {
   static defaultProps: Props = {
-    count: 10
-  };
+    count: 10,
+  }
 
-  render () {
-    return <h1>{this.props.count}</h1>;
+  render() {
+    return <h1>{this.props.count}</h1>
   }
 }
 ```
@@ -326,11 +329,11 @@ export default class Count extends React.Component<Props> {
 ## React
 
 ```jsx
-import React from 'react';
-import calculate from '../logic/calculate';
-import './App.css';
-import ButtonPanel from './ButtonPanel';
-import Display from './Display';
+import React from "react"
+import calculate from "../logic/calculate"
+import "./App.css"
+import ButtonPanel from "./ButtonPanel"
+import Display from "./Display"
 
 class App extends React.Component {
   constructor(props) {
@@ -338,7 +341,7 @@ class App extends React.Component {
     this.state = {
       total: null,
       next: null,
-      operation: null
+      operation: null,
     }
   }
 
@@ -350,7 +353,7 @@ class App extends React.Component {
     return (
       <div className="component-app">
         Tacos
-        <Display value={this.state.next || this.state.total || '0'} />
+        <Display value={this.state.next || this.state.total || "0"} />
         <ButtonPanel clickHandler={this.handleClick} />
       </div>
     )
@@ -358,14 +361,18 @@ class App extends React.Component {
 }
 export default App
 
-// Functional components 
+// Functional components
 
 // I use this syntax when my component fits on one line
 const ListItem = props => <li className="list-item">{props.item.name}</li>
 
 // I use this when my component has no logic outside JSX
 const List = ({ items }) => (
-  <ul className="list">{items.map(item => <ListItem item={item} />)}</ul>
+  <ul className="list">
+    {items.map(item => (
+      <ListItem item={item} />
+    ))}
+  </ul>
 )
 
 // I use this when the component needs logic outside JSX.
@@ -379,9 +386,11 @@ const Body = props => {
   )
 }
 
-const Foo = () => <div>
-  <div></div>
-</div>
+const Foo = () => (
+  <div>
+    <div></div>
+  </div>
+)
 
 // This is equivalent to the last example
 function Page(props, context) {
@@ -393,7 +402,7 @@ function Page(props, context) {
 }
 // propTypes and contextTypes are supported
 Page.propTypes = {
-  rawItems: React.PropTypes.array.isRequired
+  rawItems: React.PropTypes.array.isRequired,
 }
 ```
 
@@ -427,10 +436,10 @@ def topo(G, ind=None, Q=[1]):
 class SomeClass:
     def create_arr(self): # An instance method
         self.arr = []
-    
+
     def insert_to_arr(self, value):  #An instance method
         self.arr.append(value)
-        
+
     @classmethod
     def class_method(cls):
         print("the class method was called")
@@ -466,10 +475,10 @@ def topo(G, ind=None, Q=[1]):
 class SomeClass:
     def create_arr(self): # An instance method
         self.arr = []
-    
+
     def insert_to_arr(self, value):  #An instance method
         self.arr.append(value)
-        
+
     @classmethod
     def class_method(cls):
         print("the class method was called")
@@ -500,7 +509,7 @@ class HelloWorldTest extends PHPUnit_Framework_TestCase
         $helloWorld = new HelloWorld($this->pdo);
         $this->assertEquals('Hello World', $helloWorld->hello());
     }
-    public function testHello()  
+    public function testHello()
     {
         $helloWorld = new HelloWorld($this->pdo);
         $this->assertEquals('Hello Bar', $helloWorld->hello('Bar'));
@@ -554,14 +563,11 @@ class HelloWorldTest extends PHPUnit_Framework_TestCase
 6.  Click **Reload** to reload the Code
 7.  File > Preferences > Color Theme > **Night Owl**
 
--[ ] check check 12 12
--[ ] check check 12 12
+-[ ] check check 12 12 -[ ] check check 12 12
 
-Heading 1
-========
+# Heading 1
 
-Heading 2
---------------
+## Heading 2
 
 ### Heading 3
 ```
@@ -569,7 +575,7 @@ Heading 2
 ## JavaScript
 
 ```js
-'use strict'
+"use strict"
 class Sale {
   constructor(price) {
     ;[this.decoratorsList, this.price] = [[], price]
@@ -589,17 +595,17 @@ class Sale {
 
   static quebec(price) {
     // this is a comment
-    return price + price * 7.5 / 100
+    return price + (price * 7.5) / 100
   }
 
   static fedtax(price) {
-    return price + price * 5 / 100
+    return price + (price * 5) / 100
   }
 }
 
 let sale = new Sale(100)
-sale.decorate('fedtax')
-sale.decorate('quebec')
+sale.decorate("fedtax")
+sale.decorate("quebec")
 console.log(sale.getPrice()) //112.88
 
 getPrice()
@@ -607,28 +613,29 @@ getPrice()
 //deeply nested
 
 async function asyncCall() {
-  var result = await resolveAfter2Seconds();
+  var result = await resolveAfter2Seconds()
 }
 
 const options = {
   connections: {
-    compression: false
-  }
+    compression: false,
+  },
 }
 
 for (let i = 0; i < 10; i++) {
-  continue;
+  continue
 }
 
-if (true) { }
+if (true) {
+}
 
-while (true) { }
+while (true) {}
 
 switch (2) {
   case 2:
-    break;
+    break
   default:
-    break;
+    break
 }
 
 class EditFishForm extends Component {
@@ -638,8 +645,8 @@ class EditFishForm extends Component {
     index: PropTypes.string,
     fish: PropTypes.shape({
       image: PropTypes.string,
-      name: PropTypes.string.isRequired
-    })
+      name: PropTypes.string.isRequired,
+    }),
   }
 }
 ```
@@ -649,27 +656,24 @@ class EditFishForm extends Component {
 ```html
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
+  <body>
+    <div id="app">Tacos Tacos</div>
 
-<body>
-  <div id="app">Tacos Tacos</div>
+    <p>Tacos tacos tacos</p>
+    <!--comment-->
 
-  <p>Tacos tacos tacos</p>
-  <!--comment-->
-
-  <script>
-    var x = '100';
-    x.toString();
-
-  </script>
-</body>
-
+    <script>
+      var x = "100"
+      x.toString()
+    </script>
+  </body>
 </html>
 ```
 

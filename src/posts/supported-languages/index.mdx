@@ -4,22 +4,22 @@ date: 2020-03-22
 published: true
 ---
 
-* HTML
-* CSS
-* Sass
-* JavaScript
-* GraphQL
-* React
-* Shell
-* Gatsby
-* Netlify
-* JSON
-* Python
-* TOML
-* Go
-* Rust
-* Diff
-* Git
+- HTML
+- CSS
+- Sass
+- JavaScript
+- GraphQL
+- React
+- Shell
+- Gatsby
+- Netlify
+- JSON
+- Python
+- TOML
+- Go
+- Rust
+- Diff
+- Git
 
 ## diff
 
@@ -161,32 +161,32 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
-        path: path.resolve(`./src/posts`)
-      }
+        path: path.resolve(`./src/posts`),
+      },
     },
     {
-      resolve: 'gatsby-plugin-mdx',
+      resolve: "gatsby-plugin-mdx",
       options: {
         extensions: [`.mdx`, `.md`],
-        gatsbyRemarkPlugins
-      }
+        gatsbyRemarkPlugins,
+      },
     },
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
-        useMozJpeg: true
-      }
+        useMozJpeg: true,
+      },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-theme-ui',
-    'gatsby-plugin-react-helmet',
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-theme-ui",
+    "gatsby-plugin-react-helmet",
     `gatsby-plugin-webpack-size`,
-  ]
+  ],
 }
 ```
 
 ```jsx live
-() => (
+;() => (
   <>
     <h3>Change ME!</h3>
     <p>jsx live</p>
@@ -195,11 +195,7 @@ module.exports = {
 ```
 
 ```jsx
-const Banner = ({
-  title,
-  subtitle,
-  text
-}) => (
+const Banner = ({ title, subtitle, text }) => (
   <div>
     <h3>{title}</h3>
     <p>{subtitle}</p>
@@ -210,9 +206,12 @@ const Banner = ({
 
 ```html
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
 </head>
 ```
 
@@ -227,13 +226,13 @@ const Banner = ({
 $danger-color: red;
 
 .danger {
-  background-color: $danger-color; 
+  background-color: $danger-color;
 }
 ```
 
 ```js
-const string1 = 'Hello'
-const string2 = 'World'
+const string1 = "Hello"
+const string2 = "World"
 
 console.log(`${string1} ${string2}!`)
 ```
