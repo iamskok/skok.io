@@ -21,14 +21,16 @@ const BlogPostCard = ({ post }) => {
       onMouseEnter={addActiveState}
       onMouseLeave={removeActiveState}
       sx={{
-        textDecoration: "none",
+        textDecoration: `none`,
+        marginBottom: 4,
       }}
     >
       <Card
         as="article"
         sx={{
+          margin: 0,
           boxShadow: active ? `active` : `default`,
-          borderWidth: theme => `${theme.borderWidths[0]}px`,
+          borderWidth: 0,
           borderStyle: `solid`,
           borderColor: `secondary`,
           transition: `border 400ms ease, box-shadow 400ms ease, background-color 400ms ease`,
