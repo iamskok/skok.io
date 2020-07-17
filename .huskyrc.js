@@ -1,6 +1,6 @@
 module.exports = {
   hooks: {
     "commit-msg": "yarn commitlint -E HUSKY_GIT_PARAMS",
-    "pre-commit": `yarn lint && yarn format`,
+    "pre-commit": `lint-staged && yarn format`,
   },
 }
