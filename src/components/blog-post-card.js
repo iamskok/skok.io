@@ -3,29 +3,35 @@ import { jsx, Card, Styled } from "theme-ui"
 import { useState } from "react"
 import Img from "gatsby-image"
 import Link from "../components/link"
-import StyledButton from "../components/button"
 import { baseThemeSettings } from "../theme"
 
 const { lineHeight } = baseThemeSettings
-
 const BlogPostCard = ({ post }) => {
-  const [touchStart, setTouchStart] = useState(false)
-  const addShadow = () => setTouchStart(true)
-  const removeShadow = () => setTouchStart(false)
+  const [active, setActive] = useState(false)
+  const addActiveState = () => setActive(true)
+  const removeActiveState = () => setActive(false)
 
   return (
-    <Card
-      as="article"
-      onTouchStart={addShadow}
-      onTouchEnd={removeShadow}
+    <Link
+      to={post.fields.slug}
+      onFocus={addActiveState}
+      onBlur={removeActiveState}
+      onTouchStart={addActiveState}
+      onTouchEnd={removeActiveState}
+      onMouseEnter={addActiveState}
+      onMouseLeave={removeActiveState}
       sx={{
-        boxShadow: touchStart ? `active` : `default`,
+        textDecoration: "none",
       }}
     >
-      <Link
-        to={post.fields.slug}
+      <Card
+        as="article"
         sx={{
-          textDecoration: "none",
+          boxShadow: active ? `active` : `default`,
+          borderWidth: theme => `${theme.borderWidths[0]}px`,
+          borderStyle: `solid`,
+          borderColor: `secondary`,
+          transition: `border 400ms ease, box-shadow 400ms ease, background-color 400ms ease`,
         }}
       >
         {post.frontmatter.cover && (
@@ -39,19 +45,25 @@ const BlogPostCard = ({ post }) => {
 
         <Styled.h2
           sx={{
-            color: "text",
+            color: active ? `primary` : `text`,
             marginTop: 0,
             lineHeight,
+            transition: `color 400ms ease`,
           }}
         >
           {post.frontmatter.title}
         </Styled.h2>
 
-        <Styled.p sx={{ color: "text" }}>{post.excerpt}</Styled.p>
-
-        <StyledButton as="div">Read more</StyledButton>
-      </Link>
-    </Card>
+        <Styled.p
+          sx={{
+            color: `text`,
+            transition: `color 400ms ease`,
+          }}
+        >
+          {post.excerpt}
+        </Styled.p>
+      </Card>
+    </Link>
   )
 }
 
