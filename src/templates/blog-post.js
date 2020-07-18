@@ -11,12 +11,12 @@ const BlogPost = ({ pageContext, data }) => {
   const { prev, next } = pageContext
 
   const { mdx } = data
-  const { title, date, cover } = mdx.frontmatter
-
+  const { title, date, cover, coverAlt } = mdx.frontmatter
+  console.log('coverAlt', coverAlt)
   return (
     <Layout>
       <TweetableSelection />
-      {cover && <Img sizes={cover.childImageSharp.sizes} />}
+      {cover && <Img sizes={cover.childImageSharp.sizes} alt={coverAlt} />}
       <Styled.h1>{title}</Styled.h1>
 
       <time>{date}</time>
@@ -41,6 +41,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        coverAlt
         cover {
           childImageSharp {
             sizes(maxWidth: 900) {

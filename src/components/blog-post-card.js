@@ -30,6 +30,7 @@ const BlogPostCard = ({ post }) => {
       >
         {post.frontmatter.cover && (
           <Img
+            alt={post.frontmatter.coverAlt}
             sizes={{
               ...post.frontmatter.cover.childImageSharp.sizes,
               aspectRatio: 16 / 9,
