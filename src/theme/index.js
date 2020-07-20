@@ -14,6 +14,7 @@ import text from "./variants/text"
 import buttons from "./variants/buttons"
 import links from "./variants/links"
 import cards from "./variants/cards"
+import messages from "./variants/messages"
 import styles from "./styles"
 
 const theme = {
@@ -32,6 +33,7 @@ const theme = {
   buttons,
   links,
   cards,
+  messages,
   styles,
 }
 
