@@ -12,7 +12,7 @@ const BlogPost = ({ pageContext, data }) => {
 
   const { mdx } = data
   const { title, date, cover, coverAlt } = mdx.frontmatter
-  console.log('coverAlt', coverAlt)
+
   return (
     <Layout>
       <TweetableSelection />
