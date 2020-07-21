@@ -3,7 +3,7 @@ import { jsx, ThemeProvider } from "theme-ui"
 import { useState, useEffect, useCallback, Fragment } from "react"
 import theme from "../../theme"
 import components from "../../theme/components"
-import useEventListener from "../../hooks/use-event-listener"
+import useEventListener from "../../hooks/useEventListener"
 
 const themeUI = { ...theme }
 const {

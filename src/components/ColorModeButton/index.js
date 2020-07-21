@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { useState } from "react"
 import { jsx, IconButton, useColorMode } from "theme-ui"
-import useSiteMetadata from "../../hooks/use-site-metadata"
+import useSiteMetadata from "../../hooks/useSiteMetadata"
 
 const ColorModeButton = props => {
   const { colorModes } = useSiteMetadata()

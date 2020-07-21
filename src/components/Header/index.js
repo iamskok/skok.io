@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Flex, Box } from "theme-ui"
 import { Link } from "gatsby"
-import useSiteMetadata from "../../hooks/use-site-metadata"
+import useSiteMetadata from "../../hooks/useSiteMetadata"
 import ColorModeButton from "../ColorModeButton"
 
 const Header = () => {

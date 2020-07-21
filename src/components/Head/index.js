@@ -10,7 +10,7 @@ import firaCodeFontFace from "../../fonts/fira-code"
 import fonts from "../../theme/styles/fonts"
 import pageHeight from "../../theme/styles/page-height"
 import fontObserver from "../../utils/font-observer"
-import useSiteMetadata from "../../hooks/use-site-metadata"
+import useSiteMetadata from "../../hooks/useSiteMetadata"
 
 const Head = props => {
   const { title, description, author } = useSiteMetadata()
