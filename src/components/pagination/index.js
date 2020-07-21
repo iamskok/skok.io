@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Flex } from "theme-ui"
-import Link from "./link"
+import PaginationLink from "./PaginationLink"
 import { baseThemeSettings } from "../../theme"
 
 const { rythm } = baseThemeSettings
@@ -17,7 +17,7 @@ const Pagination = ({ next, previous }) => (
         flex: 1,
       }}
     >
-      {previous && <Link to={previous} text="Previous" />}
+      {previous && <PaginationLink to={previous}>Previous</PaginationLink>}
     </Flex>
 
     <Flex
@@ -26,7 +26,7 @@ const Pagination = ({ next, previous }) => (
         flexDirection: `row-reverse`,
       }}
     >
-      {next && <Link to={next} text="Next" />}
+      {next && <PaginationLink to={next}>Next</PaginationLink>}
     </Flex>
   </Flex>
 )

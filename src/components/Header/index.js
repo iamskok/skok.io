@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Flex, Box } from "theme-ui"
 import { Link } from "gatsby"
-import useSiteMetadata from "../hooks/use-site-metadata"
-import ColorModeButton from "./color-mode-button"
+import useSiteMetadata from "../../hooks/use-site-metadata"
+import ColorModeButton from "../ColorModeButton"
 
 const Header = () => {
   const { navigation } = useSiteMetadata()

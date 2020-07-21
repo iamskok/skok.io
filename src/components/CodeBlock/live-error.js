@@ -1,6 +1,6 @@
 import React from "react"
 import { LiveContext } from "react-live"
-import Pre from "../pre"
+import Pre from "../Pre"
 
 const LiveError = props => (
   <LiveContext.Consumer>

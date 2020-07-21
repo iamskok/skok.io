@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Flex, Styled } from "theme-ui"
-import Layout from "../components/layout"
-import GlitchText from "../components/glitch-text"
+import Layout from "../components/Layout"
+import GlitchText from "../components/GlitchText"
 
 const IndexPage = () => (
   <Layout>

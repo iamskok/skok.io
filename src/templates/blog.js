@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import Pagination from "../components/pagination"
-import BlogPostCard from "../components/blog-post-card"
+import Layout from "../components/Layout"
+import Pagination from "../components/Pagination"
+import BlogPostCard from "../components/BlogPostCard"
 
 const Blog = ({ data: { allMdx }, pageContext: { pagination } }) => {
   const { page, nextPagePath, previousPagePath } = pagination
