@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { useState } from "react"
-import CodeBlock from "./code-block"
-import isPreWithCodeBlock from "../utils/is-pre-with-code-block"
-import { baseThemeSettings } from "../theme"
+import CodeBlock from "../CodeBlock"
+import isPreWithCodeBlock from "../../utils/is-pre-with-code-block"
+import { baseThemeSettings } from "../../theme"
 
 const { rythm } = baseThemeSettings
 

@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { Fragment } from "react"
 import { jsx, Container } from "theme-ui"
-import Head from "./head"
-import Header from "./header"
-import Footer from "./footer"
+import Head from "../Head"
+import Header from "../Header"
+import Footer from "../Footer"
 
 const Layout = ({ children }) => (
   <Fragment>

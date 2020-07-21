@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { keyframes } from "@emotion/core"
-import getRandomInt from "../utils/get-random-int"
+import getRandomInt from "../../utils/get-random-int"
 
 const maxClipPath = limit => (1 / (2 - (4 * (1 - limit)) ** 0.25)) * 100
 

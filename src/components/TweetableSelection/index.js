@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 import { jsx, Flex, Box, Styled } from "theme-ui"
 import debounce from "lodash/debounce"
-import Link from "./link"
+import Link from "../Link"
 
 const TweatableSelection = () => {
   const [tweetableText, setTweetableText] = useState()

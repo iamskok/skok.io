@@ -3,9 +3,9 @@ import { jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Img from "gatsby-image"
-import Layout from "../components/layout"
-import Pagination from "../components/pagination"
-import TweetableSelection from "../components/tweetable-selection"
+import Layout from "../../components/Layout"
+import Pagination from "../../components/Pagination"
+import TweetableSelection from "../../components/TweetableSelection"
 
 const BlogPost = ({ pageContext, data }) => {
   const { prev, next } = pageContext

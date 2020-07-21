@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import Link from "../link"
+import Link from "../Link"
 import { useState } from "react"
 
-const PaginationLink = ({ to, text }) => {
+const PaginationLink = ({ to, children }) => {
   const [touchStart, setTouchStart] = useState(false)
   const addColor = () => setTouchStart(true)
   const removeColor = () => setTouchStart(false)
@@ -21,7 +21,7 @@ const PaginationLink = ({ to, text }) => {
         transition: `color 400ms ease`,
       }}
     >
-      {text}
+      {children}
     </Link>
   )
 }

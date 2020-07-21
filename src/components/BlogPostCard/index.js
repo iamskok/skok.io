@@ -2,8 +2,8 @@
 import { jsx, Card, Styled } from "theme-ui"
 import { useState } from "react"
 import Img from "gatsby-image"
-import Link from "../components/link"
-import { baseThemeSettings } from "../theme"
+import Link from "../Link"
+import { baseThemeSettings } from "../../theme"
 
 const { lineHeight } = baseThemeSettings
 const BlogPostCard = ({ post }) => {
