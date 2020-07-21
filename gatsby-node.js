@@ -42,7 +42,7 @@ const createPaginatedPages = (createPage, edges, pathPrefix, context) => {
 
     createPage({
       path: index > 0 ? `${pathPrefix}/${index}` : `${pathPrefix}`,
-      component: path.resolve(`src/templates/blog.js`),
+      component: path.resolve(`src/templates/Blog/index.js`),
       context: {
         pagination: {
           page,
@@ -65,7 +65,7 @@ const createPosts = (createPage, edges) => {
 
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`src/templates/blog-post.js`),
+      component: path.resolve(`src/templates/BlogPost/index.js`),
       context: {
         id: node.id,
         prev,
