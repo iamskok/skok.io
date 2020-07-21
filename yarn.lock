@@ -5854,10 +5854,10 @@ eslint-module-utils@^2.4.1, eslint-module-utils@^2.6.0:
     debug "^2.6.9"
     pkg-dir "^2.0.0"
 
-eslint-plugin-extra-rules@0.0.0-development:
-  version "0.0.0-development"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-extra-rules/-/eslint-plugin-extra-rules-0.0.0-development.tgz#c3c1aed3086c39fd83c1b7a4fa3df9884b4abb48"
-  integrity sha1-w8Gu0whsOf2Dwbek+j35iEtKu0g=
+eslint-plugin-extra-rules@0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-extra-rules/-/eslint-plugin-extra-rules-0.8.1.tgz#0683e2e7fad9261e7444f951e1803defe4ee9b77"
+  integrity sha1-BoPi5/rZJh50RPlR4YA97+Tum3c=
   dependencies:
     console-assert "1.0.0"
     espree "3.0.0-alpha-1"
