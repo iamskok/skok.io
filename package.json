@@ -14,8 +14,10 @@
   },
   "homepage": "https://skok.netlify.app",
   "scripts": {
-    "lint": "eslint --fix --cache .",
-    "format": "prettier --write \"**/*.{json,md,mdx}\"",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --fix --cache .",
+    "prettier": "prettier --check \"**/*.{json,md,mdx}\"",
+    "prettier:fix": "prettier --write \"**/*.{json,md,mdx}\"",
     "lh": "lighthousebot",
     "clean": "gatsby clean",
     "start": "gatsby develop",

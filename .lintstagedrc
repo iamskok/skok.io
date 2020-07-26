@@ -1,4 +1,4 @@
 {
-  "*.+(js|jsx)": ["yarn lint"],
-  "*.+(json|md|mdx)": ["yarn format"]
+  "*.+(js|jsx)": ["yarn lint:fix"],
+  "*.+(json|md|mdx)": ["yarn prettier:fix"]
 }
