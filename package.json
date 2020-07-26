@@ -35,6 +35,7 @@
     "@theme-ui/prism": "^0.3.0",
     "gatsby": "^2.19.32",
     "gatsby-image": "^2.2.43",
+    "gatsby-optional-chaining": "^1.0.1",
     "gatsby-plugin-mdx": "^1.0.77",
     "gatsby-plugin-react-helmet": "^3.1.23",
     "gatsby-plugin-sharp": "^2.4.7",
@@ -67,6 +68,7 @@
     "eslint-plugin-react-hooks": "4.0.8",
     "husky": "4.2.5",
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
+    "lint-staged": "^10.2.11",
     "wait-for-netlify-preview": "1.2.1"
   }
 }
