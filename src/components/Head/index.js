@@ -18,6 +18,7 @@ const Head = props => {
   return (
     <Helmet>
       <title>{title}</title>
+      <link type="image/x-icon" rel="shortcut icon" href="favicon.png" />
       <meta name="description" content={description || props.description} />
       <meta name="og:title" content={title || props.title} />
       <meta name="og:description" content={description || props.description} />
