@@ -16,12 +16,12 @@ const BlogPost = ({ pageContext, data }) => {
   const { title, date, cover, coverAlt } = mdx.frontmatter
 
   useEffect(() => {
-    window.addEventListener("scroll", () =>
+    window.addEventListener(`scroll`, () =>
       handleScrollPositionToPercent(title)
     )
 
     return () => {
-      window.removeEventListener("scroll", handleScrollPositionToPercent)
+      window.removeEventListener(`scroll`, handleScrollPositionToPercent)
     }
   }, [handleScrollPositionToPercent])
 
