@@ -70,7 +70,7 @@
     "eslint-plugin-react-hooks": "4.0.8",
     "husky": "4.2.5",
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
-    "lint-staged": "^10.2.11",
+    "lint-staged": "10.2.11",
     "wait-for-netlify-preview": "1.2.1"
   }
 }
