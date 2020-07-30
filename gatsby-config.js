@@ -59,7 +59,7 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#11e`,
         display: `standalone`,
-        icon: `static/favicon-dark-theme.svg`,
+        icon: `static/favicon.svg`,
       },
     },
     `gatsby-transformer-sharp`,
