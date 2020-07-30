@@ -28,18 +28,9 @@ const BlogPostCard = ({ post }) => {
       <Card
         as="article"
         sx={{
-          margin: 0,
           boxShadow: active ? `active` : `default`,
-          borderWidth: 0,
-          borderStyle: `solid`,
           borderRadius: active ? 0 : 2,
           borderColor: active ? `secondary` : `primary`,
-          transition: `
-            border 400ms ease,
-            border-radius 400ms ease,
-            box-shadow 400ms ease,
-            background-color 400ms ease
-          `,
         }}
       >
         {post.frontmatter.cover && (
