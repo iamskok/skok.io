@@ -2,23 +2,30 @@
 import { useState } from "react"
 import { jsx, IconButton, useColorMode } from "theme-ui"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
+import setFavicon from "../../utils/set-favicon"
 
 const ColorModeButton = props => {
-  const { colorModes } = useSiteMetadata()
+  const { colorModes, favicons } = useSiteMetadata()
   const [colorMode, setColorMode] = useColorMode()
   const [turn, setTurn] = useState(0)
   const turnButton = () => setTurn(turn < 1 ? 1 : 0)
+
+  const { light: faviconLight, dark: faviconDark } = favicons
+
+  const clickHandler = () => {
+    const index = colorModes.indexOf(colorMode)
+    const next = colorModes[(index + 1) % colorModes.length]
+    setColorMode(next)
+    turnButton()
+
+    next === `default` ? setFavicon(faviconDark) : setFavicon(faviconLight)
+  }
 
   return (
     <IconButton
       {...props}
       aria-label="Toggle website theme"
-      onClick={() => {
-        const index = colorModes.indexOf(colorMode)
-        const next = colorModes[(index + 1) % colorModes.length]
-        setColorMode(next)
-        turnButton()
-      }}
+      onClick={clickHandler}
       sx={{
         cursor: `pointer`,
         padding: 0,

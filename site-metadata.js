@@ -18,5 +18,9 @@ module.exports = {
     copyButton: true,
     languageTab: true,
   },
-  colorModes: [`default`, `dark`],
+  colorModes: [`default`, `light`],
+  favicons: {
+    light: `/favicon-light.svg`,
+    dark: `/favicon-dark.svg`,
+  },
 }

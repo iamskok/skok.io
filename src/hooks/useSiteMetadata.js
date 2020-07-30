@@ -20,6 +20,10 @@ const useSiteMetadata = () => {
               languageTab
             }
             colorModes
+            favicons {
+              light
+              dark
+            }
           }
         }
       }
