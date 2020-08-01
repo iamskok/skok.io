@@ -1,6 +1,6 @@
-import setFavicon from "../utils/set-favicon"
+import setFavicon from "./set-favicon"
 import documentScrollPercent from "./document-scroll-percent"
-import bustCache from "./bustCache"
+import bustCache from "./bust-cache"
 
 const handleScrollPositionToPercent = originalTitle => {
   const scrollPercent = documentScrollPercent()
