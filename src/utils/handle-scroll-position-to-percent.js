@@ -1,28 +1,18 @@
-// import debounce from "lodash/debounce"
 import setFavicon from "../utils/set-favicon"
-import emojiSVG from "../utils/emoji-svg"
+import documentScrollPercent from "./document-scroll-percent"
+import bustCache from "./bustCache"
 
 const handleScrollPositionToPercent = originalTitle => {
-  const html = document.documentElement
-  const body = document.documentElement
+  const scrollPercent = documentScrollPercent()
 
-  const htmlScrollTop = html.scrollTop
-  const htmlScrollHeight = html.scrollHeight
+  const faviconPath =
+    scrollPercent < 100
+      ? `/favicon-eyes-emoji.svg`
+      : `/favicon-checkmark-emoji.svg`
 
-  const bodyScrollTop = body.scrollTop
-  const bodyScrollHeight = body.scrollHeight
+  const emojiPath = bustCache(faviconPath)
+  setFavicon(emojiPath)
 
-  const scrollTop = htmlScrollTop || bodyScrollTop
-  const scrollHeight = htmlScrollHeight || bodyScrollHeight
-  const clientHeight = html.clientHeight
-
-  const scrollPercent = Math.round(
-    (scrollTop / (scrollHeight - clientHeight)) * 100
-  )
-
-  const emoji = scrollPercent < 100 ? `👀` : `✅`
-
-  setFavicon(emojiSVG(emoji))
   document.title = `${scrollPercent}% ${originalTitle}`
 }
 
