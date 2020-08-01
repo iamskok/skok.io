@@ -13,7 +13,6 @@ import fontObserver from "../../utils/font-observer"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
 
 const Head = props => {
-  console.log("xxx")
   const { title, description, author } = useSiteMetadata()
 
   return (
