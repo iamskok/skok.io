@@ -1,18 +1,18 @@
-import { baseThemeSettings } from "../index"
-import unitless from "../../utils/unitless"
-
-const { rythm } = baseThemeSettings
 const cards = {
   primary: {
     padding: 3,
-    marginBottom: unitless(rythm) * 2 + `rem`,
-    borderRadius: 1,
+    margin: 0,
+    borderWidth: 2,
+    borderStyle: `solid`,
     boxShadow: `default`,
-    transition: `box-shadow 400ms ease`,
-    backgroundColor: `backgroundLight` || `background`,
-    "&:hover": {
-      boxShadow: `active`,
-    },
+    borderRadius: 2,
+    borderColor: `primary`,
+    transition: `
+      border 400ms ease,
+      border-radius 400ms ease,
+      box-shadow 400ms ease,
+      background-color 400ms ease
+    `,
   },
 }
 

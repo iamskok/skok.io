@@ -4,12 +4,12 @@ module.exports = {
   author: `Vladimir Skok`,
   navigation: [
     {
-      to: "/blog",
-      label: "blog",
+      to: `/blog`,
+      label: `blog`,
     },
     {
-      to: "/about",
-      label: "about",
+      to: `/about`,
+      label: `about`,
     },
   ],
   codeBlock: {
