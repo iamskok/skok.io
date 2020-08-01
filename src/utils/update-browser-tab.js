@@ -1,14 +1,13 @@
 import setFavicon from "./set-favicon"
 import documentScrollPercent from "./document-scroll-percent"
 import bustCache from "./bust-cache"
+import { favicons } from "../../site-metadata.js"
 
-const handleScrollPositionToPercent = originalTitle => {
+const updateBrowserTab = originalTitle => {
   const scrollPercent = documentScrollPercent()
+  const { eyesEmoji, checkmarkEmoji } = favicons
 
-  const faviconPath =
-    scrollPercent < 100
-      ? `/favicon-eyes-emoji.svg`
-      : `/favicon-checkmark-emoji.svg`
+  const faviconPath = scrollPercent < 100 ? eyesEmoji : checkmarkEmoji
 
   const emojiPath = bustCache(faviconPath)
   setFavicon(emojiPath)
@@ -16,4 +15,4 @@ const handleScrollPositionToPercent = originalTitle => {
   document.title = `${scrollPercent}% ${originalTitle}`
 }
 
-export default handleScrollPositionToPercent
+export default updateBrowserTab

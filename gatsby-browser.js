@@ -1,8 +1,7 @@
 import debounce from "lodash.debounce"
-import { wrapRootElement } from "./src/components/WrapRootElement"
 import updateBrowserTab from "./src/utils/update-browser-tab"
-import setFavicon from "./src/utils/set-favicon"
-import bustCache from "./src/utils/bust-cache"
+import setThemeFavicon from "./src/utils/set-theme-favicon"
+import { wrapRootElement } from "./src/components/WrapRootElement"
 
 // TODO: Add dynamic title in templates.
 const title = document.querySelector(`title`).textContent
@@ -18,9 +17,10 @@ const onRouteUpdate = ({ location }) => {
     window.addEventListener(`scroll`, onBlogPostScroll)
   } else {
     window.removeEventListener(`scroll`, onBlogPostScroll)
-    const favicon = bustCache(`/favicon.png`)
-    setFavicon(favicon)
+    setThemeFavicon()
   }
 }
 
-export { wrapRootElement, onRouteUpdate }
+const onClientEntry = () => setThemeFavicon()
+
+export { wrapRootElement, onRouteUpdate, onClientEntry }

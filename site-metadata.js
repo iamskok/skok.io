@@ -20,6 +20,8 @@ module.exports = {
   },
   colorModes: [`default`, `light`],
   favicons: {
+    checkmarkEmoji: `/favicon-checkmark-emoji.svg`,
+    eyesEmoji: `/favicon-eyes-emoji.svg`,
     light: `/favicon-light.svg`,
     dark: `/favicon-dark.svg`,
   },
