@@ -49,6 +49,7 @@
     "gatsby-source-filesystem": "^2.1.50",
     "gatsby-transformer-sharp": "^2.3.17",
     "lodash": "^4.17.19",
+    "lodash.debounce": "^4.0.8",
     "minimist": "^1.2.5",
     "modularscale": "^2.0.1",
     "prop-types": "^15.7.2",
