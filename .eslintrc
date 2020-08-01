@@ -29,18 +29,18 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-console": "warn",
+    "no-console": "error",
     "no-eval": "error",
     "import/first": "error",
     "react/prop-types": "off", // change on "error"
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "import/no-extraneous-dependencies": "warn",
-    "extra-rules/no-commented-out-code": "warn",
+    "react-hooks/exhaustive-deps": "error",
+    "import/no-extraneous-dependencies": "error",
+    "extra-rules/no-commented-out-code": "error",
     "jsx-a11y/alt-text": "error",
     "react/jsx-key": "error",
     "max-lines": [
-      "warn",
+      "error",
       {
         "max": 500,
         "skipBlankLines": true,
