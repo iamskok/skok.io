@@ -1,29 +1,17 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { useEffect } from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Img from "gatsby-image"
 import Layout from "../../components/Layout"
 import Pagination from "../../components/Pagination"
 import TweetableSelection from "../../components/TweetableSelection"
-import handleScrollPositionToPercent from "../../utils/handle-scroll-position-to-percent"
 
 const BlogPost = ({ pageContext, data }) => {
   const { prev, next } = pageContext
 
   const { mdx } = data
   const { title, date, cover, coverAlt } = mdx.frontmatter
-
-  useEffect(() => {
-    window.addEventListener(`scroll`, () =>
-      handleScrollPositionToPercent(title)
-    )
-
-    return () => {
-      window.removeEventListener(`scroll`, handleScrollPositionToPercent)
-    }
-  }, [handleScrollPositionToPercent])
 
   return (
     <Layout>
