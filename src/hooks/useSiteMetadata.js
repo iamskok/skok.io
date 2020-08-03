@@ -13,6 +13,10 @@ const useSiteMetadata = () => {
               label
               to
             }
+            socialMedia {
+              twitter
+              github
+            }
             codeBlock {
               lineNumbers
               lineNumbersButton

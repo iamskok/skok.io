@@ -12,6 +12,10 @@ module.exports = {
       label: `about`,
     },
   ],
+  socialMedia: {
+    twitter: `https://twitter.com/iamskok`,
+    github: `https://github.com/iamskok`,
+  },
   codeBlock: {
     lineNumbers: true,
     lineNumbersButton: true,

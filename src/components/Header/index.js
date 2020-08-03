@@ -3,6 +3,8 @@ import { jsx, Flex, Box } from "theme-ui"
 import { Link } from "gatsby"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
 import ColorModeButton from "../ColorModeButton"
+import TwitterIconLink from "../TwitterIconLink"
+import GithubIconLink from "../GithubIconLink"
 
 const Header = () => {
   const { navigation } = useSiteMetadata()
@@ -50,25 +52,26 @@ const Header = () => {
               </Link>
             </li>
           ))}
-          <li
-            sx={{
-              display: `inline-block`,
-            }}
-          >
-            <Link
-              to="https://twitter.com/iamskok"
-              sx={{
-                variant: `links.nav`,
-              }}
-              rel="me"
-              className="h-card"
-            >
-              Twitter
-            </Link>
-          </li>
         </ul>
       </Box>
-      <ColorModeButton />
+      <ul
+        sx={{
+          padding: 0,
+          margin: 0,
+          listStyle: `none`,
+          display: `flex`,
+        }}
+      >
+        <li>
+          <TwitterIconLink />
+        </li>
+        <li>
+          <GithubIconLink />
+        </li>
+        <li>
+          <ColorModeButton />
+        </li>
+      </ul>
     </Flex>
   )
 }
