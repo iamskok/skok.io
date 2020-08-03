@@ -4,19 +4,23 @@ import Link from "../Link"
 import { useState } from "react"
 
 const PaginationLink = ({ to, children }) => {
-  const [touchStart, setTouchStart] = useState(false)
-  const addColor = () => setTouchStart(true)
-  const removeColor = () => setTouchStart(false)
+  const [highlight, setHighlight] = useState(false)
+  const addHighlight = () => setHighlight(true)
+  const removeHighlight = () => setHighlight(false)
 
   return (
     <Link
       to={to}
-      onTouchStart={addColor}
-      onTouchEnd={removeColor}
+      onFocus={addHighlight}
+      onBlur={removeHighlight}
+      onTouchStart={addHighlight}
+      onTouchEnd={removeHighlight}
+      onMouseEnter={addHighlight}
+      onMouseLeave={removeHighlight}
       sx={{
         fontSize: 4,
         fontWeight: `bold`,
-        color: touchStart ? `secondary` : `text`,
+        color: highlight ? `secondary` : `text`,
         textDecoration: `none`,
         transition: `color 400ms ease`,
       }}

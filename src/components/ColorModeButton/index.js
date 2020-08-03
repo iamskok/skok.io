@@ -5,8 +5,13 @@ import useSiteMetadata from "../../hooks/useSiteMetadata"
 import setFavicon from "../../utils/set-favicon"
 
 const ColorModeButton = props => {
+  const [highlight, setHighlight] = useState(false)
+  const addHighlight = () => setHighlight(true)
+  const removeHighlight = () => setHighlight(false)
+
   const { colorModes, favicons } = useSiteMetadata()
   const [colorMode, setColorMode] = useColorMode()
+
   const [turn, setTurn] = useState(0)
   const turnButton = () => setTurn(turn < 1 ? 1 : 0)
 
@@ -24,6 +29,12 @@ const ColorModeButton = props => {
   return (
     <IconButton
       {...props}
+      onFocus={addHighlight}
+      onBlur={removeHighlight}
+      onTouchStart={addHighlight}
+      onTouchEnd={removeHighlight}
+      onMouseEnter={addHighlight}
+      onMouseLeave={removeHighlight}
       aria-label="Toggle website theme"
       onClick={clickHandler}
       sx={{
@@ -32,13 +43,14 @@ const ColorModeButton = props => {
         width: `iconButton`,
         height: `iconButton`,
         marginX: 0,
+        color: highlight ? `secondary` : `primary`,
       }}
     >
       <svg
         width="24"
         height="24"
         viewBox="0 0 32 32"
-        fill="currentcolor"
+        fill="currentColor"
         sx={{
           display: `flex`,
           margin: `0 auto`,
