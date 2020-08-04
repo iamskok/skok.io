@@ -23,10 +23,7 @@ const BlogPost = ({ pageContext, data }) => {
       {/* eslint react/no-children-prop: 0 */}
       <MDXRenderer children={mdx.body} />
 
-      <Pagination
-        previous={prev && prev.fields && prev.fields.slug}
-        next={next && next.fields && next.fields.slug}
-      />
+      <Pagination previous={prev?.fields?.slug} next={next?.fields?.slug} />
     </Layout>
   )
 }
