@@ -40,6 +40,7 @@ const BlogPostCard = ({ post }) => {
               ...post.frontmatter.cover.childImageSharp.sizes,
               aspectRatio: 16 / 9,
             }}
+            fluid={post.frontmatter.cover.childImageSharp.fluid}
           />
         )}
 

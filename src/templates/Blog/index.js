@@ -44,6 +44,9 @@ export const pageQuery = graphql`
                 sizes(maxWidth: 900) {
                   ...GatsbyImageSharpSizes
                 }
+                fluid(maxWidth: 900, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }

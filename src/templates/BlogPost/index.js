@@ -16,7 +16,14 @@ const BlogPost = ({ pageContext, data }) => {
   return (
     <Layout>
       <TweetableSelection />
-      {cover && <Img sizes={cover.childImageSharp.sizes} alt={coverAlt} />}
+      {cover && (
+        <Img
+          alt={coverAlt}
+          className="u-photo"
+          sizes={cover.childImageSharp.sizes}
+          fluid={cover.childImageSharp.fluid}
+        />
+      )}
       <Styled.h1>{title}</Styled.h1>
 
       <time>{date}</time>
@@ -43,6 +50,9 @@ export const pageQuery = graphql`
           childImageSharp {
             sizes(maxWidth: 900) {
               ...GatsbyImageSharpSizes
+            }
+            fluid(maxWidth: 900, quality: 100) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
