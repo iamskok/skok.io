@@ -10,8 +10,14 @@ const BlockQuote = props => {
         borderLeftWidth: 3,
         borderColor: `primary`,
         borderStyle: `solid`,
+        display: `flex`,
+        flexDirection: `column`,
         "& > p": {
           marginBottom: 0,
+        },
+        "& > cite": {
+          marginTop: 3,
+          alignSelf: `flex-end`,
         },
       }}
     >
