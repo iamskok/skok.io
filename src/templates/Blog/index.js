@@ -7,12 +7,11 @@ import BlogPostCard from "../../components/BlogPostCard"
 
 const Blog = ({ data: { allMdx }, pageContext: { pagination } }) => {
   const { page, nextPagePath, previousPagePath } = pagination
-
   const posts = page.map(id => allMdx.edges.find(edge => edge.node.id === id))
 
   return (
     <Layout>
-      <Styled.h1>Blog</Styled.h1>
+      <Styled.h1>Blog Posts</Styled.h1>
 
       {posts.map(({ node: post }) => (
         <BlogPostCard key={post.id} post={post} />
@@ -37,7 +36,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            date(formatString: "MMMM DD, YYYY")
+            date
             coverAlt
             cover {
               childImageSharp {

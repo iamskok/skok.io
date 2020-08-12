@@ -2,7 +2,16 @@ module.exports = {
   title: `skok.io`,
   description: `Vladimir Skok's development blog`,
   author: `Vladimir Skok`,
-  siteUrl: `https://skok.io`,
+  // siteUrl: `https://skok.io`,
+  siteUrl: `https://skok.club`,
+  microformats2: {
+    photo: `https://pbs.twimg.com/profile_images/720846092531707905/fit8T8Xa_400x400.jpg`,
+    bday: `1990-9-28`,
+    locality: `Atlanta`,
+    region: `Georgia`,
+    countryName: `USA`,
+    note: `Software Engineer`,
+  },
   navigation: [
     {
       to: `/blog`,

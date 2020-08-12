@@ -1,6 +1,12 @@
 const path = require("path")
 const siteMetadata = require("./site-metadata")
 
+const activeEnv = process.env.NODE_ENV
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+})
+
 const gatsbyRemarkPlugins = [
   {
     resolve: `gatsby-remark-images`,
@@ -70,6 +76,22 @@ module.exports = {
         sitemap: null,
         // allow all after moving on `skok.io domain`
         policy: [{ userAgent: "*", disallow: ["/"] }],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-webmention`,
+      options: {
+        username: `https://skok.club`,
+        identity: {
+          twitter: `iamskok`,
+          github: `iamskok`,
+        },
+        mentions: true,
+        pingbacks: true,
+        forwardPingbacksAsWebmentions: `https://brid.gy`,
+        domain: `skok.club`,
+        fetchLimit: 10000,
+        token: process.env.WEBMENTION_TOKEN,
       },
     },
     `gatsby-transformer-sharp`,

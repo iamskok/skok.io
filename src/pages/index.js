@@ -20,8 +20,9 @@ const IndexPage = () => (
           letterSpacing: 2,
         }}
       >
-        Hi! My name is{" "}
-        <span sx={{ variant: `text.italicHeading` }}>Vladimir</span>.
+        Hi! My name is
+        {` `}
+        <span sx={{ variant: `text.italicHeading` }}>Vladimir.</span>
       </Styled.h1>
 
       <Styled.h2
@@ -32,19 +33,21 @@ const IndexPage = () => (
           wordSpacing: 4,
         }}
       >
-        I move{" "}
+        I move
+        {` `}
         <GlitchText
           text="pixels"
           duration="5000ms"
           keyframesNum={20}
           limit={0.2}
-          colors={["red", "green", "blue"]}
+          colors={[`red`, `green`, `blue`]}
           position={[-5, 5]}
           shadow={[-2, 2]}
           backgroundColor="background"
         >
           pixels
-        </GlitchText>{" "}
+        </GlitchText>
+        {` `}
         on the web.
       </Styled.h2>
     </Flex>

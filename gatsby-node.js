@@ -1,5 +1,6 @@
 const { createFilePath } = require("gatsby-source-filesystem")
 const path = require("path")
+const siteMetadata = require("./site-metadata")
 const PAGINATION_OFFSET = 8
 
 // Here we're adding extra stuff to the "node" (like the slug)
@@ -8,6 +9,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   if (node.internal.type === "Mdx") {
     const value = createFilePath({ node, getNode })
+
     createNodeField({
       // Individual MDX node
       node,
@@ -59,9 +61,12 @@ const createPaginatedPages = (createPage, edges, pathPrefix, context) => {
 }
 
 const createPosts = (createPage, edges) => {
+  const { siteUrl } = siteMetadata
   edges.forEach(({ node }, i) => {
     const prev = i === 0 ? null : edges[i - 1].node
     const next = i === edges.length - 1 ? null : edges[i + 1].node
+    const slug = node.fields.slug
+    const permalink = `${siteUrl}${slug}`
 
     createPage({
       path: node.fields.slug,
@@ -70,6 +75,7 @@ const createPosts = (createPage, edges) => {
         id: node.id,
         prev,
         next,
+        permalink,
       },
     })
   })
@@ -127,7 +133,7 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, "src"), "node_modules"],
+      modules: [path.resolve(__dirname, `src`), `node_modules`],
     },
   })
 }

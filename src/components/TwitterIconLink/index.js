@@ -15,7 +15,8 @@ const TwitterIconLink = () => {
   return (
     <a
       href={twitterURL}
-      rel="me"
+      rel="noopener noreferrer me"
+      target="_blank"
       className="h-card"
       aria-label="Navigate to Vladimir's Twitter account"
       onFocus={addHighlight}
@@ -36,6 +37,7 @@ const TwitterIconLink = () => {
         transition: `color 400ms ease`,
       }}
     >
+      <span sx={{ display: `none` }}>Vladimir Skok</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

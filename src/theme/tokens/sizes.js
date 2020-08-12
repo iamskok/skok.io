@@ -4,6 +4,7 @@ const sizes = {
   lineNumber: 42,
   container: 800,
   scrollBar: 4,
+  avatar: [40, 60],
 }
 
 export default sizes
