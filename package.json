@@ -36,6 +36,8 @@
     "@theme-ui/presets": "^0.3.0",
     "@theme-ui/prism": "^0.3.0",
     "babel-eslint": "^10.1.0",
+    "dotenv": "^8.2.0",
+    "firebase": "^7.23.0",
     "gatsby": "^2.24.14",
     "gatsby-image": "^2.2.43",
     "gatsby-optional-chaining": "^1.0.1",

@@ -62,6 +62,7 @@ const createPosts = (createPage, edges) => {
   edges.forEach(({ node }, i) => {
     const prev = i === 0 ? null : edges[i - 1].node
     const next = i === edges.length - 1 ? null : edges[i + 1].node
+    const slug = node.fields.slug.replace(`/blog/`, ``).replace(`/`, ``)
 
     createPage({
       path: node.fields.slug,
@@ -70,6 +71,7 @@ const createPosts = (createPage, edges) => {
         id: node.id,
         prev,
         next,
+        slug,
       },
     })
   })

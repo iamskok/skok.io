@@ -6,9 +6,10 @@ import Img from "gatsby-image"
 import Layout from "../../components/Layout"
 import Pagination from "../../components/Pagination"
 import TweetableSelection from "../../components/TweetableSelection"
+import HitCounter from "../../components/HitCounter"
 
 const BlogPost = ({ pageContext, data }) => {
-  const { prev, next } = pageContext
+  const { prev, next, slug } = pageContext
 
   const { mdx } = data
   const { title, date, cover, coverAlt } = mdx.frontmatter
@@ -19,12 +20,12 @@ const BlogPost = ({ pageContext, data }) => {
       {cover && (
         <Img
           alt={coverAlt}
-          className="u-photo"
           sizes={cover.childImageSharp.sizes}
           fluid={cover.childImageSharp.fluid}
         />
       )}
       <Styled.h1>{title}</Styled.h1>
+      <HitCounter slug={slug} />
 
       <time>{date}</time>
       {/* eslint react/no-children-prop: 0 */}
