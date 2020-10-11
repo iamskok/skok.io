@@ -32,22 +32,25 @@ if (!firebase.apps.length) {
 
 const db = firebase.firestore()
 
+const initialPostDoc = {
+  hits: 1,
+}
+
 exports.handler = async event => {
   const { slug } = event.queryStringParameters
 
   const postRef = db.collection(`posts`).doc(slug)
-  const postSnapshot = await postRef.get()
+  let postDoc = await postRef.get()
 
-  if (postSnapshot.exists) {
+  if (postDoc.exists) {
     const increment = firebase.firestore.FieldValue.increment(1)
-    postRef.update({ hits: increment })
+    await postRef.update({ hits: increment })
   } else {
-    postRef.set({
-      hits: 1,
-    })
+    await postRef.set(initialPostDoc)
+    postDoc = await postRef.get()
   }
 
-  const { hits: registeredHits } = (await postRef.get()).data()
+  const { hits: registeredHits } = postDoc.data()
 
   return {
     statusCode: 200,
