@@ -1,7 +1,4 @@
 const firebase = require("firebase")
-const path = require("path")
-
-require("dotenv").config({ path: `${path.resolve()}/.env` })
 
 const {
   FIREBASE_API_KEY,
@@ -36,8 +33,6 @@ if (!firebase.apps.length) {
 const db = firebase.firestore()
 
 exports.handler = async event => {
-  console.log("NETLIFY_DEV", process.env.NETLIFY_DEV) // eslint-disable-line
-
   const { slug } = event.queryStringParameters
 
   const postRef = db.collection(`posts`).doc(slug)
