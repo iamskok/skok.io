@@ -1,6 +1,8 @@
 const path = require("path")
 const siteMetadata = require("./site-metadata")
 
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` })
+
 const gatsbyRemarkPlugins = [
   {
     resolve: `gatsby-remark-images`,
