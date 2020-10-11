@@ -13,7 +13,7 @@ firebase.initializeApp(config)
 const db = firebase.firestore()
 
 const HitCounter = ({ slug }) => {
-  const [hits, setHits] = useState(0)
+  const [hits, setHits] = useState(null)
 
   useEffect(() => {
     let unsubscribeFromPostUpdates
@@ -24,6 +24,7 @@ const HitCounter = ({ slug }) => {
         const postDoc = await postRef.get()
         const isPostDocExists = postDoc.exists
 
+        // Subscribe on real-time hit updates.
         const subscribeOnPostUpdates = postRef => {
           return postRef.onSnapshot(doc => {
             const { hits: registeredHits } = doc.data()
@@ -36,6 +37,7 @@ const HitCounter = ({ slug }) => {
           unsubscribeFromPostUpdates = subscribeOnPostUpdates(postRef)
         }
 
+        // Increment hits and fetch current value.
         fetch(`/.netlify/functions/register-hit?slug=${slug}`).then(() => {
           if (!isPostDocExists) {
             unsubscribeFromPostUpdates = subscribeOnPostUpdates(postRef)
@@ -45,12 +47,13 @@ const HitCounter = ({ slug }) => {
         throw new Error(error)
       }
     }
+
     getHits()
 
     return () => unsubscribeFromPostUpdates()
   }, [slug])
 
-  return <h1>HitCounter: {hits}</h1>
+  return hits === null ? <h1>HitCounter: {hits}</h1> : <></>
 }
 
 export default HitCounter

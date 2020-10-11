@@ -1,5 +1,6 @@
 const firebase = require("firebase")
 
+// Get `production` and `development` environment variables from Netlify.
 const {
   FIREBASE_API_KEY,
   FIREBASE_AUTH_DOMAIN,
@@ -12,6 +13,7 @@ const {
   FIREBASE_PROJECT_ID_DEV,
 } = process.env
 
+// Set configuration based on the Netlify environment.
 const config = process.env.NETLIFY_DEV
   ? {
       apiKey: FIREBASE_API_KEY_DEV,
@@ -26,6 +28,7 @@ const config = process.env.NETLIFY_DEV
       projectId: FIREBASE_PROJECT_ID,
     }
 
+// Check if Firebase wasn't previously initialized.
 if (!firebase.apps.length) {
   firebase.initializeApp(config)
 }
@@ -38,15 +41,20 @@ const initialPostDoc = {
 
 exports.handler = async event => {
   const { slug } = event.queryStringParameters
+  const collectionName = `posts`
 
-  const postRef = db.collection(`posts`).doc(slug)
+  const postRef = db.collection(collectionName).doc(slug)
   let postDoc = await postRef.get()
 
-  if (postDoc.exists) {
+  const isPostDocExists = postDoc.exists
+
+  if (isPostDocExists) {
     const increment = firebase.firestore.FieldValue.increment(1)
     await postRef.update({ hits: increment })
   } else {
+    // Create post document if it didn't exist.
     await postRef.set(initialPostDoc)
+    // Update post doc value
     postDoc = await postRef.get()
   }
 
