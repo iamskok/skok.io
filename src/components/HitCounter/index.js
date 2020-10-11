@@ -9,6 +9,7 @@ const config = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
   databaseURL: process.env.FIREBASE_DATABASE_URL,
+  // Temporary fix. Netlify is not picking up this variable.
   projectId: process.env.FIREBASE_PROJECT_ID
     ? process.env.FIREBASE_PROJECT_ID
     : `iamskok`,
@@ -73,6 +74,7 @@ const HitCounter = ({ slug }) => {
       sx={{
         fontSize: 2,
         flexDirection: `row`,
+        alignItems: `center`,
         backgroundColor: blink ? `primary` : `transparent`,
         transition: `background-color 400ms ease`,
         borderRadius: 1,
@@ -81,6 +83,7 @@ const HitCounter = ({ slug }) => {
       <EyeIcon
         sx={{
           width: `icon`,
+          heught: `icon`,
           fill: `text`,
           marginX: 2,
         }}
