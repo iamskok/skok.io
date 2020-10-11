@@ -1,10 +1,11 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, Flex } from "theme-ui"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Img from "gatsby-image"
 import Layout from "../../components/Layout"
 import Pagination from "../../components/Pagination"
+import PostDate from "../../components/PostDate"
 import TweetableSelection from "../../components/TweetableSelection"
 import HitCounter from "../../components/HitCounter"
 
@@ -25,9 +26,15 @@ const BlogPost = ({ pageContext, data }) => {
         />
       )}
       <Styled.h1>{title}</Styled.h1>
-      <HitCounter slug={slug} />
 
-      <time>{date}</time>
+      <Flex
+        sx={{
+          justifyContent: `space-between`,
+        }}
+      >
+        <PostDate date={date} />
+        <HitCounter slug={slug} />
+      </Flex>
       {/* eslint react/no-children-prop: 0 */}
       <MDXRenderer children={mdx.body} />
 

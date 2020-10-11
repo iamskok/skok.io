@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react"
+/** @jsx jsx */
+import { jsx, Flex } from "theme-ui"
+import { useState, useEffect, Fragment } from "react"
 import firebase from "firebase"
+import EyeIcon from "../../icons/eye.inline.svg"
 
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -14,34 +17,43 @@ const db = firebase.firestore()
 
 const HitCounter = ({ slug }) => {
   const [hits, setHits] = useState(null)
+  const [blink, setBlink] = useState(false)
 
   useEffect(() => {
     let unsubscribeFromPostUpdates
 
     const getHits = async () => {
       try {
-        const postRef = db.collection(`posts`).doc(slug)
-        const postDoc = await postRef.get()
-        const isPostDocExists = postDoc.exists
-
-        // Subscribe on real-time hit updates.
-        const subscribeOnPostUpdates = postRef => {
-          return postRef.onSnapshot(doc => {
-            const { hits: registeredHits } = doc.data()
-
-            setHits(registeredHits)
-          })
-        }
-
-        if (isPostDocExists) {
-          unsubscribeFromPostUpdates = subscribeOnPostUpdates(postRef)
-        }
-
         // Increment hits and fetch current value.
         fetch(`/.netlify/functions/register-hit?slug=${slug}`).then(() => {
-          if (!isPostDocExists) {
-            unsubscribeFromPostUpdates = subscribeOnPostUpdates(postRef)
-          }
+          let blinkTimer
+          let blinkCounter = 0
+
+          const postRef = db.collection(`posts`).doc(slug)
+
+          // Subscribe on real-time hit updates.
+          unsubscribeFromPostUpdates = postRef.onSnapshot(doc => {
+            const { hits: registeredHits } = doc.data()
+
+            // Don't blink on initial render.
+            if (blinkCounter) {
+              setBlink(true)
+            }
+
+            blinkCounter++
+
+            setHits(registeredHits)
+
+            if (blinkTimer) {
+              clearTimeout(blinkTimer)
+              blinkTimer = null
+            }
+
+            blinkTimer = setTimeout(() => {
+              setBlink(false)
+              blinkTimer = null
+            }, 400)
+          })
         })
       } catch (error) {
         throw new Error(error)
@@ -53,7 +65,28 @@ const HitCounter = ({ slug }) => {
     return () => unsubscribeFromPostUpdates()
   }, [slug])
 
-  return hits === null ? <h1>HitCounter: {hits}</h1> : <></>
+  return hits !== null ? (
+    <Flex
+      sx={{
+        fontSize: 2,
+        flexDirection: `row`,
+        backgroundColor: blink ? `primary` : `transparent`,
+        transition: `background-color 400ms ease`,
+        borderRadius: 1,
+      }}
+    >
+      <EyeIcon
+        sx={{
+          width: `icon`,
+          fill: `text`,
+          marginX: 2,
+        }}
+      />
+      <div sx={{ marginX: 2 }}>{hits}</div>
+    </Flex>
+  ) : (
+    <Fragment></Fragment>
+  )
 }
 
 export default HitCounter
