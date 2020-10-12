@@ -54,4 +54,4 @@ Edit Firebase security configurations for production environment (it's required 
 | clean        | Wipe `.cache` and `public` directories            |
 | dev          | Start development server                          |
 | build        | Compile application                               |
-| serve        | serve production build                            |
+| serve        | Serve production build                            |
