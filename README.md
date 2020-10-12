@@ -2,16 +2,11 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/fde8d2b7-db16-46c8-95f8-39f3ba641336/deploy-status)](https://app.netlify.com/sites/skok/deploys)
 
-Vladimir Skok's development blog
+Vladimir Skok's development blog.
 
-## `HitCounter` component
+## Setup
 
-The `HitCounter` component is using Firestore for syncing visitor keys in real-time.
-It calls the `register-hit` Netlify function, which increments/sets registered hits.
-For this component to work, you need to set up 2 sets of environment variables one for
-the `HitCounter` and another is for the `register-hits`.
-
-Create 2 env files for `HitCounter`:
+Create 2 env files in the root of project:
 
 1. `.env.production`
 2. `.env.development`
@@ -26,7 +21,7 @@ FIREBASE_PROJECT_ID=example
 FIREBASE_STORAGE_BUCKET=example.appspot.com
 ```
 
-For `registered-hits` function:
+For Netlify functions:
 
 - open [Netlify admin panel](https://app.netlify.com/)
 - site overview
@@ -39,7 +34,7 @@ Copy and paste all production variables from `.env.production`. Copy and paste a
 development variables from `.env.development` and add `DEV` suffix to each one of
 them, e.g. `FIREBASE_PROJECT_ID_DEV`.
 
-Add security configurations (it's required because your API keys are stored on the client):
+Add Firebase security configurations for production environment (it's required because your API keys are stored on the client):
 
 - go to [Google developer console](https://console.developers.google.com/apis)
 - select your Firebase project
@@ -50,3 +45,16 @@ Add security configurations (it's required because your API keys are stored on t
 - in the "Accept requests from these HTTP referrers" section enter your production site address in `*.example.com/*` format
 - in the "API restrictions" sections choose the "Restrict key" option
 - select "Cloud Firestore API" for the list
+
+## Scripts
+
+| Name         | Description                                       |
+| ------------ | ------------------------------------------------- |
+| lint         | Lint all `js` files                               |
+| lint:fix     | Lint and fix all `js` file                        |
+| prettier     | Lint all `json`, `md`, and `mdx` files            |
+| prettier:fix | Lint and format all `json`, `md`, and `mdx` files |
+| clean        | Wipe `.cache` and `public` directories            |
+| dev          | Start development server                          |
+| build        | Compile application                               |
+| serve        | serve production build                            |
