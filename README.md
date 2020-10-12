@@ -6,10 +6,7 @@ Vladimir Skok's development blog.
 
 ## Setup
 
-Create 2 env files in the root of project:
-
-1. `.env.production`
-2. `.env.development`
+Create `.env.production` and `.env.development` in the project root.
 
 Paste these variables in both of the files:
 
@@ -34,7 +31,7 @@ Copy and paste all production variables from `.env.production`. Copy and paste a
 development variables from `.env.development` and add `DEV` suffix to each one of
 them, e.g. `FIREBASE_PROJECT_ID_DEV`.
 
-Add Firebase security configurations for production environment (it's required because your API keys are stored on the client):
+Edit Firebase security configurations for production environment (it's required because your API keys are stored on the client):
 
 - go to [Google developer console](https://console.developers.google.com/apis)
 - select your Firebase project
