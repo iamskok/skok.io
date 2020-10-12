@@ -20,10 +20,9 @@
     "prettier:fix": "prettier --write \"**/*.{json,md,mdx}\"",
     "lh": "lighthousebot",
     "clean": "gatsby clean",
-    "start": "gatsby develop",
+    "dev": "gatsby develop",
     "build": "gatsby build",
-    "serve": "gatsby serve",
-    "fresh": "gatsby clean && gatsby build && gatsby develop"
+    "serve": "gatsby serve"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
