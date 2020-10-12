@@ -18,7 +18,7 @@ FIREBASE_PROJECT_ID=example
 FIREBASE_STORAGE_BUCKET=example.appspot.com
 ```
 
-To add environment variables in Netlify:
+Set environment variables in Netlify:
 
 - open [Netlify admin panel](https://app.netlify.com/)
 - select "Site overview"
