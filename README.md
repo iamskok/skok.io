@@ -18,14 +18,14 @@ FIREBASE_PROJECT_ID=example
 FIREBASE_STORAGE_BUCKET=example.appspot.com
 ```
 
-For Netlify functions:
+To add environment variables in Netlify:
 
 - open [Netlify admin panel](https://app.netlify.com/)
-- site overview
-- site settings
-- build and deploy
-- environment
-- click the "Edit" button
+- select "Site overview"
+- click on the "Site settings"
+- select "Build & deploy"
+- scroll down to the "Environment variables" section
+- click on the "Edit variables" button
 
 Copy and paste all production variables from `.env.production`. Copy and paste all
 development variables from `.env.development` and add `DEV` suffix to each one of
