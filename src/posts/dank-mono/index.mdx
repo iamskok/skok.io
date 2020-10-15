@@ -1,0 +1,140 @@
+---
+title: Dank mono font family
+date: 2020-10-14
+published: true
+---
+
+1. Install fonttools `pip3 install fonttools`. You will also need Brotli to work with woff2 files `pip install Brotli`.
+2. Find out what layout features you are going to use by visiting [Wakamai Fondue](https://wakamaifondue.com/)
+3. Choose unicode characters you will need
+
+- `U+20-7E` - [Basic Latin](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
+- `U+00A9` - `©`
+- `U+2026` - elepsis `…`
+- `U+A` - newline
+- `U+00A0` - Non-breaking space
+
+4. Subset font files
+
+- ```sh
+  pyftsubset dank-mono.otf \
+    --unicodes="U+20-7E,U+00A9,U+2026,U+A,U+00A0" \
+    --layout-features="calt" \
+    --flavor="woff2" \
+    --output-file="dank-mono.woff2"
+  ```
+
+````
+- ```sh
+pyftsubset dank-mono-italic.otf \
+  --unicodes="U+20-7E,U+00A9,U+2026,U+A,U+00A0" \
+  --layout-features="calt" \
+  --flavor="woff2" \
+  --output-file="dank-mono-italic.woff2"
+````
+
+5. Create javascript font import file `src/fonts/dank-mono/index.js`
+6. Add link `preload` in `src/components/Head/index.js`
+7. Inject `src/fonts/dank-mono/index.js` in the `style` tag of `src/components/Head/index.js`
+8. Update `src/theme/styles/fonts.js` styles
+9. Add new font in `src/theme/tokens/fonts.js`
+10. Update `font-loading` classes in `src/theme/styles/fonts.js`.
+
+## Basic
+
+```
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+1234567890
+!@#$%^&*()-_=+|\/{}[]:;"'~<>?
+```
+
+## Ligatures
+
+```
+      .= .- := ::= =:= __
+     == != === !== =/= =!=
+
+<-< <<- <-- <- <-> -> --> ->> >->
+<=< <<= <==    <=> => ==> =>> >=>
+    >>= >>- >- <~> -< -<< =<<
+      <-| <=| /\ \/ |-> |=>
+        <~~ <~ ~~ ~> ~~>
+
+     <<< << <= <>  >= >> >>>
+   {. {| [| <:  ✓  :> |] |} .}
+   <||| <|| <| <|> |> ||> |||>
+
+            <$ <$> $>
+            <+ <+> +>
+            <* <*> *>
+
+       \  \\  /* */  /// //
+      </ <!--  </>  --> />
+        0xF www fl Fl Tl
+
+       ;; :: ::: !! ?? %% &&
+      || .. ... ..< .? ?. ?:
+       -- --- ++ +++ ** ***
+
+          ~= ~- -~ ~@
+          ^= ?= /= /==
+       -| _|_ |- ||- |= ||=
+        #! #= ## ### ####
+      #{ #[ ]# #( #? #_ #_(
+```
+
+## Context-aware alignment
+
+```
+fii fjj
+a*b a*A B*b A*B *a *A a* A*
+a-b a-A B-b A-B -a -A a- A-
+a+b a+A B+b A+B +a +A a+ A+
+a:b a:A B:b A:B :a :A a: A:
+```
+
+## Unicode
+
+```
+≢ ẞ ᐅ ᐊ ∴ ∵ ⎈ ‖ ∧ ∨ ⊢ ⊣ ⊤ ⊥ ⊦ ⊧ ⊨ ⊩ ⊪ ⊫ ⊬ ⊭ ⊮ ⊯
+⟲⟳ ⟰ ⟱ ⟴ ⟵ ⟶ ⟷ ⟸ ⟹ ⟺ ⟻ ⟼ ⟽ ⟾ ⟿
+↩ ⇞ ⇟ ⇤ ⇥ ⌀ ⌃ ⌄ ⌅ ⌆ ⌘ ⌤ ⌥ ⎇ ⎋ ⏏ ☐ ☑ ☒
+␆ ␈ ␇ ␣ ␢ ␘ ␍ ␐ ␡ ␥ ␔ ␑ ␓ ␒ ␙ ␃ ␄ ␗ ␅ ␛ ␜ ␌ ␝ ␉ ␊ ␕ ␤ ␀ ␞ ␏ ␎ ␠ ␁ ␂ ␚ ␦ ␖ ␟ ␋
+```
+
+## Box drawing
+
+```
+╭╌╌╌╌╮ ╭┄┄┄┄╮ ╭┈┈┈┈╮
+╎    ╏ ┆    ┇ ┊    ┋
+╎    ╏ ┆    ┇ ┊    ┋
+╰╍╍╍╍╯ ╰┅┅┅┅╯ ╰┉┉┉┉╯
+```
+
+## Blocks
+
+```
+|███   | 50%
+
+▁▂▃▄▅▆▇█▀▔
+▏
+▎
+▍
+▌
+▋
+▊
+▉
+▐
+▕
+```
+
+## Multi-line brackets
+
+```
+⎛ 1 ⎞ ⎡ a ⎤ ⎧ x ⎫
+⎜ 2 ⎟ ⎢ b ⎥ ⎪ y ⎪
+⎜ 3 ⎟ ⎢ c ⎥ ⎨ z ⎬
+⎜ 4 ⎟ ⎢ d ⎥ ⎪ y ⎪
+⎝ 5 ⎠ ⎣ e ⎦ ⎩ x ⎭
+```
