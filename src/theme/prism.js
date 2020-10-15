@@ -1,18 +1,23 @@
 const prism = {
   ".changed": {
     color: `codeChanged`,
+    fontStyle: `italic`,
   },
   ".deleted": {
     color: `codeDeleted`,
+    fontStyle: `italic`,
   },
   ".inserted": {
     color: `codeInserted`,
+    fontStyle: `italic`,
   },
   ".attr-name": {
     color: `codeAttrName`,
+    fontStyle: `italic`,
   },
   ".comment": {
     color: `codeComment`,
+    fontStyle: `italic`,
   },
   ".string": {
     color: `codeString`,
@@ -37,15 +42,18 @@ const prism = {
   },
   ".function": {
     color: `codeFunction`,
+    fontStyle: `italic`,
   },
   ".punctuation": {
     color: `codePunctuation`,
   },
   ".selector": {
     color: `codeSelector`,
+    fontStyle: `italic`,
   },
   ".doctype": {
     color: `codeDoctype`,
+    fontStyle: `italic`,
   },
   ".class-name": {
     color: `codeClassName`,
@@ -58,6 +66,7 @@ const prism = {
   },
   ".keyword": {
     color: `codeKeyword`,
+    fontStyle: `italic`,
   },
   ".boolean": {
     color: `codeBoolean`,
