@@ -1,5 +1,5 @@
-import amstelvarRomanWoff2 from "./amstelvar-roman-subset.woff2"
-import amstelvarItalicWoff2 from "./amstelvar-italic-subset.woff2"
+import amstelvarWoff2 from "./amstelvar.woff2"
+import amstelvarItalicWoff2 from "./amstelvar-italic.woff2"
 
 const amstelvarRomanFontFace = `
   @font-face {
@@ -7,8 +7,8 @@ const amstelvarRomanFontFace = `
     font-weight: 100 900;
     font-display: swap;
     font-style: normal;
-    src: url(${amstelvarRomanWoff2}) format('woff2-variations'),
-      url(${amstelvarRomanWoff2}) format('woff2');
+    src: url(${amstelvarWoff2}) format('woff2-variations'),
+      url(${amstelvarWoff2}) format('woff2');
   }
 `
 
