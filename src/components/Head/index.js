@@ -1,12 +1,13 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import amstelvarRomanWoff2 from "../../fonts/amstelvar/amstelvar-roman-subset.woff2"
-import amstelvarItalicWoff2 from "../../fonts/amstelvar/amstelvar-italic-subset.woff2"
-import interWoff2 from "../../fonts/inter/inter-subset.woff2"
-import firaCodeWoff2 from "../../fonts/fira-code/fira-code-subset.woff2"
+import amstelvarWoff2 from "../../fonts/amstelvar/amstelvar.woff2"
+import amstelvarItalicWoff2 from "../../fonts/amstelvar/amstelvar-italic.woff2"
+import interWoff2 from "../../fonts/inter/inter.woff2"
+import dankMonoWoff2 from "../../fonts/dank-mono/dank-mono.woff2"
+import dankMonoItalicWoff2 from "../../fonts/dank-mono/dank-mono-italic.woff2"
 import amstelvarFontFaces from "../../fonts/amstelvar"
 import interFontFace from "../../fonts/inter"
-import firaCodeFontFace from "../../fonts/fira-code"
+import dankMonoFontFaces from "../../fonts/dank-mono"
 import fonts from "../../theme/styles/fonts"
 import pageHeight from "../../theme/styles/page-height"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
@@ -28,7 +29,7 @@ const Head = props => {
       />
       <meta name="twitter:creator" content={author || props.author} />
       <link
-        href={amstelvarRomanWoff2}
+        href={amstelvarWoff2}
         as="font"
         type="font/woff2"
         rel="preload"
@@ -42,14 +43,21 @@ const Head = props => {
         crossOrigin="anonymous"
       />
       <link
-        href={interWoff2}
+        href={dankMonoWoff2}
         as="font"
         type="font/woff2"
         rel="preload"
         crossOrigin="anonymous"
       />
       <link
-        href={firaCodeWoff2}
+        href={dankMonoItalicWoff2}
+        as="font"
+        type="font/woff2"
+        rel="preload"
+        crossOrigin="anonymous"
+      />
+      <link
+        href={interWoff2}
         as="font"
         type="font/woff2"
         rel="preload"
@@ -59,7 +67,7 @@ const Head = props => {
         {`
           ${amstelvarFontFaces}
           ${interFontFace}
-          ${firaCodeFontFace}
+          ${dankMonoFontFaces}
         `}
       </style>
       <style type="text/css" name="font-size">

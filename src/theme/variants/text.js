@@ -6,7 +6,6 @@ const { rythm } = baseThemeSettings
 const text = {
   code: {
     fontFamily: `code`,
-    fontFeatureSettings: `'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06'`,
   },
   heading: {
     fontFamily: `heading`,

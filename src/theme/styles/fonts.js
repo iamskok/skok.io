@@ -19,8 +19,7 @@ const fonts = `
 
   .font-loading-stage-2 pre,
   .font-loading-stage-2 code {
-    font-family: 'Fira Code VF';
-    font-feature-settings: 'salt', 'calt', 'case', 'cpsp', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06';
+    font-family: 'Dank Mono';
   }
 `
 
