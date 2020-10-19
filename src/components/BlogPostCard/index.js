@@ -3,7 +3,7 @@ import { jsx, Card, Styled } from "theme-ui"
 import { useState } from "react"
 import Img from "gatsby-image"
 import Link from "../Link"
-import { baseThemeSettings } from "../../theme"
+import { baseThemeSettings } from "../../gatsby-plugin-theme-ui"
 
 const { lineHeight } = baseThemeSettings
 const BlogPostCard = ({ post }) => {

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Flex } from "theme-ui"
 import PaginationLink from "./PaginationLink"
-import { baseThemeSettings } from "../../theme"
+import { baseThemeSettings } from "../../gatsby-plugin-theme-ui"
 
 const { rythm } = baseThemeSettings
 

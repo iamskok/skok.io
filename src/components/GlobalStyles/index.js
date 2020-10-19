@@ -1,11 +1,9 @@
 import React from "react"
 import { Global } from "@emotion/core"
-import fontFaces from "../../theme/fonts/fontFaces"
-import fontLoadingStages from "../../theme/fonts/fontLoadingStages"
+import fontFaces from "../../gatsby-plugin-theme-ui/fontFaces"
 
 const styles = `
   ${fontFaces}
-  ${fontLoadingStages}
 
   html {
     font-size: 125%;

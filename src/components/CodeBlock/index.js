@@ -14,7 +14,7 @@ import LineNumbersButton from "./LineNumbersButton"
 import FileName from "./FileName"
 import LanguageTab from "./LanguageTab"
 import scope from "./scope"
-import { baseThemeSettings } from "../../theme"
+import { baseThemeSettings } from "../../gatsby-plugin-theme-ui"
 import switchOn from "../../assets/sounds/switch-on.mp3"
 
 const { rythm } = baseThemeSettings
