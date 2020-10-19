@@ -61,7 +61,7 @@
     "react-helmet": "^6.0.0",
     "react-live": "^2.2.2",
     "react-simple-code-editor": "^0.11.0",
-    "theme-ui": "0.4.0-rc.1",
+    "theme-ui": "0.4.0-rc.5",
     "use-sound": "^1.0.2"
   },
   "devDependencies": {
