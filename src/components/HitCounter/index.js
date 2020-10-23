@@ -10,9 +10,9 @@ const config = {
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
   databaseURL: process.env.FIREBASE_DATABASE_URL,
   // Temporary fix. Netlify is not picking up this variable.
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  // ? process.env.FIREBASE_PROJECT_ID
-  // : `iamskok`,
+  projectId: process.env.FIREBASE_PROJECT_ID
+    ? process.env.FIREBASE_PROJECT_ID
+    : `iamskok`,
 }
 
 firebase.initializeApp(config)
