@@ -33,10 +33,8 @@ const SoundModeButton = props => {
       onClick={clickHandler}
       sx={{
         cursor: `pointer`,
-        padding: 0,
         width: `iconButton`,
         height: `iconButton`,
-        marginX: 0,
         color: highlight ? `secondary` : `primary`,
       }}
     >

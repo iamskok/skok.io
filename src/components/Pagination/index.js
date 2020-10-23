@@ -1,15 +1,12 @@
 /** @jsx jsx */
 import { jsx, Flex } from "theme-ui"
 import PaginationLink from "./PaginationLink"
-import { baseThemeSettings } from "../../gatsby-plugin-theme-ui"
-
-const { rythm } = baseThemeSettings
 
 const Pagination = ({ next, previous }) => (
   <Flex
     sx={{
       justifyContent: `space-between`,
-      marginBottom: rythm,
+      marginBottom: 4,
     }}
   >
     <Flex

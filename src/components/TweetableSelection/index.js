@@ -32,16 +32,17 @@ const TweatableSelection = () => {
     >
       <Box
         sx={{
-          padding: 3,
+          padding: 4,
           maxWidth: `container`,
         }}
       >
         <Styled.p>{tweetableText}</Styled.p>
         <Link
-          to={
-            `https://twitter.com/intent/tweet?text=` +
-            encodeURI(tweetableText + ` ` + window.location.href)
-          }
+          rel="noopener noreferrer"
+          target="_blank"
+          to={`https://twitter.com/intent/tweet?text=${encodeURI(
+            `${tweetableText} ${window.location.href}`
+          )}`}
         >
           Tweet this
         </Link>

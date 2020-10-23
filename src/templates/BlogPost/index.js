@@ -1,43 +1,30 @@
 /** @jsx jsx */
-import { jsx, Styled, Flex } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import Img from "gatsby-image"
 import Layout from "../../components/Layout"
+import BlogPostCover from "../../components/BlogPostCover"
+import BlogPostMeta from "../../components/BlogPostMeta"
 import Pagination from "../../components/Pagination"
-import PostDate from "../../components/PostDate"
 import TweetableSelection from "../../components/TweetableSelection"
-import HitCounter from "../../components/HitCounter"
 
 const BlogPost = ({ pageContext, data }) => {
   const { prev, next, slug } = pageContext
-
-  const { mdx } = data
-  const { title, date, cover, coverAlt } = mdx.frontmatter
+  const {
+    mdx: {
+      body,
+      frontmatter: { title, date, cover, coverAlt },
+    },
+  } = data
 
   return (
     <Layout>
       <TweetableSelection />
-      {cover && (
-        <Img
-          alt={coverAlt}
-          sizes={cover.childImageSharp.sizes}
-          fluid={cover.childImageSharp.fluid}
-        />
-      )}
+      {cover && <BlogPostCover src={cover} alt={coverAlt} />}
       <Styled.h1>{title}</Styled.h1>
-
-      <Flex
-        sx={{
-          justifyContent: `space-between`,
-        }}
-      >
-        <PostDate date={date} />
-        <HitCounter slug={slug} />
-      </Flex>
+      <BlogPostMeta slug={slug} date={date} />
       {/* eslint react/no-children-prop: 0 */}
-      <MDXRenderer children={mdx.body} />
-
+      <MDXRenderer children={body} />
       <Pagination previous={prev?.fields?.slug} next={next?.fields?.slug} />
     </Layout>
   )

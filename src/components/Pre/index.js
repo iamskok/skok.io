@@ -3,13 +3,11 @@ import { jsx, Styled } from "theme-ui"
 import { useState } from "react"
 import CodeBlock from "../CodeBlock"
 import isPreWithCodeBlock from "../../utils/is-pre-with-code-block"
-import { baseThemeSettings } from "../../gatsby-plugin-theme-ui"
-
-const { rythm } = baseThemeSettings
 
 const Pre = props => {
   const { isLiveError, children } = props
   const [scrollbar, setScrollbar] = useState(false)
+
   const addScrollbar = () => {
     setScrollbar(true)
     setTimeout(() => {
@@ -19,7 +17,13 @@ const Pre = props => {
 
   if (isPreWithCodeBlock(props)) {
     return (
-      <CodeBlock {...children.props} sx={{ marginBottom: rythm }}>
+      <CodeBlock
+        {...children.props}
+        sx={{
+          margin: 0,
+          marginBottom: 4,
+        }}
+      >
         {children}
       </CodeBlock>
     )
@@ -30,7 +34,6 @@ const Pre = props => {
         onScroll={addScrollbar}
         sx={{
           padding: 3,
-          marginBottom: 0,
           border: 0,
           borderTopWidth: 1,
           borderStyle: `solid`,
@@ -53,7 +56,8 @@ const Pre = props => {
         onScroll={addScrollbar}
         sx={{
           padding: 3,
-          marginBottom: rythm,
+          margin: 0,
+          marginBottom: 4,
           "&::-webkit-scrollbar": {
             height: `5px`,
           },

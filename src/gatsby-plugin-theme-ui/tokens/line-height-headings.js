@@ -1,5 +1,3 @@
-import calcHeadingLineHeights from "../../utils/calc-heading-line-heights"
-
-const lineHeights = calcHeadingLineHeights()
+const lineHeights = [1, 1.5]
 
 export default lineHeights

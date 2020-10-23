@@ -17,6 +17,7 @@ const Header = () => {
         display: `flex`,
         alignItems: `center`,
         paddingY: 1,
+        marginBottom: 5,
       }}
     >
       <Link

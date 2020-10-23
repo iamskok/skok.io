@@ -14,10 +14,7 @@ import LineNumbersButton from "./LineNumbersButton"
 import FileName from "./FileName"
 import LanguageTab from "./LanguageTab"
 import scope from "./scope"
-import { baseThemeSettings } from "../../gatsby-plugin-theme-ui"
 import switchOn from "../../assets/sounds/switch-on.mp3"
-
-const { rythm } = baseThemeSettings
 
 const CodeBlock = ({
   children,
@@ -78,7 +75,7 @@ const CodeBlock = ({
   return (
     <div
       sx={{
-        marginBottom: rythm,
+        marginBottom: 4,
         position: "relative",
       }}
     >

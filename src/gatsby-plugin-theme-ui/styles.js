@@ -1,45 +1,16 @@
-import { baseThemeSettings } from "./index"
-import unitless from "../utils/unitless"
 import prism from "./prism"
-
-const { rythm, lineHeight: baseLineHeight } = baseThemeSettings
-
-// * root (theme-ui-specific)
-// * p(paragraph)
-// * a(anchor link)
-// * h1(heading)
-// * h2
-// * h3
-// * h4
-// * h5
-// * h6
-// * img
-// * pre
-// * code
-// * inlineCode(MDX - specific key for <code> that is not a child of <pre>)
-// * ol(ordered list)
-// * ul(unordered list)
-// * li(list item)
-// * blockquote
-// * hr(horizontal rule)
-// * i(italic)
-// * em(emphasis)
-// * b(bold)
-// * strong
-// * table
-// * th(table header)
-// * td(table data)
 
 export default {
   root: {
     margin: 0,
     fontFamily: `body`,
-    lineHeight: baseLineHeight,
+    lineHeight: 1,
     fontFeatureSettings: `'kern', 'calt', 'ss01', 'ss02', 'ss03'`,
     minHeight: `100%`,
   },
   p: {
-    margin: `0 0 ${rythm} 0`,
+    margin: 0,
+    marginBottom: 4,
     "& > img": {
       marginBottom: 0,
     },
@@ -55,41 +26,37 @@ export default {
   h1: {
     variant: `text.display`,
     fontSize: 5,
-    lineHeight: 5,
+    marginTop: 0,
+    marginBottom: 5,
   },
   h2: {
     variant: `text.heading`,
     fontSize: 4,
-    lineHeight: 4,
   },
   h3: {
     variant: `text.heading`,
     fontSize: 3,
-    lineHeight: 3,
   },
   h4: {
     variant: `text.heading`,
     fontSize: 2,
-    lineHeight: 2,
   },
   h5: {
     variant: `text.heading`,
     fontSize: 1,
-    lineHeight: 1,
   },
   h6: {
     variant: `text.heading`,
     fontSize: 0,
-    lineHeight: 0,
   },
   img: {
-    marginBottom: rythm,
+    marginBottom: 4,
     maxWidth: `100%`,
     height: `auto`,
   },
   pre: {
     variant: `text.code`,
-    margin: `0 0 ${rythm} 0`,
+    marginBottom: 4,
     color: `secondary`,
     bg: `muted`,
     overflowX: `auto`,
@@ -108,15 +75,15 @@ export default {
     backgroundColor: `muted`,
   },
   ol: {
-    margin: `0 0 ${unitless(rythm) * 2 + "rem"} 0`,
-    paddingLeft: rythm,
-    // listStylePosition: `outside`,
+    marginTop: 0,
+    marginBottom: 4,
+    paddingLeft: 4,
   },
   ul: {
-    margin: `0 0 ${unitless(rythm) * 2 + "rem"} 0`,
-    paddingLeft: rythm,
+    marginTop: 0,
+    marginBottom: 4,
+    paddingLeft: 4,
     listStyleType: `square`,
-    // listStylePosition: `outside`
   },
   li: {
     "& > ul, & > ol": {
@@ -124,13 +91,31 @@ export default {
     },
   },
   blockquote: {
-    paddingLeft: rythm,
+    paddingLeft: 4,
+    marginTop: 0,
+    marginBottom: 4,
+    marginX: 4,
+    borderWidth: 0,
+    borderLeftWidth: 3,
+    borderColor: `primary`,
+    borderStyle: `solid`,
+    display: `flex`,
+    flexDirection: `column`,
+    "& > p": {
+      marginBottom: 0,
+    },
+    "& > cite": {
+      marginTop: 4,
+      alignSelf: `flex-end`,
+    },
   },
   hr: {
-    marginTop: unitless(rythm) * 3 + `rem`,
-    marginBottom: unitless(rythm) * 3 + `rem`,
+    color: `secondary`,
     border: 0,
-    borderBottom: `1px solid`,
+    borderBottomWidth: 2,
+    borderStyle: `solid`,
+    width: `80%`,
+    marginBottom: 4,
   },
   i: {
     variant: `text.italic`,
@@ -146,30 +131,30 @@ export default {
   },
   table: {
     width: `100%`,
-    margin: `0 0 ${rythm} 0`,
+    marginBottom: 4,
     borderCollapse: `separate`,
     borderSpacing: 0,
   },
   th: {
     textAlign: `left`,
     verticalAlign: `bottom`,
-    paddingTop: `4px`,
-    paddingBottom: `4px`,
-    paddingRight: `4px`,
+    paddingTop: 1,
+    paddingBottom: 1,
+    paddingRight: 1,
     paddingLeft: 0,
     borderColor: `inherit`,
-    borderBottomWidth: `2px`,
+    borderBottomWidth: 2,
     borderBottomStyle: `solid`,
   },
   td: {
     textAlign: `left`,
     verticalAlign: `top`,
-    paddingTop: `4px`,
-    paddingBottom: `4px`,
-    paddingRight: `4px`,
+    paddingTop: 1,
+    paddingBottom: 1,
+    paddingRight: 1,
     paddingLeft: 0,
     borderColor: `inherit`,
-    borderBottomWidth: `1px`,
+    borderBottomWidth: 1,
     borderBottomStyle: `solid`,
   },
 }

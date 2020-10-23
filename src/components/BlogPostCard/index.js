@@ -3,9 +3,7 @@ import { jsx, Card, Styled } from "theme-ui"
 import { useState } from "react"
 import Img from "gatsby-image"
 import Link from "../Link"
-import { baseThemeSettings } from "../../gatsby-plugin-theme-ui"
 
-const { lineHeight } = baseThemeSettings
 const BlogPostCard = ({ post }) => {
   const [active, setActive] = useState(false)
   const addActiveState = () => setActive(true)
@@ -48,7 +46,6 @@ const BlogPostCard = ({ post }) => {
           sx={{
             color: active ? `primary` : `text`,
             marginTop: 0,
-            lineHeight,
             transition: `color 400ms ease`,
           }}
         >

@@ -1,8 +1,3 @@
-import { baseThemeSettings } from "../index"
-import unitless from "../../utils/unitless"
-
-const { rythm } = baseThemeSettings
-
 const italicizedSelectors = `
   & > em,
   & > em > b,
@@ -23,8 +18,7 @@ const text = {
   heading: {
     fontFamily: `heading`,
     fontWeight: `heading`,
-    marginTop: unitless(rythm) * 3 + `rem`,
-    marginBottom: rythm,
+    marginY: 4,
     fontFeatureSettings: `'kern', 'pnum'`,
     [italicizedSelectors]: {
       variant: `text.italicHeading`,

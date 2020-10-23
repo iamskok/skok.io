@@ -1,4 +1,3 @@
-import base from "./tokens/base"
 import colors from "./tokens/colors"
 import space from "./tokens/space"
 import sizes from "./tokens/sizes"
@@ -38,4 +37,3 @@ const theme = {
 }
 
 export default theme
-export { base as baseThemeSettings }

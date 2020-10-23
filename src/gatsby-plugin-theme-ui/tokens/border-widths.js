@@ -1,3 +1,3 @@
-const borderWidths = [0, 1, 2, 4, 8, 16]
+const borderWidths = [0, 1, 2, 4]
 
 export default borderWidths
