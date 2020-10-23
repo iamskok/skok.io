@@ -23,7 +23,7 @@ const CopyButton = ({ code }) => {
   return (
     <IconButton
       aria-label={`${copied ? "Copied" : "Copy"} code block to clipboard`}
-      sx={{ variant: "buttons.icon" }}
+      sx={{ variant: `buttons.icon` }}
       onClick={handleClick}
     >
       <svg

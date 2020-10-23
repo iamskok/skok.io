@@ -76,7 +76,7 @@ const CodeBlock = ({
     <div
       sx={{
         marginBottom: 4,
-        position: "relative",
+        position: `relative`,
       }}
     >
       {isLanguageTab && !isLive && (
@@ -85,15 +85,15 @@ const CodeBlock = ({
 
       <div
         sx={{
-          display: "flex",
-          flexDirection: "column",
+          display: `flex`,
+          flexDirection: `column`,
           backgroundColor: `muted`,
         }}
       >
         {isFileName && <FileName name={fileName} />}
         <div
           sx={{
-            display: "flex",
+            display: `flex`,
             padding: 1,
           }}
         >

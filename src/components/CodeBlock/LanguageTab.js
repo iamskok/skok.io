@@ -10,12 +10,12 @@ const LanguageTab = ({ language }) => {
   return (
     <div
       sx={{
-        display: "flex",
-        position: "absolute",
+        display: `flex`,
+        position: `absolute`,
         right: 1,
         bottom: 1,
         zIndex: `languageTab`,
-        pointerEvents: "none",
+        pointerEvents: `none`,
       }}
     >
       {LanguageIcon && (

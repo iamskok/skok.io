@@ -29,7 +29,11 @@ const Header = () => {
       >
         VS
       </Link>
-      <Box marginLeft="auto">
+      <Box
+        sx={{
+          marginLeft: `auto`,
+        }}
+      >
         <ul
           sx={{
             padding: 0,

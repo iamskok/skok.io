@@ -70,7 +70,7 @@ const GlitchText = ({
   position = [-5, 5],
   colors = [`red`, `green`, `blue`],
   backgroundColor = `#fff`,
-  ...props
+  ...rest
 }) => {
   const glitch1 = getAnimation(
     keyframesNum,
@@ -98,7 +98,6 @@ const GlitchText = ({
         "@media not screen and (prefers-reduced-motion: reduce)": {
           position: `relative`,
           display: `inline-block`,
-
           "&::before, &::after": {
             content: `"${text}"`,
             position: `absolute`,
@@ -107,7 +106,6 @@ const GlitchText = ({
             width: `100%`,
             height: `100%`,
           },
-
           "&::before": {
             backgroundColor,
             animationName: glitch1,
@@ -115,7 +113,6 @@ const GlitchText = ({
             animationDuration: duration,
             animationIterationCount: `infinite`,
           },
-
           "&::after": {
             backgroundColor,
             animationName: glitch2,
@@ -125,7 +122,7 @@ const GlitchText = ({
           },
         },
       }}
-      {...props}
+      {...rest}
     >
       {children}
     </span>
