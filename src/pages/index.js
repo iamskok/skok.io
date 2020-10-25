@@ -20,9 +20,7 @@ const IndexPage = () => (
           margin: 0,
         }}
       >
-        Hi! My name is
-        {` `}
-        <span sx={{ variant: `text.italicHeading` }}>Vladimir</span>.
+        Hi! My name is Vladimir.
       </Styled.h1>
 
       <Styled.h2

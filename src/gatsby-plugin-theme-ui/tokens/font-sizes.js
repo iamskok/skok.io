@@ -1,8 +1,3 @@
-// import calcfontSizes from "../../utils/calc-font-sizes"
-
-// const ratio = 1.2
-// const range = [-2, 7]
-// const fontSizes = calcfontSizes(ratio, range)
 const fontSizes = [
   `0.7rem`,
   `0.85rem`,
