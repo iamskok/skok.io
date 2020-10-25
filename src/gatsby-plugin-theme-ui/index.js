@@ -1,3 +1,4 @@
+import breakpoints from "./tokens/breakpoints"
 import colors from "./tokens/colors"
 import space from "./tokens/space"
 import sizes from "./tokens/sizes"
@@ -17,6 +18,7 @@ import messages from "./variants/messages"
 import styles from "./styles"
 
 const theme = {
+  breakpoints,
   colors,
   space,
   sizes,

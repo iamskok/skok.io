@@ -1,6 +1,7 @@
 import React from "react"
 import { Global } from "@emotion/core"
 import fontFaces from "../../gatsby-plugin-theme-ui/fontFaces"
+import breakpoints from "../../gatsby-plugin-theme-ui/tokens/breakpoints"
 
 const styles = `
   ${fontFaces}
@@ -8,6 +9,12 @@ const styles = `
   html {
     font-size: 125%;
     height: 100%;
+  }
+
+  @media (min-width: ${breakpoints[0]}) {
+    html {
+      font-size: 150%;
+    }
   }
 
   body,
