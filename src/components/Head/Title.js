@@ -5,6 +5,7 @@ const Title = ({ title }) => {
   return (
     <Helmet>
       <title>{title}</title>
+      <meta name="title" content={title} />
     </Helmet>
   )
 }
