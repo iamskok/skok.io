@@ -65,13 +65,13 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-robots-txt",
+      resolve: `gatsby-plugin-robots-txt`,
       options: {
         host: siteMetadata.siteUrl,
         // generate sitemap after moving on `skok.io`
         sitemap: null,
         // allow all after moving on `skok.io domain`
-        policy: [{ userAgent: "*", disallow: ["/"] }],
+        // policy: [{ userAgent: "*", disallow: ["/"] }],
       },
     },
     {
