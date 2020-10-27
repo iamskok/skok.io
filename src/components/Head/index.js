@@ -42,8 +42,8 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
       <OpenGraph
         title={seo.title}
         description={seo.description}
-        image={seo.cover}
-        imageAlt={seo.coverAlt}
+        cover={seo.cover}
+        coverAlt={seo.coverAlt}
         url={seo.url}
         siteName={seo.siteName}
         authorFirstName={seo.authorFirstName}
@@ -54,8 +54,8 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
       <Twitter
         title={seo.title}
         description={seo.description}
-        image={seo.cover}
-        imageAlt={seo.coverAlt}
+        cover={seo.cover}
+        coverAlt={seo.coverAlt}
         creator={seo.twitterHandle}
       />
       <PreloadLinks />
