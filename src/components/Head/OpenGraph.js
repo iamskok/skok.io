@@ -33,8 +33,8 @@ const OpenGraph = ({
       {!isBlogPost && (
         <meta property="profile:last_name" content={authorLastName} />
       )}
-      {cover && <meta property="og:image" content={cover} />}
-      {coverAlt && <meta property="og:image:alt" content={coverAlt} />}
+      <meta property="og:image" content={cover} />
+      <meta property="og:image:alt" content={coverAlt} />
     </Helmet>
   )
 }

@@ -25,8 +25,8 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     title: title || defaultTitle,
     description: description || defaultDescription,
     cover: cover?.childImageSharp?.fluid?.src
-      ? `${siteUrl}${cover.childImageSharp.fluid.src}`
-      : `${siteUrl}${defaultCover}`,
+      ? `${siteUrl}${cover.childImageSharp.fluid.src}/`
+      : `${siteUrl}${defaultCover}/`,
     coverAlt: coverAlt || defaultCoverAlt,
     siteName,
     authorFirstName,
