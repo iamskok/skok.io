@@ -11,7 +11,7 @@ const Blog = ({ data: { allMdx }, pageContext: { pagination } }) => {
   const posts = page.map(id => allMdx.edges.find(edge => edge.node.id === id))
 
   return (
-    <Layout>
+    <Layout page="blog">
       <Styled.h1>Blog</Styled.h1>
 
       {posts.map(({ node: post }) => (
@@ -31,19 +31,16 @@ export const pageQuery = graphql`
       edges {
         node {
           id
-          excerpt(pruneLength: 300)
           fields {
             slug
           }
           frontmatter {
             title
+            description
             date(formatString: "MMMM DD, YYYY")
             coverAlt
             cover {
               childImageSharp {
-                sizes(maxWidth: 900) {
-                  ...GatsbyImageSharpSizes
-                }
                 fluid(maxWidth: 900, quality: 100) {
                   ...GatsbyImageSharpFluid
                 }

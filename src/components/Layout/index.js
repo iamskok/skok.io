@@ -6,10 +6,27 @@ import Head from "../Head"
 import Header from "../Header"
 import Footer from "../Footer"
 
-const Layout = ({ children }) => (
+const Layout = ({
+  children,
+  slug,
+  title,
+  description,
+  date,
+  cover,
+  coverAlt,
+  template,
+}) => (
   <Fragment>
     <GlobalStyles />
-    <Head />
+    <Head
+      slug={slug}
+      title={title}
+      description={description}
+      date={date}
+      cover={cover}
+      coverAlt={coverAlt}
+      template={template}
+    />
     <Container
       sx={{
         paddingX: 3,

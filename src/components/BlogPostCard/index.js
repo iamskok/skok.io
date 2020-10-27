@@ -9,6 +9,10 @@ const BlogPostCard = ({ post }) => {
   const addActiveState = () => setActive(true)
   const removeActiveState = () => setActive(false)
 
+  const {
+    frontmatter: { title, cover, coverAlt, description },
+  } = post
+
   return (
     <Link
       to={post.fields.slug}
@@ -31,14 +35,13 @@ const BlogPostCard = ({ post }) => {
           borderColor: active ? `secondary` : `primary`,
         }}
       >
-        {post.frontmatter.cover && (
+        {cover && (
           <Img
-            alt={post.frontmatter.coverAlt}
-            sizes={{
-              ...post.frontmatter.cover.childImageSharp.sizes,
+            alt={coverAlt}
+            fluid={{
+              ...cover.childImageSharp.fluid,
               aspectRatio: 16 / 9,
             }}
-            fluid={post.frontmatter.cover.childImageSharp.fluid}
           />
         )}
 
@@ -49,7 +52,7 @@ const BlogPostCard = ({ post }) => {
             transition: `color 400ms ease`,
           }}
         >
-          {post.frontmatter.title}
+          {title}
         </Styled.h2>
 
         <Styled.p
@@ -58,7 +61,7 @@ const BlogPostCard = ({ post }) => {
             transition: `color 400ms ease`,
           }}
         >
-          {post.excerpt}
+          {description}
         </Styled.p>
       </Card>
     </Link>

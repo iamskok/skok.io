@@ -6,21 +6,20 @@ const PAGINATION_OFFSET = 8
 // so we can query later for all blogs and get their slug
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-  if (node.internal.type === "Mdx") {
+
+  if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode })
+
     createNodeField({
-      // Individual MDX node
-      node,
-      // Name of the field you are adding
-      name: "slug",
-      // Generated value based on filepath with "blog" prefix
+      name: `slug`,
       value: `/blog${value}`,
+      node,
     })
   }
 }
 
 const createBlog = (createPage, edges) => {
-  createPaginatedPages(createPage, edges, "/blog")
+  createPaginatedPages(createPage, edges, `/blog`)
 }
 
 const createPaginatedPages = (createPage, edges, pathPrefix, context) => {
@@ -58,7 +57,7 @@ const createPaginatedPages = (createPage, edges, pathPrefix, context) => {
   })
 }
 
-const createPosts = (createPage, edges) => {
+const createBlogPosts = (createPage, edges) => {
   edges.forEach(({ node }, i) => {
     const prev = i === 0 ? null : edges[i - 1].node
     const next = i === edges.length - 1 ? null : edges[i + 1].node
@@ -94,6 +93,7 @@ exports.createPages = ({ actions, graphql }) =>
             }
             frontmatter {
               title
+              description
               date
               published
             }
@@ -106,10 +106,12 @@ exports.createPages = ({ actions, graphql }) =>
       return Promise.reject(errors)
     }
 
-    const { edges } = data.allMdx
+    const {
+      allMdx: { edges },
+    } = data
 
-    createPosts(actions.createPage, edges)
     createBlog(actions.createPage, edges)
+    createBlogPosts(actions.createPage, edges)
   })
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
@@ -129,7 +131,7 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, "src"), "node_modules"],
+      modules: [path.resolve(__dirname, `src`), `node_modules`],
     },
   })
 }

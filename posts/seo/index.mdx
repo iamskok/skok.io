@@ -1,0 +1,81 @@
+---
+title: SEO component
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu iaculis elit.
+date: 2009-10-11
+published: true
+cover: ./cover.jpg
+coverAlt: SEO component
+---
+
+- Generic SEO tags
+- Open graph
+- Twitter
+- Structured data
+
+## Generic SEO tags
+
+```jsx
+<title>Title</title>
+<meta name="title" content="title" />
+<meta name="description" content="Description ..." />
+```
+
+## Open graph
+
+We are going to use 2 different OG types:
+
+- `website` for homepage
+- `article` for blog posts
+
+The most frequently recommended resolution for an OG image is 1200 pixels x 627 pixels (1.91/1 ratio).
+Don’t exceed the 5MB size limit.
+
+- FB [Open Graph debugger](https://developers.facebook.com/tools/debug)
+- [OG protocol examples](https://github.com/niallkennedy/open-graph-protocol-examples/blob/master/article.html)
+
+## Twitter
+
+```jsx
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://example.com/" />
+<meta property="twitter:title" content="Title" />
+<meta name="twitter:creator" content="@username" />
+<meta
+  property="twitter:description"
+  content="Description"
+/>
+<meta
+  property="twitter:image"
+  content="https://example.com/static/img.jpeg"
+/>
+<meta
+  property="twitter:image:alt"
+  content="Image description"
+/>
+```
+
+- `twitter:site` The Twitter @username the card should be attributed to.
+- `twitter:image` Images for this Card support an aspect ratio of 2:1 with minimum dimensions of 300x157 or maximum of 4096x4096 pixels. Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported.
+- `twitter:image:alt` Maximum 420 characters.
+
+- Overview of [summary card with large image](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image)
+- [Cards validator](https://cards-dev.twitter.com/validator)
+
+## Pulling data
+
+`gatsby-node` => `template component` => `Layout` => `Head`
+
+Here is a list of things we will need:
+
+- dynamic
+  - title
+  - description
+  - url
+  - image
+  - imageAlt
+- static
+
+  - author
+
+- Site metadata
+- Gatsby node context

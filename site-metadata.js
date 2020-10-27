@@ -1,8 +1,12 @@
 module.exports = {
-  title: `skok.io`,
-  description: `Vladimir Skok's development blog`,
-  author: `Vladimir Skok`,
+  title: `Vladimir Skok`,
+  description: `Software engineering blog`,
+  authorFirstName: `Vladimir`,
+  authorLastName: `Skok`,
   siteUrl: `https://skok.io`,
+  siteName: `Vladimir Skok`,
+  cover: `static/cover.jpg`,
+  coverAlt: `Husky dog`,
   navigation: [
     {
       to: `/blog`,
@@ -14,7 +18,7 @@ module.exports = {
     },
   ],
   socialMedia: {
-    twitter: `https://twitter.com/iamskok`,
+    twitter: `https://twitter.com/iamskok1`,
     github: `https://github.com/iamskok`,
   },
   codeBlock: {

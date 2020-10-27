@@ -13,14 +13,22 @@ const BlogPost = ({ pageContext, data }) => {
   const {
     mdx: {
       body,
-      frontmatter: { title, date, cover, coverAlt },
+      frontmatter: { title, description, date, cover, coverAlt },
     },
   } = data
 
   return (
-    <Layout>
+    <Layout
+      slug={slug}
+      title={title}
+      date={date}
+      cover={cover}
+      coverAlt={coverAlt}
+      description={description}
+      page="blog-post"
+    >
       <TweetableSelection />
-      {cover && <BlogPostCover src={cover} alt={coverAlt} />}
+      {cover && coverAlt && <BlogPostCover src={cover} alt={coverAlt} />}
       <Styled.h1>{title}</Styled.h1>
       <BlogPostMeta slug={slug} date={date} />
       {/* eslint react/no-children-prop: 0 */}
@@ -39,13 +47,11 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
+        description
         date(formatString: "MMMM DD, YYYY")
         coverAlt
         cover {
           childImageSharp {
-            sizes(maxWidth: 900) {
-              ...GatsbyImageSharpSizes
-            }
             fluid(maxWidth: 900, quality: 100) {
               ...GatsbyImageSharpFluid
             }

@@ -1,17 +1,40 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-const OpenGraphMetaTags = ({ title, description, image, url }) => {
+const OpenGraphMetaTags = ({
+  title,
+  description,
+  date,
+  cover,
+  coverAlt,
+  url,
+  siteName,
+  authorFirstName,
+  authorLastName,
+  isBlogPost,
+}) => {
   return (
     <Helmet>
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://metatags.io/" />
-      <meta property="og:title" content="Vladimir Skok" />
-      <meta property="og:description" content="Vladimir Skok's personal blog" />
-      <meta
-        property="og:image"
-        content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png"
-      />
+      <meta property="og:site_name" content={siteName} />
+      <meta property="og:url" content={url} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content={isBlogPost ? `article` : `website`} />
+      {isBlogPost && <meta property="article:published_time" content={date} />}
+      {isBlogPost && (
+        <meta
+          property="article:author"
+          content={`${authorFirstName} ${authorLastName}`}
+        />
+      )}
+      {!isBlogPost && (
+        <meta property="profile:first_name" content={authorFirstName} />
+      )}
+      {!isBlogPost && (
+        <meta property="profile:last_name" content={authorLastName} />
+      )}
+      {cover && <meta property="og:image" content={cover} />}
+      {coverAlt && <meta property="og:image:alt" content={coverAlt} />}
     </Helmet>
   )
 }
