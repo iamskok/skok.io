@@ -3,9 +3,9 @@ module.exports = {
   description: `Software engineering blog`,
   authorFirstName: `Vladimir`,
   authorLastName: `Skok`,
-  siteUrl: `https://skok.io`,
+  siteUrl: `https://skok.netlify.app`,
   siteName: `Vladimir Skok`,
-  cover: `static/cover.jpg`,
+  cover: `/static/cover.jpg`,
   coverAlt: `Husky dog`,
   navigation: [
     {
