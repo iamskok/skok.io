@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-const OpenGraphMetaTags = ({
+const OpenGraph = ({
   title,
   description,
   date,
@@ -39,4 +39,4 @@ const OpenGraphMetaTags = ({
   )
 }
 
-export default OpenGraphMetaTags
+export default OpenGraph

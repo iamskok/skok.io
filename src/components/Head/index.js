@@ -3,8 +3,8 @@ import useSiteMetadata from "../../hooks/useSiteMetadata"
 import Title from "./Title"
 import Description from "./Description"
 import PreloadLinks from "./PreloadLinks"
-import OpenGraphMetaTags from "./OpenGraphMetaTags"
-import TwitterMetaTags from "./TwitterMetaTags"
+import OpenGraph from "./OpenGraph"
+import Twitter from "./Twitter"
 import metaURL from "../../utils/meta-url"
 
 const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
@@ -24,7 +24,9 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     url: metaURL(page, siteUrl, slug),
     title: title || defaultTitle,
     description: description || defaultDescription,
-    cover: cover?.childImageSharp?.fluid?.src || `${siteUrl}/${defaultCover}`,
+    cover: cover?.childImageSharp?.fluid?.src
+      ? `${siteUrl}${cover.childImageSharp.fluid.src}`
+      : `${siteUrl}${defaultCover}`,
     coverAlt: coverAlt || defaultCoverAlt,
     siteName,
     authorFirstName,
@@ -37,7 +39,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     <>
       <Title title={seo.title} />
       <Description description={seo.description} />
-      <OpenGraphMetaTags
+      <OpenGraph
         title={seo.title}
         description={seo.description}
         image={seo.cover}
@@ -49,7 +51,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         date={seo.date}
         isBlogPost={page === `blog-post`}
       />
-      <TwitterMetaTags
+      <Twitter
         title={seo.title}
         description={seo.description}
         image={seo.cover}

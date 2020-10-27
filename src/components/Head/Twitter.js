@@ -1,13 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-const TwitterMetaTags = ({
-  title,
-  description,
-  cover,
-  coverAlt,
-  twitterHandle,
-}) => {
+const Twitter = ({ title, description, cover, coverAlt, twitterHandle }) => {
   return (
     <Helmet>
       <meta property="twitter:card" content="summary_large_image" />
@@ -20,4 +14,4 @@ const TwitterMetaTags = ({
   )
 }
 
-export default TwitterMetaTags
+export default Twitter
