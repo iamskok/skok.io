@@ -1,9 +1,10 @@
-[dev]
+[build]
   functions = "functions"
   autoLaunch = false
 
-[build]
+[dev]
   functions = "functions"
+  autoLaunch = false
 
 [[headers]]
   for = "*.woff2"
