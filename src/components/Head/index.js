@@ -24,7 +24,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     url: metaURL(page, siteUrl, slug),
     title: title || defaultTitle,
     description: description || defaultDescription,
-    cover: cover?.childImageSharp?.fluid?.src
+    cover: cover
       ? `${siteUrl}${cover.childImageSharp.fluid.src}/`
       : `${siteUrl}${defaultCover}/`,
     coverAlt: coverAlt || defaultCoverAlt,
