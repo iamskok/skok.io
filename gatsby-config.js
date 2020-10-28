@@ -71,7 +71,12 @@ module.exports = {
         // generate sitemap after moving on `skok.io`
         sitemap: null,
         // allow all after moving on `skok.io domain`
-        // policy: [{ userAgent: "*", disallow: ["/"] }],
+        policy: [
+          {
+            userAgent: `*`,
+            disallow: [`/`],
+          },
+        ],
       },
     },
     {
