@@ -6,7 +6,7 @@ module.exports = {
   // siteUrl: `https://skok.netlify.app`,
   siteUrl: `https://deploy-preview-149--skok.netlify.app`,
   siteName: `Vladimir Skok`,
-  cover: `/static/cover.jpg`,
+  cover: `/cover.jpg`,
   coverAlt: `Husky dog`,
   navigation: [
     {
