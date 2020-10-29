@@ -9,6 +9,7 @@ const Person = ({
   image,
   url,
   jobTitle,
+  sameAs,
   addressLocality,
   addressRegion,
   postalCode,
@@ -35,6 +36,7 @@ const Person = ({
     jobTitle ? { jobTitle } : null,
     telephone ? { telephone } : null,
     url ? { url } : null,
+    Object.values(sameAs).length > 0 ? { sameAs: Object.values(sameAs) } : null,
     { address }
   )
 

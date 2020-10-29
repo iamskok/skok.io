@@ -22,10 +22,11 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     telephone,
     jobTitle,
     address: { addressLocality, addressRegion, postalCode, streetAddress },
-    socialMedia: { twitter: twitterHandle },
+    socialMedia,
   } = useSiteMetadata()
 
   const url = metaURL(page, siteUrl, slug)
+  const { twitter: twitterHandle } = socialMedia
 
   const seo = {
     title: title || defaultTitle,
@@ -70,6 +71,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         postalCode={postalCode}
         streetAddress={streetAddress}
         url={siteUrl}
+        sameAs={socialMedia}
       />
       <PreloadLinks />
     </>
