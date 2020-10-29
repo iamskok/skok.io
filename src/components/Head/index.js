@@ -6,6 +6,7 @@ import PreloadLinks from "./PreloadLinks"
 import OpenGraph from "./OpenGraph"
 import Twitter from "./Twitter"
 import Person from "./Person"
+import Address from "./Address"
 import Website from "./Website"
 import currentURL from "../../utils/current-url"
 
@@ -69,10 +70,10 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         email={email}
         telephone={telephone}
         jobTitle={jobTitle}
-        address={address}
         url={siteUrl}
         sameAs={socialMedia}
       />
+      <Address address={address} />
       <Website
         url={siteUrl}
         name={fullName}

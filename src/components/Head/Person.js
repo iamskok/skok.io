@@ -1,31 +1,16 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-const Person = ({
-  name,
-  telephone,
-  email,
-  image,
-  url,
-  jobTitle,
-  sameAs,
-  address: { addressLocality, addressRegion, postalCode, streetAddress },
-}) => {
-  const address = Object.assign(
-    {
-      "@type": `PostalAddress`,
-    },
-    addressLocality ? { addressLocality } : null,
-    addressRegion ? { addressRegion } : null,
-    postalCode ? { postalCode } : null,
-    streetAddress ? { streetAddress } : null
-  )
-
+const Person = ({ name, telephone, email, image, url, jobTitle, sameAs }) => {
   const schema = Object.assign(
     {
       "@context": `https://schema.org`,
       "@type": `Person`,
       "@id": `#person`,
+      address: {
+        "@type": `PostalAddress`,
+        "@id": `#address`,
+      },
     },
     name ? { name } : null,
     image ? { image } : null,
@@ -33,8 +18,7 @@ const Person = ({
     jobTitle ? { jobTitle } : null,
     telephone ? { telephone } : null,
     url ? { url } : null,
-    Object.values(sameAs).length > 0 ? { sameAs: Object.values(sameAs) } : null,
-    Object.values(sameAs).length > 1 ? { address } : null
+    Object.values(sameAs).length > 0 ? { sameAs: Object.values(sameAs) } : null
   )
 
   return (
