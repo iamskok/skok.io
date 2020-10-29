@@ -1,4 +1,4 @@
-const urlConstructor = (page, siteUrl, slug) => {
+const currentURL = (page, siteUrl, slug) => {
   if (page === `blog-post`) {
     return `${siteUrl}/blog/${slug}`
   } else if (page === `blog`) {
@@ -8,4 +8,4 @@ const urlConstructor = (page, siteUrl, slug) => {
   }
 }
 
-export default urlConstructor
+export default currentURL
