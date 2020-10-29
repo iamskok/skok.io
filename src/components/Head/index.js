@@ -5,6 +5,7 @@ import Description from "./Description"
 import PreloadLinks from "./PreloadLinks"
 import OpenGraph from "./OpenGraph"
 import Twitter from "./Twitter"
+import Person from "./Person"
 import metaURL from "../../utils/meta-url"
 
 const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
@@ -13,26 +14,26 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     description: defaultDescription,
     cover: defaultCover,
     coverAlt: defaultCoverAlt,
-    authorFirstName,
-    authorLastName,
+    firstName,
+    lastName,
     siteUrl,
     siteName,
+    email,
+    telephone,
+    jobTitle,
+    address: { addressLocality, addressRegion, postalCode, streetAddress },
     socialMedia: { twitter: twitterHandle },
   } = useSiteMetadata()
 
+  const url = metaURL(page, siteUrl, slug)
+
   const seo = {
-    url: metaURL(page, siteUrl, slug),
     title: title || defaultTitle,
     description: description || defaultDescription,
     cover: cover
       ? `${siteUrl}${cover.childImageSharp.fluid.src}`
       : `${siteUrl}${defaultCover}`,
     coverAlt: coverAlt || defaultCoverAlt,
-    siteName,
-    authorFirstName,
-    authorLastName,
-    date,
-    twitterHandle,
   }
 
   return (
@@ -42,21 +43,33 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
       <OpenGraph
         title={seo.title}
         description={seo.description}
-        cover={seo.cover}
-        coverAlt={seo.coverAlt}
-        url={seo.url}
-        siteName={seo.siteName}
-        authorFirstName={seo.authorFirstName}
-        authorLastName={seo.authorLastName}
-        date={seo.date}
+        image={seo.cover}
+        imageAlt={seo.coverAlt}
+        url={url}
+        siteName={siteName}
+        firstName={firstName}
+        lastName={lastName}
+        publishedTime={date}
         isBlogPost={page === `blog-post`}
       />
       <Twitter
         title={seo.title}
         description={seo.description}
-        cover={seo.cover}
-        coverAlt={seo.coverAlt}
-        creator={seo.twitterHandle}
+        image={seo.cover}
+        imageAlt={seo.coverAlt}
+        creator={twitterHandle}
+      />
+      <Person
+        firstName={firstName}
+        lastName={lastName}
+        email={email}
+        telephone={telephone}
+        jobTitle={jobTitle}
+        addressLocality={addressLocality}
+        addressRegion={addressRegion}
+        postalCode={postalCode}
+        streetAddress={streetAddress}
+        url={siteUrl}
       />
       <PreloadLinks />
     </>

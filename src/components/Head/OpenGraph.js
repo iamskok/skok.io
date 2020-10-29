@@ -4,13 +4,13 @@ import { Helmet } from "react-helmet"
 const OpenGraph = ({
   title,
   description,
-  date,
-  cover,
-  coverAlt,
+  publishedTime,
+  image,
+  imageAlt,
   url,
   siteName,
-  authorFirstName,
-  authorLastName,
+  firstName,
+  lastName,
   isBlogPost,
 }) => {
   return (
@@ -20,21 +20,18 @@ const OpenGraph = ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={isBlogPost ? `article` : `website`} />
-      {isBlogPost && <meta property="article:published_time" content={date} />}
       {isBlogPost && (
-        <meta
-          property="article:author"
-          content={`${authorFirstName} ${authorLastName}`}
-        />
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {isBlogPost && (
+        <meta property="article:author" content={`${firstName} ${lastName}`} />
       )}
       {!isBlogPost && (
-        <meta property="profile:first_name" content={authorFirstName} />
+        <meta property="profile:first_name" content={firstName} />
       )}
-      {!isBlogPost && (
-        <meta property="profile:last_name" content={authorLastName} />
-      )}
-      <meta property="og:image" content={cover} />
-      <meta property="og:image:alt" content={coverAlt} />
+      {!isBlogPost && <meta property="profile:last_name" content={lastName} />}
+      <meta property="og:image" content={image} />
+      <meta property="og:image:alt" content={imageAlt} />
     </Helmet>
   )
 }

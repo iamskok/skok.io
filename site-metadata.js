@@ -1,12 +1,13 @@
 module.exports = {
   title: `Vladimir Skok`,
   description: `Software engineering blog`,
-  authorFirstName: `Vladimir`,
-  authorLastName: `Skok`,
+  firstName: `Vladimir`,
+  lastName: `Skok`,
   // siteUrl: `https://skok.netlify.app`,
   siteUrl: `https://deploy-preview-149--skok.netlify.app`,
   siteName: `Vladimir Skok`,
   cover: `/cover.jpg`,
+  avatar: `/avatar.jpg`,
   coverAlt: `Husky dog`,
   navigation: [
     {
@@ -22,6 +23,15 @@ module.exports = {
     twitter: `https://twitter.com/iamskok1`,
     github: `https://github.com/iamskok`,
   },
+  address: {
+    addressLocality: `Atlanta`,
+    addressRegion: `GA`,
+    postalCode: `30339`,
+    streetAddress: ``,
+  },
+  email: `example.com`,
+  telephone: ``,
+  jobTitle: `Software Engineer`,
   codeBlock: {
     lineNumbers: true,
     lineNumbersButton: true,

@@ -5,32 +5,42 @@ const useSiteMetadata = () => {
     site: { siteMetadata },
   } = useStaticQuery(
     graphql`
-      query SITE_METADATA_QUERY {
+      query {
         site {
           siteMetadata {
             title
             description
-            authorFirstName
-            authorLastName
+            firstName
+            lastName
+            avatar
             siteUrl
             siteName
             cover
             coverAlt
-            navigation {
-              label
-              to
+            email
+            telephone
+            jobTitle
+            address {
+              addressLocality
+              addressRegion
+              postalCode
+              streetAddress
             }
             socialMedia {
               twitter
               github
             }
+            navigation {
+              label
+              to
+            }
+            colorModes
             codeBlock {
               lineNumbers
               lineNumbersButton
               copyButton
               languageTab
             }
-            colorModes
             favicons {
               light
               dark
