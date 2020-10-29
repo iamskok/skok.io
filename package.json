@@ -76,5 +76,8 @@
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
     "lint-staged": "10.5.0",
     "wait-for-netlify-preview": "1.2.1"
+  },
+  "resolutions": {
+    "node-fetch": "^2.6.1"
   }
 }
