@@ -2,18 +2,14 @@ import React from "react"
 import { Helmet } from "react-helmet"
 
 const Person = ({
-  firstName,
-  lastName,
+  name,
   telephone,
   email,
   image,
   url,
   jobTitle,
   sameAs,
-  addressLocality,
-  addressRegion,
-  postalCode,
-  streetAddress,
+  address: { addressLocality, addressRegion, postalCode, streetAddress },
 }) => {
   const address = Object.assign(
     {
@@ -29,15 +25,16 @@ const Person = ({
     {
       "@context": `https://schema.org`,
       "@type": `Person`,
+      "@id": `#person`,
     },
-    firstName && lastName ? { name: `${firstName} ${lastName}` } : null,
+    name ? { name } : null,
     image ? { image } : null,
     email ? { email } : null,
     jobTitle ? { jobTitle } : null,
     telephone ? { telephone } : null,
     url ? { url } : null,
     Object.values(sameAs).length > 0 ? { sameAs: Object.values(sameAs) } : null,
-    { address }
+    Object.values(sameAs).length > 1 ? { address } : null
   )
 
   return (
