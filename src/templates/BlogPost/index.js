@@ -28,7 +28,7 @@ const BlogPost = ({ pageContext, data }) => {
       page="blog-post"
     >
       <TweetableSelection />
-      {cover && coverAlt && <BlogPostCover src={cover} alt={coverAlt} />}
+      {cover && <BlogPostCover src={cover} alt={coverAlt ? coverAlt : ``} />}
       <Styled.h1>{title}</Styled.h1>
       <BlogPostMeta slug={slug} date={date} />
       {/* eslint react/no-children-prop: 0 */}
