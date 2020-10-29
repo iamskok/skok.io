@@ -6,7 +6,8 @@ import PreloadLinks from "./PreloadLinks"
 import OpenGraph from "./OpenGraph"
 import Twitter from "./Twitter"
 import Person from "./Person"
-import metaURL from "../../utils/meta-url"
+import Website from "./Website"
+import currentURL from "../../utils/current-url"
 
 const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
   const {
@@ -14,6 +15,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     description: defaultDescription,
     cover: defaultCover,
     coverAlt: defaultCoverAlt,
+    language,
     firstName,
     lastName,
     siteUrl,
@@ -21,11 +23,12 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     email,
     telephone,
     jobTitle,
-    address: { addressLocality, addressRegion, postalCode, streetAddress },
+    address,
     socialMedia,
   } = useSiteMetadata()
 
-  const url = metaURL(page, siteUrl, slug)
+  const url = currentURL(page, siteUrl, slug)
+  const fullName = `${firstName} ${lastName}`
   const { twitter: twitterHandle } = socialMedia
 
   const seo = {
@@ -44,6 +47,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
       <OpenGraph
         title={seo.title}
         description={seo.description}
+        locale={language}
         image={seo.cover}
         imageAlt={seo.coverAlt}
         url={url}
@@ -61,17 +65,20 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         creator={twitterHandle}
       />
       <Person
-        firstName={firstName}
-        lastName={lastName}
+        name={fullName}
         email={email}
         telephone={telephone}
         jobTitle={jobTitle}
-        addressLocality={addressLocality}
-        addressRegion={addressRegion}
-        postalCode={postalCode}
-        streetAddress={streetAddress}
+        address={address}
         url={siteUrl}
         sameAs={socialMedia}
+      />
+      <Website
+        url={siteUrl}
+        name={fullName}
+        image={seo.cover}
+        inLanguage={language}
+        description={description}
       />
       <PreloadLinks />
     </>
