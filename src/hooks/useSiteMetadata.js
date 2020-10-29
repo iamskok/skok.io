@@ -17,6 +17,7 @@ const useSiteMetadata = () => {
             siteName
             cover
             coverAlt
+            language
             email
             telephone
             jobTitle

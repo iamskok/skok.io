@@ -9,6 +9,7 @@ module.exports = {
   cover: `/cover.jpg`,
   avatar: `/avatar.jpg`,
   coverAlt: `Husky dog`,
+  language: `en-US`,
   navigation: [
     {
       to: `/blog`,
@@ -29,7 +30,7 @@ module.exports = {
     postalCode: `30339`,
     streetAddress: ``,
   },
-  email: `example.com`,
+  email: `name@example.com`,
   telephone: ``,
   jobTitle: `Software Engineer`,
   codeBlock: {
