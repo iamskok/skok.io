@@ -29,12 +29,13 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     address,
     socialMedia,
     genre,
-    logoSmall,
-    logoLarge,
+    logo: { small: smallLogo, large: largeLogo },
   } = useSiteMetadata()
 
   const url = currentURL(page, siteUrl, slug)
   const fullName = `${firstName} ${lastName}`
+  const smallLogoURL = `${siteUrl}${smallLogo}`
+  const largeLogoURL = `${siteUrl}${largeLogo}`
   const { twitter: twitterHandle } = socialMedia
 
   const seo = {
@@ -44,8 +45,6 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
       ? `${siteUrl}${cover.childImageSharp.fluid.src}`
       : `${siteUrl}${defaultCover}`,
     coverAlt: coverAlt || defaultCoverAlt,
-    logoSmall: `${siteUrl}${logoSmall}`,
-    logoLarge: `${siteUrl}${logoLarge}`,
   }
 
   const isBlogPost = page === `blog-post`
@@ -106,14 +105,14 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         description={defaultDescription}
       />
       <Organization
+        url={seo.url}
         name={fullName}
         description={defaultDescription}
         founder={fullName}
         telephone={telephone}
         email={email}
-        image={seo.logoLarge}
-        logo={seo.logoSmall}
-        url={seo.url}
+        image={largeLogoURL}
+        logo={smallLogoURL}
         sameAs={socialMedia}
       />
       <PreloadLinks />

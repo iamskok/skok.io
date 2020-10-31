@@ -7,8 +7,10 @@ module.exports = {
   siteUrl: `https://deploy-preview-149--skok.netlify.app`,
   siteName: `Vladimir Skok`,
   cover: `/cover.jpg`,
-  logoLarge: `/logo-large.jpg`,
-  logoSmall: `/logo-small.jpg`,
+  logo: {
+    large: `/logo-large.jpg`,
+    small: `/logo-small.jpg`,
+  },
   avatar: `/avatar.jpg`,
   coverAlt: `Husky dog`,
   language: `en-US`,
