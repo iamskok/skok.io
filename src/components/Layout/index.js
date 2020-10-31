@@ -14,7 +14,7 @@ const Layout = ({
   date,
   cover,
   coverAlt,
-  template,
+  page,
 }) => (
   <Fragment>
     <GlobalStyles />
@@ -25,7 +25,7 @@ const Layout = ({
       date={date}
       cover={cover}
       coverAlt={coverAlt}
-      template={template}
+      page={page}
     />
     <Container
       sx={{
