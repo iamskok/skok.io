@@ -7,6 +7,8 @@ module.exports = {
   siteUrl: `https://deploy-preview-149--skok.netlify.app`,
   siteName: `Vladimir Skok`,
   cover: `/cover.jpg`,
+  logoLarge: `/logo-large.jpg`,
+  logoSmall: `/logo-small.jpg`,
   avatar: `/avatar.jpg`,
   coverAlt: `Husky dog`,
   language: `en-US`,
@@ -33,6 +35,7 @@ module.exports = {
   email: `name@example.com`,
   telephone: ``,
   jobTitle: `Software Engineer`,
+  genre: `Software Engineering`,
   codeBlock: {
     lineNumbers: true,
     lineNumbersButton: true,

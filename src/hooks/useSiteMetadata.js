@@ -21,6 +21,9 @@ const useSiteMetadata = () => {
             email
             telephone
             jobTitle
+            genre
+            logoLarge
+            logoSmall
             address {
               addressLocality
               addressRegion
