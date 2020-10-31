@@ -8,6 +8,8 @@ import Twitter from "./Twitter"
 import Person from "./Person"
 import Address from "./Address"
 import Website from "./Website"
+import Article from "./Article"
+import Organization from "./Organization"
 import currentURL from "../../utils/current-url"
 
 const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
@@ -26,6 +28,9 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     jobTitle,
     address,
     socialMedia,
+    genre,
+    logoSmall,
+    logoLarge,
   } = useSiteMetadata()
 
   const url = currentURL(page, siteUrl, slug)
@@ -39,7 +44,12 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
       ? `${siteUrl}${cover.childImageSharp.fluid.src}`
       : `${siteUrl}${defaultCover}`,
     coverAlt: coverAlt || defaultCoverAlt,
+    logoSmall: `${siteUrl}${logoSmall}`,
+    logoLarge: `${siteUrl}${logoLarge}`,
   }
+
+  const isBlogPost = page === `blog-post`
+  const isBlog = page === `blog`
 
   return (
     <>
@@ -56,7 +66,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         firstName={firstName}
         lastName={lastName}
         publishedTime={date}
-        isBlogPost={page === `blog-post`}
+        isBlogPost={isBlogPost}
       />
       <Twitter
         title={seo.title}
@@ -74,12 +84,37 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         sameAs={socialMedia}
       />
       <Address address={address} />
+      {isBlogPost && (
+        <Article
+          datePublished={date}
+          dateModified={date}
+          headline={seo.title}
+          name={seo.title}
+          description={seo.description}
+          mainEntityOfPage={url}
+          url={url}
+          image={seo.cover}
+          genre={genre}
+          inLanguage={language}
+        />
+      )}
       <Website
         url={siteUrl}
         name={fullName}
         image={seo.cover}
         inLanguage={language}
-        description={description}
+        description={defaultDescription}
+      />
+      <Organization
+        name={fullName}
+        description={defaultDescription}
+        founder={fullName}
+        telephone={telephone}
+        email={email}
+        image={seo.logoLarge}
+        logo={seo.logoSmall}
+        url={seo.url}
+        sameAs={socialMedia}
       />
       <PreloadLinks />
     </>
