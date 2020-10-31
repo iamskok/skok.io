@@ -29,10 +29,12 @@ const BlogPost = ({ pageContext, data }) => {
     >
       <TweetableSelection />
       {cover && <BlogPostCover src={cover} alt={coverAlt ? coverAlt : ``} />}
-      <Styled.h1>{title}</Styled.h1>
-      <BlogPostMeta slug={slug} date={date} />
-      {/* eslint react/no-children-prop: 0 */}
-      <MDXRenderer children={body} />
+      <div data-speakable="true">
+        <Styled.h1>{title}</Styled.h1>
+        <BlogPostMeta slug={slug} date={date} />
+        {/* eslint react/no-children-prop: 0 */}
+        <MDXRenderer children={body} />
+      </div>
       <Pagination previous={prev?.fields?.slug} next={next?.fields?.slug} />
     </Layout>
   )
