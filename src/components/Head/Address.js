@@ -6,7 +6,7 @@ const Address = ({
 }) => {
   const schema = Object.assign(
     {
-      "@context": "https://schema.org",
+      "@context": `https://schema.org`,
       "@type": `PostalAddress`,
       "@id": `#address`,
     },
