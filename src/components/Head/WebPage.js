@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-const Website = ({ url, name, image, inLanguage, description }) => {
+const WebPage = ({ url, name, image, inLanguage, description }) => {
   const person = {
     "@id": `#person`,
   }
@@ -34,4 +34,4 @@ const Website = ({ url, name, image, inLanguage, description }) => {
   )
 }
 
-export default Website
+export default WebPage
