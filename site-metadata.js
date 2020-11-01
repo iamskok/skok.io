@@ -17,11 +17,11 @@ module.exports = {
   navigation: [
     {
       to: `/blog`,
-      label: `blog`,
+      label: `Blog`,
     },
     {
       to: `/about`,
-      label: `about`,
+      label: `About`,
     },
   ],
   socialMedia: {
