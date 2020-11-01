@@ -31,7 +31,6 @@ const Website = ({
     mainEntityOfPage
       ? {
           mainEntityOfPage: {
-            "@type": `WebPage`,
             "@id": mainEntityOfPage,
           },
         }
