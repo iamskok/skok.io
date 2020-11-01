@@ -1,5 +1,6 @@
 const { createFilePath } = require("gatsby-source-filesystem")
 const path = require("path")
+
 const PAGINATION_OFFSET = 8
 
 // Here we're adding extra stuff to the "node" (like the slug)
