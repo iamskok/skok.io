@@ -13,6 +13,8 @@ import Blog from "./Blog"
 import Breadcrumbs from "./Breadcrumbs"
 import Organization from "./Organization"
 import currentURL from "../../utils/current-url"
+import ContactPage from "./ContactPage"
+import AboutPage from "./AboutPage"
 
 const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
   const {
@@ -31,6 +33,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     address,
     socialMedia,
     genre,
+    speakableSelector,
     logo: { small: smallLogo, large: largeLogo },
   } = useSiteMetadata()
 
@@ -91,11 +94,13 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
       />
       {isHome && (
         <WebPage
+          type="WebPage"
           url={url}
           name={fullName}
           image={seo.cover}
           inLanguage={language}
           description={defaultDescription}
+          cssSelector={speakableSelector}
         />
       )}
       {(isBlogPost || isBlog) && (
@@ -131,6 +136,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
       )}
       {isBlogPost && (
         <Article
+          type="Article"
           datePublished={date}
           dateModified={date}
           headline={seo.title}
@@ -141,10 +147,12 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
           genre={genre}
           inLanguage={language}
           mainEntityOfPage={url}
+          cssSelector={speakableSelector}
         />
       )}
       {isBlog && (
         <Blog
+          type="Blog"
           headline={seo.title}
           name={seo.title}
           description={seo.description}
@@ -152,6 +160,34 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
           image={seo.cover}
           genre={genre}
           inLanguage={language}
+        />
+      )}
+      {isContact && (
+        <ContactPage
+          type="ContactPage"
+          headline={seo.title}
+          name={seo.title}
+          description={seo.description}
+          url={url}
+          image={seo.cover}
+          genre={genre}
+          inLanguage={language}
+          mainEntityOfPage={url}
+          cssSelector={speakableSelector}
+        />
+      )}
+      {isAbout && (
+        <AboutPage
+          type="AboutPage"
+          headline={seo.title}
+          name={seo.title}
+          description={seo.description}
+          url={url}
+          image={seo.cover}
+          genre={genre}
+          inLanguage={language}
+          mainEntityOfPage={url}
+          cssSelector={speakableSelector}
         />
       )}
     </>
