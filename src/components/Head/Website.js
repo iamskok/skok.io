@@ -11,6 +11,7 @@ const Website = ({ url, name, image, inLanguage, description }) => {
     {
       "@context": `http://schema.org`,
       "@type": `WebSite`,
+      "@id": `#website`,
       publisher: person,
       author: person,
     },
