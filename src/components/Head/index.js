@@ -115,7 +115,6 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
           url={url}
           name={fullName}
           description={defaultDescription}
-          founder={fullName}
           telephone={telephone}
           email={email}
           image={largeLogoURL}

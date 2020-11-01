@@ -1,9 +1,8 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-const Person = ({
+const Organization = ({
   name,
-  founder,
   telephone,
   email,
   image,
@@ -62,4 +61,4 @@ const Person = ({
   )
 }
 
-export default Person
+export default Organization
