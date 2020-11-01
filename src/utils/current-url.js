@@ -1,10 +1,14 @@
-const currentURL = (page, siteUrl, slug) => {
-  if (page === `blog-post`) {
-    return `${siteUrl}/blog/${slug}`
-  } else if (page === `blog`) {
-    return `${siteUrl}/blog`
+const currentURL = ({ url, slug, blogPost, blog, about, contact }) => {
+  if (blogPost) {
+    return `${url}${slug}`
+  } else if (blog) {
+    return `${url}/blog`
+  } else if (contact) {
+    return `${url}/contact`
+  } else if (about) {
+    return `${url}/about`
   } else {
-    return siteUrl
+    return url
   }
 }
 
