@@ -42,6 +42,7 @@ module.exports = {
   telephone: ``,
   jobTitle: `Software Engineer`,
   genre: `Software Engineering`,
+  speakableSelector: [`[data-speakable="true"]`],
   codeBlock: {
     lineNumbers: true,
     lineNumbersButton: true,

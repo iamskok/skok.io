@@ -22,6 +22,7 @@ const useSiteMetadata = () => {
             telephone
             jobTitle
             genre
+            speakableSelector
             logo {
               small
               large
