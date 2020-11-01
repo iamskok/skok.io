@@ -1,14 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-const Website = ({
-  url,
-  name,
-  image,
-  inLanguage,
-  description,
-  mainEntityOfPage,
-}) => {
+const Website = ({ url, name, image, inLanguage, description }) => {
   const person = {
     "@id": `#person`,
   }
@@ -27,14 +20,7 @@ const Website = ({
     name ? { name } : null,
     image ? { image } : null,
     inLanguage ? { inLanguage } : null,
-    description ? { description } : null,
-    mainEntityOfPage
-      ? {
-          mainEntityOfPage: {
-            "@id": mainEntityOfPage,
-          },
-        }
-      : null
+    description ? { description } : null
   )
 
   return (
