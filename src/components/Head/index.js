@@ -9,6 +9,7 @@ import Person from "./Person"
 import Address from "./Address"
 import Website from "./Website"
 import Article from "./Article"
+import Breadcrumbs from "./Breadcrumbs"
 import Organization from "./Organization"
 import currentURL from "../../utils/current-url"
 
@@ -52,6 +53,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
 
   return (
     <>
+      <PreloadLinks />
       <Title title={seo.title} />
       <Description description={seo.description} />
       <OpenGraph
@@ -74,6 +76,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         imageAlt={seo.coverAlt}
         creator={twitterHandle}
       />
+      <Address address={address} />
       <Person
         name={fullName}
         email={email}
@@ -82,7 +85,41 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         url={siteUrl}
         sameAs={socialMedia}
       />
-      <Address address={address} />
+      <Organization
+        url={url}
+        name={fullName}
+        description={defaultDescription}
+        founder={fullName}
+        telephone={telephone}
+        email={email}
+        image={largeLogoURL}
+        logo={smallLogoURL}
+        sameAs={socialMedia}
+      />
+      {(!isBlogPost || !isBlog) && (
+        <Website
+          url={siteUrl}
+          name={fullName}
+          image={seo.cover}
+          inLanguage={language}
+          description={defaultDescription}
+        />
+      )}
+      {(isBlogPost || isBlog) && (
+        <Breadcrumbs
+          isBlog={isBlog}
+          itemListElement={[
+            {
+              id: `${siteUrl}/blog`,
+              name: `Blog`,
+            },
+            {
+              id: url,
+              name: seo.title,
+            },
+          ]}
+        />
+      )}
       {isBlogPost && (
         <Article
           datePublished={date}
@@ -97,25 +134,6 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
           inLanguage={language}
         />
       )}
-      <Website
-        url={siteUrl}
-        name={fullName}
-        image={seo.cover}
-        inLanguage={language}
-        description={defaultDescription}
-      />
-      <Organization
-        url={seo.url}
-        name={fullName}
-        description={defaultDescription}
-        founder={fullName}
-        telephone={telephone}
-        email={email}
-        image={largeLogoURL}
-        logo={smallLogoURL}
-        sameAs={socialMedia}
-      />
-      <PreloadLinks />
     </>
   )
 }
