@@ -1,7 +1,14 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-const WebPage = ({ url, name, image, inLanguage, description }) => {
+const WebPage = ({
+  url,
+  name,
+  image,
+  inLanguage,
+  description,
+  cssSelector,
+}) => {
   const person = {
     "@id": `#person`,
   }
@@ -15,16 +22,20 @@ const WebPage = ({ url, name, image, inLanguage, description }) => {
       author: person,
       copyrightHolder: person,
       creator: person,
-      speakable: {
-        "@type": `SpeakableSpecification`,
-        cssSelector: [`[data-speakable="true"]`],
-      },
     },
     url ? { url } : null,
     name ? { name } : null,
     image ? { image } : null,
     inLanguage ? { inLanguage } : null,
-    description ? { description } : null
+    description ? { description } : null,
+    cssSelector.length > 0
+      ? {
+          speakable: {
+            "@type": `SpeakableSpecification`,
+            cssSelector,
+          },
+        }
+      : null
   )
 
   return (

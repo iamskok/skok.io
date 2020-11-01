@@ -13,6 +13,7 @@ const Article = ({
   inLanguage,
   genre,
   image,
+  cssSelector,
 }) => {
   const person = {
     "@id": `#person`,
@@ -30,10 +31,6 @@ const Article = ({
         "@id": `#organization`,
       },
       copyrightYear: new Date().getFullYear(),
-      speakable: {
-        "@type": `SpeakableSpecification`,
-        cssSelector: [`[data-speakable="true"]`],
-      },
     },
     articleSection ? { articleSection } : null,
     dateModified ? { dateModified } : null,
@@ -50,6 +47,14 @@ const Article = ({
           mainEntityOfPage: {
             "@type": `WebPage`,
             "@id": mainEntityOfPage,
+          },
+        }
+      : null,
+    cssSelector.length > 0
+      ? {
+          speakable: {
+            "@type": `SpeakableSpecification`,
+            cssSelector,
           },
         }
       : null
