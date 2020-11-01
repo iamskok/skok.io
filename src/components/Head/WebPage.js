@@ -15,6 +15,10 @@ const Website = ({ url, name, image, inLanguage, description }) => {
       author: person,
       copyrightHolder: person,
       creator: person,
+      speakable: {
+        "@type": `SpeakableSpecification`,
+        cssSelector: [`[data-speakable="true"]`],
+      },
     },
     url ? { url } : null,
     name ? { name } : null,

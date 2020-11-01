@@ -12,6 +12,7 @@ const IndexPage = () => (
         justifyContent: `center`,
         minHeight: `100%`,
       }}
+      data-speakable="true"
     >
       <Styled.h1
         sx={{
