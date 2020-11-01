@@ -23,6 +23,10 @@ module.exports = {
       to: `/about`,
       label: `About`,
     },
+    {
+      to: `/contact`,
+      label: `Contact`,
+    },
   ],
   socialMedia: {
     twitter: `https://twitter.com/iamskok1`,
