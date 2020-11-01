@@ -38,15 +38,6 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     logo: { small: smallLogo, large: largeLogo },
   } = useSiteMetadata()
 
-  const url = currentURL({
-    slug,
-    url: siteUrl,
-    blogPost: isBlogPost,
-    blog: isBlog,
-    about: isAbout,
-    contact: isContact,
-  })
-
   const fullName = `${firstName} ${lastName}`
   const smallLogoURL = `${siteUrl}${smallLogo}`
   const largeLogoURL = `${siteUrl}${largeLogo}`
@@ -66,6 +57,15 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
   const isHome = page === `home`
   const isAbout = page === `about`
   const isContact = page === `contact`
+
+  const url = currentURL({
+    slug,
+    url: siteUrl,
+    blogPost: isBlogPost,
+    blog: isBlog,
+    about: isAbout,
+    contact: isContact,
+  })
 
   return (
     <>
