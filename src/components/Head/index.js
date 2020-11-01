@@ -52,6 +52,8 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
   const isBlogPost = page === `blog-post`
   const isBlog = page === `blog`
   const isHome = page === `home`
+  const isAbout = page === `about`
+  const isContact = page === `contact`
 
   return (
     <>
