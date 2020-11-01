@@ -7,7 +7,6 @@ const Blog = ({
   articleSection,
   dateModified,
   datePublished,
-  mainEntityOfPage,
   url,
   name,
   inLanguage,
@@ -40,12 +39,7 @@ const Blog = ({
     inLanguage ? { inLanguage } : null,
     name ? { name } : null,
     url ? { url } : null,
-    image ? { image } : null,
-    mainEntityOfPage
-      ? {
-          mainEntityOfPage: { "@id": mainEntityOfPage },
-        }
-      : null
+    image ? { image } : null
   )
 
   return (
