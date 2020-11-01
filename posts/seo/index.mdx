@@ -87,6 +87,10 @@ When using Twitter cards validator make sure that you are not blocking Twitter b
 - breadcrumbs `/blog` + `/blog/article-title`
 - comments
 
+Use Node Identifiers (the "@id" properties) to reference schemas without repeating data needlessly.
+URLs with hashes is a common convention, but it can be anything as long as it is locally unique on
+the webpage. Read more about [Node Identifiers](https://webmasters.stackexchange.com/questions/98569/what-is-the-use-of-id-in-json-ld-syntax)
+
 Add `data-speakable="true"` for main content area and target it with Article's `speakable` property.
 Even though by schema.org specification Article's publisher property can be a Person type structured
 data validator throws error and requires Organization type.
@@ -105,6 +109,8 @@ but if it bothers you can add `name` property in `BreadcrumbList`:
 ```
 
 Note about [speakable](https://developers.google.com/search/docs/data-types/speakable) data type.
+
+- [Structured Data Linter](http://linter.structured-data.org/)
 
 ### Images in Article markup
 
