@@ -9,6 +9,7 @@ import Person from "./Person"
 import Address from "./Address"
 import WebPage from "./WebPage"
 import Article from "./Article"
+import Blog from "./Blog"
 import Breadcrumbs from "./Breadcrumbs"
 import Organization from "./Organization"
 import currentURL from "../../utils/current-url"
@@ -50,6 +51,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
 
   const isBlogPost = page === `blog-post`
   const isBlog = page === `blog`
+  const isHome = page === `home`
 
   return (
     <>
@@ -85,7 +87,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         url={siteUrl}
         sameAs={socialMedia}
       />
-      {(!isBlogPost || !isBlog) && (
+      {isHome && (
         <WebPage
           url={url}
           name={fullName}
@@ -99,6 +101,10 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         <Breadcrumbs
           isBlog={isBlog}
           itemListElement={[
+            {
+              id: siteUrl,
+              name: `Home`,
+            },
             {
               id: `${siteUrl}/blog`,
               name: `Blog`,
@@ -126,6 +132,20 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         <Article
           datePublished={date}
           dateModified={date}
+          headline={seo.title}
+          name={seo.title}
+          description={seo.description}
+          mainEntityOfPage={url}
+          url={url}
+          image={seo.cover}
+          genre={genre}
+          inLanguage={language}
+        />
+      )}
+      {isBlog && (
+        <Blog
+          // datePublished={date}
+          // dateModified={date}
           headline={seo.title}
           name={seo.title}
           description={seo.description}
