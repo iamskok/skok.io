@@ -75,6 +75,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         lastName={lastName}
         publishedTime={date}
         isBlogPost={isBlogPost}
+        seeAlso={socialMedia}
       />
       <Twitter
         title={seo.title}

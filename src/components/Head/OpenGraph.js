@@ -12,6 +12,7 @@ const OpenGraph = ({
   siteName,
   firstName,
   lastName,
+  seeAlso,
   isBlogPost,
 }) => (
   <Helmet>
@@ -31,6 +32,10 @@ const OpenGraph = ({
     {!isBlogPost && <meta property="profile:last_name" content={lastName} />}
     <meta property="og:image" content={image} />
     <meta property="og:image:alt" content={imageAlt} />
+    {Object.values(seeAlso).length > 0 &&
+      Object.values(seeAlso).map((url, index) => (
+        <meta key={index} property="og:see_also" content={url} />
+      ))}
   </Helmet>
 )
 
