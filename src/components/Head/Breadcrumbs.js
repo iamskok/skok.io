@@ -16,6 +16,7 @@ const BreadcrumbList = ({ itemListElement, isBlog }) => {
       position: index + 1,
       name,
       item: {
+        "@type": `WebPage`,
         "@id": id,
       },
     })),

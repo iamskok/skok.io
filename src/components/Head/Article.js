@@ -25,6 +25,7 @@ const Article = ({
     {
       "@context": `http://schema.org`,
       "@type": type,
+      "@id": schemaId(`article`),
       author: person,
       copyrightHolder: person,
       creator: person,
