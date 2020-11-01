@@ -24,7 +24,6 @@ const Organization = ({
         "@id": `#address`,
       },
       founder: person,
-      contactPoint: person,
     },
     description ? { description } : null,
     email ? { email } : null,
