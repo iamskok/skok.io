@@ -14,9 +14,9 @@ const BreadcrumbList = ({ itemListElement, isBlog }) => {
     itemListElement: elements.map(({ id, name }, index) => ({
       "@type": `ListItem`,
       position: index + 1,
+      name,
       item: {
         "@id": id,
-        name,
       },
     })),
   }
