@@ -5,8 +5,6 @@ const Blog = ({
   headline,
   description,
   articleSection,
-  dateModified,
-  datePublished,
   url,
   name,
   inLanguage,

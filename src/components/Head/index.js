@@ -96,7 +96,6 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
           image={seo.cover}
           inLanguage={language}
           description={defaultDescription}
-          mainEntityOfPage={url}
         />
       )}
       {(isBlogPost || isBlog) && (
@@ -146,8 +145,6 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
       )}
       {isBlog && (
         <Blog
-          // datePublished={date}
-          // dateModified={date}
           headline={seo.title}
           name={seo.title}
           description={seo.description}
