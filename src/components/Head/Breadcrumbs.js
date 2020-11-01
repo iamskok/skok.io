@@ -2,7 +2,8 @@ import React from "react"
 import { Helmet } from "react-helmet"
 
 const BreadcrumbList = ({ itemListElement, isBlog }) => {
-  const elements = isBlog ? itemListElement.slice(0, 1) : itemListElement
+  // Exclude blog post item on the blog page
+  const elements = isBlog ? itemListElement.slice(1, 1) : itemListElement
 
   const schema = {
     "@context": `http://schema.org`,
