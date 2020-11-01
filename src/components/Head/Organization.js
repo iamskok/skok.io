@@ -12,19 +12,20 @@ const Person = ({
   sameAs,
   description,
 }) => {
+  const person = {
+    "@id": `#person`,
+  }
+
   const schema = Object.assign(
     {
       "@context": `http://schema.org`,
       "@id": `#organization`,
       "@type": `Organization`,
       address: {
-        "@type": `PostalAddress`,
         "@id": `#address`,
       },
-      founder: {
-        "@type": `Person`,
-        "@id": `#person`,
-      },
+      founder: person,
+      contactPoint: person,
     },
     description ? { description } : null,
     email ? { email } : null,

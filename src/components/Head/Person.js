@@ -8,7 +8,6 @@ const Person = ({ name, telephone, email, image, url, jobTitle, sameAs }) => {
       "@type": `Person`,
       "@id": `#person`,
       address: {
-        "@type": `PostalAddress`,
         "@id": `#address`,
       },
     },

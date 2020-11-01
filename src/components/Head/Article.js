@@ -15,7 +15,6 @@ const Article = ({
   image,
 }) => {
   const person = {
-    "@type": `Person`,
     "@id": `#person`,
   }
 
@@ -28,7 +27,6 @@ const Article = ({
       copyrightHolder: person,
       creator: person,
       publisher: {
-        "@type": `Organization`,
         "@id": `#organization`,
       },
       copyrightYear: new Date().getFullYear(),
@@ -49,10 +47,7 @@ const Article = ({
     image ? { image } : null,
     mainEntityOfPage
       ? {
-          mainEntityOfPage: {
-            "@type": `WebPage`,
-            "@id": mainEntityOfPage,
-          },
+          mainEntityOfPage: { "@id": mainEntityOfPage },
         }
       : null
   )
