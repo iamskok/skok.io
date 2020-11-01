@@ -1,25 +1,41 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-const Website = ({ url, name, image, inLanguage, description }) => {
+const Website = ({
+  url,
+  name,
+  image,
+  inLanguage,
+  description,
+  mainEntityOfPage,
+}) => {
   const person = {
-    "@type": `Person`,
     "@id": `#person`,
   }
 
   const schema = Object.assign(
     {
       "@context": `http://schema.org`,
-      "@type": `WebSite`,
-      "@id": `#website`,
+      "@type": `WebPage`,
+      "@id": `#webpage`,
       publisher: person,
       author: person,
+      copyrightHolder: person,
+      creator: person,
     },
     url ? { url } : null,
     name ? { name } : null,
     image ? { image } : null,
     inLanguage ? { inLanguage } : null,
-    description ? { description } : null
+    description ? { description } : null,
+    mainEntityOfPage
+      ? {
+          mainEntityOfPage: {
+            "@type": `WebPage`,
+            "@id": mainEntityOfPage,
+          },
+        }
+      : null
   )
 
   return (

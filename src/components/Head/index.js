@@ -7,7 +7,7 @@ import OpenGraph from "./OpenGraph"
 import Twitter from "./Twitter"
 import Person from "./Person"
 import Address from "./Address"
-import Website from "./Website"
+import WebPage from "./WebPage"
 import Article from "./Article"
 import Breadcrumbs from "./Breadcrumbs"
 import Organization from "./Organization"
@@ -85,24 +85,14 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         url={siteUrl}
         sameAs={socialMedia}
       />
-      <Organization
-        url={url}
-        name={fullName}
-        description={defaultDescription}
-        founder={fullName}
-        telephone={telephone}
-        email={email}
-        image={largeLogoURL}
-        logo={smallLogoURL}
-        sameAs={socialMedia}
-      />
       {(!isBlogPost || !isBlog) && (
-        <Website
-          url={siteUrl}
+        <WebPage
+          url={url}
           name={fullName}
           image={seo.cover}
           inLanguage={language}
           description={defaultDescription}
+          mainEntityOfPage={url}
         />
       )}
       {(isBlogPost || isBlog) && (
@@ -118,6 +108,19 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
               name: seo.title,
             },
           ]}
+        />
+      )}
+      {isBlogPost && (
+        <Organization
+          url={url}
+          name={fullName}
+          description={defaultDescription}
+          founder={fullName}
+          telephone={telephone}
+          email={email}
+          image={largeLogoURL}
+          logo={smallLogoURL}
+          sameAs={socialMedia}
         />
       )}
       {isBlogPost && (
