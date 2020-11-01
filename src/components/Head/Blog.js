@@ -30,10 +30,6 @@ const Blog = ({
         "@id": `#organization`,
       },
       copyrightYear: new Date().getFullYear(),
-      speakable: {
-        "@type": `SpeakableSpecification`,
-        cssSelector: [`[data-speakable="true"]`],
-      },
     },
     articleSection ? { articleSection } : null,
     // dateModified ? { dateModified } : null,
