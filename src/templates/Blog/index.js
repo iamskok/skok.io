@@ -12,11 +12,13 @@ const Blog = ({ data: { allMdx }, pageContext: { pagination } }) => {
 
   return (
     <Layout page="blog">
-      <Styled.h1>Blog</Styled.h1>
+      <div data-speakable="true">
+        <Styled.h1>Blog</Styled.h1>
 
-      {posts.map(({ node: post }) => (
-        <BlogPostCard key={post.id} post={post} />
-      ))}
+        {posts.map(({ node: post }) => (
+          <BlogPostCard key={post.id} post={post} />
+        ))}
+      </div>
 
       <Pagination previous={previousPagePath} next={nextPagePath} />
     </Layout>
