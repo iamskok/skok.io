@@ -15,6 +15,7 @@ import Organization from "./Organization"
 import currentURL from "../../utils/current-url"
 import ContactPage from "./ContactPage"
 import AboutPage from "./AboutPage"
+import schemId from "./schemaId"
 
 const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
   const {
@@ -37,7 +38,15 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     logo: { small: smallLogo, large: largeLogo },
   } = useSiteMetadata()
 
-  const url = currentURL(page, siteUrl, slug)
+  const url = currentURL({
+    slug,
+    url: siteUrl,
+    blogPost: isBlogPost,
+    blog: isBlog,
+    about: isAbout,
+    contact: isContact,
+  })
+
   const fullName = `${firstName} ${lastName}`
   const smallLogoURL = `${siteUrl}${smallLogo}`
   const largeLogoURL = `${siteUrl}${largeLogo}`
@@ -84,8 +93,9 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         imageAlt={seo.coverAlt}
         creator={twitterHandle}
       />
-      <Address address={address} />
+      <Address id={schemId(`address`)} address={address} />
       <Person
+        id={schemId(`person`)}
         name={fullName}
         email={email}
         telephone={telephone}
@@ -93,15 +103,17 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         url={siteUrl}
         sameAs={socialMedia}
       />
-      {isHome && (
-        <WebPage
-          type="WebPage"
+      {isBlogPost && (
+        <Organization
+          id={schemId(`organization`)}
           url={url}
           name={fullName}
-          image={seo.cover}
-          inLanguage={language}
           description={defaultDescription}
-          cssSelector={speakableSelector}
+          telephone={telephone}
+          email={email}
+          image={largeLogoURL}
+          logo={smallLogoURL}
+          sameAs={socialMedia}
         />
       )}
       {(isBlogPost || isBlog) && (
@@ -123,31 +135,14 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
           ]}
         />
       )}
-      {isBlogPost && (
-        <Organization
+      {isHome && (
+        <WebPage
+          type="WebPage"
           url={url}
           name={fullName}
-          description={defaultDescription}
-          telephone={telephone}
-          email={email}
-          image={largeLogoURL}
-          logo={smallLogoURL}
-          sameAs={socialMedia}
-        />
-      )}
-      {isBlogPost && (
-        <Article
-          type="Article"
-          datePublished={date}
-          dateModified={date}
-          headline={seo.title}
-          name={seo.title}
-          description={seo.description}
-          url={url}
           image={seo.cover}
-          genre={genre}
           inLanguage={language}
-          mainEntityOfPage={url}
+          description={defaultDescription}
           cssSelector={speakableSelector}
         />
       )}
@@ -180,6 +175,22 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
       {isAbout && (
         <AboutPage
           type="AboutPage"
+          headline={seo.title}
+          name={seo.title}
+          description={seo.description}
+          url={url}
+          image={seo.cover}
+          genre={genre}
+          inLanguage={language}
+          mainEntityOfPage={url}
+          cssSelector={speakableSelector}
+        />
+      )}
+      {isBlogPost && (
+        <Article
+          type="Article"
+          datePublished={date}
+          dateModified={date}
           headline={seo.title}
           name={seo.title}
           description={seo.description}

@@ -1,14 +1,24 @@
 import React from "react"
 import { Helmet } from "react-helmet"
+import schemaId from "./schemaId"
 
-const Person = ({ name, telephone, email, image, url, jobTitle, sameAs }) => {
+const Person = ({
+  id,
+  name,
+  telephone,
+  email,
+  image,
+  url,
+  jobTitle,
+  sameAs,
+}) => {
   const schema = Object.assign(
     {
       "@context": `https://schema.org`,
       "@type": `Person`,
-      "@id": `#person`,
+      "@id": id,
       address: {
-        "@id": `#address`,
+        "@id": schemaId(`address`),
       },
     },
     name ? { name } : null,

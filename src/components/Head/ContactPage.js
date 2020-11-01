@@ -1,7 +1,9 @@
 import React from "react"
 import { Helmet } from "react-helmet"
+import schemaId from "./schemaId"
 
 const ContactPage = ({
+  type,
   headline,
   description,
   articleSection,
@@ -16,14 +18,13 @@ const ContactPage = ({
   cssSelector,
 }) => {
   const person = {
-    "@id": `#person`,
+    "@id": schemaId(`person`),
   }
 
   const schema = Object.assign(
     {
       "@context": `http://schema.org`,
-      "@type": `ContactPage`,
-      "@id": `#contact`,
+      "@type": type,
       author: person,
       copyrightHolder: person,
       creator: person,

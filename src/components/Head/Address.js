@@ -1,5 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
+import schemaId from "./schemaId"
 
 const Address = ({
   address: { addressLocality, addressRegion, postalCode, streetAddress },
@@ -8,7 +9,7 @@ const Address = ({
     {
       "@context": `https://schema.org`,
       "@type": `PostalAddress`,
-      "@id": `#address`,
+      "@id": schemaId(`address`),
     },
     addressLocality ? { addressLocality } : null,
     addressRegion ? { addressRegion } : null,
