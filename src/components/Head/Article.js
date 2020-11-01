@@ -23,6 +23,7 @@ const Article = ({
     {
       "@context": `http://schema.org`,
       "@type": `Article`,
+      "@id": `#article`,
       author: person,
       copyrightHolder: person,
       creator: person,
@@ -43,14 +44,14 @@ const Article = ({
     genre ? { genre } : null,
     headline ? { headline } : null,
     inLanguage ? { inLanguage } : null,
-    mainEntityOfPage ? { mainEntityOfPage } : null,
     name ? { name } : null,
     url ? { url } : null,
-    image
+    image ? { image } : null,
+    mainEntityOfPage
       ? {
-          image: {
-            "@type": `ImageObject`,
-            url: image,
+          mainEntityOfPage: {
+            "@type": `WebPage`,
+            "@id": mainEntityOfPage,
           },
         }
       : null
