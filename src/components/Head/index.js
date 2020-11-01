@@ -103,15 +103,15 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
           itemListElement={[
             {
               id: siteUrl,
-              name: `Home`,
+              name: `🏠 Home`,
             },
             {
               id: `${siteUrl}/blog`,
-              name: `Blog`,
+              name: `🗒 Blog`,
             },
             {
               id: url,
-              name: seo.title,
+              name: `📝 ${seo.title}`,
             },
           ]}
         />
