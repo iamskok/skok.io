@@ -58,6 +58,23 @@ Don’t exceed the 5MB size limit.
 - `twitter:image` Images for this Card support an aspect ratio of 2:1 with minimum dimensions of 300x157 or maximum of 4096x4096 pixels. Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported.
 - `twitter:image:alt` Maximum 420 characters.
 
+When using Twitter cards validator make sure that you are not blocking Twitter bot from crawling your website.
+
+```
+{
+  resolve: `gatsby-plugin-robots-txt`,
+  options: {
+    host: `example.com`,
+    policy: [
+      {
+        userAgent: `*`,
+        allow: [`/`],
+      },
+    ],
+  },
+},
+```
+
 - Overview of [summary card with large image](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image)
 - [Cards validator](https://cards-dev.twitter.com/validator)
 
@@ -74,8 +91,41 @@ Add `data-speakable="true"` for main content area and target it with Article's `
 Even though by schema.org specification Article's publisher property can be a Person type structured
 data validator throws error and requires Organization type.
 
+When validating `BreadcrumbList` in https://search.google.com/test/rich-results you might ask yourself
+why I don't have any errors, but I see `Unnamed item`. Well I don't know why it's working the way it does,
+but if it bothers you can add `name` property in `BreadcrumbList`:
+
+```json
+{
+ "@context": "http://schema.org",
+ "@type": "BreadcrumbList",
+  "name": "Blog Breadcrumbs",
+ "itemListElement": [...]
+}
+```
+
+Note about [speakable](https://developers.google.com/search/docs/data-types/speakable) data type.
+
+### Images in Article markup
+
+- Images should be at least 696 pixels wide.
+- For Article markup use 1x1 / 4x3 / 16x9 image ratio
+
+```
+image": [
+  "https://example.com/photos/1x1/photo.jpg",
+  "https://example.com/photos/4x3/photo.jpg",
+  "https://example.com/photos/16x9/photo.jpg"
+]
+```
+
+### Logo
+
+The image must be 112x112px, at minimum.
+
 - [Rich snippets validator](https://search.google.com/test/rich-results)
 - [Structured data validator](https://search.google.com/structured-data/testing-tool)
+- [List of all Google's rich snippets](https://developers.google.com/search/docs/guides/search-gallery)
 
 ## Website
 
@@ -99,6 +149,21 @@ Here is a list of things we will need:
 
 - Site metadata
 - Gatsby node context
+
+## Other data types
+
+You may also find other data types useful for your usecase:
+
+- https://developers.google.com/search/docs/data-types/sitelinks-searchbox
+- https://developers.google.com/search/docs/data-types/home-activities
+- https://developers.google.com/search/docs/data-types/event
+- https://developers.google.com/search/docs/data-types/faqpage
+- https://developers.google.com/search/docs/data-types/how-to
+- https://developers.google.com/search/docs/data-types/qapage
+
+## Conclusion
+
+There many other schema.org data types, but not all of them work as rich snippets.
 
 ## Further reading
 
