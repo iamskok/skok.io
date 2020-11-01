@@ -15,7 +15,7 @@ const Person = ({
   const schema = Object.assign(
     {
       "@context": `http://schema.org`,
-      "@id": "#organization",
+      "@id": `#organization`,
       "@type": `Organization`,
       address: {
         "@type": `PostalAddress`,
@@ -37,8 +37,8 @@ const Person = ({
           image: {
             "@type": `ImageObject`,
             height: 2048,
-            url: image,
             width: 2048,
+            url: image,
           },
         }
       : null,
@@ -47,8 +47,8 @@ const Person = ({
           logo: {
             "@type": `ImageObject`,
             height: 60,
+            width: 60,
             url: logo,
-            width: 600,
           },
         }
       : null
