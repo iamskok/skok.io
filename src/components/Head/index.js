@@ -136,7 +136,6 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
           headline={seo.title}
           name={seo.title}
           description={seo.description}
-          mainEntityOfPage={url}
           url={url}
           image={seo.cover}
           genre={genre}
@@ -148,7 +147,6 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
           headline={seo.title}
           name={seo.title}
           description={seo.description}
-          mainEntityOfPage={url}
           url={url}
           image={seo.cover}
           genre={genre}
