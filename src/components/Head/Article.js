@@ -7,6 +7,7 @@ const Article = ({
   articleSection,
   dateModified,
   datePublished,
+  mainEntityOfPage,
   url,
   name,
   inLanguage,
@@ -43,7 +44,15 @@ const Article = ({
     inLanguage ? { inLanguage } : null,
     name ? { name } : null,
     url ? { url } : null,
-    image ? { image } : null
+    image ? { image } : null,
+    mainEntityOfPage
+      ? {
+          mainEntityOfPage: {
+            "@type": `WebPage`,
+            "@id": mainEntityOfPage,
+          },
+        }
+      : null
   )
 
   return (

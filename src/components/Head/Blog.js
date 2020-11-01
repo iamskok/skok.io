@@ -29,8 +29,6 @@ const Blog = ({
       copyrightYear: new Date().getFullYear(),
     },
     articleSection ? { articleSection } : null,
-    // dateModified ? { dateModified } : null,
-    // datePublished ? { datePublished } : null,
     description ? { description } : null,
     genre ? { genre } : null,
     headline ? { headline } : null,

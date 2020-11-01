@@ -140,6 +140,7 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
           image={seo.cover}
           genre={genre}
           inLanguage={language}
+          mainEntityOfPage={url}
         />
       )}
       {isBlog && (
