@@ -8,15 +8,10 @@ const useSiteMetadata = () => {
       query {
         site {
           siteMetadata {
-            title
-            description
             firstName
             lastName
             avatar
             siteUrl
-            siteName
-            cover
-            coverAlt
             language
             email
             telephone
@@ -46,37 +41,50 @@ const useSiteMetadata = () => {
                 to
                 order
                 label
+                breadcrumb
                 title
                 description
                 cover
                 coverAlt
+                type
               }
               blog {
                 to
                 order
                 label
+                breadcrumb
                 title
                 description
                 cover
                 coverAlt
+                type
               }
               contact {
                 to
                 order
                 label
+                breadcrumb
                 title
                 description
                 cover
                 coverAlt
+                type
               }
               about {
                 to
                 order
                 label
+                breadcrumb
                 title
                 description
                 cover
                 coverAlt
+                type
+              }
+              article {
+                order
+                breadcrumb
+                type
               }
               notFound {
                 order

@@ -12,22 +12,26 @@ import Article from "./Article"
 import Blog from "./Blog"
 import Breadcrumbs from "./Breadcrumbs"
 import Organization from "./Organization"
-import currentURL from "../../utils/current-url"
+// import currentURL from "../../utils/current-url"
 import ContactPage from "./ContactPage"
 import AboutPage from "./AboutPage"
 import schemId from "./schemaId"
+import currentPageData from "../../utils/current-page-data"
 
-const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
+const Head = ({
+  slug,
+  title: articleTitle,
+  description: articleDescription,
+  date: articleDate,
+  cover: articleCover,
+  coverAlt: articleCoverAlt,
+  pageName,
+}) => {
   const {
-    title: defaultTitle,
-    description: defaultDescription,
-    cover: defaultCover,
-    coverAlt: defaultCoverAlt,
     language,
     firstName,
     lastName,
     siteUrl,
-    siteName,
     email,
     telephone,
     jobTitle,
@@ -35,62 +39,76 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
     socialMedia,
     genre,
     speakableSelector,
+    pages,
     logo: { small: smallLogo, large: largeLogo },
   } = useSiteMetadata()
+
+  const {
+    home: {
+      title: homeTitle,
+      breadcrumb: homeBreadcrumb,
+      description: homeDescription,
+    },
+    blog: { to: blogTo, breadcrumb: blogBreadcrumb },
+    article: { breadcrumb: articleBreadcrumb },
+  } = pages
 
   const fullName = `${firstName} ${lastName}`
   const smallLogoURL = `${siteUrl}${smallLogo}`
   const largeLogoURL = `${siteUrl}${largeLogo}`
   const { twitter: twitterHandle } = socialMedia
 
-  const seo = {
-    title: title || defaultTitle,
-    description: description || defaultDescription,
-    cover: cover
-      ? `${siteUrl}${cover.childImageSharp.fluid.src}`
-      : `${siteUrl}${defaultCover}`,
-    coverAlt: coverAlt || defaultCoverAlt,
-  }
+  const isArticle = pageName === `article`
+  const isBlog = pageName === `blog`
+  const isHome = pageName === `home`
+  const isAbout = pageName === `about`
+  const isContact = pageName === `contact`
 
-  const isBlogPost = page === `blog-post`
-  const isBlog = page === `blog`
-  const isHome = page === `home`
-  const isAbout = page === `about`
-  const isContact = page === `contact`
-
-  const url = currentURL({
-    slug,
+  const { title, description, cover, coverAlt, url, type } = currentPageData({
+    pages,
     url: siteUrl,
-    blogPost: isBlogPost,
-    blog: isBlog,
-    about: isAbout,
-    contact: isContact,
+    slug,
+    isArticle,
+    isBlog,
+    isAbout,
+    isContact,
   })
+
+  const coverURL = isArticle
+    ? articleCover?.childImageSharp?.fluid?.src
+      ? `${siteUrl}${articleCover.childImageSharp.fluid.src}`
+      : false
+    : `${siteUrl}${cover}`
+  const coverURLAlt = isArticle
+    ? articleCoverAlt
+      ? articleCoverAlt
+      : false
+    : coverAlt
 
   return (
     <>
       <PreloadLinks />
-      <Title title={seo.title} />
-      <Description description={seo.description} />
+      <Title title={title} />
+      <Description description={description} />
       <OpenGraph
-        title={seo.title}
-        description={seo.description}
+        title={title}
+        description={description}
         locale={language}
-        image={seo.cover}
-        imageAlt={seo.coverAlt}
+        image={coverURL}
+        imageAlt={coverURLAlt}
         url={url}
-        siteName={siteName}
+        siteName={homeTitle}
         firstName={firstName}
         lastName={lastName}
-        publishedTime={date}
-        isBlogPost={isBlogPost}
+        publishedTime={articleDate}
+        isArticle={isArticle}
         seeAlso={socialMedia}
       />
       <Twitter
-        title={seo.title}
-        description={seo.description}
-        image={seo.cover}
-        imageAlt={seo.coverAlt}
+        title={title}
+        description={description}
+        image={coverURL}
+        imageAlt={coverURLAlt}
         creator={twitterHandle}
       />
       <Address id={schemId(`address`)} address={address} />
@@ -103,12 +121,12 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
         url={siteUrl}
         sameAs={socialMedia}
       />
-      {isBlogPost && (
+      {isArticle && (
         <Organization
           id={schemId(`organization`)}
           url={url}
           name={fullName}
-          description={defaultDescription}
+          description={homeDescription}
           telephone={telephone}
           email={email}
           image={largeLogoURL}
@@ -116,56 +134,56 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
           sameAs={socialMedia}
         />
       )}
-      {(isBlogPost || isBlog) && (
+      {(isArticle || isBlog) && (
         <Breadcrumbs
           isBlog={isBlog}
           itemListElement={[
             {
               id: siteUrl,
-              name: `🏠 Home`,
+              name: `${homeBreadcrumb}`,
             },
             {
-              id: `${siteUrl}/blog`,
-              name: `🗒 Blog`,
+              id: `${siteUrl}${blogTo}`,
+              name: `${blogBreadcrumb}`,
             },
             {
               id: url,
-              name: `📝 ${seo.title}`,
+              name: `${articleBreadcrumb} ${articleTitle}`,
             },
           ]}
         />
       )}
       {isHome && (
         <WebPage
-          type="WebPage"
+          type={type}
           url={url}
           name={fullName}
-          image={seo.cover}
+          image={coverURL}
           inLanguage={language}
-          description={defaultDescription}
+          description={description}
           cssSelector={speakableSelector}
         />
       )}
       {isBlog && (
         <Blog
-          type="Blog"
-          headline={seo.title}
-          name={seo.title}
-          description={seo.description}
+          type={type}
+          headline={title}
+          name={title}
+          description={description}
           url={url}
-          image={seo.cover}
+          image={coverURL}
           genre={genre}
           inLanguage={language}
         />
       )}
       {isContact && (
         <ContactPage
-          type="ContactPage"
-          headline={seo.title}
-          name={seo.title}
-          description={seo.description}
+          type={type}
+          headline={title}
+          name={title}
+          description={description}
           url={url}
-          image={seo.cover}
+          image={coverURL}
           genre={genre}
           inLanguage={language}
           mainEntityOfPage={url}
@@ -174,28 +192,28 @@ const Head = ({ slug, title, description, date, cover, coverAlt, page }) => {
       )}
       {isAbout && (
         <AboutPage
-          type="AboutPage"
-          headline={seo.title}
-          name={seo.title}
-          description={seo.description}
+          type={type}
+          headline={title}
+          name={title}
+          description={description}
           url={url}
-          image={seo.cover}
+          image={coverURL}
           genre={genre}
           inLanguage={language}
           mainEntityOfPage={url}
           cssSelector={speakableSelector}
         />
       )}
-      {isBlogPost && (
+      {isArticle && (
         <Article
-          type="Article"
-          datePublished={date}
-          dateModified={date}
-          headline={seo.title}
-          name={seo.title}
-          description={seo.description}
+          type={type}
+          datePublished={articleDate}
+          dateModified={articleDate}
+          headline={articleTitle}
+          name={articleTitle}
+          description={articleDescription}
           url={url}
-          image={seo.cover}
+          image={coverURL}
           genre={genre}
           inLanguage={language}
           mainEntityOfPage={url}

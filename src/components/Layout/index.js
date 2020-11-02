@@ -14,40 +14,42 @@ const Layout = ({
   date,
   cover,
   coverAlt,
-  page,
-}) => (
-  <Fragment>
-    <GlobalStyles />
-    <Head
-      slug={slug}
-      title={title}
-      description={description}
-      date={date}
-      cover={cover}
-      coverAlt={coverAlt}
-      page={page}
-    />
-    <Container
-      sx={{
-        paddingX: 3,
-        minHeight: `100%`,
-        display: `flex`,
-        flexDirection: `column`,
-      }}
-    >
-      <Header />
-      <main
+  pageName,
+}) => {
+  return (
+    <Fragment>
+      <GlobalStyles />
+      <Head
+        slug={slug}
+        title={title}
+        description={description}
+        date={date}
+        cover={cover}
+        coverAlt={coverAlt}
+        pageName={pageName}
+      />
+      <Container
         sx={{
+          paddingX: 3,
+          minHeight: `100%`,
           display: `flex`,
           flexDirection: `column`,
-          flex: 1,
         }}
       >
-        {children}
-      </main>
-      <Footer />
-    </Container>
-  </Fragment>
-)
+        <Header />
+        <main
+          sx={{
+            display: `flex`,
+            flexDirection: `column`,
+            flex: 1,
+          }}
+        >
+          {children}
+        </main>
+        <Footer />
+      </Container>
+    </Fragment>
+  )
+}
 
 export default Layout

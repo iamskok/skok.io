@@ -11,7 +11,7 @@ const Blog = ({ data: { allMdx }, pageContext: { pagination } }) => {
   const posts = page.map(id => allMdx.edges.find(edge => edge.node.id === id))
 
   return (
-    <Layout page="blog">
+    <Layout pageName="blog">
       <Styled.h1>Blog</Styled.h1>
 
       {posts.map(({ node: post }) => (

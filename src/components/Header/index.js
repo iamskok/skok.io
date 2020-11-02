@@ -8,7 +8,7 @@ const Header = () => {
   const { pages } = useSiteMetadata()
 
   // Sort and hide unrequired nav links.
-  const navigation = Object.keys(pages)
+  const links = Object.keys(pages)
     .map(page => pages[page])
     .filter(page => page?.order)
     .sort((a, b) => a.order - b.order)
@@ -24,7 +24,7 @@ const Header = () => {
         marginBottom: 5,
       }}
     >
-      <Nav navigation={navigation} />
+      <Nav links={links} />
       <SideNav />
     </Flex>
   )

@@ -25,7 +25,7 @@ const BlogPost = ({ pageContext, data }) => {
       cover={cover}
       coverAlt={coverAlt}
       description={description}
-      page="blog-post"
+      pageName="article"
     >
       <TweetableSelection />
       {cover && <BlogPostCover src={cover} alt={coverAlt ? coverAlt : ``} />}

@@ -4,7 +4,7 @@ import Layout from "../components/Layout"
 import GlitchText from "../components/GlitchText"
 
 const IndexPage = () => (
-  <Layout page="home">
+  <Layout pageName="home">
     <Flex
       sx={{
         flex: 1,

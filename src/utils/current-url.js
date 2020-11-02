@@ -1,5 +1,5 @@
-const currentURL = ({ url, slug, blogPost, blog, about, contact }) => {
-  if (blogPost) {
+const currentURL = ({ url, slug, article, blog, about, contact }) => {
+  if (article) {
     return `${url}${slug}`
   } else if (blog) {
     return `${url}/blog`

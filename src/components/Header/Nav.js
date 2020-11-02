@@ -2,17 +2,16 @@
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 
-const Nav = ({ navigation }) => {
+const Nav = ({ links }) => {
   return (
     <ul
       sx={{
         padding: 0,
         margin: 0,
-        // marginRight: `auto`,
         listStyle: `none`,
       }}
     >
-      {navigation.map(({ to, label }) => (
+      {links.map(({ to, label }) => (
         <li
           key={label}
           sx={{
