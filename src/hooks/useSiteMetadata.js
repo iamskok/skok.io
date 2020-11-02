@@ -41,6 +41,49 @@ const useSiteMetadata = () => {
               label
               to
             }
+            pages {
+              home {
+                to
+                order
+                label
+                title
+                description
+                cover
+                coverAlt
+              }
+              blog {
+                to
+                order
+                label
+                title
+                description
+                cover
+                coverAlt
+              }
+              contact {
+                to
+                order
+                label
+                title
+                description
+                cover
+                coverAlt
+              }
+              about {
+                to
+                order
+                label
+                title
+                description
+                cover
+                coverAlt
+              }
+              notFound {
+                order
+                title
+                description
+              }
+            }
             colorModes
             codeBlock {
               lineNumbers
