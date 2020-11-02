@@ -44,11 +44,7 @@ const Head = ({
   } = useSiteMetadata()
 
   const {
-    home: {
-      title: homeTitle,
-      breadcrumb: homeBreadcrumb,
-      description: homeDescription,
-    },
+    home: { title: homeTitle, breadcrumb: homeBreadcrumb },
     blog: { to: blogTo, breadcrumb: blogBreadcrumb },
     article: { breadcrumb: articleBreadcrumb },
   } = pages
@@ -64,7 +60,16 @@ const Head = ({
   const isAbout = pageName === `about`
   const isContact = pageName === `contact`
 
-  const { title, description, cover, coverAlt, url, type } = currentPageData({
+  const {
+    title,
+    description,
+    cover,
+    coverAlt,
+    url,
+    type,
+    breadcrumb,
+    to,
+  } = currentPageData({
     pages,
     url: siteUrl,
     slug,
@@ -87,6 +92,33 @@ const Head = ({
       : coverAlt,
     title: isArticle ? articleTitle : title,
     description: isArticle ? articleDescription : description,
+  }
+
+  const breadcrumbs = [
+    {
+      id: siteUrl,
+      name: `${homeBreadcrumb}`,
+    },
+  ]
+
+  if (isBlog || isContact || isAbout) {
+    breadcrumbs.push({
+      id: `${siteUrl}${to}`,
+      name: breadcrumb,
+    })
+  }
+
+  if (isArticle) {
+    breadcrumbs.push(
+      {
+        id: `${siteUrl}${blogTo}`,
+        name: blogBreadcrumb,
+      },
+      {
+        id: url,
+        name: `${articleBreadcrumb} ${seo.title}`,
+      }
+    )
   }
 
   return (
@@ -138,25 +170,7 @@ const Head = ({
           sameAs={socialMedia}
         />
       )}
-      {(isArticle || isBlog) && (
-        <Breadcrumbs
-          isBlog={isBlog}
-          itemListElement={[
-            {
-              id: siteUrl,
-              name: `${homeBreadcrumb}`,
-            },
-            {
-              id: `${siteUrl}${blogTo}`,
-              name: `${blogBreadcrumb}`,
-            },
-            {
-              id: url,
-              name: `${articleBreadcrumb} ${seo.title}`,
-            },
-          ]}
-        />
-      )}
+      {!isHome && <Breadcrumbs itemListElement={breadcrumbs} />}
       {isHome && (
         <WebPage
           type={type}
