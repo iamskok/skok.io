@@ -1,14 +1,17 @@
 /** @jsx jsx */
-import { jsx, Flex, Box } from "theme-ui"
-import { Link } from "gatsby"
+import { jsx, Flex } from "theme-ui"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
-import ColorModeButton from "../ColorModeButton"
-import SoundModeButton from "../SoundModeButton"
-import TwitterIconLink from "../TwitterIconLink"
-import GithubIconLink from "../GithubIconLink"
+import Nav from "./Nav"
+import SideNav from "./SideNav"
 
 const Header = () => {
-  const { navigation } = useSiteMetadata()
+  const { pages } = useSiteMetadata()
+
+  // Sort and hide unrequired nav links.
+  const navigation = Object.keys(pages)
+    .map(page => pages[page])
+    .filter(page => page?.order)
+    .sort((a, b) => a.order - b.order)
 
   return (
     <Flex
@@ -16,71 +19,13 @@ const Header = () => {
       sx={{
         display: `flex`,
         alignItems: `center`,
+        justifyContent: `space-between`,
         paddingY: 1,
         marginBottom: 5,
       }}
     >
-      <Link
-        to={`/`}
-        sx={{
-          variant: `links.nav`,
-          margin: 0,
-        }}
-      >
-        VS
-      </Link>
-      <Box
-        sx={{
-          marginLeft: `auto`,
-        }}
-      >
-        <ul
-          sx={{
-            padding: 0,
-            margin: 0,
-            listStyle: `none`,
-          }}
-        >
-          {navigation.map(({ to, label }) => (
-            <li
-              key={label}
-              sx={{
-                display: `inline-block`,
-              }}
-            >
-              <Link
-                to={to}
-                sx={{
-                  variant: `links.nav`,
-                }}
-              >
-                {label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </Box>
-      <ul
-        sx={{
-          padding: 0,
-          margin: 0,
-          listStyle: `none`,
-          display: `flex`,
-        }}
-      >
-        <li>
-          <TwitterIconLink />
-        </li>
-        <li>
-          <GithubIconLink />
-        </li>
-        <li>
-          <ColorModeButton />
-        </li>
-        <li>
-          <SoundModeButton />
-        </li>
-      </ul>
+      <Nav navigation={navigation} />
+      <SideNav />
     </Flex>
   )
 }
