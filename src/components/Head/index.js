@@ -74,28 +74,32 @@ const Head = ({
     isContact,
   })
 
-  const coverURL = isArticle
-    ? articleCover?.childImageSharp?.fluid?.src
-      ? `${siteUrl}${articleCover.childImageSharp.fluid.src}`
-      : false
-    : `${siteUrl}${cover}`
-  const coverURLAlt = isArticle
-    ? articleCoverAlt
+  const seo = {
+    cover: isArticle
+      ? articleCover?.childImageSharp?.fluid?.src
+        ? `${siteUrl}${articleCover.childImageSharp.fluid.src}`
+        : false
+      : `${siteUrl}${cover}`,
+    coverAlt: isArticle
       ? articleCoverAlt
-      : false
-    : coverAlt
+        ? articleCoverAlt
+        : false
+      : coverAlt,
+    title: isArticle ? articleTitle : title,
+    description: isArticle ? articleDescription : description,
+  }
 
   return (
     <>
       <PreloadLinks />
-      <Title title={title} />
-      <Description description={description} />
+      <Title title={seo.title} />
+      <Description description={seo.description} />
       <OpenGraph
-        title={title}
-        description={description}
+        title={seo.title}
+        description={seo.description}
         locale={language}
-        image={coverURL}
-        imageAlt={coverURLAlt}
+        image={seo.cover}
+        imageAlt={seo.coverAlt}
         url={url}
         siteName={homeTitle}
         firstName={firstName}
@@ -105,10 +109,10 @@ const Head = ({
         seeAlso={socialMedia}
       />
       <Twitter
-        title={title}
-        description={description}
-        image={coverURL}
-        imageAlt={coverURLAlt}
+        title={seo.title}
+        description={seo.description}
+        image={seo.cover}
+        imageAlt={seo.coverAlt}
         creator={twitterHandle}
       />
       <Address id={schemId(`address`)} address={address} />
@@ -126,7 +130,7 @@ const Head = ({
           id={schemId(`organization`)}
           url={url}
           name={fullName}
-          description={homeDescription}
+          description={seo.description}
           telephone={telephone}
           email={email}
           image={largeLogoURL}
@@ -148,7 +152,7 @@ const Head = ({
             },
             {
               id: url,
-              name: `${articleBreadcrumb} ${articleTitle}`,
+              name: `${articleBreadcrumb} ${seo.title}`,
             },
           ]}
         />
@@ -158,20 +162,20 @@ const Head = ({
           type={type}
           url={url}
           name={fullName}
-          image={coverURL}
+          image={seo.cover}
           inLanguage={language}
-          description={description}
+          description={seo.description}
           cssSelector={speakableSelector}
         />
       )}
       {isBlog && (
         <Blog
           type={type}
-          headline={title}
-          name={title}
-          description={description}
+          headline={seo.title}
+          name={seo.title}
+          description={seo.description}
           url={url}
-          image={coverURL}
+          image={seo.cover}
           genre={genre}
           inLanguage={language}
         />
@@ -179,11 +183,11 @@ const Head = ({
       {isContact && (
         <ContactPage
           type={type}
-          headline={title}
-          name={title}
-          description={description}
+          headline={seo.title}
+          name={seo.title}
+          description={seo.description}
           url={url}
-          image={coverURL}
+          image={seo.cover}
           genre={genre}
           inLanguage={language}
           mainEntityOfPage={url}
@@ -193,11 +197,11 @@ const Head = ({
       {isAbout && (
         <AboutPage
           type={type}
-          headline={title}
-          name={title}
-          description={description}
+          headline={seo.title}
+          name={seo.title}
+          description={seo.description}
           url={url}
-          image={coverURL}
+          image={seo.cover}
           genre={genre}
           inLanguage={language}
           mainEntityOfPage={url}
@@ -209,11 +213,11 @@ const Head = ({
           type={type}
           datePublished={articleDate}
           dateModified={articleDate}
-          headline={articleTitle}
-          name={articleTitle}
-          description={articleDescription}
+          headline={seo.title}
+          name={seo.title}
+          description={seo.description}
           url={url}
-          image={coverURL}
+          image={seo.cover}
           genre={genre}
           inLanguage={language}
           mainEntityOfPage={url}

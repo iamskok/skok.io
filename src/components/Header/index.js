@@ -7,7 +7,6 @@ import SideNav from "./SideNav"
 const Header = () => {
   const { pages } = useSiteMetadata()
 
-  // Sort and hide unrequired nav links.
   const links = Object.keys(pages)
     .map(page => pages[page])
     .filter(page => page?.order)
