@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-const PostDate = ({ date }) => (
+const ArticleDate = ({ date }) => (
   <time
     sx={{
       fontSize: 2,
@@ -11,4 +11,4 @@ const PostDate = ({ date }) => (
   </time>
 )
 
-export default PostDate
+export default ArticleDate

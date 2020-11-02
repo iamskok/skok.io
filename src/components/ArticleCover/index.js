@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui"
 import Img from "gatsby-image"
 
-const BlogPostCover = ({ alt, src }) => {
+const ArticleCover = ({ alt, src }) => {
   const {
     childImageSharp: { sizes, fluid },
   } = src
@@ -19,4 +19,4 @@ const BlogPostCover = ({ alt, src }) => {
   )
 }
 
-export default BlogPostCover
+export default ArticleCover

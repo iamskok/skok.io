@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx, Flex } from "theme-ui"
-import BlogPostDate from "../BlogPostDate"
+import ArticleDate from "../ArticleDate"
 import HitCounter from "../HitCounter"
 
-const BlogPostMeta = ({ date, slug }) => {
+const ArticleMeta = ({ date, slug }) => {
   return (
     <Flex
       sx={{
@@ -12,10 +12,10 @@ const BlogPostMeta = ({ date, slug }) => {
         marginBottom: 4,
       }}
     >
-      <BlogPostDate date={date} />
+      <ArticleDate date={date} />
       <HitCounter slug={slug} />
     </Flex>
   )
 }
 
-export default BlogPostMeta
+export default ArticleMeta

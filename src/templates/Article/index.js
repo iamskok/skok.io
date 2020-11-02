@@ -3,12 +3,12 @@ import { jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../../components/Layout"
-import BlogPostCover from "../../components/BlogPostCover"
-import BlogPostMeta from "../../components/BlogPostMeta"
+import ArticleCover from "../../components/ArticleCover"
+import ArticleMeta from "../../components/ArticleMeta"
 import Pagination from "../../components/Pagination"
 import TweetableSelection from "../../components/TweetableSelection"
 
-const BlogPost = ({ pageContext, data }) => {
+const Article = ({ pageContext, data }) => {
   const { prev, next, slug } = pageContext
   const {
     mdx: {
@@ -28,10 +28,10 @@ const BlogPost = ({ pageContext, data }) => {
       pageName="article"
     >
       <TweetableSelection />
-      {cover && <BlogPostCover src={cover} alt={coverAlt ? coverAlt : ``} />}
+      {cover && <ArticleCover src={cover} alt={coverAlt ? coverAlt : ``} />}
       <div data-speakable="true">
         <Styled.h1>{title}</Styled.h1>
-        <BlogPostMeta slug={slug} date={date} />
+        <ArticleMeta slug={slug} date={date} />
         {/* eslint react/no-children-prop: 0 */}
         <MDXRenderer children={body} />
       </div>
@@ -40,7 +40,7 @@ const BlogPost = ({ pageContext, data }) => {
   )
 }
 
-export default BlogPost
+export default Article
 
 export const pageQuery = graphql`
   query($id: String!) {

@@ -4,18 +4,18 @@ import { useState } from "react"
 import Img from "gatsby-image"
 import Link from "../Link"
 
-const BlogPostCard = ({ post }) => {
+const BlogCard = ({ article }) => {
   const [active, setActive] = useState(false)
   const addActiveState = () => setActive(true)
   const removeActiveState = () => setActive(false)
 
   const {
     frontmatter: { title, cover, coverAlt, description },
-  } = post
+  } = article
 
   return (
     <Link
-      to={post.fields.slug}
+      to={article.fields.slug}
       onFocus={addActiveState}
       onBlur={removeActiveState}
       onTouchStart={addActiveState}
@@ -68,4 +68,4 @@ const BlogPostCard = ({ post }) => {
   )
 }
 
-export default BlogPostCard
+export default BlogCard
