@@ -34,7 +34,7 @@ const StructuredData = ({
   } = useSiteMetadata()
 
   const {
-    home: { title: homeTitle, breadcrumb: homeBreadcrumb },
+    home: { breadcrumb: homeBreadcrumb },
     blog: { to: blogTo, breadcrumb: blogBreadcrumb },
     article: { breadcrumb: articleBreadcrumb },
   } = pages
@@ -42,7 +42,6 @@ const StructuredData = ({
   const fullName = `${firstName} ${lastName}`
   const smallLogoURL = `${siteUrl}${smallLogo}`
   const largeLogoURL = `${siteUrl}${largeLogo}`
-  const { twitter: twitterHandle } = socialMedia
 
   const isArticle = pageName === `article`
   const isBlog = pageName === `blog`
