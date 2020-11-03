@@ -29,7 +29,9 @@ const Person = ({
     Object.values(sameAs).length > 0 ? { sameAs: Object.values(sameAs) } : null
   )
 
-  return <script type="application/ld+json">{JSON.stringify(schema)}</script>
+  return (
+    <script type="application/ld+json">{`${JSON.stringify(schema)}`}</script>
+  )
 }
 
 export default Person

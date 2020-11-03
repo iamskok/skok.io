@@ -16,7 +16,9 @@ const Address = ({
     streetAddress ? { streetAddress } : null
   )
 
-  return <script type="application/ld+json">{JSON.stringify(schema)}</script>
+  return (
+    <script type="application/ld+json">{`${JSON.stringify(schema)}`}</script>
+  )
 }
 
 export default Address

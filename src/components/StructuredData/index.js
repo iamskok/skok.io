@@ -116,6 +116,7 @@ const StructuredData = ({
 
   return (
     <>
+      {!isHome && <Breadcrumbs itemListElement={breadcrumbs} />}
       <Address id={schemId(`address`)} address={address} />
       <Person
         id={schemId(`person`)}
@@ -126,7 +127,6 @@ const StructuredData = ({
         url={siteUrl}
         sameAs={socialMedia}
       />
-
       <Organization
         id={schemId(`organization`)}
         url={url}
@@ -138,8 +138,6 @@ const StructuredData = ({
         logo={smallLogoURL}
         sameAs={socialMedia}
       />
-
-      {!isHome && <Breadcrumbs itemListElement={breadcrumbs} />}
       <Page
         type={type}
         datePublished={seo.date}
