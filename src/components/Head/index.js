@@ -7,16 +7,17 @@ import OpenGraph from "./OpenGraph"
 import Twitter from "./Twitter"
 import Person from "./Person"
 import Address from "./Address"
-import WebPage from "./WebPage"
-import Article from "./Article"
-import Blog from "./Blog"
+// import WebPage from "./WebPage"
+// import Article from "./Article"
+// import Blog from "./Blog"
 import Breadcrumbs from "./Breadcrumbs"
 import Organization from "./Organization"
 // import currentURL from "../../utils/current-url"
-import ContactPage from "./ContactPage"
-import AboutPage from "./AboutPage"
+// import ContactPage from "./ContactPage"
+// import AboutPage from "./AboutPage"
 import schemId from "./schemaId"
 import currentPageData from "../../utils/current-page-data"
+import Page from "./Page"
 
 const Head = ({
   slug,
@@ -92,6 +93,9 @@ const Head = ({
       : coverAlt,
     title: isArticle ? articleTitle : title,
     description: isArticle ? articleDescription : description,
+    date: isArticle ? articleDate : false,
+    genre: isArticle ? genre : false,
+    speakableSelector: isArticle ? speakableSelector : false,
   }
 
   const breadcrumbs = [
@@ -157,21 +161,36 @@ const Head = ({
         url={siteUrl}
         sameAs={socialMedia}
       />
-      {isArticle && (
-        <Organization
-          id={schemId(`organization`)}
-          url={url}
-          name={fullName}
-          description={seo.description}
-          telephone={telephone}
-          email={email}
-          image={largeLogoURL}
-          logo={smallLogoURL}
-          sameAs={socialMedia}
-        />
-      )}
+
+      <Organization
+        id={schemId(`organization`)}
+        url={url}
+        name={fullName}
+        description={seo.description}
+        telephone={telephone}
+        email={email}
+        image={largeLogoURL}
+        logo={smallLogoURL}
+        sameAs={socialMedia}
+      />
+
       {!isHome && <Breadcrumbs itemListElement={breadcrumbs} />}
-      {isHome && (
+      <Page
+        type={type}
+        datePublished={seo.date}
+        dateModified={seo.date}
+        headline={seo.title}
+        name={seo.title}
+        description={seo.description}
+        url={url}
+        image={seo.cover}
+        genre={seo.genre}
+        inLanguage={language}
+        mainEntityOfPage={url}
+        cssSelector={seo.speakableSelector}
+      />
+
+      {/* {isHome && (
         <WebPage
           type={type}
           url={url}
@@ -237,7 +256,7 @@ const Head = ({
           mainEntityOfPage={url}
           cssSelector={speakableSelector}
         />
-      )}
+      )} */}
     </>
   )
 }
