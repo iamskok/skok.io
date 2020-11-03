@@ -8,7 +8,7 @@ module.exports = {
     small: `/logo-small.jpg`,
   },
   avatar: `/avatar.jpg`,
-  language: `en-US`,
+  language: `en_US`,
   pages: {
     home: {
       to: `/`,
