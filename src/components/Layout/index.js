@@ -5,6 +5,7 @@ import GlobalStyles from "../GlobalStyles"
 import Head from "../Head"
 import Header from "../Header"
 import Footer from "../Footer"
+import StructuredData from "../StructuredData"
 
 const Layout = ({
   children,
@@ -48,6 +49,15 @@ const Layout = ({
         </main>
         <Footer />
       </Container>
+      <StructuredData
+        slug={slug}
+        title={title}
+        description={description}
+        date={date}
+        cover={cover}
+        coverAlt={coverAlt}
+        pageName={pageName}
+      />
     </Fragment>
   )
 }

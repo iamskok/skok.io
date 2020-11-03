@@ -1,25 +1,14 @@
 import React from "react"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
-import Title from "./Title"
-import Description from "./Description"
-import PreloadLinks from "./PreloadLinks"
-import OpenGraph from "./OpenGraph"
-import Twitter from "./Twitter"
 import Person from "./Person"
 import Address from "./Address"
-// import WebPage from "./WebPage"
-// import Article from "./Article"
-// import Blog from "./Blog"
 import Breadcrumbs from "./Breadcrumbs"
 import Organization from "./Organization"
-// import currentURL from "../../utils/current-url"
-// import ContactPage from "./ContactPage"
-// import AboutPage from "./AboutPage"
 import schemId from "./schemaId"
 import currentPageData from "../../utils/current-page-data"
 import Page from "./Page"
 
-const Head = ({
+const StructuredData = ({
   slug,
   title: articleTitle,
   description: articleDescription,
@@ -127,31 +116,7 @@ const Head = ({
 
   return (
     <>
-      <PreloadLinks />
-      <Title title={seo.title} />
-      <Description description={seo.description} />
-      <OpenGraph
-        title={seo.title}
-        description={seo.description}
-        locale={language}
-        image={seo.cover}
-        imageAlt={seo.coverAlt}
-        url={url}
-        siteName={homeTitle}
-        firstName={firstName}
-        lastName={lastName}
-        publishedTime={articleDate}
-        isArticle={isArticle}
-        seeAlso={socialMedia}
-      />
-      <Twitter
-        title={seo.title}
-        description={seo.description}
-        image={seo.cover}
-        imageAlt={seo.coverAlt}
-        creator={twitterHandle}
-      />
-      {/* <Address id={schemId(`address`)} address={address} />
+      <Address id={schemId(`address`)} address={address} />
       <Person
         id={schemId(`person`)}
         name={fullName}
@@ -188,77 +153,9 @@ const Head = ({
         inLanguage={language}
         mainEntityOfPage={url}
         cssSelector={seo.speakableSelector}
-      /> */}
-
-      {/* {isHome && (
-        <WebPage
-          type={type}
-          url={url}
-          name={fullName}
-          image={seo.cover}
-          inLanguage={language}
-          description={seo.description}
-          cssSelector={speakableSelector}
-        />
-      )}
-      {isBlog && (
-        <Blog
-          type={type}
-          headline={seo.title}
-          name={seo.title}
-          description={seo.description}
-          url={url}
-          image={seo.cover}
-          genre={genre}
-          inLanguage={language}
-        />
-      )}
-      {isContact && (
-        <ContactPage
-          type={type}
-          headline={seo.title}
-          name={seo.title}
-          description={seo.description}
-          url={url}
-          image={seo.cover}
-          genre={genre}
-          inLanguage={language}
-          mainEntityOfPage={url}
-          cssSelector={speakableSelector}
-        />
-      )}
-      {isAbout && (
-        <AboutPage
-          type={type}
-          headline={seo.title}
-          name={seo.title}
-          description={seo.description}
-          url={url}
-          image={seo.cover}
-          genre={genre}
-          inLanguage={language}
-          mainEntityOfPage={url}
-          cssSelector={speakableSelector}
-        />
-      )}
-      {isArticle && (
-        <Article
-          type={type}
-          datePublished={articleDate}
-          dateModified={articleDate}
-          headline={seo.title}
-          name={seo.title}
-          description={seo.description}
-          url={url}
-          image={seo.cover}
-          genre={genre}
-          inLanguage={language}
-          mainEntityOfPage={url}
-          cssSelector={speakableSelector}
-        />
-      )} */}
+      />
     </>
   )
 }
 
-export default Head
+export default StructuredData
