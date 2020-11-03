@@ -22,7 +22,7 @@ module.exports = {
       type: `WebPage`,
     },
     blog: {
-      to: `/blog`,
+      to: `/blog/`,
       order: 2,
       label: `Blog`,
       breadcrumb: `🗒 Blog`,
@@ -33,7 +33,7 @@ module.exports = {
       type: `Blog`,
     },
     contact: {
-      to: `/contact`,
+      to: `/contact/`,
       order: 3,
       label: `Contact`,
       breadcrumb: `✉️ Contact`,
@@ -44,7 +44,7 @@ module.exports = {
       type: `ContactPage`,
     },
     about: {
-      to: `/about`,
+      to: `/about/`,
       order: 4,
       label: `About`,
       breadcrumb: `ℹ️ About`,
