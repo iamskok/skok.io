@@ -30,10 +30,18 @@ We are going to use 2 different OG types:
 The most frequently recommended resolution for an OG image is 1200 pixels x 627 pixels (1.91/1 ratio).
 Don’t exceed the 5MB size limit.
 
+Make sure to use canonical URL. Canonical URL is the value of `og:url`. So in case you server redirects from `example.com/blog` =>
+`example.com/blog/` make sure that you have that slash in the end of the URL. Otherwise you will get a warning
+`We could not resolve the canonical URL because the redirect path contained a cycle`. So what happens is that you go to
+`example.com/blog` than you server redirects to `example.com/blog/`, but `og:url` tells FB crawler to go back to `example.com/blog`.
+
 Note about [`og:see_also`](https://stackoverflow.com/questions/27913739/how-are-open-graph-ogsee-also-tags-intended-to-behave-in-facebook)
+
+Here is a neat trick to clear cache for [OG debugger](https://stackoverflow.com/a/7695273/3614631)
 
 - FB [Open Graph debugger](https://developers.facebook.com/tools/debug)
 - [OG protocol examples](https://github.com/niallkennedy/open-graph-protocol-examples/blob/master/article.html)
+- [OG guide](https://neilpatel.com/blog/open-graph-meta-tags/)
 
 ## Twitter
 
