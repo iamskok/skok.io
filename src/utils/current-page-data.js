@@ -10,7 +10,7 @@ const currentPageData = ({
   if (isArticle) {
     return {
       ...pages.article,
-      url: `${url}${slug}`,
+      url: `${url}${slug}/`,
     }
   } else if (isBlog) {
     return {
