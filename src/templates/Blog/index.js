@@ -5,7 +5,19 @@ import Layout from "../../components/Layout"
 import Pagination from "../../components/Pagination"
 import BlogCard from "../../components/BlogCard"
 
-const Blog = ({ data: { allMdx }, pageContext: { pagination } }) => {
+const Blog = ({
+  data: {
+    allMdx,
+    site: {
+      siteMetadata: {
+        pages: {
+          blog: { to, breadcrumb, title, description, cover, coverAlt, type },
+        },
+      },
+    },
+  },
+  pageContext: { pagination },
+}) => {
   const { page, nextPagePath, previousPagePath } = pagination
 
   const articles = page.map(id =>
@@ -13,7 +25,16 @@ const Blog = ({ data: { allMdx }, pageContext: { pagination } }) => {
   )
 
   return (
-    <Layout pageName="blog">
+    <Layout
+      to={to}
+      breadcrumb={breadcrumb}
+      title={title}
+      description={description}
+      cover={cover}
+      coverAlt={coverAlt}
+      type={type}
+      pageName="blog"
+    >
       <Styled.h1>Blog</Styled.h1>
 
       {articles.map(({ node: article }) => (
@@ -29,6 +50,21 @@ export default Blog
 
 export const pageQuery = graphql`
   query {
+    site {
+      siteMetadata {
+        pages {
+          blog {
+            to
+            breadcrumb
+            title
+            description
+            cover
+            coverAlt
+            type
+          }
+        }
+      }
+    }
     allMdx {
       edges {
         node {

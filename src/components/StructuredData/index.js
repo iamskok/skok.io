@@ -5,17 +5,22 @@ import Address from "./Address"
 import Breadcrumbs from "./Breadcrumbs"
 import Organization from "./Organization"
 import schemId from "./schemaId"
-import currentPageData from "../../utils/current-page-data"
 import Page from "./Page"
 
 const StructuredData = ({
-  slug,
-  title: articleTitle,
-  description: articleDescription,
-  date: articleDate,
-  cover: articleCover,
-  coverAlt: articleCoverAlt,
+  title,
+  description,
+  type,
+  breadcrumb,
   pageName,
+  genre,
+  speakableSelector,
+  url = null,
+  to = null,
+  slug = null,
+  date = null,
+  cover = null,
+  coverAlt = null,
 }) => {
   const {
     language,
@@ -27,8 +32,6 @@ const StructuredData = ({
     jobTitle,
     address,
     socialMedia,
-    genre,
-    speakableSelector,
     pages,
     logo: { small: smallLogo, large: largeLogo },
   } = useSiteMetadata()
@@ -48,43 +51,6 @@ const StructuredData = ({
   const isHome = pageName === `home`
   const isAbout = pageName === `about`
   const isContact = pageName === `contact`
-
-  const {
-    title,
-    description,
-    cover,
-    coverAlt,
-    url,
-    type,
-    breadcrumb,
-    to,
-  } = currentPageData({
-    pages,
-    url: siteUrl,
-    slug,
-    isArticle,
-    isBlog,
-    isAbout,
-    isContact,
-  })
-
-  const seo = {
-    cover: isArticle
-      ? articleCover?.childImageSharp?.fluid?.src
-        ? `${siteUrl}${articleCover.childImageSharp.fluid.src}`
-        : false
-      : `${siteUrl}${cover}`,
-    coverAlt: isArticle
-      ? articleCoverAlt
-        ? articleCoverAlt
-        : false
-      : coverAlt,
-    title: isArticle ? articleTitle : title,
-    description: isArticle ? articleDescription : description,
-    date: isArticle ? articleDate : false,
-    genre: isArticle ? genre : false,
-    speakableSelector: isArticle ? speakableSelector : false,
-  }
 
   const breadcrumbs = [
     {
@@ -107,8 +73,8 @@ const StructuredData = ({
         name: blogBreadcrumb,
       },
       {
-        id: url,
-        name: `${articleBreadcrumb} ${seo.title}`,
+        id: `${siteUrl}${slug}`,
+        name: `${articleBreadcrumb} ${title}`,
       }
     )
   }
@@ -128,9 +94,9 @@ const StructuredData = ({
       />
       <Organization
         id={schemId(`organization`)}
-        url={url}
+        url={siteUrl}
         name={fullName}
-        description={seo.description}
+        description={description}
         telephone={telephone}
         email={email}
         image={largeLogoURL}
@@ -139,17 +105,17 @@ const StructuredData = ({
       />
       <Page
         type={type}
-        datePublished={seo.date}
-        dateModified={seo.date}
-        headline={seo.title}
-        name={seo.title}
-        description={seo.description}
+        datePublished={date}
+        dateModified={date}
+        headline={title}
+        name={title}
+        description={description}
         url={url}
-        image={seo.cover}
-        genre={seo.genre}
+        image={cover}
+        genre={genre}
         inLanguage={language}
         mainEntityOfPage={url}
-        cssSelector={seo.speakableSelector}
+        cssSelector={speakableSelector}
       />
     </>
   )

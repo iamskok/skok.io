@@ -51,7 +51,7 @@ const Page = ({
           },
         }
       : null,
-    cssSelector.length > 0
+    cssSelector?.length > 0
       ? {
           speakable: {
             "@type": `SpeakableSpecification`,

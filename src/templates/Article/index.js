@@ -11,6 +11,13 @@ import TweetableSelection from "../../components/TweetableSelection"
 const Article = ({ pageContext, data }) => {
   const { prev, next, slug } = pageContext
   const {
+    site: {
+      siteMetadata: {
+        pages: {
+          contact: { type, breadcrumb },
+        },
+      },
+    },
     mdx: {
       body,
       frontmatter: { title, description, date, cover, coverAlt },
@@ -19,10 +26,12 @@ const Article = ({ pageContext, data }) => {
 
   return (
     <Layout
+      type={type}
+      breadcrumb={breadcrumb}
       slug={slug}
       title={title}
       date={date}
-      cover={cover}
+      cover={cover?.childImageSharp?.fluid?.src}
       coverAlt={coverAlt}
       description={description}
       pageName="article"
@@ -44,6 +53,16 @@ export default Article
 
 export const pageQuery = graphql`
   query($id: String!) {
+    site {
+      siteMetadata {
+        pages {
+          contact {
+            type
+            breadcrumb
+          }
+        }
+      }
+    }
     mdx(id: { eq: $id }) {
       id
       body
