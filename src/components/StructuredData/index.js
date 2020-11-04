@@ -31,19 +31,19 @@ const StructuredData = ({
     jobTitle,
     address,
     socialMedia,
-    pages,
     logo: { small: smallLogo, large: largeLogo },
+    pages: {
+      home: { breadcrumb: homeBreadcrumb },
+      blog: { to: blogTo, breadcrumb: blogBreadcrumb },
+      article: { breadcrumb: articleBreadcrumb },
+    },
   } = useSiteMetadata()
 
-  const {
-    home: { breadcrumb: homeBreadcrumb },
-    blog: { to: blogTo, breadcrumb: blogBreadcrumb },
-    article: { breadcrumb: articleBreadcrumb },
-  } = pages
-
   const fullName = `${firstName} ${lastName}`
-  const smallLogoURL = `${siteUrl}${smallLogo}`
-  const largeLogoURL = `${siteUrl}${largeLogo}`
+  const logo = {
+    small: `${siteUrl}${smallLogo}`,
+    large: `${siteUrl}${largeLogo}`,
+  }
 
   const breadcrumbs = [
     {
@@ -92,8 +92,8 @@ const StructuredData = ({
         description={description}
         telephone={telephone}
         email={email}
-        image={largeLogoURL}
-        logo={smallLogoURL}
+        image={logo.large}
+        logo={logo.small}
         sameAs={socialMedia}
       />
       <Page
