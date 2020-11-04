@@ -1,20 +1,16 @@
 /** @jsx jsx */
 import { jsx, Flex, Styled } from "theme-ui"
-import { graphql } from "gatsby"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 import Layout from "../components/Layout"
 import GlitchText from "../components/GlitchText"
 
-const IndexPage = ({
-  data: {
-    site: {
-      siteMetadata: {
-        pages: {
-          home: { to, breadcrumb, title, description, cover, coverAlt, type },
-        },
-      },
+const IndexPage = () => {
+  const {
+    pages: {
+      home: { to, breadcrumb, title, description, cover, coverAlt, type },
     },
-  },
-}) => {
+  } = useSiteMetadata()
+
   return (
     <Layout
       to={to}
@@ -74,25 +70,5 @@ const IndexPage = ({
     </Layout>
   )
 }
-
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        pages {
-          home {
-            to
-            breadcrumb
-            title
-            description
-            cover
-            coverAlt
-            type
-          }
-        }
-      }
-    }
-  }
-`
 
 export default IndexPage

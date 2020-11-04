@@ -1,19 +1,15 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { graphql } from "gatsby"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 import Layout from "../components/Layout"
 
-const About = ({
-  data: {
-    site: {
-      siteMetadata: {
-        pages: {
-          about: { to, breadcrumb, title, description, cover, coverAlt, type },
-        },
-      },
+const About = () => {
+  const {
+    pages: {
+      about: { to, breadcrumb, title, description, cover, coverAlt, type },
     },
-  },
-}) => {
+  } = useSiteMetadata()
+
   return (
     <Layout
       to={to}
@@ -29,25 +25,5 @@ const About = ({
     </Layout>
   )
 }
-
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        pages {
-          about {
-            to
-            breadcrumb
-            title
-            description
-            cover
-            coverAlt
-            type
-          }
-        }
-      }
-    }
-  }
-`
 
 export default About
