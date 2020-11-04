@@ -14,7 +14,7 @@ const Article = ({ pageContext, data }) => {
     site: {
       siteMetadata: {
         pages: {
-          contact: { type, breadcrumb },
+          article: { type, breadcrumb },
         },
       },
     },
