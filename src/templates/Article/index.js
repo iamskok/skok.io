@@ -37,21 +37,22 @@ const Article = ({ pageContext, data }) => {
       pageName="article"
     >
       <TweetableSelection />
-      {cover && <ArticleCover src={cover} alt={coverAlt ? coverAlt : ``} />}
+      {cover && coverAlt && <ArticleCover src={cover} alt={coverAlt} />}
       <div data-speakable="true">
         <Styled.h1>{title}</Styled.h1>
         <ArticleMeta slug={slug} date={date} />
-        {/* eslint react/no-children-prop: 0 */}
-        <MDXRenderer children={body} />
+        <MDXRenderer>{body}</MDXRenderer>
       </div>
-      <Pagination previous={prev?.fields?.slug} next={next?.fields?.slug} />
+      {(prev?.fields?.slug || next?.fields?.slug) && (
+        <Pagination previous={prev?.fields?.slug} next={next?.fields?.slug} />
+      )}
     </Layout>
   )
 }
 
 export default Article
 
-export const pageQuery = graphql`
+export const query = graphql`
   query($id: String!) {
     site {
       siteMetadata {

@@ -8,19 +8,18 @@ import schemId from "./schemaId"
 import Page from "./Page"
 
 const StructuredData = ({
+  isPage,
   title,
   description,
   type,
   breadcrumb,
-  pageName,
   genre,
   speakableSelector,
-  url = null,
-  to = null,
-  slug = null,
-  date = null,
-  cover = null,
-  coverAlt = null,
+  url,
+  to,
+  slug,
+  date,
+  cover,
 }) => {
   const {
     language,
@@ -46,12 +45,6 @@ const StructuredData = ({
   const smallLogoURL = `${siteUrl}${smallLogo}`
   const largeLogoURL = `${siteUrl}${largeLogo}`
 
-  const isArticle = pageName === `article`
-  const isBlog = pageName === `blog`
-  const isHome = pageName === `home`
-  const isAbout = pageName === `about`
-  const isContact = pageName === `contact`
-
   const breadcrumbs = [
     {
       id: siteUrl,
@@ -59,14 +52,14 @@ const StructuredData = ({
     },
   ]
 
-  if (isBlog || isContact || isAbout) {
+  if (isPage.blog || isPage.contact || isPage.about) {
     breadcrumbs.push({
       id: `${siteUrl}${to}`,
       name: breadcrumb,
     })
   }
 
-  if (isArticle) {
+  if (isPage.article) {
     breadcrumbs.push(
       {
         id: `${siteUrl}${blogTo}`,
@@ -81,7 +74,7 @@ const StructuredData = ({
 
   return (
     <>
-      {!isHome && <Breadcrumbs itemListElement={breadcrumbs} />}
+      {!isPage.home && <Breadcrumbs itemListElement={breadcrumbs} />}
       <Address id={schemId(`address`)} address={address} />
       <Person
         id={schemId(`person`)}

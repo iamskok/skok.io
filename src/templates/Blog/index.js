@@ -37,8 +37,8 @@ const Blog = ({
     >
       <Styled.h1>Blog</Styled.h1>
 
-      {articles.map(({ node: article }) => (
-        <BlogCard key={article.id} article={article} />
+      {articles.map(({ node }) => (
+        <BlogCard key={node.id} article={node} />
       ))}
 
       <Pagination previous={previousPagePath} next={nextPagePath} />
@@ -48,7 +48,7 @@ const Blog = ({
 
 export default Blog
 
-export const pageQuery = graphql`
+export const query = graphql`
   query {
     site {
       siteMetadata {

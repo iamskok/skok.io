@@ -13,59 +13,46 @@ const Layout = ({
   slug,
   title,
   description,
-  date,
   cover,
-  coverAlt,
   pageName,
   breadcrumb,
   type,
-  to,
+  date = null,
+  coverAlt = null,
+  to = null,
 }) => {
   const { siteUrl, speakableSelector, genre } = useSiteMetadata()
-  const isArticle = pageName === `article`
-  const isHome = pageName === `home`
-  const isBlog = pageName === `blog`
-  const isAbout = pageName === `about`
-  const isContact = pageName === `contact`
 
-  const url = isHome
-    ? siteUrl
-    : isArticle
-    ? `${siteUrl}${slug}`
-    : `${siteUrl}${to}`
+  const isPage = {
+    article: pageName === `article`,
+    home: pageName === `home`,
+    blog: pageName === `blog`,
+    about: pageName === `about`,
+    contact: pageName === `contact`,
+  }
 
-  const pageCover = cover ? `${siteUrl}${cover}` : null
-  const pageGenre = isArticle ? genre : null
-  const pageSpeakableSelector = !isBlog ? speakableSelector : null
+  const page = {
+    url: isPage.home
+      ? siteUrl
+      : isPage.article
+      ? `${siteUrl}${slug}`
+      : `${siteUrl}${to}`,
+    cover: cover ? `${siteUrl}${cover}` : null,
+    speakableSelector: !isPage.blog ? speakableSelector : null,
+    genre: isPage.article ? genre : null,
+  }
 
   return (
     <Fragment>
       <GlobalStyles />
       <Head
-        // url={url}
-        // to={to}
-        // type={type}
-        // slug={slug}
-        // title={title}
-        // breadcrumb={breadcrumb}
-        // description={description}
-        // date={date}
-        // cover={pageCover}
-        // coverAlt={coverAlt}
-        // pageName={pageName}
-        url={url}
-        to={to}
-        type={type}
-        slug={slug}
+        isPage={isPage}
         title={title}
-        breadcrumb={breadcrumb}
         description={description}
+        url={page.url}
         date={date}
-        cover={pageCover}
+        cover={page.cover}
         coverAlt={coverAlt}
-        pageName={pageName}
-        genre={pageGenre}
-        speakableSelector={pageSpeakableSelector}
       />
       <Container
         sx={{
@@ -88,19 +75,18 @@ const Layout = ({
         <Footer />
       </Container>
       <StructuredData
-        url={url}
-        to={to}
-        type={type}
-        slug={slug}
+        isPage={isPage}
         title={title}
-        breadcrumb={breadcrumb}
         description={description}
+        type={type}
+        breadcrumb={breadcrumb}
+        genre={page.genre}
+        speakableSelector={page.speakableSelector}
+        url={page.url}
+        to={to}
+        slug={slug}
         date={date}
-        cover={pageCover}
-        coverAlt={coverAlt}
-        pageName={pageName}
-        genre={pageGenre}
-        speakableSelector={pageSpeakableSelector}
+        cover={page.cover}
       />
     </Fragment>
   )
