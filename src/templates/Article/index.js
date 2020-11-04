@@ -56,7 +56,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         pages {
-          contact {
+          article {
             type
             breadcrumb
           }
