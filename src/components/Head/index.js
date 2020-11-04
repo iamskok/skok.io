@@ -12,12 +12,10 @@ const Head = ({ isPage, title, description, url, date, cover, coverAlt }) => {
     firstName,
     lastName,
     socialMedia,
-    pages,
+    pages: {
+      home: { title: siteName },
+    },
   } = useSiteMetadata()
-
-  const {
-    home: { title: homeTitle },
-  } = pages
 
   const { twitter: twitterHandle } = socialMedia
 
@@ -34,7 +32,7 @@ const Head = ({ isPage, title, description, url, date, cover, coverAlt }) => {
         image={cover}
         imageAlt={coverAlt}
         url={url}
-        siteName={homeTitle}
+        siteName={siteName}
         firstName={firstName}
         lastName={lastName}
         isArticle={isPage.article}
