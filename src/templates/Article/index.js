@@ -32,6 +32,13 @@ const Article = ({ pageContext, data }) => {
       title={title}
       date={date}
       cover={cover?.childImageSharp?.fluid?.src}
+      covers={{
+        google4x3: cover?.childImageSharp?.google4x3?.src,
+        google16x9: cover?.childImageSharp?.google16x9?.src,
+        google1x1: cover?.childImageSharp?.google1x1?.src,
+        twitter: cover?.childImageSharp?.twitter?.src,
+        facebook: cover?.childImageSharp?.facebook?.src,
+      }}
       coverAlt={coverAlt}
       description={description}
       pageName="article"
@@ -75,6 +82,21 @@ export const query = graphql`
         cover {
           childImageSharp {
             fluid(maxWidth: 900, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+            google4x3: fluid(maxWidth: 1600, maxHeight: 1200, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+            google16x9: fluid(maxWidth: 1600, maxHeight: 900, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+            google1x1: fluid(maxWidth: 1600, maxHeight: 900, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+            twitter: fluid(maxWidth: 1600, maxHeight: 800, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+            facebook: fluid(maxWidth: 1600, maxHeight: 838, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }

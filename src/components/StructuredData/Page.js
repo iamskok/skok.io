@@ -14,6 +14,7 @@ const Page = ({
   inLanguage,
   genre,
   image,
+  images,
   cssSelector,
 }) => {
   const person = {
@@ -42,7 +43,13 @@ const Page = ({
     inLanguage ? { inLanguage } : null,
     name ? { name } : null,
     url ? { url } : null,
-    image ? { image } : null,
+    images && Object.values(images).length > 0
+      ? {
+          image: [images.google1x1, images.google4x3, images.google16x9],
+        }
+      : image
+      ? { image }
+      : null,
     mainEntityOfPage
       ? {
           mainEntityOfPage: {

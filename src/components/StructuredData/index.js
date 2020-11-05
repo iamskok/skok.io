@@ -20,6 +20,7 @@ const StructuredData = ({
   slug,
   date,
   cover,
+  covers,
 }) => {
   const {
     language,
@@ -105,6 +106,7 @@ const StructuredData = ({
         description={description}
         url={url}
         image={cover}
+        images={covers}
         genre={genre}
         inLanguage={language}
         mainEntityOfPage={url}
