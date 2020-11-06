@@ -44,7 +44,6 @@ const useSiteMetadata = () => {
                 breadcrumb
                 title
                 description
-                cover
                 coverAlt
                 type
               }
@@ -55,7 +54,6 @@ const useSiteMetadata = () => {
                 breadcrumb
                 title
                 description
-                cover
                 coverAlt
                 type
               }
@@ -66,7 +64,6 @@ const useSiteMetadata = () => {
                 breadcrumb
                 title
                 description
-                cover
                 coverAlt
                 type
               }
@@ -77,7 +74,6 @@ const useSiteMetadata = () => {
                 breadcrumb
                 title
                 description
-                cover
                 coverAlt
                 type
               }
