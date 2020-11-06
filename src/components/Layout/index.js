@@ -18,9 +18,9 @@ const Layout = ({
   pageName,
   breadcrumb,
   type,
-  date = null,
-  coverAlt = null,
-  to = null,
+  date,
+  coverAlt,
+  to,
 }) => {
   const { siteUrl, speakableSelector, genre } = useSiteMetadata()
 
@@ -32,23 +32,24 @@ const Layout = ({
     contact: pageName === `contact`,
   }
 
-  const coverURLs = {}
-  covers && Object.values(covers).length > 0
-    ? Object.keys(covers).map(
-        cover => (coverURLs[cover] = `${siteUrl}${covers[cover]}`)
-      )
-    : null
-
   const page = {
     url: isPage.home
       ? siteUrl
       : isPage.article
       ? `${siteUrl}${slug}`
       : `${siteUrl}${to}`,
-    speakableSelector: !isPage.blog ? speakableSelector : null,
-    genre: isPage.article ? genre : null,
-    cover: cover ? `${siteUrl}${cover}` : null,
-    covers: coverURLs,
+    speakableSelector: !isPage.blog && speakableSelector,
+    genre: isPage.article && genre,
+    cover: cover && `${siteUrl}${cover}`,
+    covers:
+      covers &&
+      (() => {
+        const coverURLs = {}
+        for (const [key, value] of Object.entries(covers)) {
+          coverURLs[key] = `${siteUrl}${value.src}`
+        }
+        return coverURLs
+      })(),
   }
 
   return (
