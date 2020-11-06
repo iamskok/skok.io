@@ -6,7 +6,7 @@ import PreloadLinks from "./PreloadLinks"
 import OpenGraph from "./OpenGraph"
 import Twitter from "./Twitter"
 
-const Head = ({ isPage, title, description, url, date, cover, coverAlt }) => {
+const Head = ({ isPage, title, description, url, date, covers, coverAlt }) => {
   const {
     language,
     firstName,
@@ -16,8 +16,9 @@ const Head = ({ isPage, title, description, url, date, cover, coverAlt }) => {
       home: { title: siteName },
     },
   } = useSiteMetadata()
-
   const { twitter: twitterHandle } = socialMedia
+  const twitterCover = covers?.twitter
+  const facebookCover = covers?.facebook
 
   return (
     <>
@@ -29,19 +30,19 @@ const Head = ({ isPage, title, description, url, date, cover, coverAlt }) => {
         description={description}
         locale={language}
         publishedTime={date}
-        image={cover}
+        image={facebookCover}
         imageAlt={coverAlt}
         url={url}
         siteName={siteName}
         firstName={firstName}
         lastName={lastName}
-        isArticle={isPage.article}
         seeAlso={socialMedia}
+        isArticle={isPage.article}
       />
       <Twitter
         title={title}
         description={description}
-        image={cover}
+        image={twitterCover}
         imageAlt={coverAlt}
         creator={twitterHandle}
       />

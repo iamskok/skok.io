@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet"
 
 const MetaTags = ({ description }) => (
   <Helmet>
-    <meta name="description" content={description} />
+    {description && <meta name="description" content={description} />}
   </Helmet>
 )
 
