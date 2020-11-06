@@ -53,7 +53,7 @@ export const query = graphql`
   query {
     file(relativePath: { eq: "blog.jpg" }) {
       childImageSharp {
-        google1x1: fluid(maxWidth: 1600, maxHeight: 900, quality: 100) {
+        google1x1: fluid(maxWidth: 1600, maxHeight: 1600, quality: 100) {
           src
         }
         google4x3: fluid(maxWidth: 1600, maxHeight: 1200, quality: 100) {

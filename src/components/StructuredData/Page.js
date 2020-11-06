@@ -45,7 +45,7 @@ const Page = ({
     url ? { url } : null,
     images && Object.values(images).length > 0
       ? {
-          image: [images.google1x1, images.google4x3, images.google16x9],
+          image: [images?.google1x1, images?.google4x3, images?.google16x9],
         }
       : image
       ? { image }
