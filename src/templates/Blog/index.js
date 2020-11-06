@@ -1,28 +1,28 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
+import useSiteMetadata from "../../hooks/useSiteMetadata"
 import Layout from "../../components/Layout"
 import Pagination from "../../components/Pagination"
 import BlogCard from "../../components/BlogCard"
 
 const Blog = ({
   data: {
-    allMdx,
-    site: {
-      siteMetadata: {
-        pages: {
-          blog: { to, breadcrumb, title, description, cover, coverAlt, type },
-        },
-      },
-    },
+    file,
+    allMdx: { edges },
   },
   pageContext: { pagination },
 }) => {
-  const { page, nextPagePath, previousPagePath } = pagination
+  const {
+    pages: {
+      blog: { to, breadcrumb, title, description, coverAlt, type },
+    },
+  } = useSiteMetadata()
 
-  const articles = page.map(id =>
-    allMdx.edges.find(edge => edge.node.id === id)
-  )
+  const { page, nextPagePath, previousPagePath } = pagination
+  const articles = page.map(id => edges.find(edge => edge.node.id === id))
+  // const cover = file?.childImageSharp?.fluid?.src
+  const covers = file?.childImageSharp
 
   return (
     <Layout
@@ -30,7 +30,8 @@ const Blog = ({
       breadcrumb={breadcrumb}
       title={title}
       description={description}
-      cover={cover}
+      // cover={cover}
+      covers={{ ...covers }}
       coverAlt={coverAlt}
       type={type}
       pageName="blog"
@@ -50,18 +51,22 @@ export default Blog
 
 export const query = graphql`
   query {
-    site {
-      siteMetadata {
-        pages {
-          blog {
-            to
-            breadcrumb
-            title
-            description
-            cover
-            coverAlt
-            type
-          }
+    file(relativePath: { eq: "blog.jpg" }) {
+      childImageSharp {
+        google1x1: fluid(maxWidth: 1600, maxHeight: 900, quality: 100) {
+          src
+        }
+        google4x3: fluid(maxWidth: 1600, maxHeight: 1200, quality: 100) {
+          src
+        }
+        google16x9: fluid(maxWidth: 1600, maxHeight: 900, quality: 100) {
+          src
+        }
+        twitter: fluid(maxWidth: 1600, maxHeight: 800, quality: 100) {
+          src
+        }
+        facebook: fluid(maxWidth: 1600, maxHeight: 838, quality: 100) {
+          src
         }
       }
     }
@@ -76,7 +81,6 @@ export const query = graphql`
             title
             description
             date(formatString: "MMMM DD, YYYY")
-            coverAlt
             cover {
               childImageSharp {
                 fluid(maxWidth: 900, quality: 100) {
@@ -84,6 +88,7 @@ export const query = graphql`
                 }
               }
             }
+            coverAlt
           }
         }
       }

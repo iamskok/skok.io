@@ -1,15 +1,18 @@
 /** @jsx jsx */
 import { jsx, Flex, Styled } from "theme-ui"
+import { graphql } from "gatsby"
 import useSiteMetadata from "../hooks/useSiteMetadata"
 import Layout from "../components/Layout"
 import GlitchText from "../components/GlitchText"
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
   const {
     pages: {
-      home: { to, breadcrumb, title, description, cover, coverAlt, type },
+      home: { to, breadcrumb, title, description, coverAlt, type },
     },
   } = useSiteMetadata()
+  // const cover = data?.file?.childImageSharp?.fluid?.src
+  const covers = data?.file?.childImageSharp
 
   return (
     <Layout
@@ -17,7 +20,8 @@ const IndexPage = () => {
       breadcrumb={breadcrumb}
       title={title}
       description={description}
-      cover={cover}
+      // cover={cover}
+      covers={{ ...covers }}
       coverAlt={coverAlt}
       type={type}
       pageName="home"
@@ -70,5 +74,32 @@ const IndexPage = () => {
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    file(relativePath: { eq: "home.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 900, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+        google1x1: fluid(maxWidth: 1600, maxHeight: 900, quality: 100) {
+          src
+        }
+        google4x3: fluid(maxWidth: 1600, maxHeight: 1200, quality: 100) {
+          src
+        }
+        google16x9: fluid(maxWidth: 1600, maxHeight: 900, quality: 100) {
+          src
+        }
+        twitter: fluid(maxWidth: 1600, maxHeight: 800, quality: 100) {
+          src
+        }
+        facebook: fluid(maxWidth: 1600, maxHeight: 838, quality: 100) {
+          src
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
