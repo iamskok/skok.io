@@ -61,20 +61,6 @@ module.exports = {
       description: `This page is not found.`,
     },
   },
-  navigation: [
-    {
-      to: `/blog`,
-      label: `Blog`,
-    },
-    {
-      to: `/about`,
-      label: `About`,
-    },
-    {
-      to: `/contact`,
-      label: `Contact`,
-    },
-  ],
   socialMedia: {
     twitter: `https://twitter.com/iamskok1`,
     github: `https://github.com/iamskok`,

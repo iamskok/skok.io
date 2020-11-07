@@ -32,10 +32,6 @@ const useSiteMetadata = () => {
               twitter
               github
             }
-            navigation {
-              label
-              to
-            }
             pages {
               home {
                 to

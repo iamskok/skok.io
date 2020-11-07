@@ -32,7 +32,8 @@ const OpenGraph = ({
     {isArticle && (
       <meta property="article:author" content={`${firstName} ${lastName}`} />
     )}
-    {Object.values(seeAlso).length > 0 &&
+    {seeAlso &&
+      Object.values(seeAlso).length > 0 &&
       Object.values(seeAlso).map((url, index) => (
         <meta key={index} property="og:see_also" content={url} />
       ))}
