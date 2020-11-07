@@ -26,7 +26,8 @@ const Person = ({
     jobTitle && { jobTitle },
     telephone && { telephone },
     url && { url },
-    Object.values(sameAs)?.length > 0 && { sameAs: Object.values(sameAs) }
+    sameAs &&
+      Object.values(sameAs)?.length > 0 && { sameAs: Object.values(sameAs) }
   )
 
   return (

@@ -31,7 +31,7 @@ const Organization = ({
     name && { name },
     url && { url },
     sameAs &&
-      Object.values(sameAs).length > 0 && { sameAs: Object.values(sameAs) },
+      Object.values(sameAs)?.length > 0 && { sameAs: Object.values(sameAs) },
     logo && {
       logo: {
         "@type": `ImageObject`,

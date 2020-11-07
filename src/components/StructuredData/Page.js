@@ -42,11 +42,12 @@ const Page = ({
     inLanguage && { inLanguage },
     name && { name },
     url && { url },
-    Object.values(images)?.length > 0 && {
-      image: [images?.google1x1, images?.google4x3, images?.google16x9].map(
-        Boolean
-      ),
-    },
+    images &&
+      Object.values(images)?.length > 0 && {
+        image: [images?.google1x1, images?.google4x3, images?.google16x9].map(
+          Boolean
+        ),
+      },
     mainEntityOfPage && {
       mainEntityOfPage: {
         "@type": `WebPage`,
