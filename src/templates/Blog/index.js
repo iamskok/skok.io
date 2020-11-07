@@ -71,17 +71,7 @@ export const query = graphql`
             slug
           }
           frontmatter {
-            title
-            description
-            date(formatString: "MMMM DD, YYYY")
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 900, quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            coverAlt
+            ...frontmatterFields
           }
         }
       }
