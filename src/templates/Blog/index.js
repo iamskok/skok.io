@@ -71,7 +71,7 @@ export const query = graphql`
             slug
           }
           frontmatter {
-            ...frontmatterFields
+            ...FrontmatterFields
           }
         }
       }

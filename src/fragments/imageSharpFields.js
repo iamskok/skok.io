@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
 
-export const childImageSharpFields = graphql`
-  fragment childImageSharpFields on ImageSharp {
+export const ChildImageSharpFields = graphql`
+  fragment ChildImageSharpFields on ImageSharp {
     google1x1: fluid(maxWidth: 1600, maxHeight: 1600, quality: 100) {
       src
     }

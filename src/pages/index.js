@@ -77,7 +77,7 @@ export const query = graphql`
   query {
     file(relativePath: { eq: "home.jpg" }) {
       childImageSharp {
-        ...childImageSharpFields
+        ...ChildImageSharpFields
       }
     }
   }

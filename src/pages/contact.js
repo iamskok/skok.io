@@ -32,7 +32,7 @@ export const query = graphql`
   query {
     file(relativePath: { eq: "contact.jpg" }) {
       childImageSharp {
-        ...childImageSharpFields
+        ...ChildImageSharpFields
       }
     }
   }
