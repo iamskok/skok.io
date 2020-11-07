@@ -1,7 +1,7 @@
 import React from "react"
 import schemaId from "./schemaId"
 
-const BreadcrumbList = ({
+const Breadcrumbs = ({
   siteUrl,
   title,
   homeBreadcrumb,
@@ -13,39 +13,31 @@ const BreadcrumbList = ({
   to,
   breadcrumb,
 }) => {
-  const breadcrumbs = [
+  const itemListElement = [
     {
       id: siteUrl,
       name: `${homeBreadcrumb}`,
     },
-  ]
-
-  if (isPage.blog || isPage.contact || isPage.about) {
-    breadcrumbs.push({
+    (isPage.blog || isPage.contact || isPage.about) && {
       id: `${siteUrl}${to}`,
       name: breadcrumb,
-    })
-  }
-
-  if (isPage.article) {
-    breadcrumbs.push(
-      {
-        id: `${siteUrl}${blogTo}`,
-        name: blogBreadcrumb,
-      },
-      {
-        id: `${siteUrl}${slug}`,
-        name: `${articleBreadcrumb} ${title}`,
-      }
-    )
-  }
+    },
+    isPage.article && {
+      id: `${siteUrl}${blogTo}`,
+      name: blogBreadcrumb,
+    },
+    {
+      id: `${siteUrl}${slug}`,
+      name: `${articleBreadcrumb} ${title}`,
+    },
+  ].filter(Boolean)
 
   const schema = {
     "@context": `http://schema.org`,
     "@type": `BreadcrumbList`,
     "@id": schemaId(`breadcrumbs`),
     name: `Breadcrumbs`,
-    itemListElement: breadcrumbs.map(({ id, name }, index) => ({
+    itemListElement: itemListElement.map(({ id, name }, index) => ({
       "@type": `ListItem`,
       position: index + 1,
       name,
@@ -64,4 +56,4 @@ const BreadcrumbList = ({
   )
 }
 
-export default BreadcrumbList
+export default Breadcrumbs
