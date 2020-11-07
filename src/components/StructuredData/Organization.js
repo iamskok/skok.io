@@ -35,8 +35,8 @@ const Organization = ({
     logo && {
       logo: {
         "@type": `ImageObject`,
-        height: 60,
-        width: 60,
+        height: 120,
+        width: 120,
         url: logo,
       },
     }
