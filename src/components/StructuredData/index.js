@@ -13,7 +13,6 @@ const StructuredData = ({
   siteUrl,
   title,
   description,
-  cover,
   covers,
   type,
   date,
@@ -27,7 +26,7 @@ const StructuredData = ({
   telephone,
   jobTitle,
   address,
-  logo: { small: smallLogo, large: largeLogo },
+  logo,
   pages: {
     home: { breadcrumb: homeBreadcrumb },
     blog: { to: blogTo, breadcrumb: blogBreadcrumb },
@@ -37,10 +36,6 @@ const StructuredData = ({
   speakableSelector,
 }) => {
   const fullName = `${firstName} ${lastName}`
-  const logo = {
-    small: `${siteUrl}${smallLogo}`,
-    large: `${siteUrl}${largeLogo}`,
-  }
 
   return (
     <>
@@ -72,11 +67,10 @@ const StructuredData = ({
         id={schemId(`organization`)}
         url={siteUrl}
         name={fullName}
-        image={logo.large}
         description={description}
         telephone={telephone}
         email={email}
-        logo={logo.small}
+        logo={logo}
         sameAs={socialMedia}
       />
       <Page
@@ -86,7 +80,6 @@ const StructuredData = ({
         description={description}
         datePublished={date}
         dateModified={date}
-        image={cover}
         images={covers}
         type={type}
         genre={genre}

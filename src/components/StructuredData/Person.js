@@ -20,15 +20,13 @@ const Person = ({
         "@id": schemaId(`address`),
       },
     },
-    name ? { name } : null,
-    image ? { image } : null,
-    email ? { email } : null,
-    jobTitle ? { jobTitle } : null,
-    telephone ? { telephone } : null,
-    url ? { url } : null,
-    sameAs && Object.values(sameAs).length > 0
-      ? { sameAs: Object.values(sameAs) }
-      : null
+    name && { name },
+    image && { image },
+    email && { email },
+    jobTitle && { jobTitle },
+    telephone && { telephone },
+    url && { url },
+    Object.values(sameAs)?.length > 0 && { sameAs: Object.values(sameAs) }
   )
 
   return (

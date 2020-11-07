@@ -26,32 +26,21 @@ const Organization = ({
       },
       founder: person,
     },
-    description ? { description } : null,
-    email ? { email } : null,
-    telephone ? { telephone } : null,
-    name ? { name } : null,
-    url ? { url } : null,
-    Object.values(sameAs).length > 0 ? { sameAs: Object.values(sameAs) } : null,
-    image
-      ? {
-          image: {
-            "@type": `ImageObject`,
-            height: 2048,
-            width: 2048,
-            url: image,
-          },
-        }
-      : null,
-    logo
-      ? {
-          logo: {
-            "@type": `ImageObject`,
-            height: 60,
-            width: 60,
-            url: logo,
-          },
-        }
-      : null
+    description && { description },
+    email && { email },
+    telephone && { telephone },
+    name && { name },
+    url && { url },
+    sameAs &&
+      Object.values(sameAs).length > 0 && { sameAs: Object.values(sameAs) },
+    logo && {
+      logo: {
+        "@type": `ImageObject`,
+        height: 60,
+        width: 60,
+        url: logo,
+      },
+    }
   )
 
   return (

@@ -10,10 +10,10 @@ const Address = ({
       "@type": `PostalAddress`,
       "@id": schemaId(`address`),
     },
-    addressLocality ? { addressLocality } : null,
-    addressRegion ? { addressRegion } : null,
-    postalCode ? { postalCode } : null,
-    streetAddress ? { streetAddress } : null
+    addressLocality && { addressLocality },
+    addressRegion && { addressRegion },
+    postalCode && { postalCode },
+    streetAddress && { streetAddress }
   )
 
   return (

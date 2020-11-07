@@ -18,10 +18,7 @@ const useSiteMetadata = () => {
             jobTitle
             genre
             speakableSelector
-            logo {
-              small
-              large
-            }
+            logo
             address {
               addressLocality
               addressRegion

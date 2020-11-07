@@ -13,7 +13,6 @@ const Page = ({
   name,
   inLanguage,
   genre,
-  image,
   images,
   cssSelector,
 }) => {
@@ -34,38 +33,32 @@ const Page = ({
       },
       copyrightYear: new Date().getFullYear(),
     },
-    articleSection ? { articleSection } : null,
-    dateModified ? { dateModified } : null,
-    datePublished ? { datePublished } : null,
-    description ? { description } : null,
-    genre ? { genre } : null,
-    headline ? { headline } : null,
-    inLanguage ? { inLanguage } : null,
-    name ? { name } : null,
-    url ? { url } : null,
-    images && Object.values(images).length > 0
-      ? {
-          image: [images?.google1x1, images?.google4x3, images?.google16x9],
-        }
-      : image
-      ? { image }
-      : null,
-    mainEntityOfPage
-      ? {
-          mainEntityOfPage: {
-            "@type": `WebPage`,
-            "@id": mainEntityOfPage,
-          },
-        }
-      : null,
-    cssSelector?.length > 0
-      ? {
-          speakable: {
-            "@type": `SpeakableSpecification`,
-            cssSelector,
-          },
-        }
-      : null
+    articleSection && { articleSection },
+    dateModified && { dateModified },
+    datePublished && { datePublished },
+    description && { description },
+    genre && { genre },
+    headline && { headline },
+    inLanguage && { inLanguage },
+    name && { name },
+    url && { url },
+    Object.values(images)?.length > 0 && {
+      image: [images?.google1x1, images?.google4x3, images?.google16x9].map(
+        Boolean
+      ),
+    },
+    mainEntityOfPage && {
+      mainEntityOfPage: {
+        "@type": `WebPage`,
+        "@id": mainEntityOfPage,
+      },
+    },
+    cssSelector?.length > 0 && {
+      speakable: {
+        "@type": `SpeakableSpecification`,
+        cssSelector,
+      },
+    }
   )
 
   return (

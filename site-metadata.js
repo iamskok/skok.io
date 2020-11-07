@@ -3,10 +3,7 @@ module.exports = {
   lastName: `Skok`,
   // siteUrl: `https://skok.netlify.app`,
   siteUrl: `https://deploy-preview-149--skok.netlify.app`,
-  logo: {
-    large: `/logo-large.jpg`,
-    small: `/logo-small.jpg`,
-  },
+  logo: `/logo-small.jpg`,
   avatar: `/avatar.jpg`,
   language: `en_US`,
   pages: {
