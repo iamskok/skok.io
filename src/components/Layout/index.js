@@ -19,6 +19,7 @@ const Layout = ({
   coverAlt,
   pageName,
   type,
+  breadcrumb,
   date,
 }) => {
   const {
@@ -35,7 +36,6 @@ const Layout = ({
     telephone,
     jobTitle,
     speakableSelector,
-    breadcrumb,
   } = useSiteMetadata()
 
   const isPage = {
