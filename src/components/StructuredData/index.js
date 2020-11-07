@@ -7,34 +7,34 @@ import schemId from "./schemaId"
 import Page from "./Page"
 
 const StructuredData = ({
-  isPage,
+  to,
+  url,
+  slug,
+  siteUrl,
   title,
   description,
-  type,
-  breadcrumb,
-  genre,
-  speakableSelector,
-  url,
-  to,
-  slug,
-  date,
   cover,
   covers,
+  type,
+  date,
+  breadcrumb,
+  genre,
   language,
   firstName,
   lastName,
-  siteUrl,
+  socialMedia,
   email,
   telephone,
   jobTitle,
   address,
-  socialMedia,
   logo: { small: smallLogo, large: largeLogo },
   pages: {
     home: { breadcrumb: homeBreadcrumb },
     blog: { to: blogTo, breadcrumb: blogBreadcrumb },
     article: { breadcrumb: articleBreadcrumb },
   },
+  isPage,
+  speakableSelector,
 }) => {
   const fullName = `${firstName} ${lastName}`
   const logo = {
@@ -42,67 +42,53 @@ const StructuredData = ({
     large: `${siteUrl}${largeLogo}`,
   }
 
-  const breadcrumbs = [
-    {
-      id: siteUrl,
-      name: `${homeBreadcrumb}`,
-    },
-  ]
-
-  if (isPage.blog || isPage.contact || isPage.about) {
-    breadcrumbs.push({
-      id: `${siteUrl}${to}`,
-      name: breadcrumb,
-    })
-  }
-
-  if (isPage.article) {
-    breadcrumbs.push(
-      {
-        id: `${siteUrl}${blogTo}`,
-        name: blogBreadcrumb,
-      },
-      {
-        id: `${siteUrl}${slug}`,
-        name: `${articleBreadcrumb} ${title}`,
-      }
-    )
-  }
-
   return (
     <>
-      {!isPage.home && <Breadcrumbs itemListElement={breadcrumbs} />}
+      {!isPage.home && (
+        <Breadcrumbs
+          title={title}
+          siteUrl={siteUrl}
+          homeBreadcrumb={homeBreadcrumb}
+          articleBreadcrumb={articleBreadcrumb}
+          blogBreadcrumb={blogBreadcrumb}
+          isPage={isPage}
+          blogTo={blogTo}
+          slug={slug}
+          to={to}
+          breadcrumb={breadcrumb}
+        />
+      )}
       <Address id={schemId(`address`)} address={address} />
       <Person
         id={schemId(`person`)}
+        url={siteUrl}
         name={fullName}
         email={email}
         telephone={telephone}
         jobTitle={jobTitle}
-        url={siteUrl}
         sameAs={socialMedia}
       />
       <Organization
         id={schemId(`organization`)}
         url={siteUrl}
         name={fullName}
+        image={logo.large}
         description={description}
         telephone={telephone}
         email={email}
-        image={logo.large}
         logo={logo.small}
         sameAs={socialMedia}
       />
       <Page
-        type={type}
+        url={url}
+        name={title}
+        headline={title}
+        description={description}
         datePublished={date}
         dateModified={date}
-        headline={title}
-        name={title}
-        description={description}
-        url={url}
         image={cover}
         images={covers}
+        type={type}
         genre={genre}
         inLanguage={language}
         mainEntityOfPage={url}

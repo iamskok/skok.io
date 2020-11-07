@@ -1,28 +1,25 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import useSiteMetadata from "../hooks/useSiteMetadata"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 
 const About = ({ data }) => {
   const {
     pages: {
-      about: { to, breadcrumb, title, description, coverAlt, type },
+      about: { to, title, description, coverAlt, type, breadcrumb },
     },
   } = useSiteMetadata()
-
-  // const cover = data?.file?.childImageSharp?.fluid?.src
   const covers = data?.file?.childImageSharp
 
   return (
     <Layout
       to={to}
-      breadcrumb={breadcrumb}
       title={title}
       description={description}
-      // cover={cover}
       covers={{ ...covers }}
       coverAlt={coverAlt}
+      breadcrumb={breadcrumb}
       type={type}
       pageName="about"
     >

@@ -6,20 +6,20 @@ import OpenGraph from "./OpenGraph"
 import Twitter from "./Twitter"
 
 const Head = ({
-  isPage,
+  url,
   title,
   description,
-  url,
-  date,
   covers,
   coverAlt,
+  socialMedia,
+  date,
   language,
   firstName,
   lastName,
-  socialMedia,
   pages: {
     home: { title: siteName },
   },
+  isPage,
 }) => {
   const { twitter: twitterHandle } = socialMedia
   const twitterCover = covers?.twitter
@@ -31,16 +31,16 @@ const Head = ({
       <Title title={title} />
       <Description description={description} />
       <OpenGraph
+        url={url}
         title={title}
         description={description}
-        locale={language}
-        publishedTime={date}
         image={facebookCover}
         imageAlt={coverAlt}
-        url={url}
+        publishedTime={date}
         siteName={siteName}
         firstName={firstName}
         lastName={lastName}
+        locale={language}
         seeAlso={socialMedia}
         isArticle={isPage.article}
       />

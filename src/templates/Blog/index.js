@@ -1,39 +1,32 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
-import useSiteMetadata from "../../hooks/useSiteMetadata"
 import Layout from "../../components/Layout"
-import Pagination from "../../components/Pagination"
+import useSiteMetadata from "../../hooks/useSiteMetadata"
 import BlogCard from "../../components/BlogCard"
+import Pagination from "../../components/Pagination"
 
-const Blog = ({
-  data: {
-    file,
-    allMdx: { edges },
-  },
-  pageContext: { pagination },
-}) => {
+const Blog = ({ data: { file, allMdx }, pageContext: { pagination } }) => {
   const {
     pages: {
-      blog: { to, breadcrumb, title, description, coverAlt, type },
+      blog: { to, title, description, coverAlt, type, breadcrumb },
     },
   } = useSiteMetadata()
-
   const { page, nextPagePath, previousPagePath } = pagination
-  const articles = page.map(id => edges.find(edge => edge.node.id === id))
-  // const cover = file?.childImageSharp?.fluid?.src
   const covers = file?.childImageSharp
+  const articles = page.map(id =>
+    allMdx.edges.find(edge => edge.node.id === id)
+  )
 
   return (
     <Layout
       to={to}
-      breadcrumb={breadcrumb}
       title={title}
       description={description}
-      // cover={cover}
       covers={{ ...covers }}
       coverAlt={coverAlt}
       type={type}
+      breadcrumb={breadcrumb}
       pageName="blog"
     >
       <Styled.h1>Blog</Styled.h1>

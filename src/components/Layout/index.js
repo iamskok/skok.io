@@ -10,32 +10,32 @@ import StructuredData from "../StructuredData"
 
 const Layout = ({
   children,
+  to,
   slug,
   title,
   description,
   cover,
   covers,
+  coverAlt,
   pageName,
-  breadcrumb,
   type,
   date,
-  coverAlt,
-  to,
 }) => {
   const {
     siteUrl,
-    speakableSelector,
-    genre,
-    pages,
-    language,
     firstName,
     lastName,
     socialMedia,
+    pages,
+    logo,
+    genre,
+    language,
     email,
+    address,
     telephone,
     jobTitle,
-    address,
-    logo,
+    speakableSelector,
+    breadcrumb,
   } = useSiteMetadata()
 
   const isPage = {
@@ -70,19 +70,19 @@ const Layout = ({
     <Fragment>
       <GlobalStyles />
       <Head
-        isPage={isPage}
+        url={page.url}
         title={title}
         description={description}
-        url={page.url}
-        date={date}
         cover={page.cover}
         covers={page.covers}
         coverAlt={coverAlt}
-        pages={pages}
-        language={language}
         firstName={firstName}
         lastName={lastName}
         socialMedia={socialMedia}
+        date={date}
+        language={language}
+        pages={pages}
+        isPage={isPage}
       />
       <Container
         sx={{
@@ -105,30 +105,30 @@ const Layout = ({
         <Footer />
       </Container>
       <StructuredData
-        isPage={isPage}
-        title={title}
-        description={description}
-        type={type}
-        breadcrumb={breadcrumb}
-        genre={page.genre}
-        speakableSelector={page.speakableSelector}
-        url={page.url}
         to={to}
         slug={slug}
-        date={date}
+        url={page.url}
+        siteUrl={siteUrl}
+        title={title}
+        description={description}
         cover={page.cover}
         covers={page.covers}
-        language={language}
         firstName={firstName}
         lastName={lastName}
-        siteUrl={siteUrl}
+        socialMedia={socialMedia}
+        type={type}
+        breadcrumb={breadcrumb}
+        date={date}
+        language={language}
+        logo={logo}
+        genre={page.genre}
         email={email}
         telephone={telephone}
-        jobTitle={jobTitle}
         address={address}
-        socialMedia={socialMedia}
-        logo={logo}
+        jobTitle={jobTitle}
         pages={pages}
+        isPage={isPage}
+        speakableSelector={page.speakableSelector}
       />
     </Fragment>
   )

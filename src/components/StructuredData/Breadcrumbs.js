@@ -1,13 +1,51 @@
 import React from "react"
 import schemaId from "./schemaId"
 
-const BreadcrumbList = ({ itemListElement }) => {
+const BreadcrumbList = ({
+  siteUrl,
+  title,
+  homeBreadcrumb,
+  articleBreadcrumb,
+  blogBreadcrumb,
+  isPage,
+  blogTo,
+  slug,
+  to,
+  breadcrumb,
+}) => {
+  const breadcrumbs = [
+    {
+      id: siteUrl,
+      name: `${homeBreadcrumb}`,
+    },
+  ]
+
+  if (isPage.blog || isPage.contact || isPage.about) {
+    breadcrumbs.push({
+      id: `${siteUrl}${to}`,
+      name: breadcrumb,
+    })
+  }
+
+  if (isPage.article) {
+    breadcrumbs.push(
+      {
+        id: `${siteUrl}${blogTo}`,
+        name: blogBreadcrumb,
+      },
+      {
+        id: `${siteUrl}${slug}`,
+        name: `${articleBreadcrumb} ${title}`,
+      }
+    )
+  }
+
   const schema = {
     "@context": `http://schema.org`,
     "@type": `BreadcrumbList`,
-    name: `Breadcrumbs`,
     "@id": schemaId(`breadcrumbs`),
-    itemListElement: itemListElement.map(({ id, name }, index) => ({
+    name: `Breadcrumbs`,
+    itemListElement: breadcrumbs.map(({ id, name }, index) => ({
       "@type": `ListItem`,
       position: index + 1,
       name,

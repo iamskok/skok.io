@@ -1,28 +1,26 @@
 /** @jsx jsx */
 import { jsx, Flex, Styled } from "theme-ui"
 import { graphql } from "gatsby"
-import useSiteMetadata from "../hooks/useSiteMetadata"
 import Layout from "../components/Layout"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 import GlitchText from "../components/GlitchText"
 
 const IndexPage = ({ data }) => {
   const {
     pages: {
-      home: { to, breadcrumb, title, description, coverAlt, type },
+      home: { to, title, description, coverAlt, type, breadcrumb },
     },
   } = useSiteMetadata()
-  // const cover = data?.file?.childImageSharp?.fluid?.src
   const covers = data?.file?.childImageSharp
 
   return (
     <Layout
       to={to}
-      breadcrumb={breadcrumb}
       title={title}
       description={description}
-      // cover={cover}
       covers={{ ...covers }}
       coverAlt={coverAlt}
+      breadcrumb={breadcrumb}
       type={type}
       pageName="home"
     >
@@ -79,9 +77,6 @@ export const query = graphql`
   query {
     file(relativePath: { eq: "home.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 900, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
         google1x1: fluid(maxWidth: 1600, maxHeight: 1600, quality: 100) {
           src
         }

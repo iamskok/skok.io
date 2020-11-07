@@ -3,31 +3,30 @@ import { jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../../components/Layout"
+import useSiteMetadata from "../../hooks/useSiteMetadata"
+import TweetableSelection from "../../components/TweetableSelection"
 import ArticleCover from "../../components/ArticleCover"
 import ArticleMeta from "../../components/ArticleMeta"
 import Pagination from "../../components/Pagination"
-import TweetableSelection from "../../components/TweetableSelection"
 
 const Article = ({ pageContext, data }) => {
   const { prev, next, slug } = pageContext
   const {
-    site: {
-      siteMetadata: {
-        pages: {
-          article: { type, breadcrumb },
-        },
-      },
-    },
     mdx: {
       body,
       frontmatter: { title, description, date, cover, coverAlt },
     },
   } = data
 
+  const {
+    pages: {
+      article: { type, breadcrumb },
+    },
+  } = useSiteMetadata()
+
   return (
     <Layout
       type={type}
-      breadcrumb={breadcrumb}
       slug={slug}
       title={title}
       date={date}
@@ -35,6 +34,7 @@ const Article = ({ pageContext, data }) => {
       covers={{ ...cover?.childImageSharp }}
       coverAlt={coverAlt}
       description={description}
+      breadcrumb={breadcrumb}
       pageName="article"
     >
       <TweetableSelection />
@@ -72,7 +72,6 @@ export const query = graphql`
         title
         description
         date(formatString: "MMMM DD, YYYY")
-        coverAlt
         cover {
           childImageSharp {
             fluid(maxWidth: 900, quality: 100) {
@@ -95,6 +94,7 @@ export const query = graphql`
             }
           }
         }
+        coverAlt
       }
     }
   }
