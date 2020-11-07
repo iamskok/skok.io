@@ -21,6 +21,7 @@ const Layout = ({
   type,
   breadcrumb,
   date,
+  updatedDate,
 }) => {
   const {
     siteUrl,
@@ -35,6 +36,7 @@ const Layout = ({
     address,
     telephone,
     jobTitle,
+    copyrightYear,
     speakableSelector,
   } = useSiteMetadata()
 
@@ -102,7 +104,7 @@ const Layout = ({
         >
           {children}
         </main>
-        <Footer />
+        <Footer copyrightYear={copyrightYear} />
       </Container>
       <StructuredData
         to={to}
@@ -119,6 +121,7 @@ const Layout = ({
         type={type}
         breadcrumb={breadcrumb}
         date={date}
+        updatedDate={updatedDate}
         language={language}
         logo={logo}
         genre={page.genre}
@@ -126,6 +129,7 @@ const Layout = ({
         telephone={telephone}
         address={address}
         jobTitle={jobTitle}
+        copyrightYear={copyrightYear}
         pages={pages}
         isPage={isPage}
         speakableSelector={page.speakableSelector}

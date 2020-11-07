@@ -19,6 +19,7 @@ const useSiteMetadata = () => {
             genre
             speakableSelector
             logo
+            copyrightYear
             address {
               addressLocality
               addressRegion

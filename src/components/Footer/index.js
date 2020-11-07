@@ -1,14 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-const Footer = () => (
+const Footer = ({ copyrightYear }) => (
   <footer
     sx={{
       textAlign: `center`,
       padding: 1,
     }}
   >
-    © Copyright {new Date().getFullYear()}
+    © Copyright {copyrightYear}
   </footer>
 )
 

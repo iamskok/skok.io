@@ -14,6 +14,7 @@ const Page = ({
   inLanguage,
   genre,
   images,
+  copyrightYear,
   cssSelector,
 }) => {
   const person = {
@@ -31,7 +32,7 @@ const Page = ({
       publisher: {
         "@id": schemaId(`organization`),
       },
-      copyrightYear: new Date().getFullYear(),
+      copyrightYear,
     },
     articleSection && { articleSection },
     dateModified && { dateModified },
@@ -44,9 +45,11 @@ const Page = ({
     url && { url },
     images &&
       Object.values(images)?.length > 0 && {
-        image: [images?.google1x1, images?.google4x3, images?.google16x9].map(
-          Boolean
-        ),
+        image: [
+          images?.google1x1,
+          images?.google4x3,
+          images?.google16x9,
+        ].filter(Boolean),
       },
     mainEntityOfPage && {
       mainEntityOfPage: {

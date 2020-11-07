@@ -16,6 +16,7 @@ const StructuredData = ({
   covers,
   type,
   date,
+  updatedDate,
   breadcrumb,
   genre,
   language,
@@ -27,6 +28,7 @@ const StructuredData = ({
   jobTitle,
   address,
   logo,
+  copyrightYear,
   pages: {
     home: { breadcrumb: homeBreadcrumb },
     blog: { to: blogTo, breadcrumb: blogBreadcrumb },
@@ -79,12 +81,13 @@ const StructuredData = ({
         headline={title}
         description={description}
         datePublished={date}
-        dateModified={date}
+        dateModified={updatedDate}
         images={covers}
         type={type}
         genre={genre}
         inLanguage={language}
         mainEntityOfPage={url}
+        copyrightYear={copyrightYear}
         cssSelector={speakableSelector}
       />
     </>

@@ -73,6 +73,7 @@ module.exports = {
   jobTitle: `Software Engineer`,
   genre: `Software Engineering`,
   speakableSelector: [`[data-speakable="true"]`],
+  copyrightYear: new Date().getFullYear(),
   codeBlock: {
     lineNumbers: true,
     lineNumbersButton: true,
