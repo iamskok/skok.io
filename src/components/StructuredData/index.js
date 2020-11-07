@@ -1,5 +1,4 @@
 import React from "react"
-import useSiteMetadata from "../../hooks/useSiteMetadata"
 import Person from "./Person"
 import Address from "./Address"
 import Breadcrumbs from "./Breadcrumbs"
@@ -21,25 +20,22 @@ const StructuredData = ({
   date,
   cover,
   covers,
+  language,
+  firstName,
+  lastName,
+  siteUrl,
+  email,
+  telephone,
+  jobTitle,
+  address,
+  socialMedia,
+  logo: { small: smallLogo, large: largeLogo },
+  pages: {
+    home: { breadcrumb: homeBreadcrumb },
+    blog: { to: blogTo, breadcrumb: blogBreadcrumb },
+    article: { breadcrumb: articleBreadcrumb },
+  },
 }) => {
-  const {
-    language,
-    firstName,
-    lastName,
-    siteUrl,
-    email,
-    telephone,
-    jobTitle,
-    address,
-    socialMedia,
-    logo: { small: smallLogo, large: largeLogo },
-    pages: {
-      home: { breadcrumb: homeBreadcrumb },
-      blog: { to: blogTo, breadcrumb: blogBreadcrumb },
-      article: { breadcrumb: articleBreadcrumb },
-    },
-  } = useSiteMetadata()
-
   const fullName = `${firstName} ${lastName}`
   const logo = {
     small: `${siteUrl}${smallLogo}`,

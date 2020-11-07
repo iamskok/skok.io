@@ -22,7 +22,21 @@ const Layout = ({
   coverAlt,
   to,
 }) => {
-  const { siteUrl, speakableSelector, genre } = useSiteMetadata()
+  const {
+    siteUrl,
+    speakableSelector,
+    genre,
+    pages,
+    language,
+    firstName,
+    lastName,
+    socialMedia,
+    email,
+    telephone,
+    jobTitle,
+    address,
+    logo,
+  } = useSiteMetadata()
 
   const isPage = {
     article: pageName === `article`,
@@ -64,6 +78,11 @@ const Layout = ({
         cover={page.cover}
         covers={page.covers}
         coverAlt={coverAlt}
+        pages={pages}
+        language={language}
+        firstName={firstName}
+        lastName={lastName}
+        socialMedia={socialMedia}
       />
       <Container
         sx={{
@@ -99,6 +118,17 @@ const Layout = ({
         date={date}
         cover={page.cover}
         covers={page.covers}
+        language={language}
+        firstName={firstName}
+        lastName={lastName}
+        siteUrl={siteUrl}
+        email={email}
+        telephone={telephone}
+        jobTitle={jobTitle}
+        address={address}
+        socialMedia={socialMedia}
+        logo={logo}
+        pages={pages}
       />
     </Fragment>
   )

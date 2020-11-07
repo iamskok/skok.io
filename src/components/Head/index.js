@@ -1,21 +1,26 @@
 import React from "react"
-import useSiteMetadata from "../../hooks/useSiteMetadata"
 import Title from "./Title"
 import Description from "./Description"
 import PreloadLinks from "./PreloadLinks"
 import OpenGraph from "./OpenGraph"
 import Twitter from "./Twitter"
 
-const Head = ({ isPage, title, description, url, date, covers, coverAlt }) => {
-  const {
-    language,
-    firstName,
-    lastName,
-    socialMedia,
-    pages: {
-      home: { title: siteName },
-    },
-  } = useSiteMetadata()
+const Head = ({
+  isPage,
+  title,
+  description,
+  url,
+  date,
+  covers,
+  coverAlt,
+  language,
+  firstName,
+  lastName,
+  socialMedia,
+  pages: {
+    home: { title: siteName },
+  },
+}) => {
   const { twitter: twitterHandle } = socialMedia
   const twitterCover = covers?.twitter
   const facebookCover = covers?.facebook
