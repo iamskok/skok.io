@@ -6,7 +6,6 @@ const Organization = ({
   name,
   telephone,
   email,
-  image,
   url,
   logo,
   sameAs,
