@@ -5,7 +5,7 @@ export const FrontmatterFields = graphql`
     title
     description
     date(formatString: "MMMM DD, YYYY")
-    updatedDate(formatString: "MMMM DD, YYYY")
+    modifiedDate(formatString: "MMMM DD, YYYY")
     cover {
       childImageSharp {
         fluid(maxWidth: 900, quality: 100) {

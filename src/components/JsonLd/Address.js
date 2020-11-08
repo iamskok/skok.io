@@ -1,9 +1,7 @@
 import React from "react"
 import schemaId from "./schemaId"
 
-const Address = ({
-  address: { addressLocality, addressRegion, postalCode, streetAddress },
-}) => {
+const Address = ({ address: { addressLocality, addressRegion } }) => {
   const schema = Object.assign(
     {
       "@context": `https://schema.org`,
@@ -11,9 +9,7 @@ const Address = ({
       "@id": schemaId(`address`),
     },
     addressLocality && { addressLocality },
-    addressRegion && { addressRegion },
-    postalCode && { postalCode },
-    streetAddress && { streetAddress }
+    addressRegion && { addressRegion }
   )
 
   return (

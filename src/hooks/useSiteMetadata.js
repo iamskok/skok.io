@@ -13,18 +13,12 @@ const useSiteMetadata = () => {
             avatar
             siteUrl
             language
-            email
-            telephone
-            jobTitle
-            genre
             speakableSelector
             logo
             copyrightYear
             address {
               addressLocality
               addressRegion
-              postalCode
-              streetAddress
             }
             socialMedia {
               twitter

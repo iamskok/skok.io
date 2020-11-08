@@ -14,7 +14,7 @@ const Article = ({ pageContext, data }) => {
   const {
     mdx: {
       body,
-      frontmatter: { title, description, date, updatedDate, cover, coverAlt },
+      frontmatter: { title, description, date, modifiedDate, cover, coverAlt },
     },
   } = data
 
@@ -30,7 +30,7 @@ const Article = ({ pageContext, data }) => {
       slug={slug}
       title={title}
       date={date}
-      updatedDate={updatedDate}
+      modifiedDate={modifiedDate}
       cover={cover?.childImageSharp?.fluid?.src}
       covers={{ ...cover?.childImageSharp }}
       coverAlt={coverAlt}

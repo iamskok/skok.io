@@ -1,37 +1,13 @@
 import React from "react"
-import schemaId from "./schemaId"
 
-const Organization = ({
-  id,
-  name,
-  telephone,
-  email,
-  url,
-  logo,
-  sameAs,
-  description,
-}) => {
-  const person = {
-    "@id": schemaId(`person`),
-  }
-
+const Organization = ({ id, url, logo }) => {
   const schema = Object.assign(
     {
       "@context": `http://schema.org`,
       "@id": id,
       "@type": `Organization`,
-      address: {
-        "@id": schemaId(`address`),
-      },
-      founder: person,
     },
-    description && { description },
-    email && { email },
-    telephone && { telephone },
-    name && { name },
     url && { url },
-    sameAs &&
-      Object.values(sameAs)?.length > 0 && { sameAs: Object.values(sameAs) },
     logo && {
       logo: {
         "@type": `ImageObject`,

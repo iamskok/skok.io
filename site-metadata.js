@@ -6,6 +6,15 @@ module.exports = {
   logo: `/logo-small.jpg`,
   avatar: `/avatar.jpg`,
   language: `en_US`,
+  socialMedia: {
+    twitter: `https://twitter.com/iamskok1`,
+    github: `https://github.com/iamskok`,
+  },
+  address: {
+    addressLocality: `Atlanta`,
+    addressRegion: `GA`,
+  },
+  speakableSelector: [`[data-speakable="true"]`],
   pages: {
     home: {
       to: `/`,
@@ -58,21 +67,6 @@ module.exports = {
       description: `This page is not found.`,
     },
   },
-  socialMedia: {
-    twitter: `https://twitter.com/iamskok1`,
-    github: `https://github.com/iamskok`,
-  },
-  address: {
-    addressLocality: `Atlanta`,
-    addressRegion: `GA`,
-    postalCode: `30339`,
-    streetAddress: ``,
-  },
-  email: `name@example.com`,
-  telephone: ``,
-  jobTitle: `Software Engineer`,
-  genre: `Software Engineering`,
-  speakableSelector: [`[data-speakable="true"]`],
   copyrightYear: new Date().getFullYear(),
   codeBlock: {
     lineNumbers: true,

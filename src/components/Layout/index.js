@@ -21,7 +21,7 @@ const Layout = ({
   type,
   breadcrumb,
   date,
-  updatedDate,
+  modifiedDate,
 }) => {
   const {
     siteUrl,
@@ -30,11 +30,8 @@ const Layout = ({
     socialMedia,
     pages,
     logo,
-    genre,
     language,
-    email,
     address,
-    telephone,
     jobTitle,
     copyrightYear,
     speakableSelector,
@@ -55,7 +52,6 @@ const Layout = ({
       ? `${siteUrl}${slug}`
       : `${siteUrl}${to}`,
     speakableSelector: !isPage.blog && speakableSelector,
-    genre: isPage.article && genre,
     cover: cover && `${siteUrl}${cover}`,
     covers:
       covers &&
@@ -121,13 +117,10 @@ const Layout = ({
         type={type}
         breadcrumb={breadcrumb}
         date={date}
-        updatedDate={updatedDate}
+        modifiedDate={modifiedDate}
+        address={address}
         language={language}
         logo={logo}
-        genre={page.genre}
-        email={email}
-        telephone={telephone}
-        address={address}
         jobTitle={jobTitle}
         pages={pages}
         isPage={isPage}
