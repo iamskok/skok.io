@@ -1,4 +1,5 @@
 import React from "react"
+import Html from "./Html"
 import Title from "./Title"
 import Description from "./Description"
 import PreloadLinks from "./PreloadLinks"
@@ -28,6 +29,7 @@ const Head = ({
   return (
     <>
       <PreloadLinks />
+      <Html language={language} />
       <Title title={title} />
       <Description description={description} />
       <OpenGraph
