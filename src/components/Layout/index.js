@@ -6,7 +6,7 @@ import GlobalStyles from "../GlobalStyles"
 import Head from "../Head"
 import Header from "../Header"
 import Footer from "../Footer"
-import StructuredData from "../StructuredData"
+import JsonLd from "../JsonLd"
 
 const Layout = ({
   children,
@@ -106,7 +106,7 @@ const Layout = ({
         </main>
         <Footer copyrightYear={copyrightYear} />
       </Container>
-      <StructuredData
+      <JsonLd
         to={to}
         slug={slug}
         url={page.url}

@@ -6,7 +6,7 @@ import Organization from "./Organization"
 import schemId from "./schemaId"
 import Page from "./Page"
 
-const StructuredData = ({
+const JsonLd = ({
   to,
   url,
   slug,
@@ -94,4 +94,4 @@ const StructuredData = ({
   )
 }
 
-export default StructuredData
+export default JsonLd
