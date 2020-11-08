@@ -9,14 +9,14 @@ const TwitterIconLink = () => {
   const removeHighlight = () => setHighlight(false)
 
   const {
-    socialMedia: { twitter: twitterURL },
+    socialMedia: { twitter: twitterUrl },
   } = useSiteMetadata()
 
   return (
     <a
       rel="noopener noreferrer"
       target="_blank"
-      href={twitterURL}
+      href={twitterUrl}
       aria-label="Navigate to Vladimir's Twitter account"
       onFocus={addHighlight}
       onBlur={removeHighlight}

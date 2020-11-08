@@ -9,14 +9,14 @@ const GithubIconLink = () => {
   const removeHighlight = () => setHighlight(false)
 
   const {
-    socialMedia: { github: githubURL },
+    socialMedia: { github: githubUrl },
   } = useSiteMetadata()
 
   return (
     <a
       rel="noopener noreferrer"
       target="_blank"
-      href={githubURL}
+      href={githubUrl}
       aria-label="Navigate to Vladimir's Github account"
       onFocus={addHighlight}
       onBlur={removeHighlight}
