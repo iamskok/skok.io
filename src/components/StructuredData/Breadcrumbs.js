@@ -18,19 +18,27 @@ const Breadcrumbs = ({
       id: siteUrl,
       name: `${homeBreadcrumb}`,
     },
-    (isPage.blog || isPage.contact || isPage.about) && {
+  ]
+
+  if (isPage.blog || isPage.contact || isPage.about) {
+    itemListElement.push({
       id: `${siteUrl}${to}`,
       name: breadcrumb,
-    },
-    isPage.article && {
-      id: `${siteUrl}${blogTo}`,
-      name: blogBreadcrumb,
-    },
-    {
-      id: `${siteUrl}${slug}`,
-      name: `${articleBreadcrumb} ${title}`,
-    },
-  ].filter(Boolean)
+    })
+  }
+
+  if (isPage.article) {
+    itemListElement.push(
+      {
+        id: `${siteUrl}${blogTo}`,
+        name: blogBreadcrumb,
+      },
+      {
+        id: `${siteUrl}${slug}`,
+        name: `${articleBreadcrumb} ${title}`,
+      }
+    )
+  }
 
   const schema = {
     "@context": `http://schema.org`,

@@ -129,7 +129,6 @@ const Layout = ({
         telephone={telephone}
         address={address}
         jobTitle={jobTitle}
-        copyrightYear={copyrightYear}
         pages={pages}
         isPage={isPage}
         speakableSelector={page.speakableSelector}
