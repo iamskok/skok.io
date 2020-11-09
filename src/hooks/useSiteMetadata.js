@@ -17,6 +17,7 @@ const useSiteMetadata = () => {
             logo
             copyrightYear
             address {
+              addressCountry
               addressLocality
               addressRegion
             }

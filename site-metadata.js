@@ -11,6 +11,7 @@ module.exports = {
     github: `https://github.com/iamskok`,
   },
   address: {
+    addressCountry: `US`,
     addressLocality: `Atlanta`,
     addressRegion: `GA`,
   },

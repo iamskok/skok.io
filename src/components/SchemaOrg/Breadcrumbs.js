@@ -40,26 +40,26 @@ const Breadcrumbs = ({
     )
   }
 
-  const schema = {
-    "@context": `http://schema.org`,
-    "@type": `BreadcrumbList`,
-    "@id": schemaId(`breadcrumbs`),
-    name: `Breadcrumbs`,
-    itemListElement: itemListElement.map(({ id, name }, index) => ({
-      "@type": `ListItem`,
-      position: index + 1,
-      name,
-      item: {
-        "@type": `WebPage`,
-        "@id": id,
-      },
-    })),
-  }
-
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": `http://schema.org`,
+          "@type": `BreadcrumbList`,
+          "@id": schemaId(`breadcrumbs`),
+          name: `Breadcrumbs`,
+          itemListElement: itemListElement.map(({ id, name }, index) => ({
+            "@type": `ListItem`,
+            position: index + 1,
+            name,
+            item: {
+              "@type": `WebPage`,
+              "@id": id,
+            },
+          })),
+        }),
+      }}
     />
   )
 }

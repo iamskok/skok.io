@@ -3,10 +3,9 @@ import Person from "./Person"
 import Address from "./Address"
 import Breadcrumbs from "./Breadcrumbs"
 import Organization from "./Organization"
-import schemId from "./schemaId"
 import Page from "./Page"
 
-const JsonLd = ({
+const SchemaOrg = ({
   to,
   url,
   slug,
@@ -24,13 +23,13 @@ const JsonLd = ({
   socialMedia,
   address,
   logo,
+  speakableSelector,
+  isPage,
   pages: {
     home: { breadcrumb: homeBreadcrumb },
     blog: { to: blogTo, breadcrumb: blogBreadcrumb },
     article: { breadcrumb: articleBreadcrumb },
   },
-  isPage,
-  speakableSelector,
 }) => {
   const fullName = `${firstName} ${lastName}`
 
@@ -50,14 +49,9 @@ const JsonLd = ({
           breadcrumb={breadcrumb}
         />
       )}
-      <Address id={schemId(`address`)} address={address} />
-      <Person
-        id={schemId(`person`)}
-        url={siteUrl}
-        name={fullName}
-        sameAs={socialMedia}
-      />
-      <Organization id={schemId(`organization`)} url={siteUrl} logo={logo} />
+      <Address address={address} />
+      <Person url={siteUrl} name={fullName} sameAs={socialMedia} />
+      <Organization url={siteUrl} name={fullName} logo={logo} />
       <Page
         url={url}
         name={title}
@@ -75,4 +69,4 @@ const JsonLd = ({
   )
 }
 
-export default JsonLd
+export default SchemaOrg

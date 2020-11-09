@@ -6,7 +6,7 @@ import GlobalStyles from "../GlobalStyles"
 import Head from "../Head"
 import Header from "../Header"
 import Footer from "../Footer"
-import JsonLd from "../JsonLd"
+import SchemaOrg from "../SchemaOrg"
 
 const Layout = ({
   children,
@@ -102,7 +102,7 @@ const Layout = ({
         </main>
         <Footer copyrightYear={copyrightYear} />
       </Container>
-      <JsonLd
+      <SchemaOrg
         to={to}
         slug={slug}
         url={page.url}
