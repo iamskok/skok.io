@@ -3,8 +3,6 @@ const path = require("path")
 
 const PAGINATION_OFFSET = 8
 
-// Here we're adding extra stuff to the "node" (like the slug)
-// so we can query later for all blogs and get their slug
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
@@ -13,7 +11,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
     createNodeField({
       name: `slug`,
-      value,
+      value: `/blog${value}`,
       node,
     })
   }
@@ -63,11 +61,12 @@ const createArticles = (createPage, edges) => {
     const prev = i === 0 ? null : edges[i - 1].node
     const next = i === edges.length - 1 ? null : edges[i + 1].node
     const {
-      fields: { slug },
+      fields: { slug: pathName },
     } = node
+    const slug = pathName.replace(`/blog/`, ``).replace(`/`, ``)
 
     createPage({
-      path: slug,
+      path: pathName,
       component: path.resolve(`src/templates/Article/index.js`),
       context: {
         id: node.id,

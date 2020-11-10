@@ -34,7 +34,7 @@ const Breadcrumbs = ({
         name: blogBreadcrumb,
       },
       {
-        id: `${siteUrl}${slug}`,
+        id: `${siteUrl}${blogTo}${slug}`,
         name: `${articleBreadcrumb} ${title}`,
       }
     )
