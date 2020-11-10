@@ -23,7 +23,7 @@ const About = ({ data }) => {
       type={type}
       pageName="contact"
     >
-      <Styled.h1>Contact</Styled.h1>
+      <Styled.h1>{title}</Styled.h1>
     </Layout>
   )
 }

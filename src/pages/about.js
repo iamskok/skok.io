@@ -23,7 +23,7 @@ const About = ({ data }) => {
       type={type}
       pageName="about"
     >
-      <Styled.h1>About</Styled.h1>
+      <Styled.h1>{title}</Styled.h1>
     </Layout>
   )
 }

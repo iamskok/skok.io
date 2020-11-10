@@ -29,7 +29,7 @@ const Blog = ({ data: { file, allMdx }, pageContext: { pagination } }) => {
       breadcrumb={breadcrumb}
       pageName="blog"
     >
-      <Styled.h1>Blog</Styled.h1>
+      <Styled.h1>{title}</Styled.h1>
 
       {articles.map(({ node }) => (
         <BlogCard key={node.id} article={node} />
