@@ -1,8 +1,7 @@
 module.exports = {
   firstName: `Vladimir`,
   lastName: `Skok`,
-  // siteUrl: `https://skok.netlify.app`,
-  siteUrl: `https://deploy-preview-149--skok.netlify.app`,
+  siteUrl: `https://skok.netlify.app`,
   logo: {
     url: `logo.jpg`,
     width: 112,
