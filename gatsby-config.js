@@ -44,6 +44,7 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         useMozJpeg: true,
+        defaultQuality: 100,
       },
     },
     {
@@ -87,7 +88,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-offline`,
       options: {
-        precachePages: [`/blog/*`, `/about/`],
+        precachePages: [`/blog/*`, `/about`],
       },
     },
     `gatsby-plugin-theme-ui`,

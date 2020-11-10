@@ -61,6 +61,14 @@ export const query = graphql`
       body
       frontmatter {
         ...FrontmatterFields
+        cover {
+          childImageSharp {
+            fluid(maxWidth: 900) {
+              ...GatsbyImageSharpFluid
+            }
+            ...ChildImageSharpFields
+          }
+        }
       }
     }
   }

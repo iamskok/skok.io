@@ -2,19 +2,19 @@ import { graphql } from "gatsby"
 
 export const ChildImageSharpFields = graphql`
   fragment ChildImageSharpFields on ImageSharp {
-    google1x1: fluid(maxWidth: 1600, maxHeight: 1600, quality: 100) {
+    google1x1: fixed(width: 1600, height: 1600) {
       src
     }
-    google4x3: fluid(maxWidth: 1600, maxHeight: 1200, quality: 100) {
+    google4x3: fixed(width: 1600, height: 1200) {
       src
     }
-    google16x9: fluid(maxWidth: 1600, maxHeight: 900, quality: 100) {
+    google16x9: fixed(width: 1600, height: 900) {
       src
     }
-    twitter: fluid(maxWidth: 1600, maxHeight: 800, quality: 100) {
+    twitter: fixed(width: 1600, height: 800) {
       src
     }
-    facebook: fluid(maxWidth: 1600, maxHeight: 838, quality: 100) {
+    facebook: fixed(width: 1600, height: 838) {
       src
     }
   }
