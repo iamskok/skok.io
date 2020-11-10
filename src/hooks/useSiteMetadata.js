@@ -10,11 +10,14 @@ const useSiteMetadata = () => {
           siteMetadata {
             firstName
             lastName
-            avatar
             siteUrl
             language
             speakableSelector
-            logo
+            logo {
+              url
+              width
+              height
+            }
             copyrightYear
             address {
               addressCountry

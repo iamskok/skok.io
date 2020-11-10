@@ -1,7 +1,13 @@
 import React from "react"
 import schemaId from "./schemaId"
 
-const Organization = ({ url, name, logo }) => {
+const Organization = ({
+  url,
+  name,
+  logo: { url: logoPathName, width, height },
+}) => {
+  const logoUrl = `${url}/${logoPathName}`
+
   return (
     <script
       type="application/ld+json"
@@ -12,9 +18,9 @@ const Organization = ({ url, name, logo }) => {
           "@type": `Organization`,
           logo: {
             "@type": `ImageObject`,
-            height: 120,
-            width: 120,
-            url: logo,
+            url: logoUrl,
+            height,
+            width,
           },
           address: {
             "@id": schemaId(`address`),
