@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from "theme-ui"
 import { useState, useEffect } from "react"
-import PropTypes from "prop-types"
 import Editor from "react-simple-code-editor"
 import HighlightCode from "./HighlightCode"
 
@@ -80,15 +79,6 @@ const CodeEditor = ({
       </div>
     </div>
   )
-}
-
-CodeEditor.propTypes = {
-  code: PropTypes.string,
-  disabled: PropTypes.bool,
-  language: PropTypes.string,
-  onChange: PropTypes.func,
-  style: PropTypes.object,
-  theme: PropTypes.object,
 }
 
 export default CodeEditor

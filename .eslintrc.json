@@ -11,13 +11,7 @@
     "node": true,
     "jest": true
   },
-  "plugins": [
-    "import",
-    "jsx-a11y",
-    "react",
-    "react-hooks",
-    "extra-rules"
-  ],
+  "plugins": ["import", "jsx-a11y", "react", "react-hooks", "extra-rules"],
   "extends": [
     "plugin:prettier/recommended",
     "plugin:jsx-a11y/recommended",
