@@ -1,7 +1,7 @@
-import React from "react"
+import React, { createContext } from "react"
 import useLocalStorage from "../../hooks/useLocalStorage"
 
-const SoundContext = React.createContext()
+const SoundContext = createContext()
 
 const SoundProvider = ({ children }) => {
   const [sound, setSound] = useLocalStorage(`sound-mode`, () => true)

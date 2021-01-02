@@ -3,6 +3,7 @@ import { jsx, Flex } from "theme-ui"
 import { useState, useEffect, Fragment } from "react"
 import firebase from "firebase/app"
 import "firebase/firestore"
+import useLocalStorage from "../../hooks/useLocalStorage"
 import EyeIcon from "../../assets/icons/eye.inline.svg"
 
 const config = {
@@ -15,12 +16,14 @@ const config = {
     : `iamskok`,
 }
 
+const REGISTER_HIT_ENDPOINT = `/.netlify/functions/register-hit`
+
 firebase.initializeApp(config)
 
 const db = firebase.firestore()
 
 const HitCounter = ({ slug }) => {
-  const [hits, setHits] = useState(null)
+  const [hits, setHits] = useLocalStorage(`registered-hit-${slug}`, () => null)
   const [blink, setBlink] = useState(false)
 
   useEffect(() => {
@@ -29,7 +32,7 @@ const HitCounter = ({ slug }) => {
     const getHits = async () => {
       try {
         // Increment hits and fetch current value.
-        fetch(`/.netlify/functions/register-hit?slug=${slug}`).then(() => {
+        fetch(`${REGISTER_HIT_ENDPOINT}?slug=${slug}`).then(() => {
           let blinkTimer
           let blinkCounter = 0
 
@@ -67,7 +70,7 @@ const HitCounter = ({ slug }) => {
     getHits()
 
     return () => unsubscribeFromPostUpdates()
-  }, [slug])
+  }, [slug, setHits])
 
   return hits !== null ? (
     <Flex
