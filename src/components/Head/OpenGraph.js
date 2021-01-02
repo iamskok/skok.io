@@ -8,6 +8,7 @@ const OpenGraph = ({
   image,
   imageAlt,
   publishedTime,
+  modifiedTime,
   siteName,
   firstName,
   lastName,
@@ -28,6 +29,9 @@ const OpenGraph = ({
     <meta property="og:type" content={isArticle ? `article` : `website`} />
     {isArticle && (
       <meta property="article:published_time" content={publishedTime} />
+    )}
+    {isArticle && modifiedTime && (
+      <meta property="article:modified_time" content={modifiedTime} />
     )}
     {isArticle && (
       <meta property="article:author" content={`${firstName} ${lastName}`} />

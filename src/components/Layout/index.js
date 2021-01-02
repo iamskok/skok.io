@@ -14,7 +14,6 @@ const Layout = ({
   slug,
   title,
   description,
-  cover,
   covers,
   coverAlt,
   pageName,
@@ -45,14 +44,13 @@ const Layout = ({
     contact: pageName === `contact`,
   }
 
-  const page = {
+  const seo = {
     url: isPage.home
       ? siteUrl
       : isPage.article
       ? `${siteUrl}${slug}`
       : `${siteUrl}${to}`,
     speakableSelector: !isPage.blog && speakableSelector,
-    cover: cover && `${siteUrl}${cover}`,
     covers:
       covers &&
       (() => {
@@ -68,16 +66,16 @@ const Layout = ({
     <Fragment>
       <GlobalStyles />
       <Head
-        url={page.url}
+        url={seo.url}
         title={title}
         description={description}
-        cover={page.cover}
-        covers={page.covers}
+        covers={seo.covers}
         coverAlt={coverAlt}
         firstName={firstName}
         lastName={lastName}
         socialMedia={socialMedia}
         date={date}
+        modifiedDate={modifiedDate}
         language={language}
         pages={pages}
         isPage={isPage}
@@ -105,12 +103,11 @@ const Layout = ({
       <SchemaOrg
         to={to}
         slug={slug}
-        url={page.url}
+        url={seo.url}
         siteUrl={siteUrl}
         title={title}
         description={description}
-        cover={page.cover}
-        covers={page.covers}
+        covers={seo.covers}
         firstName={firstName}
         lastName={lastName}
         socialMedia={socialMedia}
@@ -124,7 +121,7 @@ const Layout = ({
         jobTitle={jobTitle}
         pages={pages}
         isPage={isPage}
-        speakableSelector={page.speakableSelector}
+        speakableSelector={seo.speakableSelector}
       />
     </Fragment>
   )
