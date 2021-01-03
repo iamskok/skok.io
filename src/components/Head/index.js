@@ -45,7 +45,6 @@ const Head = ({
         firstName={firstName}
         lastName={lastName}
         locale={language}
-        seeAlso={socialMedia}
         isArticle={isPage.article}
       />
       <Twitter
