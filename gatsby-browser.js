@@ -6,12 +6,7 @@ import setFavicon from "./src/utils/set-favicon"
 import bustCache from "./src/utils/bust-cache"
 import { wrapRootElement } from "./src/components/wrapRootElement"
 
-// TODO: Add dynamic title in templates.
-const title = document.querySelector(`title`).textContent
-
-const onBlogPostScroll = debounce(() => {
-  updateBrowserTab(title)
-}, 200)
+const onBlogPostScroll = debounce(() => updateBrowserTab(), 200)
 
 const onRouteUpdate = ({ location }) => {
   const blogPostRegex = /\/blog\/.+/
