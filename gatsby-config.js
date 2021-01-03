@@ -20,12 +20,6 @@ module.exports = {
   siteMetadata,
   plugins: [
     {
-      resolve: `gatsby-plugin-force-file-loader`,
-      options: {
-        rules: ["fonts"],
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
@@ -92,11 +86,12 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-offline`,
+      resolve: `gatsby-plugin-force-file-loader`,
       options: {
-        precachePages: [`/blog/*`, `/about`],
+        rules: [`fonts`],
       },
     },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-theme-ui`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
