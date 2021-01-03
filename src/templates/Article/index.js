@@ -4,7 +4,6 @@ import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../../components/Layout"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
-import TweetableSelection from "../../components/TweetableSelection"
 import ArticleCover from "../../components/ArticleCover"
 import ArticleMeta from "../../components/ArticleMeta"
 import Pagination from "../../components/Pagination"
@@ -38,7 +37,6 @@ const Article = ({ pageContext, data }) => {
       breadcrumb={breadcrumb}
       pageName="article"
     >
-      <TweetableSelection />
       {cover && coverAlt && <ArticleCover src={cover} alt={coverAlt} />}
       <div data-speakable="true">
         <Styled.h1>{title}</Styled.h1>
