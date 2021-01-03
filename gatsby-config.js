@@ -17,8 +17,14 @@ const gatsbyRemarkPlugins = [
 ]
 
 module.exports = {
-  siteMetadata, // what's the point of this?
+  siteMetadata,
   plugins: [
+    {
+      resolve: `gatsby-plugin-force-file-loader`,
+      options: {
+        rules: ["fonts"],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
