@@ -98,7 +98,7 @@ const Layout = ({
         >
           {children}
         </main>
-        <Footer copyrightYear={copyrightYear} />
+        {pageName !== `home` && <Footer copyrightYear={copyrightYear} />}
       </Container>
       <SchemaOrg
         to={to}

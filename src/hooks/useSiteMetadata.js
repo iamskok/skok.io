@@ -49,26 +49,6 @@ const useSiteMetadata = () => {
                 coverAlt
                 type
               }
-              contact {
-                to
-                order
-                label
-                breadcrumb
-                title
-                description
-                coverAlt
-                type
-              }
-              about {
-                to
-                order
-                label
-                breadcrumb
-                title
-                description
-                coverAlt
-                type
-              }
               article {
                 order
                 breadcrumb

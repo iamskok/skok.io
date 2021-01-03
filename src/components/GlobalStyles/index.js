@@ -9,6 +9,7 @@ const styles = `
   html {
     font-size: 125%;
     height: 100%;
+    overflow-y: scroll;
   }
 
   @media (min-width: ${breakpoints[0]}) {
