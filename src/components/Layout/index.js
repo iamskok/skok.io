@@ -48,7 +48,7 @@ const Layout = ({
     url: isPage.home
       ? siteUrl
       : isPage.article
-      ? `${siteUrl}${slug}`
+      ? `${siteUrl}/${slug}/`
       : `${siteUrl}${to}`,
     speakableSelector: !isPage.blog && speakableSelector,
     covers:
