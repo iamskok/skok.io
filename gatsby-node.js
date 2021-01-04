@@ -1,7 +1,7 @@
 const { createFilePath } = require("gatsby-source-filesystem")
 const path = require("path")
 
-const PAGINATION_OFFSET = 8
+const PAGINATION_OFFSET = 20
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions

@@ -7,7 +7,7 @@ module.exports = {
     width: 112,
     height: 112,
   },
-  language: `en_US`,
+  language: `en`,
   socialMedia: {
     twitter: `https://twitter.com/iamskok1`,
     github: `https://github.com/iamskok`,

@@ -1,20 +1,10 @@
 const path = require("path")
 const siteMetadata = require("./site-metadata")
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
-require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` })
-
-const gatsbyRemarkPlugins = [
-  {
-    resolve: `gatsby-remark-images`,
-    options: {
-      maxWidth: 1200,
-      withWebp: true,
-      quality: 100,
-      loading: `lazy`,
-      linkImagesToOriginal: false,
-    },
-  },
-]
+const { siteUrl } = siteMetadata
 
 module.exports = {
   siteMetadata,
@@ -37,7 +27,18 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        gatsbyRemarkPlugins,
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+              withWebp: true,
+              quality: 100,
+              loading: `lazy`,
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
       },
     },
     {
@@ -75,8 +76,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: siteMetadata.siteUrl,
-        sitemap: null,
+        host: siteUrl,
+        sitemap: `${siteUrl}/sitemap.xml`,
         policy: [
           {
             userAgent: `*`,
@@ -91,6 +92,7 @@ module.exports = {
         rules: [`fonts`],
       },
     },
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-theme-ui`,
     `gatsby-transformer-sharp`,
