@@ -16,7 +16,7 @@ const config = {
     : `iamskok`,
 }
 
-const REGISTER_HIT_ENDPOINT = `/.netlify/functions/register-hit`
+const REGISTERED_HIT_ENDPOINT = `/.netlify/functions/register-hit`
 
 firebase.initializeApp(config)
 
@@ -32,7 +32,7 @@ const HitCounter = ({ slug }) => {
     const getHits = async () => {
       try {
         // Increment hits and fetch current value.
-        fetch(`${REGISTER_HIT_ENDPOINT}?slug=${slug}`).then(() => {
+        fetch(`${REGISTERED_HIT_ENDPOINT}?slug=${slug}`).then(() => {
           let blinkTimer
           let blinkCounter = 0
 
