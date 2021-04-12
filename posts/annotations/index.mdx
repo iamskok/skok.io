@@ -14,6 +14,8 @@ import {
   Highlight,
   StrikeThrough,
   CrossedOff,
+  BracketsX,
+  BracketsY,
 } from "../../src/components/Annotation"
 
 Lorem <Underline>ipsum dolor</Underline> sit amet, consectetur adipiscing elit,
@@ -56,12 +58,12 @@ sit.
   quam lacus suspendisse
 </Circle> faucibus interdum posuere lorem ipsum. Imperdiet massa tincidunt sapien
 et ligula ullamcorper malesuada. Et sollicitudin ac orci phasellus egestas. Enim
-diam vulputate ut pharetra sit. Risus pretium quam vulputate dignissim suspendisse
-in est ante. Ac tortor vitae purus faucibus ornare suspendisse. Elit duis tristique
-sollicitudin nibh sit. Libero enim sed faucibus turpis in eu. Purus sit amet volutpat
-consequat. Suscipit tellus mauris a diam maecenas. Bibendum enim facilisis gravida
-neque convallis a cras semper. Ut faucibus pulvinar elementum integer enim neque
-volutpat ac tincidunt. Diam maecenas sed enim ut sem viverra aliquet eget.
+<BracketsX>
+  diam vulputate ut pharetra sit. Risus pretium quam vulputate dignissim
+  suspendisse in est ante. Ac tortor vitae purus faucibus ornare suspendisse.
+  Elit duis tristique sollicitudin nibh sit.{" "}
+</BracketsX>
+Libero enim sed faucibus turpis in eu. Purus sit amet volutpat consequat. <BracketsY>Suscipit tellus mauris a diam maecenas. Bibendum enim facilisis gravida neque convallis a cras semper. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Diam maecenas sed enim ut sem viverra aliquet eget.</BracketsY>
 
 ## Facilisis Sed Odio
 
@@ -75,3 +77,7 @@ senectus et netus et. Vivamus arcu felis</StrikeThrough> bibendum ut tristique e
   elementum eu facilisis sed. Ut tristique et egestas quis ipsum suspendisse.
   Amet justo donec enim diam vulputate ut pharetra.
 </CrossedOff>
+
+Arcu ac <CrossedOff>tortor dignissim convallis aenean.</CrossedOff> Morbi leo urna molestie at
+elementum eu facilisis sed. Ut tristique et egestas quis ipsum suspendisse.
+Amet justo donec enim diam vulputate ut pharetra.

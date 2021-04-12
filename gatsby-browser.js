@@ -42,7 +42,7 @@ const onClientEntry = () => {
       setInactiveFavicon.clear()
 
       // Remove old URL params
-      const oldFaviconPath = oldFavicon.href.split(`?`)[0]
+      const oldFaviconPath = oldFavicon?.href.split(`?`)[0]
       setFavicon(bustCache(oldFaviconPath))
     }
   })

@@ -10,7 +10,6 @@ const inViewOptions = {
 }
 
 const RoughNotationOptions = {
-  multiline: true,
   animationDelay: 200,
   animationDuration: 1200,
 }
@@ -57,6 +56,7 @@ const Underline = props => {
         type="underline"
         show={show}
         color={primary}
+        multiline={true}
         iterations={5}
         {...RoughNotationOptions}
         {...props}
@@ -150,6 +150,7 @@ const Highlight = props => {
         type="highlight"
         show={show}
         color={primary}
+        multiline={true}
         {...RoughNotationOptions}
         {...props}
       />
@@ -219,4 +220,77 @@ const CrossedOff = props => {
   )
 }
 
-export { Underline, Box, Circle, Highlight, StrikeThrough, CrossedOff }
+const BracketsX = props => {
+  const {
+    theme: {
+      colors: { primary },
+    },
+  } = useThemeUI()
+  const { ref, inView } = useInView(inViewOptions)
+  const [show, setShow] = useState()
+
+  useEffect(() => {
+    Promise.all(
+      fontFaces.map(({ font, style }) =>
+        new FontFaceObserver(font, { style }).load()
+      )
+    ).then(() => setShow(inView))
+  }, [inView])
+
+  return (
+    <span ref={ref}>
+      <RoughNotation
+        type="bracket"
+        show={show}
+        color={primary}
+        strokeWidth={3}
+        brackets={["right", "left"]}
+        {...RoughNotationOptions}
+        {...props}
+      />
+    </span>
+  )
+}
+
+const BracketsY = props => {
+  const {
+    theme: {
+      colors: { primary },
+    },
+  } = useThemeUI()
+  const { ref, inView } = useInView(inViewOptions)
+  const [show, setShow] = useState()
+
+  useEffect(() => {
+    Promise.all(
+      fontFaces.map(({ font, style }) =>
+        new FontFaceObserver(font, { style }).load()
+      )
+    ).then(() => setShow(inView))
+  }, [inView])
+
+  return (
+    <span ref={ref}>
+      <RoughNotation
+        type="bracket"
+        show={show}
+        color={primary}
+        strokeWidth={3}
+        brackets={["bottom", "top"]}
+        {...RoughNotationOptions}
+        {...props}
+      />
+    </span>
+  )
+}
+
+export {
+  Underline,
+  Box,
+  Circle,
+  Highlight,
+  StrikeThrough,
+  CrossedOff,
+  BracketsX,
+  BracketsY,
+}
