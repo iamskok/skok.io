@@ -10,6 +10,7 @@ const styles = `
     font-size: 125%;
     height: 100%;
     overflow-y: scroll;
+    scroll-behavior: smooth;
   }
 
   @media (min-width: ${breakpoints[0]}) {

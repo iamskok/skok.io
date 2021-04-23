@@ -1,5 +1,7 @@
 const path = require("path")
+const remarkSlug = require("remark-slug")
 const siteMetadata = require("./site-metadata")
+
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -27,6 +29,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
+        remarkPlugins: [remarkSlug],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,

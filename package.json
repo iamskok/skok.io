@@ -57,10 +57,11 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.0.0",
-    "react-intersection-observer": "^8.31.0",
+    "react-intersection-observer": "^8.31.1",
     "react-live": "^2.2.2",
     "react-rough-notation": "^1.0.1",
     "react-simple-code-editor": "^0.11.0",
+    "remark-slug": "^6.0.0",
     "theme-ui": "0.4.0-rc.5",
     "use-sound": "^1.0.2"
   },

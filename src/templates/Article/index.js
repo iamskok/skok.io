@@ -7,11 +7,13 @@ import useSiteMetadata from "../../hooks/useSiteMetadata"
 import ArticleCover from "../../components/ArticleCover"
 import ArticleMeta from "../../components/ArticleMeta"
 import Pagination from "../../components/Pagination"
+import TableOfContent from "../../components/TableOfContent"
 
 const Article = ({ pageContext, data }) => {
   const { prev, next, slug } = pageContext
   const {
     mdx: {
+      tableOfContents: { items: tocItems },
       body,
       frontmatter: { title, description, date, modifiedDate, cover, coverAlt },
     },
@@ -38,6 +40,7 @@ const Article = ({ pageContext, data }) => {
       pageName="article"
     >
       {cover && coverAlt && <ArticleCover src={cover} alt={coverAlt} />}
+      {tocItems?.length > 0 && <TableOfContent items={tocItems} />}
       <div data-speakable="true">
         <Styled.h1>{title}</Styled.h1>
         <ArticleMeta slug={slug} date={date} />
@@ -57,6 +60,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       id
       body
+      tableOfContents
       frontmatter {
         ...FrontmatterFields
         cover {
