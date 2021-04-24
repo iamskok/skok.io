@@ -1,4 +1,4 @@
 {
-  "*.+(js|jsx)": ["yarn lint:fix"],
-  "*.+(json|md|mdx)": ["yarn prettier:fix"]
+  "*.+(js|jsx)": ["eslint --fix"],
+  "*.+(json|md|mdx|yaml|yml)": ["prettier --write"]
 }
