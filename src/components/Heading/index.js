@@ -2,6 +2,8 @@
 import { jsx } from "theme-ui"
 import { useThemeUI } from "theme-ui"
 
+/* eslint react/display-name: 0 */
+/* eslint react-hooks/rules-of-hooks: 0 */
 const Heading = Tag => props => {
   const { id, children } = props
   const {
@@ -13,7 +15,7 @@ const Heading = Tag => props => {
   if (!id) return <Tag {...props} />
 
   return (
-    <Tag {...props}>
+    <Tag {...props} data-header="true">
       <a
         href={`#${id}`}
         sx={{

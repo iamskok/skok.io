@@ -1,5 +1,6 @@
 const { createFilePath } = require("gatsby-source-filesystem")
 const path = require("path")
+const getArticleHeaderIds = require("./src/utils/get-article-header-ids.js")
 
 const PAGINATION_OFFSET = 20
 
@@ -60,10 +61,13 @@ const createArticles = (createPage, edges) => {
   edges.forEach(({ node }, i) => {
     const {
       fields: { slug: pathName },
+      tableOfContents: { items: tocItems },
     } = node
     const slug = pathName.replace(`/blog/`, ``).replace(`/`, ``)
     const prev = i === 0 ? null : edges[i - 1].node
     const next = i === edges.length - 1 ? null : edges[i + 1].node
+
+    const articleHeaderIds = getArticleHeaderIds(tocItems)
 
     createPage({
       path: pathName,
@@ -73,6 +77,7 @@ const createArticles = (createPage, edges) => {
         slug,
         prev,
         next,
+        articleHeaderIds,
       },
     })
   })
@@ -93,6 +98,7 @@ exports.createPages = ({ actions, graphql }) =>
             fields {
               slug
             }
+            tableOfContents
             frontmatter {
               title
               description

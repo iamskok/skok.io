@@ -3,17 +3,17 @@ import { jsx } from "theme-ui"
 import List from "./List"
 import Link from "./Link"
 
-function renderItems(items, activeId) {
+function renderItems(items, activeHeader) {
   return (
     <List>
       {items.map(({ url, title, items }) => {
-        const isActive = activeId === url.slice(1)
+        const isActive = activeHeader === url.slice(1)
 
         return (
           <li key={url}>
             <Link title={title} url={url} active={isActive} />
 
-            {items && renderItems(items, activeId)}
+            {items && renderItems(items, activeHeader)}
           </li>
         )
       })}

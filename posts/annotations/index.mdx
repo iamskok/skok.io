@@ -19,10 +19,7 @@ import {
 } from "../../src/components/Annotation"
 import TableOfContents from "../../src/components/TableOfContents"
 
-Lorem <Underline>ipsum dolor</Underline> sit amet, consectetur adipiscing elit,
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porta lorem
-
-<TableOfContents items={props.tocItems} />
+<TableOfContents items={props.tocItems} activeHeader={props.tocActiveHeader} />
 
 <Underline>
   mollis aliquam ut. Tempor orci eu lobortis elementum. Eleifend donec pretium
@@ -34,7 +31,7 @@ sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porta lorem
 </Underline> Eget viverra accumsan in nisl nisi. Lectus magna fringilla urna porttitor
 rhoncus dolor purus non. Et sollicitudin ac orci phasellus egestas tellus rutrum.
 Phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Potenti nullam
-ac tortor vitae purus faucibus ornare suspendisse. In nibh mauris cursus mattis molestie
+ac <Underline>ipsum dolor</Underline> tortor vitae purus faucibus ornare suspendisse.
 a. Diam quis enim lobortis scelerisque. Phasellus vestibulum lorem sed risus ultricies
 tristique.
 

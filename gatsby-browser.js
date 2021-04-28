@@ -6,22 +6,35 @@ import setFavicon from "./src/utils/set-favicon"
 import bustCache from "./src/utils/bust-cache"
 import { wrapRootElement } from "./src/components/wrapRootElement"
 
-const onBlogPostScroll = debounce(() => updateBrowserTab(), 200)
+const updateTitlePercent = debounce(() => updateBrowserTab(), 200)
+
+const onBlogPostScrollFactory = ({ headerElements }) => event => {
+  updateTitlePercent(event)
+}
 
 const onRouteUpdate = ({ location }) => {
+  // Keep reference of `onBlogPostScroll` function
+  // Removes the need for extra variable in the outer scope
+  const onBlogPostScroll = onRouteUpdate.onBlogPostScroll
   const blogPostRegex = /\/blog\/.+/
 
+  const headerElements = document.querySelectorAll(`[data-header]`)
+
   if (blogPostRegex.test(location.pathname)) {
-    window.addEventListener(`scroll`, onBlogPostScroll)
+    if (onBlogPostScroll) {
+      window.removeEventListener(`scroll`, onBlogPostScroll)
+    }
+
+    onRouteUpdate.onBlogPostScroll = onBlogPostScrollFactory({ headerElements })
+    window.addEventListener(`scroll`, onRouteUpdate.onBlogPostScroll)
   } else {
     window.removeEventListener(`scroll`, onBlogPostScroll)
-    setThemeFavicon()
   }
+
+  setThemeFavicon()
 }
 
 const onClientEntry = () => {
-  setThemeFavicon()
-
   let visibilityTimer = null
   let oldFavicon = null
 
