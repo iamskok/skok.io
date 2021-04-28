@@ -6,10 +6,7 @@ import Details from "./Details"
 // import useActiveId from "../../hooks/useActiveId"
 import renderItems from "./render-items"
 
-const TableOfContents = ({ items, activeHeader, withIntro }) => {
-  // const idList = getHeaderIds(items)
-  // const activeId = useActiveId(idList)
-
+const TableOfContents = ({ items, activeHeader, hasIntro }) => {
   const introductionItem = {
     url: `#introduction`,
     title: `Introduction`,
@@ -19,7 +16,7 @@ const TableOfContents = ({ items, activeHeader, withIntro }) => {
     <Container>
       <Details>
         {renderItems(
-          withIntro ? [introductionItem, ...items] : items,
+          hasIntro ? [introductionItem, ...items] : items,
           activeHeader
         )}
       </Details>
