@@ -44,7 +44,8 @@ const Article = ({ pageContext, data }) => {
       for (let i = 0; i < allArticleHeaderIds.length; i++) {
         const topHeaderId = allArticleHeaderIds[i]
         const bottomHeaderId = allArticleHeaderIds[i + 1]
-        const topHeaderPosition = document.getElementById(topHeaderId).offsetTop
+        const topHeaderPosition = document.getElementById(topHeaderId)
+          ?.offsetTop
         const bottomHeaderPosition =
           document.getElementById(bottomHeaderId)?.offsetTop || Infinity
 
@@ -57,7 +58,7 @@ const Article = ({ pageContext, data }) => {
       }
     }
 
-    window.addEventListener(`scroll`, throttle(handleScroll, 100))
+    window.addEventListener(`scroll`, throttle(handleScroll, 200))
 
     return () => window.removeEventListener(`scroll`, handleScroll)
   }, [articleHeaderIds])
