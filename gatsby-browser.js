@@ -38,7 +38,7 @@ const onClientEntry = () => {
   let visibilityTimer = null
   let oldFavicon = null
 
-  document.addEventListener("visibilitychange", () => {
+  document.addEventListener(`visibilitychange`, () => {
     if (document.visibilityState === `hidden`) {
       oldFavicon = document.querySelector(`link[rel="icon"]`)
 

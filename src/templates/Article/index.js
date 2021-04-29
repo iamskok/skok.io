@@ -57,7 +57,7 @@ const Article = ({ pageContext, data }) => {
       }
     }
 
-    window.addEventListener(`scroll`, throttle(handleScroll, 200))
+    window.addEventListener(`scroll`, throttle(handleScroll, 100))
 
     return () => window.removeEventListener(`scroll`, handleScroll)
   }, [articleHeaderIds])
