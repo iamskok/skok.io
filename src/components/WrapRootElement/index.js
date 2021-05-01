@@ -1,6 +1,9 @@
 import React from "react"
 import { SoundProvider } from "../SoundProvider"
+import { RefProvider } from "../RefProvider"
 
 export const wrapRootElement = ({ element }) => (
-  <SoundProvider>{element}</SoundProvider>
+  <RefProvider>
+    <SoundProvider>{element}</SoundProvider>
+  </RefProvider>
 )

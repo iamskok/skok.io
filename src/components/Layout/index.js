@@ -21,6 +21,7 @@ const Layout = ({
   breadcrumb,
   date,
   modifiedDate,
+  headerRef,
 }) => {
   const {
     siteUrl,

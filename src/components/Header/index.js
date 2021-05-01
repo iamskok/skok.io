@@ -1,11 +1,14 @@
 /** @jsx jsx */
+import { useContext } from "react"
 import { jsx, Flex } from "theme-ui"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
+import { RefContext } from "../RefProvider"
 import Nav from "./Nav"
 import SideNav from "./SideNav"
 
 const Header = () => {
   const { pages } = useSiteMetadata()
+  const { headerRef } = useContext(RefContext)
 
   const links = Object.keys(pages)
     .map(page => pages[page])
@@ -15,6 +18,7 @@ const Header = () => {
   return (
     <Flex
       as="header"
+      ref={headerRef}
       sx={{
         display: `flex`,
         alignItems: `center`,
