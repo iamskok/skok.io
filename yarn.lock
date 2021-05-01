@@ -3534,6 +3534,13 @@ axios@^0.20.0:
   dependencies:
     follow-redirects "^1.10.0"
 
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  dependencies:
+    follow-redirects "^1.10.0"
+
 axobject-query@^2.1.2, axobject-query@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-2.2.0.tgz#943d47e10c0b704aa42275e20edf3722648989be"
@@ -4602,6 +4609,11 @@ chrome-trace-event@^1.0.2:
   integrity sha512-9e/zx1jw7B4CO+c/RXoCsfg/x1AfUBioy4owYH0bJprEYAx5hRFLRhWBqHAG57D0ZM4H7vxbP7bPe0VwhQRYDQ==
   dependencies:
     tslib "^1.9.0"
+
+ci-env@^1.9.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/ci-env/-/ci-env-1.16.0.tgz#e97f3b5001a8daf7da6e46f418bc6892a238704d"
+  integrity sha512-ucF9caQEX5wQlY449KZBIJPx91+kRg9tJ3tWSc4+KzrvC5KNiPm/3g1noP8VhdI3046+Vw3jLmKAD0fjCRJTmw==
 
 ci-info@2.0.0, ci-info@^2.0.0:
   version "2.0.0"
@@ -7786,12 +7798,12 @@ gatsby-plugin-utils@^0.6.0:
   dependencies:
     joi "^17.2.1"
 
-gatsby-plugin-webpack-size@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-webpack-size/-/gatsby-plugin-webpack-size-1.0.0.tgz#26e3b733b82b70715e6598c7b95cefc96b9986b2"
-  integrity sha512-gq7iQtFa3G2oCZcmGUSOg4WehYWrGVG7VhkkEFLNmipnYynk4038jGrlYQQjMayMwrCFcwoPAzUg5oICj6wpaQ==
+gatsby-plugin-webpack-size@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-webpack-size/-/gatsby-plugin-webpack-size-2.0.0.tgz#256d122256eaa2ca58f78a6add3c11560a3e0f01"
+  integrity sha512-NlI0n8GwmuSa24pc2v42hrO9Ya3244QuiumeE5V8yBYHWKVchNTY7MasQ5blG6wUMroUmp/TosX9mlCPDhXCzA==
   dependencies:
-    size-plugin "^1.2.0"
+    size-plugin "^3.0.0"
 
 gatsby-react-router-scroll@^3.4.0:
   version "3.4.0"
@@ -8603,14 +8615,6 @@ gzip-size@3.0.0:
   integrity sha1-VGGI6b3DN/Zzdy+BZgRks4nc5SA=
   dependencies:
     duplexer "^0.1.1"
-
-gzip-size@^5.0.0:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-5.1.1.tgz#cb9bee692f87c0612b232840a873904e4c135274"
-  integrity sha512-FNHi6mmoHvs1mxZAds4PpdCS6QG8B4C1krxJsMutgxl5t3+GlRTzzI3NEkifXx2pVsOvJdOGSmIgDhQ55FwdPA==
-  dependencies:
-    duplexer "^0.1.1"
-    pify "^4.0.1"
 
 handle-thing@^2.0.0:
   version "2.0.1"
@@ -14451,17 +14455,18 @@ sitemap@^1.13.0:
     underscore "^1.7.0"
     url-join "^1.1.0"
 
-size-plugin@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/size-plugin/-/size-plugin-1.2.0.tgz#7fefcd4c7f2083414f4a7ba1941718db6f709cb4"
-  integrity sha512-lgB1vsrDM17fhmUrsS5vP1Tg+R57+AEMhms2B6iBuI3EHWVNQv3TANqixzwDOcMV5azX6DIqOaPu2+6CWw7b3Q==
+size-plugin@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/size-plugin/-/size-plugin-3.0.0.tgz#9f4a842c27924a46da7d91fc7a62a54f361099c4"
+  integrity sha512-RPMSkgbvmS1e5XUwPNFZre7DLqcK9MhWARIm8UmGLgbUCAs173JLI6DPHco68wvo0cUdft8+GGRaJtNl5RWfew==
   dependencies:
-    chalk "^2.4.1"
+    axios "^0.21.1"
+    chalk "^2.4.2"
+    ci-env "^1.9.0"
     escape-string-regexp "^1.0.5"
-    glob "^7.1.2"
-    gzip-size "^5.0.0"
+    glob "^7.1.4"
     minimatch "^3.0.4"
-    pretty-bytes "^5.1.0"
+    pretty-bytes "^5.3.0"
     util.promisify "^1.0.0"
 
 slash@^3.0.0:
