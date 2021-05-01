@@ -1,16 +1,16 @@
 const handleProgress = ({ headerRef, setProgress }) => {
+  const headerHeight = headerRef.current.clientHeight
+
   const pageScrollOffset = window.scrollY
   const pageTotalHeight = document.body.scrollHeight
   const pageInnerHeight = window.innerHeight
 
-  const scrollPercent =
-    pageScrollOffset < headerRef.current.clientHeight
+  const progress =
+    pageScrollOffset < headerHeight
       ? 0
-      : Math.round(
-          (pageScrollOffset / (pageTotalHeight - pageInnerHeight)) * 100
-        )
+      : pageScrollOffset / (pageTotalHeight - pageInnerHeight)
 
-  setProgress(scrollPercent)
+  setProgress(progress)
 }
 
 export default handleProgress

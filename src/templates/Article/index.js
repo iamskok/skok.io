@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { useEffect, useState, useContext, Fragment } from "react"
-import { jsx, Styled, Progress } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import throttle from "lodash.debounce"
@@ -9,6 +9,7 @@ import useSiteMetadata from "../../hooks/useSiteMetadata"
 import ArticleCover from "../../components/ArticleCover"
 import ArticleMeta from "../../components/ArticleMeta"
 import Pagination from "../../components/Pagination"
+import Progress from "../../components/Progress"
 import { RefContext } from "../../components/RefProvider"
 import handleActiveHeaderId from "./handleActiveHeaderId"
 import handleProgress from "./handleProgress"
@@ -58,16 +59,7 @@ const Article = ({ pageContext, data }) => {
 
   return (
     <Fragment>
-      {Boolean(progress) && (
-        <Progress
-          max={100}
-          value={progress}
-          sx={{
-            position: `fixed`,
-            zIndex: `progress`,
-          }}
-        />
-      )}
+      <Progress value={progress} />
       <Layout
         type={type}
         slug={slug}
