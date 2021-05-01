@@ -1,0 +1,146 @@
+---
+title: Code style and quality tools
+date: 2020-09-11
+published: true
+---
+
+## Tools to improve code style and quality
+
+1. ESLint
+2. Prettier
+3. Stylelint
+4. Commitlint
+5. Husky
+
+## Intro
+
+Well run projects have clear consistent coding conventions, with automated enforcement. Not having coding conventions is also a barrier to on-boarding new engineers.
+
+# [ESLint](https://eslint.org/)
+
+ESLint is an open source JavaScript linting utility originally created by [Nicholas C. Zakas](https://twitter.com/slicknet) in June 2013. Code linting is a type of static analysis that is frequently used to find problematic patterns or code that doesn't adhere to certain style guidelines.
+
+JavaScript, being a dynamic and loosely-typed language, is especially prone to developer error. Without the benefit of a compilation process, JavaScript code is typically executed in order to find syntax or other errors. Linting tools like ESLint allow developers to discover problems with their JavaScript code without executing it.
+
+That's what a parser does. It converts raw code to an [Abstract Syntax Tree (AST)](https://blog.bitsrc.io/what-is-an-abstract-syntax-tree-7502b71bde27), and this AST is used as the medium for lint rules to base on.
+
+## [ESLint Philosophy](https://eslint.org/docs/about/#philosophy)
+
+### Everything is pluggable:
+
+- Rule API is used both by bundled and custom rules
+- Formatter API is used both by bundled and custom formatters
+- Additional rules and formatters can be specified at runtime
+- Rules and formatters don't have to be bundled to be used
+
+### Every rule:
+
+- Is standalone
+- Can be turned off or on (nothing can be deemed "too important to turn off")
+- Can be set to a warning or error individually
+
+## Configuring ESLint
+
+The easiest way to start configuring ESLint is to run `npx eslint --init`. You will be prompted to answer some questions about the project and it will generate `.eslint.json` and install required dependencies.
+
+![Eslint init](/eslint-config.gif)
+
+Starting from here we can tailor ESLint to our needs. Let's have a look at the ESLint configuration for the React app, which is written with JavaScript and TypeScript.
+
+First things first install dependencies:
+
+```sh
+yarn add -D eslint \
+            eslint-plugin-react \
+            eslint-plugin-jsx-a11y \
+            eslint-plugin-react-hooks \
+            eslint-plugin-import \
+            @typescript-eslint/parser \
+            @typescript-eslint/eslint-plugin
+```
+
+1. [`eslint`](https://github.com/eslint/eslint) - core package
+2. [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react) - React specific linting rules for ESLint.
+3. [`eslint-plugin-jsx-a11y`](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y) - Static AST checker for accessibility rules on JSX elements.
+4. [`eslint-plugin-react-hooks`](https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks) - Enforces React [Rules of Hooks](https://reactjs.org/docs/hooks-rules.html).
+5. [`eslint-plugin-import`](https://github.com/benmosher/eslint-plugin-import) - Support for linting ES6+ import/export syntax, and preventing issues with misspelling of file paths and import names.
+6. [`@typescript-eslint/parser`](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser) - Parser which allows ESLint to lint TypeScript source code.
+7. [`@typescript-eslint/eslint-plugin`](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin) - Provides lint rules for TypeScript codebases.
+
+```js
+{
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "env": {
+        "es2020": true,
+        "browser": true,
+    },
+    "plugins": ["import", "jsx-a11y", "react", "react-hooks"],
+    "extends": [
+        "plugin:jsx-a11y/recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended"
+    ],
+    "rules": {
+        "no-console": "error",
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+    },
+    "overrides": [
+        {
+            "files": ["**/*.ts?(x)"],
+            "env": {
+                "es2020": true,
+                "browser": true,
+            },
+            "extends": [
+                "plugin:jsx-a11y/recommended",
+                "plugin:react/recommended",
+                "plugin:react-hooks/recommended",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:@typescript-eslint/eslint-recommended",
+            ],
+            "parser": "@typescript-eslint/parser",
+            "parserOptions": {
+                "ecmaVersion": 2020,
+                "ecmaFeatures": {
+                    "jsx": true
+                },
+                "project": "./tsconfig.json",
+                "sourceType": "module"
+            },
+            "plugins": [
+                "import",
+                "jsx-a11y",
+                "react",
+                "react-hooks",
+                "@typescript-eslint"
+            ],
+            "rules": {
+                "no-console": "error",
+            },
+            "settings": {
+                "react": {
+                    "version": "detect"
+                },
+            },
+        },
+    ],
+}
+```
+
+- `parserOptions` - ESLint allows you to specify the JavaScript language options you want to support. By default, ESLint expects ECMAScript 5 syntax. You can override that setting to enable support for other ECMAScript versions as well as JSX by using parser options.
+- `env` - An [environment](https://eslint.org/docs/user-guide/configuring#specifying-environments) defines global variables that are predefined.
+- `plugins` - ESLint supports the use of third-party plugins. To configure plugins inside of a configuration file we use `plugins`.
+- `extends` - are sets of enabled rules from base configurations.
+- `rules` - can [extend or override](https://eslint.org/docs/user-guide/configuring#extending-configuration-files) the set of rules
+- `settings` - ESLint supports adding shared settings into configuration file. You can add settings object to ESLint configuration file and it will be supplied to every rule that will be executed.
+- `overrides` - for a more fine-grained you can provide configurations that will only apply to files that match specific glob patterns.
