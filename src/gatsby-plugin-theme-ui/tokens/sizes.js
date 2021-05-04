@@ -1,5 +1,6 @@
 const sizes = {
   icon: 24,
+  treeIcon: 28,
   iconButton: 40,
   lineNumber: 42,
   container: 800,

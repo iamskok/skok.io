@@ -1,5 +1,6 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
+/** @jsx themeUiJsx */
+// Rename `jsx` import to avoid name collision with jsx icon.
+import { jsx as themeUiJsx } from "theme-ui"
 import { FcImageFile as ImgIcon } from "react-icons/fc"
 import { AiOutlineFileText as FileIcon } from "react-icons/ai"
 
@@ -58,7 +59,7 @@ const icons = {
       />
     </svg>
   ),
-  react: ({ className }) => (
+  jsx: ({ className }) => (
     <svg
       viewBox="0 0 128 128"
       className={className}

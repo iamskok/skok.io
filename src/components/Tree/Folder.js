@@ -21,14 +21,14 @@ const Folder = ({ children, name, open = true }) => {
           <OpenedFolderIcon
             sx={{
               marginRight: 2,
-              fontSize: theme => theme.sizes.treeIcons,
+              fontSize: theme => theme.sizes.treeIcon,
             }}
           />
         ) : (
           <FolderIcon
             sx={{
               marginRight: 2,
-              fontSize: theme => theme.sizes.treeIcons,
+              fontSize: theme => theme.sizes.treeIcon,
             }}
           />
         )}
