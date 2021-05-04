@@ -7,13 +7,15 @@ import { FcOpenedFolder as OpenedFolderIcon } from "react-icons/fc"
 const Folder = ({ children, name, open = true }) => {
   const [isOpened, setIsOpened] = useState(open)
 
+  const handleClick = () => setIsOpened(!isOpened)
+
   return (
     <Box>
       <Flex
         sx={{
           alignItems: `center`,
         }}
-        onClick={() => setIsOpened(!isOpened)}
+        onClick={handleClick}
       >
         {isOpened ? (
           <OpenedFolderIcon

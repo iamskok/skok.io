@@ -1,21 +1,54 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { RiMarkdownFill as MarkdownIcon } from "react-icons/ri"
-import { RiGatsbyFill as GatsbyIcon } from "react-icons/ri"
 import { FcImageFile as ImgIcon } from "react-icons/fc"
 import { AiOutlineFileText as FileIcon } from "react-icons/ai"
 
 /* eslint react/display-name: 0 */
 const icons = {
-  mdx: MarkdownIcon,
-  image: ImgIcon,
-  file: FileIcon,
+  mdx: ({ className }) => (
+    <svg
+      viewBox="0 0 208 128"
+      className={className}
+      sx={{
+        width: `24px`,
+      }}
+    >
+      <rect
+        width="198"
+        height="118"
+        x="5"
+        y="5"
+        ry="10"
+        stroke="#000"
+        strokeWidth="10"
+        fill="#fff"
+      />
+      <path d="M30 98V30h20l20 25 20-25h20v68H90V59L70 84 50 59v39zm125 0l-30-33h20V30h20v35h20z" />
+    </svg>
+  ),
+  image: ({ className }) => (
+    <ImgIcon
+      className={className}
+      sx={{
+        fontSize: `24px`,
+      }}
+    />
+  ),
+  file: ({ className }) => (
+    <FileIcon
+      className={className}
+      sx={{
+        fontSize: `24px`,
+      }}
+    />
+  ),
   js: ({ className }) => (
     <svg
       viewBox="0 0 128 128"
       className={className}
       sx={{
-        width: 22,
+        width: `24px`,
+        padding: `2px`,
       }}
     >
       <path fill="#f0db4f" d="M1.408 1.408h125.184v125.185h-125.184z" />
@@ -30,7 +63,8 @@ const icons = {
       viewBox="0 0 128 128"
       className={className}
       sx={{
-        width: 25,
+        width: `24px`,
+        padding: `1px`,
       }}
     >
       <g fill="#61dafb">
@@ -41,11 +75,12 @@ const icons = {
   ),
   npm: ({ className }) => (
     <svg
-      width="28"
-      height="16"
       viewBox="0 0 18 7"
       className={className}
-      sx={{ marginTop: `4px` }}
+      sx={{
+        marginTop: `3px`,
+        width: `23px`,
+      }}
     >
       <path
         fill="#cb3837"
@@ -60,7 +95,20 @@ const icons = {
     </svg>
   ),
   gatsby: ({ className }) => (
-    <GatsbyIcon className={className} sx={{ color: `#663399` }} />
+    <svg
+      viewBox="0 0 28 28"
+      className={className}
+      sx={{
+        width: `23px`,
+        padding: `2px`,
+      }}
+    >
+      <circle cx="14" cy="14" r="14" fill="#639" />
+      <path
+        fill="#fff"
+        d="M6.2 21.8C4.1 19.7 3 16.9 3 14.2L13.9 25c-2.8-.1-5.6-1.1-7.7-3.2zm10.2 2.9L3.3 11.6C4.4 6.7 8.8 3 14 3c3.7 0 6.9 1.8 8.9 4.5l-1.5 1.3C19.7 6.5 17 5 14 5c-3.9 0-7.2 2.5-8.5 6L17 22.5c2.9-1 5.1-3.5 5.8-6.5H18v-2h7c0 5.2-3.7 9.6-8.6 10.7z"
+      />
+    </svg>
   ),
 }
 
