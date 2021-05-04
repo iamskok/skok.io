@@ -1,0 +1,69 @@
+---
+title: Tree component
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu iaculis elit.
+date: 2021-05-03
+modifiedDate: 2021-05-03
+published: true
+cover: ./cover.jpg
+coverAlt: SEO image
+---
+
+import Tree from "../../src/components/Tree"
+
+## Folder structure
+
+<Tree>
+  <Tree.folder name="articles">
+    <Tree.folder name="golden-retriver">
+      <Tree.file name="index.mdx" />
+      <Tree.file name="cover.jpg" />
+    </Tree.folder>
+    <Tree.folder name="pug" open={false}>
+      <Tree.file name="index.mdx" />
+      <Tree.file name="cover.jpg" />
+    </Tree.folder>
+    <Tree.folder name="siberian-husky" open={false}>
+      <Tree.file name="index.mdx" />
+      <Tree.file name="cover.jpg" />
+    </Tree.folder>
+  </Tree.folder>
+  <Tree.folder name="src">
+    <Tree.folder name="components" open={false}>
+      <Tree.file name="Layout.jsx" />
+      <Tree.file name="Nav.jsx" />
+      <Tree.file name="SEO.jsx" />
+    </Tree.folder>
+    <Tree.folder name="fragments" open={false}>
+      <Tree.file name="FrontmatterFields.js" />
+      <Tree.file name="ImageUrlFields.js" />
+      <Tree.file name="PageImageFields.js" />
+    </Tree.folder>
+    <Tree.folder name="helpers" open={false}>
+      <Tree.file name="slashify.js" />
+    </Tree.folder>
+    <Tree.folder name="hooks" open={false}>
+      <Tree.file name="useSiteMetadata.js" />
+    </Tree.folder>
+    <Tree.folder name="images" open={false}>
+      <Tree.file name="about.jpg" />
+      <Tree.file name="blog.jpg" />
+      <Tree.file name="contact.jpg" />
+      <Tree.file name="home.jpg" />
+    </Tree.folder>
+    <Tree.folder name="pages">
+      <Tree.file name="about.jsx" />
+      <Tree.file name="blog.jsx" />
+      <Tree.file name="contact.jsx" />
+      <Tree.file name="index.jsx" />
+    </Tree.folder>
+    <Tree.folder name="templates">
+      <Tree.file name="article.jsx" />
+    </Tree.folder>
+  </Tree.folder>
+  <Tree.folder name="static" open={false}>
+    <Tree.file name="logo.jpg" />
+  </Tree.folder>
+  <Tree.file name="gatsby-config.js" />
+  <Tree.file name="gatsby-node.js" />
+  <Tree.file name="package.json" />
+</Tree>
