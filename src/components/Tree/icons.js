@@ -58,7 +58,7 @@ const icons = {
       />
     </svg>
   ),
-  jsx: ({ className }) => (
+  react: ({ className }) => (
     <svg
       viewBox="0 0 128 128"
       className={className}

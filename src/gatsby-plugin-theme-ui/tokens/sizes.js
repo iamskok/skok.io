@@ -5,7 +5,6 @@ const sizes = {
   container: 800,
   tocContainer: 350,
   scrollBar: 4,
-  treeIcons: 28,
 }
 
 export default sizes

@@ -17,6 +17,10 @@ const getLogo = name => {
     return `image`
   }
 
+  if (name.match(/\.jsx$/i)) {
+    return `react`
+  }
+
   return getExtension(name)
 }
 
