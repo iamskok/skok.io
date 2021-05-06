@@ -16212,10 +16212,10 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-use-sound@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/use-sound/-/use-sound-1.0.2.tgz#1a867d284268012b6fbd8610e0594d3f750e2788"
-  integrity sha512-Nj8fsyYYz/09njAumAR04y1YfEf88D8/aicCZjWr7TSb+ekR/qGM+4wLCk0dHZBTiDQSGC+HpoVb3zlgopfkNQ==
+use-sound@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/use-sound/-/use-sound-3.0.0.tgz#54aa483594a05578b65db5bae3486e664b175cb6"
+  integrity sha512-NXNRoHTAYZzFPuN3ZTC/SPw6sBhGbB5bMRnScjeUR58boexiBkffcWgftCULMiXgwXZPZ+qRjUCwUIDaO6hsBw==
   dependencies:
     howler "^2.1.3"
 
