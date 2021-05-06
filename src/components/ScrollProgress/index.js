@@ -1,23 +1,25 @@
 /** @jsx jsx */
-import { useState, useEffect } from "react"
-import { jsx, Progress as ThemeUIProgress } from "theme-ui"
+import { useState, useEffect, useContext } from "react"
+import { jsx, Progress } from "theme-ui"
+import { ScrollContext } from "../ScrollProvider"
 
-const Progress = ({ value }) => {
+const ScrollProgress = () => {
+  const [{ scrollProgress }] = useContext(ScrollContext)
   const [opacity, setOpacity] = useState(0)
 
   useEffect(() => {
-    setOpacity(value > 0 ? 1 : 0)
-  }, [value])
+    setOpacity(scrollProgress > 0 ? 1 : 0)
+  }, [scrollProgress])
 
   return (
-    <ThemeUIProgress
+    <Progress
       max={1}
-      value={value}
+      value={scrollProgress}
       sx={{
         position: `fixed`,
         zIndex: `progress`,
         borderRadius: 0,
-        opacity: opacity,
+        opacity,
         pointerEvents: `none`,
         transition: `opacity 200ms ease`,
         "&::-webkit-progress-bar": {
@@ -34,4 +36,4 @@ const Progress = ({ value }) => {
   )
 }
 
-export default Progress
+export default ScrollProgress

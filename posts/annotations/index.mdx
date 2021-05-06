@@ -19,7 +19,10 @@ import {
 } from "../../src/components/Annotation"
 import TableOfContents from "../../src/components/TableOfContents"
 
-<TableOfContents items={props.tocItems} activeHeader={props.tocActiveHeader} />
+<TableOfContents
+  items={props.tocItems}
+  articleHeaderIds={props.articleHeaderIds}
+/>
 
 <Underline>
   mollis aliquam ut. Tempor orci eu lobortis elementum. Eleifend donec pretium

@@ -1,18 +1,14 @@
 /** @jsx jsx */
-import { useEffect, useState, useContext, Fragment } from "react"
 import { jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import throttle from "lodash.throttle"
-import Layout from "../../components/Layout"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
+import Layout from "../../components/Layout"
 import ArticleCover from "../../components/ArticleCover"
 import ArticleMeta from "../../components/ArticleMeta"
 import Pagination from "../../components/Pagination"
-import Progress from "../../components/Progress"
-import { RefContext } from "../../components/RefProvider"
-import handleActiveHeaderId from "./handleActiveHeaderId"
-import handleProgress from "./handleProgress"
+import ScrollProgress from "../../components/ScrollProgress"
+import { ScrollProvider } from "../../components/ScrollProvider"
 
 const Article = ({ pageContext, data }) => {
   const { prev, next, slug, articleHeaderIds } = pageContext
@@ -30,36 +26,9 @@ const Article = ({ pageContext, data }) => {
     },
   } = useSiteMetadata()
 
-  const [activeHeaderId, setActiveHeaderId] = useState()
-  const [progress, setProgress] = useState(0)
-  const { headerRef } = useContext(RefContext)
-
-  useEffect(() => {
-    const hasIntro = !!document.getElementById(`introduction`)
-    if (hasIntro) {
-      setActiveHeaderId(`introduction`)
-    }
-
-    const handleScroll = throttle(() => {
-      handleActiveHeaderId({
-        hasIntro,
-        articleHeaderIds,
-        setActiveHeaderId,
-      })
-      handleProgress({
-        headerRef,
-        setProgress,
-      })
-    }, 200)
-
-    window.addEventListener(`scroll`, handleScroll)
-
-    return () => window.removeEventListener(`scroll`, handleScroll)
-  }, [articleHeaderIds, headerRef])
-
   return (
-    <Fragment>
-      <Progress value={progress} />
+    <ScrollProvider>
+      <ScrollProgress />
       <Layout
         type={type}
         slug={slug}
@@ -77,7 +46,7 @@ const Article = ({ pageContext, data }) => {
         <div data-speakable="true">
           <Styled.h1>{title}</Styled.h1>
           <ArticleMeta slug={slug} date={date} />
-          <MDXRenderer tocItems={tocItems} tocActiveHeader={activeHeaderId}>
+          <MDXRenderer tocItems={tocItems} articleHeaderIds={articleHeaderIds}>
             {body}
           </MDXRenderer>
         </div>
@@ -85,7 +54,7 @@ const Article = ({ pageContext, data }) => {
           <Pagination previous={prev?.fields?.slug} next={next?.fields?.slug} />
         )}
       </Layout>
-    </Fragment>
+    </ScrollProvider>
   )
 }
 
