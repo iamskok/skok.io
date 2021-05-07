@@ -6,34 +6,30 @@ import Container from "./Container"
 import Details from "./Details"
 import renderItems from "./render-items"
 
-const introductionItem = {
-  url: `#introduction`,
-  title: `Introduction`,
-}
-
-const TableOfContents = ({ items, articleHeaderIds }) => {
+const TableOfContents = ({ items, headerIds }) => {
   const [{ activeHeaderId }, dispatch] = useContext(ScrollContext)
-  const hasIntro = !!document.getElementById(`introduction`)
 
   useEffect(() => {
     dispatch({
-      type: `SET_ARTICLE_HEADER_IDS`,
+      type: `DISABLE_TOC`,
       payload: {
-        articleHeaderIds: hasIntro
-          ? [`introduction`, ...articleHeaderIds]
-          : articleHeaderIds,
+        isTocDisabled: false,
       },
     })
-  }, [dispatch, articleHeaderIds, hasIntro])
+  }, [dispatch])
+
+  useEffect(() => {
+    dispatch({
+      type: `SET_HEADER_IDS`,
+      payload: {
+        headerIds: headerIds,
+      },
+    })
+  }, [dispatch, headerIds])
 
   return (
     <Container>
-      <Details>
-        {renderItems(
-          hasIntro ? [introductionItem, ...items] : items,
-          activeHeaderId
-        )}
-      </Details>
+      <Details>{renderItems(items, activeHeaderId)}</Details>
     </Container>
   )
 }

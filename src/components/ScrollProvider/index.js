@@ -5,15 +5,20 @@ import handleProgress from "./handleProgress"
 
 const reducer = (state, { type, payload }) => {
   switch (type) {
-    case `SET_ARTICLE_HEADER_IDS`:
+    case `SET_HEADER_IDS`:
       return {
         ...state,
-        articleHeaderIds: [...payload.articleHeaderIds],
+        headerIds: [...payload.headerIds],
       }
     case `SET_ACTIVE_HEADER_ID`:
       return {
         ...state,
         activeHeaderId: payload.activeHeaderId,
+      }
+    case `DISABLE_TOC`:
+      return {
+        ...state,
+        isTocDisabled: payload.isTocDisabled,
       }
     case `SET_SCROLL_PROGRESS`:
       return {
@@ -24,8 +29,9 @@ const reducer = (state, { type, payload }) => {
 }
 
 const initialState = {
-  articleHeaderIds: [],
+  headerIds: [],
   activeHeaderId: null,
+  isTocDisabled: true,
   scrollProgress: null,
 }
 
@@ -33,13 +39,23 @@ const ScrollContext = createContext()
 
 const ScrollProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const { articleHeaderIds } = state
+  const { headerIds, isTocDisabled } = state
+
+  useEffect(() => {
+    dispatch({
+      type: `SET_ACTIVE_HEADER_ID`,
+      payload: {
+        activeHeaderId: headerIds[0],
+      },
+    })
+  }, [headerIds])
 
   useEffect(() => {
     const handleScroll = throttle(() => {
       handleActiveHeaderId({
-        articleHeaderIds,
+        headerIds,
         dispatch,
+        isTocDisabled,
       })
       handleProgress({
         elementId: `header`,
@@ -52,7 +68,7 @@ const ScrollProvider = ({ children }) => {
     return () => {
       window.removeEventListener(`scroll`, handleScroll)
     }
-  }, [articleHeaderIds])
+  }, [headerIds, isTocDisabled])
 
   return (
     <ScrollContext.Provider value={[state, dispatch]}>

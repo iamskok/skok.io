@@ -11,10 +11,14 @@ import ScrollProgress from "../../components/ScrollProgress"
 import { ScrollProvider } from "../../components/ScrollProvider"
 
 const Article = ({ pageContext, data }) => {
-  const { prev, next, slug, articleHeaderIds } = pageContext
+  const {
+    prev,
+    next,
+    slug,
+    toc: { ids: headerIds, items: tocItems },
+  } = pageContext
   const {
     mdx: {
-      tableOfContents: { items: tocItems },
       body,
       frontmatter: { title, description, date, modifiedDate, cover, coverAlt },
     },
@@ -46,7 +50,7 @@ const Article = ({ pageContext, data }) => {
         <div data-speakable="true">
           <Styled.h1>{title}</Styled.h1>
           <ArticleMeta slug={slug} date={date} />
-          <MDXRenderer tocItems={tocItems} articleHeaderIds={articleHeaderIds}>
+          <MDXRenderer tocItems={tocItems} headerIds={headerIds}>
             {body}
           </MDXRenderer>
         </div>
@@ -65,7 +69,6 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       id
       body
-      tableOfContents
       frontmatter {
         ...FrontmatterFields
         cover {
