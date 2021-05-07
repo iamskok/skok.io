@@ -15,10 +15,10 @@ const reducer = (state, { type, payload }) => {
         ...state,
         activeHeaderId: payload.activeHeaderId,
       }
-    case `DISABLE_TOC`:
+    case `ENABLE_TOC`:
       return {
         ...state,
-        isTocDisabled: payload.isTocDisabled,
+        isTocEnabled: payload.isTocEnabled,
       }
     case `SET_SCROLL_PROGRESS`:
       return {
@@ -31,7 +31,7 @@ const reducer = (state, { type, payload }) => {
 const initialState = {
   headerIds: [],
   activeHeaderId: null,
-  isTocDisabled: true,
+  isTocEnabled: false,
   scrollProgress: null,
 }
 
@@ -39,7 +39,7 @@ const ScrollContext = createContext()
 
 const ScrollProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const { headerIds, isTocDisabled } = state
+  const { headerIds, isTocEnabled } = state
 
   useEffect(() => {
     dispatch({
@@ -52,15 +52,17 @@ const ScrollProvider = ({ children }) => {
 
   useEffect(() => {
     const handleScroll = throttle(() => {
-      handleActiveHeaderId({
-        headerIds,
-        dispatch,
-        isTocDisabled,
-      })
       handleProgress({
         elementId: `header`,
         dispatch,
       })
+
+      if (isTocEnabled) {
+        handleActiveHeaderId({
+          headerIds,
+          dispatch,
+        })
+      }
     }, 200)
 
     window.addEventListener(`scroll`, handleScroll)
@@ -68,7 +70,7 @@ const ScrollProvider = ({ children }) => {
     return () => {
       window.removeEventListener(`scroll`, handleScroll)
     }
-  }, [headerIds, isTocDisabled])
+  }, [headerIds, isTocEnabled])
 
   return (
     <ScrollContext.Provider value={[state, dispatch]}>

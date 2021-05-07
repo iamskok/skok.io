@@ -11,9 +11,9 @@ const TableOfContents = ({ items, headerIds }) => {
 
   useEffect(() => {
     dispatch({
-      type: `DISABLE_TOC`,
+      type: `ENABLE_TOC`,
       payload: {
-        isTocDisabled: false,
+        isTocEnabled: true,
       },
     })
   }, [dispatch])
