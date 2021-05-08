@@ -21,6 +21,15 @@ const handleActiveHeaderId = ({ headerIds, dispatch }) => {
       })
     }
   }
+
+  // When no match found set first header as active.
+  // Fixes fast scrolling issue when active header is not picked up.
+  dispatch({
+    type: `SET_ACTIVE_HEADER_ID`,
+    payload: {
+      activeHeaderId: headerIds[0],
+    },
+  })
 }
 
 export default handleActiveHeaderId
