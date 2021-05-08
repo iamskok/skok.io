@@ -1,5 +1,6 @@
-import React, { createContext, useReducer, useEffect } from "react"
+import React, { createContext, useReducer, useRef, useEffect } from "react"
 import throttle from "lodash.throttle"
+import useIsMounted from "../../hooks/useIsMounted"
 import handleActiveHeaderId from "./handleActiveHeaderId"
 import handleProgress from "./handleProgress"
 
@@ -39,6 +40,7 @@ const ScrollContext = createContext()
 
 const ScrollProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const isMounted = useIsMounted()
   const { headerIds, isTocEnabled } = state
 
   useEffect(() => {
@@ -52,25 +54,25 @@ const ScrollProvider = ({ children }) => {
 
   useEffect(() => {
     const handleScroll = throttle(() => {
-      handleProgress({
-        elementId: `header`,
-        dispatch,
-      })
-
-      if (isTocEnabled) {
-        handleActiveHeaderId({
-          headerIds,
+      if (isMounted) {
+        handleProgress({
+          elementId: `header`,
           dispatch,
         })
+
+        if (isTocEnabled) {
+          handleActiveHeaderId({
+            headerIds,
+            dispatch,
+          })
+        }
       }
     }, 200)
 
     window.addEventListener(`scroll`, handleScroll)
 
-    return () => {
-      window.removeEventListener(`scroll`, handleScroll)
-    }
-  }, [headerIds, isTocEnabled])
+    return () => window.removeEventListener(`scroll`, handleScroll)
+  }, [headerIds, isTocEnabled, isMounted])
 
   return (
     <ScrollContext.Provider value={[state, dispatch]}>
