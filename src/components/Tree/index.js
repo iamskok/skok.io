@@ -5,7 +5,7 @@ import Folder from "./Folder"
 
 const Tree = ({ children }) => <Box>{children}</Box>
 
-Tree.file = File
-Tree.folder = Folder
+Tree.File = File
+Tree.Folder = Folder
 
 export default Tree
