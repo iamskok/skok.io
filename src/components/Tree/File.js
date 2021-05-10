@@ -2,19 +2,24 @@
 import { jsx, Flex } from "theme-ui"
 import icons from "./icons"
 
-const getExtension = name => name.split(`.`).slice(-1)[0]
+const EXTENSION_REGEX = /(?:\.([^.]+))?$/i
+const GATSBY_REGEX = new RegExp(/gatsby-(node|ssr|browser|config)\.js/i)
+const IMAGE_REGEX = new RegExp(/\.(gif|jpe?g|png|webp)$/i)
+const NPM_STRING = `package.json`
+
+const getExtension = name => EXTENSION_REGEX.exec(name)[1]
 
 const getLogo = name => {
-  if (name.includes(`package.json`)) {
-    return `npm`
-  }
-
-  if (name.includes(`gatsby-`)) {
+  if (name.match(GATSBY_REGEX)) {
     return `gatsby`
   }
 
-  if (name.match(/\.(gif|jpe?g|png|webp)$/i)) {
+  if (name.match(IMAGE_REGEX)) {
     return `image`
+  }
+
+  if (name === NPM_STRING) {
+    return `npm`
   }
 
   return getExtension(name)
