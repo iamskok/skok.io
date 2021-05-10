@@ -2,7 +2,7 @@
 import { jsx, Flex } from "theme-ui"
 import icons from "./icons"
 
-const EXTENSION_REGEX = /(?:\.([^.]+))?$/i
+const EXTENSION_REGEX = new RegExp(/(?:\.([^.]+))?$/i)
 const GATSBY_REGEX = new RegExp(/gatsby-(node|ssr|browser|config)\.js/i)
 const IMAGE_REGEX = new RegExp(/\.(gif|jpe?g|png|webp)$/i)
 const NPM_STRING = `package.json`
