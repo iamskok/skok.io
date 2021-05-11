@@ -22,7 +22,7 @@ const handleActiveHeaderId = ({ headerIds, dispatch }) => {
     }
   }
 
-  // When no match found set first header as active.
+  // When no match found set the first header as active.
   // Fixes fast scrolling issue when active header is not picked up.
   dispatch({
     type: `SET_ACTIVE_HEADER_ID`,
