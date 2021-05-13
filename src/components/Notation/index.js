@@ -34,12 +34,10 @@ const Notation = ({
   } = useThemeUI()
 
   useEffect(() => {
-    if (show) {
-      setShow(show)
-    } else {
-      setShow(isFontListLoaded && inView)
+    if (isFontListLoaded && inView) {
+      setShow(true)
     }
-  }, [inView, isFontListLoaded, show])
+  }, [inView, isFontListLoaded])
 
   return (
     <span ref={ref}>
