@@ -39,7 +39,7 @@ const Notation = ({
     } else {
       setShow(isFontListLoaded && inView)
     }
-  }, [inView, isFontListLoaded, show, setShow])
+  }, [inView, isFontListLoaded, show])
 
   return (
     <span ref={ref}>
