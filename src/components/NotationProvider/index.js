@@ -7,8 +7,10 @@ import React, {
 } from "react"
 import useFontFaceObserver from "use-font-face-observer"
 import { FONTS } from "../../utils/constants"
+import isWindow from "../../utils/is-window"
 
 const { code, body, heading } = FONTS
+// `Article` component font stack.
 const fontFaces = [
   {
     family: heading,
@@ -26,9 +28,8 @@ const fontFaces = [
   },
 ]
 
+// Access `Article` container DOM node.
 const notationRef = createRef()
-const resizeObserverRef = createRef()
-
 const NotationContext = createContext()
 
 const NotationProvider = ({ children }) => {
@@ -39,6 +40,7 @@ const NotationProvider = ({ children }) => {
   // Otherwise we will end up creating `resizeObserver` each time `useEffect` is called.
   const resizeObserver = useMemo(
     () =>
+      isWindow() &&
       new ResizeObserver(entries =>
         setPageHeight(entries[0].target.scrollHeight)
       ),
@@ -49,9 +51,8 @@ const NotationProvider = ({ children }) => {
     // Start observing page height changes (`pageHeight` state) when all of the fonts
     // are loaded (`isFontListLoaded`). Ignore page height changes until all of the
     // fonts are loaded - page height value will change when the fonts are ready.
-    if (!resizeObserverRef.current && isFontListLoaded) {
+    if (isFontListLoaded) {
       resizeObserver.observe(notationRef.current)
-      resizeObserverRef.current = true
     }
 
     return () => resizeObserver.unobserve(notationRef.current)
