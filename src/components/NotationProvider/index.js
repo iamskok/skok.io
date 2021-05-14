@@ -20,8 +20,9 @@ const NotationProvider = ({ children }) => {
   const [pageHeight, setPageHeight] = useState(0)
   const isFontListLoaded = useFontFaceObserver(fontFaces)
 
-  // Memoize `resizeObserver` so we can use it outside of the `useEffect` callback.
-  // Otherwise we will end up creating `resizeObserver` each time `useEffect` is called.
+  // Memoize `resizeObserver` so we can use it outside of the `useEffect`. Otherwise
+  // we will end up defining it inside of the `useEffect` and a new instance of
+  // `resizeObserver` will be created each time `useEffect` callback is executed.
   const resizeObserver = useMemo(
     () =>
       isWindow() &&
@@ -32,9 +33,8 @@ const NotationProvider = ({ children }) => {
   )
 
   useEffect(() => {
-    // Start observing page height changes (`pageHeight` state) when all of the fonts
-    // are loaded (`isFontListLoaded`). Ignore page height changes until all of the
-    // fonts are loaded - page height value will change when the fonts are ready.
+    // Start observing page height changes when all of the fonts will be loaded. Every
+    // newly loaded font will change page height and trigger `pageHeight` state update.
     if (isFontListLoaded) {
       resizeObserver.observe(notationRef.current)
     }

@@ -20,6 +20,9 @@ const Notation = ({
   color = null,
   ...rest
 }) => {
+  // `NotationContext` includes `pageHeight` property that observes page
+  // height changes. Its update triggers component rerender that fixes
+  // `RoughNotation` positioning when the layout is shifted.
   const { isFontListLoaded } = useContext(NotationContext)
   const [show, setShow] = useState(false)
   const { ref, inView } = useInView({
