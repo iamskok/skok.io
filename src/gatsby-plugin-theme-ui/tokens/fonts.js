@@ -1,7 +1,9 @@
-import { FONTS } from "../../utils/constants"
+import { amstelvar, inter, dankMono } from "../fontFaces"
 
 const fonts = {
-  ...FONTS,
+  body: inter[`@font-face`].fontFamily,
+  heading: amstelvar[`@font-face`].fontFamily,
+  code: dankMono[`@font-face`].fontFamily,
 }
 
 export default fonts

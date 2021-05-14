@@ -6,31 +6,15 @@ import React, {
   createRef,
 } from "react"
 import useFontFaceObserver from "use-font-face-observer"
-import { FONTS } from "../../utils/constants"
 import isWindow from "../../utils/is-window"
+import fontFaceDeclarations from "../../gatsby-plugin-theme-ui/fontFaces"
+import getFontFaces from "./get-font-faces"
 
-const { code, body, heading } = FONTS
-// `Article` component font stack.
-const fontFaces = [
-  {
-    family: heading,
-    style: `italic`,
-  },
-  {
-    family: body,
-  },
-  {
-    family: code,
-    style: `italic`,
-  },
-  {
-    family: code,
-  },
-]
-
-// Access `Article` container DOM node.
+// Access `Article` component DOM node.
 const notationRef = createRef()
 const NotationContext = createContext()
+
+const fontFaces = getFontFaces(fontFaceDeclarations)
 
 const NotationProvider = ({ children }) => {
   const [pageHeight, setPageHeight] = useState(0)

@@ -1,12 +1,7 @@
 import React from "react"
 import { Global } from "@emotion/core"
 import { useThemeUI } from "theme-ui"
-import {
-  interFontFace,
-  amstelvarFontFace,
-  dankMonoFontFace,
-  dankMonoItalicFontFace,
-} from "../../gatsby-plugin-theme-ui/fontFaces"
+import fontFaces from "../../gatsby-plugin-theme-ui/fontFaces"
 
 const GlobalStyles = () => {
   const {
@@ -31,13 +26,6 @@ const GlobalStyles = () => {
       height: `100%`,
     },
   }
-
-  const fontFaces = [
-    interFontFace,
-    amstelvarFontFace,
-    dankMonoFontFace,
-    dankMonoItalicFontFace,
-  ]
 
   return <Global styles={[...fontFaces, styles]} />
 }
