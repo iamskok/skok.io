@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Themed } from "theme-ui"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
@@ -48,7 +48,7 @@ const Article = ({ pageContext, data }) => {
       >
         {cover && coverAlt && <ArticleCover src={cover} alt={coverAlt} />}
         <div data-speakable="true">
-          <Styled.h1>{title}</Styled.h1>
+          <Themed.h1>{title}</Themed.h1>
           <ArticleMeta slug={slug} date={date} />
           <MDXRenderer tocItems={tocItems} headerIds={headerIds}>
             {body}

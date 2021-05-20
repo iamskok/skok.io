@@ -1,4 +1,11 @@
 const prism = {
+  ".highlight": {
+    backgroundColor: `primary`,
+    // paddingLeft: 3,
+    // paddingRight: 3,
+    // marginLeft: 3 * -1,
+    // marginRight: 3 * -1,
+  },
   ".changed": {
     color: `codeChanged`,
     fontStyle: `italic`,

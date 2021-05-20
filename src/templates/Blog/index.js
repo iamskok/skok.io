@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Themed } from "theme-ui"
 import { graphql } from "gatsby"
 import Layout from "../../components/Layout"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
@@ -29,7 +29,7 @@ const Blog = ({ data: { file, allMdx }, pageContext: { pagination } }) => {
       breadcrumb={breadcrumb}
       pageName="blog"
     >
-      <Styled.h1>{title}</Styled.h1>
+      <Themed.h1>{title}</Themed.h1>
 
       {articles.map(({ node }) => (
         <BlogCard key={node.id} article={node} />

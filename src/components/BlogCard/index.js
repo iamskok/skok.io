@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Card, Styled } from "theme-ui"
+import { jsx, Card, Themed } from "theme-ui"
 import { useState } from "react"
 import Img from "gatsby-image"
 import Link from "../Link"
@@ -45,7 +45,7 @@ const BlogCard = ({ article }) => {
           />
         )}
 
-        <Styled.h2
+        <Themed.h2
           sx={{
             color: active ? `primary` : `text`,
             marginTop: 0,
@@ -53,16 +53,16 @@ const BlogCard = ({ article }) => {
           }}
         >
           {title}
-        </Styled.h2>
+        </Themed.h2>
 
-        <Styled.p
+        <Themed.p
           sx={{
             color: `text`,
             transition: `color 400ms ease`,
           }}
         >
           {description}
-        </Styled.p>
+        </Themed.p>
       </Card>
     </Link>
   )

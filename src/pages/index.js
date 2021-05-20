@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Flex, Styled } from "theme-ui"
+import { jsx, Flex, Themed } from "theme-ui"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import useSiteMetadata from "../hooks/useSiteMetadata"
@@ -33,7 +33,7 @@ const IndexPage = ({ data }) => {
         }}
         data-speakable="true"
       >
-        <Styled.h1
+        <Themed.h1
           sx={{
             fontSize: 9,
             letterSpacing: 2,
@@ -41,9 +41,9 @@ const IndexPage = ({ data }) => {
           }}
         >
           Hi! My name is Vladimir.
-        </Styled.h1>
+        </Themed.h1>
 
-        <Styled.h2
+        <Themed.h2
           sx={{
             color: `secondary`,
             margin: 0,
@@ -67,7 +67,7 @@ const IndexPage = ({ data }) => {
           </GlitchText>
           {` `}
           on the web.
-        </Styled.h2>
+        </Themed.h2>
       </Flex>
     </Layout>
   )

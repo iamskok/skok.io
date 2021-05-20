@@ -1,53 +1,70 @@
 ---
 title: Code block examples
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu iaculis elit.
-date: 2020-04-23
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+date: 2021-04-11
 published: true
+cover: ./cover.jpg
+coverAlt: Annotations component
+hasIntro: false
+modifiedDate: 2021-04-11
 ---
 
-## API
+Hello world
 
-- Language - first argument (local).
-- Line numbers highlight - object which has the form of `{1-3,5}` (local).
-- `languageTab` - show or hide language icon (local and global).
-- `lineNumbers` - show or hide line numbers (local and global).
-- `lineNumbersButton` - show or hide line numbers button (local and global).
-- `themeToggleButton` - show or hide line numbers button (local and global).
-- `copyButton` - show or hide copy button (local and global).
-- `fileName` - show or hide file name (local).
-- `live` - convert code block to a [react-live](https://github.com/FormidableLabs/react-live) example (local).
-- [`noInline`](https://github.com/FormidableLabs/react-live#api) - doesn’t evaluate and mount the inline code (local).
-- [`disabled`](https://github.com/FormidableLabs/react-live#api) - disable editing on the `<LiveEditor />` (local).
-
-1. Local refers to the settings made on the component level (fenced code block or JSX).
-2. Global refers to the site wide configuration which is handled by `gatsby-config.js`.
-   It can be overwritten by local settings.
-
-## Examples
-
-```jsx {2} noInline=true fileName=thisissomeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeextremelylongfilename.js
-render(<h1>Hello World</h1>)
+```
+Hello
+  I'm
+    pre
+      block
 ```
 
-```js {7-11}
-import styled from 'styled-components';
+```
+Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello
+  I'm
+    pre
+      block
+```
 
-const headerProps = { text: 'I\'m styled!' };
+`console.log('inline code')`
 
-const scope = {styled, headerProps};
+```js
+console.log("xxx")
+console.log("xxx")
+console.log("xxx")
+```
 
-const code = `
-  const Header = styled.div\`
-    color: palevioletred;
-    font-size: 18px;
-  \`
+```js
+;(highlist - start) & (highlight - end)
 
-  render(<Header>{headerProps.text}</Header>)
-`
+// highlight-start
+console.log("xxx")
+// highlight-end
+console.log("xxx")
+```
 
-<LiveProvider code={code} scope={scope} noInline={true}>
-  <LiveEditor />
-  <LiveError />
-  <LivePreview />
-</LiveProvider>
+```js copy=false
+highlight - line
+
+console.log("xxx") // highlight-line
+console.log("xxx")
+```
+
+```js filename=index.js something=else
+console.log("file name")
+```
+
+```js filename=index.js
+console.log('file name') console.log('file name') console.log('file name') console.log('file name') console.log('file name') console.log('file name') console.log('file name') console.log('file name')
+console.log('file name')
+console.log('file name') console.log('file name') console.log('file name') console.log('file name') console.log('file name') console.log('file name') console.log('file name') console.log('file name') // highlight-line
+console.log('file name')
+console.log('file name')
+```
+
+```js filename=index.js
+console.log("file name")
+console.log("file name")
+console.log("file name")
+console.log("file name")
+console.log("file name")
 ```

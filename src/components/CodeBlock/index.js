@@ -1,153 +1,169 @@
 /** @jsx jsx */
-import { jsx, Styled, Box } from "theme-ui"
-import { useState, useContext } from "react"
-import useSound from "use-sound"
-import HighlightCode from "./HighlightCode"
-import ReactLiveEditor from "./ReactLiveEditor"
-import useSiteMetadata from "../../hooks/useSiteMetadata"
-import { SoundContext } from "../SoundProvider"
-import calculateLinesToHighlight from "./calculate-lines-to-highlight"
-import getConfig from "./get-config"
-import getLanguage from "./get-language"
-import CopyButton from "./CopyButton"
-import LineNumbersButton from "./LineNumbersButton"
-import FileName from "./FileName"
-import LanguageTab from "./LanguageTab"
-import scope from "./scope"
-import switchOn from "../../assets/sounds/switch-on.mp3"
+import { useState } from "react"
+import { jsx, Button, Box, Flex } from "theme-ui"
+import Prism from "@theme-ui/prism"
+import { FaClipboardCheck, FaClipboard } from "react-icons/fa"
+import copyToClipboard from "./copy-to-clipboard"
 
-const CodeBlock = ({
-  children,
-  className,
-  metastring,
-  lineNumbers,
-  lineNumbersButton,
-  live,
-  noInline,
-  disabled,
-  copyButton,
-  fileName,
-  languageTab,
-}) => {
+// 1. Copy button
+// 2. Line highlight
+// 3. Line numbers
+// 4. Language tag
+// 5. File title
+
+const highlightCommentRegex = new RegExp(
+  `\/\/ highlight-((start|end)\n|line)`,
+  `g`
+)
+const languageRegex = new RegExp(`language-`, ``)
+// const fileNameRegex = new RegExp(`filename=`, ``)
+
+const getBorderRadius = ({ element, showLanguage, showFilename }) => {
+  if (element === `filename`) {
+    return {
+      borderTopLeftRadius: 2,
+      borderTopRightRadius: showLanguage ? 0 : 2,
+    }
+  } else if (element === `prism`) {
+    return {
+      borderTopLeftRadius: showFilename ? 0 : 2,
+      borderTopRightRadius: showFilename || showLanguage ? 0 : 2,
+      borderBottomLeftRadius: 2,
+      borderBottomRightRadius: 2,
+    }
+  } else {
+    return {}
+  }
+}
+
+// filaname
+// language
+const CodeBlock = props => {
   const {
-    codeBlock: {
-      lineNumbers: globalLineNumbers,
-      lineNumbersButton: globalLineNumbersButton,
-      copyButton: globalCopyButton,
-      languageTab: globalLanguageTab,
-    },
-  } = useSiteMetadata()
+    children,
+    className,
+    filename,
+    copy = true,
+    // id,
+    // showCopy,
+    // showLanguage,
+    metastring,
+    ...rest
+  } = props
 
-  const language = getLanguage(className)
-  const code = children.props.children.trim()
-  const shouldHighlightLine = calculateLinesToHighlight(metastring)
-
-  // Get all enabled features
-  const isLive = getConfig(live)
-  const isNoInline = getConfig(noInline)
-  const isDisabled = getConfig(disabled)
-  const isLineNumbers = getConfig(lineNumbers, globalLineNumbers)
-  const isLineNumbersButton = getConfig(
-    lineNumbersButton,
-    globalLineNumbersButton
-  )
-  const isCopyButton = getConfig(copyButton, globalCopyButton)
-  const isLanguageTab = getConfig(languageTab, globalLanguageTab)
-  const isFileName = !!fileName
-
-  const [sound] = useContext(SoundContext)
-  const [playSwitchOn] = useSound(switchOn)
-
-  const [lineNumbersState, setLineNumbersState] = useState(isLineNumbers)
-  const toggleLineNumbers = () => {
-    setLineNumbersState(!lineNumbersState)
-    sound && playSwitchOn()
-  }
-
-  const [scrollbar, setScrollbar] = useState(false)
-  const addScrollbar = () => {
-    setScrollbar(true)
+  const [isCopied, setIsCopied] = useState(false)
+  const handleCopyClick = () => {
+    setIsCopied(true)
+    copyToClipboard(children.replace(highlightCommentRegex, ``))
     setTimeout(() => {
-      setScrollbar(false)
-    }, 5000)
+      setIsCopied(false)
+    }, 3000)
   }
+  // When language is specified its going to be the first in the list
+  const firstClassName = className?.split(` `)[0]
+  const showLanguage = firstClassName?.match(languageRegex)
+  const language = showLanguage && firstClassName.replace(languageRegex, ``)
+
+  const showFilename = Boolean(filename)
+
+  const showCopyButton = copy === `true` || copy === true
+
+  const filenameBorderRadius = getBorderRadius({
+    element: `filename`,
+    showLanguage,
+  })
+
+  const prismBorderRadius = getBorderRadius({
+    element: `prism`,
+    showLanguage,
+    showFilename,
+  })
 
   return (
-    <div
+    <Flex
       sx={{
-        marginBottom: 4,
+        // display: `flex`,
+        flexDirection: `column`,
         position: `relative`,
+        marginY: 4,
+        // overflowX: `auto`,
       }}
     >
-      {isLanguageTab && !isLive && (
-        <LanguageTab language={getLanguage(className)} />
-      )}
-
-      <div
-        sx={{
-          display: `flex`,
-          flexDirection: `column`,
-          backgroundColor: `muted`,
-        }}
-      >
-        {isFileName && <FileName name={fileName} />}
-        <div
-          sx={{
-            display: `flex`,
-            padding: 1,
-          }}
-        >
+      {showLanguage && (
+        <Box>
           <Box
             sx={{
-              marginLeft: `auto`,
+              float: `right`,
+              paddingX: 3,
+              fontSize: 1,
+              borderTopLeftRadius: 2,
+              borderTopRightRadius: 2,
+              backgroundColor: `muted`,
             }}
           >
-            {isLineNumbersButton && (
-              <LineNumbersButton
-                handleClick={toggleLineNumbers}
-                lineNumbers={lineNumbersState}
-              />
-            )}
-            {isCopyButton && <CopyButton code={code} />}
+            {language}
           </Box>
-        </div>
-      </div>
-      <Styled.pre
-        onScroll={addScrollbar}
+        </Box>
+      )}
+      {showFilename && (
+        <Flex
+          sx={{
+            flex: 1,
+            justifyContent: `center`,
+            fontSize: 1,
+            width: `100%`,
+            textAlign: `center`,
+            backgroundColor: `muted`,
+            ...filenameBorderRadius,
+          }}
+        >
+          {filename}
+        </Flex>
+      )}
+      {showCopyButton && (
+        <Button
+          onClick={handleCopyClick}
+          aria-label={`${isCopied ? `Copied` : `Copy`} code block to clipboard`}
+          sx={{
+            position: `absolute`,
+            top: `30px`,
+            right: `10px`,
+            fontSize: 1,
+            paddingX: 1,
+            paddingY: 1,
+            lineHeight: 0,
+            borderRadius: 2,
+          }}
+        >
+          {isCopied ? <FaClipboardCheck /> : <FaClipboard />}
+        </Button>
+      )}
+      <Box
         sx={{
-          margin: 0,
-          "&::-webkit-scrollbar": {
-            height: `5px`,
-          },
-          "&::-webkit-scrollbar-thumb": {
-            backgroundColor: scrollbar ? `primary` : `rgba(0,0,0,0)`,
-          },
+          overflowX: `auto`,
+          // position: `relative`,
+          // ...containerBorderRadius,
         }}
       >
-        {isLive ? (
-          <ReactLiveEditor
-            code={code}
-            theme={undefined}
-            scope={scope}
-            language={language}
-            metastring={metastring}
-            disabled={isDisabled}
-            noInline={isNoInline}
-            lineNumbers={lineNumbersState}
-            shouldHighlightLine={shouldHighlightLine}
-          />
-        ) : (
-          <HighlightCode
-            code={code}
-            language={language}
-            theme={undefined}
-            metastring={metastring}
-            lineNumbers={lineNumbersState}
-            shouldHighlightLine={shouldHighlightLine}
-          />
-        )}
-      </Styled.pre>
-    </div>
+        <Prism
+          className={className}
+          sx={{
+            marginY: 0,
+            padding: 3,
+            float: `left`,
+            minWidth: `100%`,
+            ...prismBorderRadius,
+            ".highlight": {
+              paddingX: 3,
+              marginX: -3,
+            },
+          }}
+          {...rest}
+        >
+          {children}
+        </Prism>
+      </Box>
+    </Flex>
   )
 }
 

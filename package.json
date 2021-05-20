@@ -29,8 +29,8 @@
     "@mdx-js/mdx": "^1.5.7",
     "@mdx-js/react": "^1.5.7",
     "@philpl/buble": "https://github.com/kitten/buble.git",
-    "@skok/prism-react-renderer": "^1.0.3",
     "@svgr/webpack": "^5.3.1",
+    "@theme-ui/prism": "^0.8.4",
     "babel-eslint": "^10.1.0",
     "dotenv": "^8.2.0",
     "firebase": "^7.23.0",
@@ -46,7 +46,7 @@
     "gatsby-plugin-sharp": "^2.4.7",
     "gatsby-plugin-sitemap": "^2.9.0",
     "gatsby-plugin-svgr-svgo": "^1.0.11",
-    "gatsby-plugin-theme-ui": "0.4.0-rc.5",
+    "gatsby-plugin-theme-ui": "^0.8.4",
     "gatsby-plugin-webpack-size": "^1.0.0",
     "gatsby-remark-images": "^3.1.46",
     "gatsby-source-filesystem": "^2.1.50",
@@ -62,7 +62,7 @@
     "react-rough-notation": "^1.0.1",
     "react-simple-code-editor": "^0.11.0",
     "remark-slug": "^6.0.0",
-    "theme-ui": "0.4.0-rc.5",
+    "theme-ui": "^0.8.4",
     "use-sound": "^1.0.2"
   },
   "devDependencies": {

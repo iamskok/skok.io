@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Themed } from "theme-ui"
 import { Link as GatsbyLink } from "gatsby"
 import { useThemeUI } from "theme-ui"
 
@@ -20,9 +20,9 @@ const Link = ({ children, to, ...rest }) => {
   }
 
   return (
-    <Styled.a href={to} {...rest}>
+    <Themed.a href={to} {...rest}>
       {children}
-    </Styled.a>
+    </Themed.a>
   )
 }
 
