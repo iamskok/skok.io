@@ -5,29 +5,22 @@ import Prism from "@theme-ui/prism"
 import { FaClipboardCheck, FaClipboard } from "react-icons/fa"
 import copyToClipboard from "./copy-to-clipboard"
 
-// 1. Copy button
-// 2. Line highlight
-// 3. Line numbers
-// 4. Language tag
-// 5. File title
-
+const languageRegex = new RegExp(`language-`, ``)
 const highlightCommentRegex = new RegExp(
   `\/\/ highlight-((start|end)\n|line)`,
   `g`
 )
-const languageRegex = new RegExp(`language-`, ``)
-// const fileNameRegex = new RegExp(`filename=`, ``)
 
-const getBorderRadius = ({ element, showLanguage, showFilename }) => {
-  if (element === `filename`) {
+const getBorderRadius = ({ component, showLanguageTab, showFileName }) => {
+  if (component === `FileName`) {
     return {
       borderTopLeftRadius: 2,
-      borderTopRightRadius: showLanguage ? 0 : 2,
+      borderTopRightRadius: showLanguageTab ? 0 : 2,
     }
-  } else if (element === `prism`) {
+  } else if (component === `OverflowHidden`) {
     return {
-      borderTopLeftRadius: showFilename ? 0 : 2,
-      borderTopRightRadius: showFilename || showLanguage ? 0 : 2,
+      borderTopLeftRadius: showFileName ? 0 : 2,
+      borderTopRightRadius: showFileName || showLanguageTab ? 0 : 2,
       borderBottomLeftRadius: 2,
       borderBottomRightRadius: 2,
     }
@@ -36,22 +29,24 @@ const getBorderRadius = ({ element, showLanguage, showFilename }) => {
   }
 }
 
-// filaname
-// language
-const CodeBlock = props => {
-  const {
-    children,
-    className,
-    filename,
-    copy = true,
-    // id,
-    // showCopy,
-    // showLanguage,
-    metastring,
-    ...rest
-  } = props
+const getLanguage = (className, languageRegex) => {
+  const firstClassName = className?.split(` `)[0]
+  const isLanguageClassName = firstClassName?.match(languageRegex)
 
+  return isLanguageClassName ? firstClassName.replace(languageRegex, ``) : null
+}
+
+const CodeBlock = ({
+  children,
+  className,
+  fileName,
+  id,
+  showCopy = true,
+  showLanguage = true,
+  ...rest
+}) => {
   const [isCopied, setIsCopied] = useState(false)
+
   const handleCopyClick = () => {
     setIsCopied(true)
     copyToClipboard(children.replace(highlightCommentRegex, ``))
@@ -59,112 +54,151 @@ const CodeBlock = props => {
       setIsCopied(false)
     }, 3000)
   }
-  // When language is specified its going to be the first in the list
-  const firstClassName = className?.split(` `)[0]
-  const showLanguage = firstClassName?.match(languageRegex)
-  const language = showLanguage && firstClassName.replace(languageRegex, ``)
 
-  const showFilename = Boolean(filename)
+  const language = getLanguage(className, languageRegex)
 
-  const showCopyButton = copy === `true` || copy === true
+  const showLanguageTab =
+    (showLanguage === `true` || showLanguage === true) && Boolean(language)
+  const showFileName = Boolean(fileName)
+  const showCopyButton = showCopy === `true` || showCopy === true
 
-  const filenameBorderRadius = getBorderRadius({
-    element: `filename`,
-    showLanguage,
-  })
+  const borderRadius = {
+    fileName: getBorderRadius({
+      component: `FileName`,
+      showLanguageTab,
+    }),
+    overflowHidden: getBorderRadius({
+      component: `OverflowHidden`,
+      showLanguageTab,
+      showFileName,
+    }),
+  }
 
-  const prismBorderRadius = getBorderRadius({
-    element: `prism`,
-    showLanguage,
-    showFilename,
-  })
+  const elementId = id ? { id } : {}
 
   return (
     <Flex
       sx={{
-        // display: `flex`,
         flexDirection: `column`,
         position: `relative`,
-        marginY: 4,
-        // overflowX: `auto`,
+        marginTop: 5,
+        marginBottom: 4,
+        scrollMarginTop: 5,
       }}
+      {...elementId}
     >
-      {showLanguage && (
-        <Box>
-          <Box
+      <Box>
+        {showLanguageTab && (
+          <LanguageTab
+            language={language}
             sx={{
-              float: `right`,
-              paddingX: 3,
-              fontSize: 1,
-              borderTopLeftRadius: 2,
-              borderTopRightRadius: 2,
-              backgroundColor: `muted`,
+              position: `absolute`,
+              right: 0,
+              transform: `translateY(-100%)`,
             }}
-          >
-            {language}
-          </Box>
-        </Box>
-      )}
-      {showFilename && (
-        <Flex
-          sx={{
-            flex: 1,
-            justifyContent: `center`,
-            fontSize: 1,
-            width: `100%`,
-            textAlign: `center`,
-            backgroundColor: `muted`,
-            ...filenameBorderRadius,
-          }}
-        >
-          {filename}
-        </Flex>
-      )}
-      {showCopyButton && (
-        <Button
-          onClick={handleCopyClick}
-          aria-label={`${isCopied ? `Copied` : `Copy`} code block to clipboard`}
-          sx={{
-            position: `absolute`,
-            top: `30px`,
-            right: `10px`,
-            fontSize: 1,
-            paddingX: 1,
-            paddingY: 1,
-            lineHeight: 0,
-            borderRadius: 2,
-          }}
-        >
-          {isCopied ? <FaClipboardCheck /> : <FaClipboard />}
-        </Button>
-      )}
-      <Box
-        sx={{
-          overflowX: `auto`,
-          // position: `relative`,
-          // ...containerBorderRadius,
-        }}
-      >
-        <Prism
-          className={className}
-          sx={{
-            marginY: 0,
-            padding: 3,
-            float: `left`,
-            minWidth: `100%`,
-            ...prismBorderRadius,
-            ".highlight": {
-              paddingX: 3,
-              marginX: -3,
-            },
-          }}
-          {...rest}
-        >
-          {children}
-        </Prism>
+          />
+        )}
+        {showFileName && (
+          <FileName fileName={fileName} sx={{ ...borderRadius.fileName }} />
+        )}
+        {showCopyButton && (
+          <CopyButton
+            onClick={handleCopyClick}
+            isCopied={isCopied}
+            sx={{
+              position: `absolute`,
+              top: 4,
+              right: 2,
+            }}
+          />
+        )}
       </Box>
+      <OverflowHidden sx={{ ...borderRadius.overflowHidden }}>
+        <Box sx={{ overflowX: `auto` }}>
+          <Prism
+            className={className}
+            sx={{
+              marginY: 0,
+              padding: 3,
+              float: `left`,
+              minWidth: `100%`,
+              ".highlight": {
+                paddingX: 3,
+                marginX: -3,
+              },
+            }}
+            {...rest}
+          >
+            {children}
+          </Prism>
+        </Box>
+      </OverflowHidden>
     </Flex>
   )
 }
+
+const CopyButton = ({ isCopied, onClick, ...rest }) => {
+  const Icon = isCopied ? <FaClipboardCheck /> : <FaClipboard />
+  const ariaLabel = isCopied
+    ? `Code block is copied to clipboard`
+    : `Copy code block to clipboard`
+
+  return (
+    <Button
+      onClick={onClick}
+      aria-label={ariaLabel}
+      sx={{
+        fontSize: 1,
+        paddingX: 1,
+        paddingY: 1,
+        lineHeight: 0,
+        borderRadius: 2,
+      }}
+      {...rest}
+    >
+      {Icon}
+    </Button>
+  )
+}
+
+const LanguageTab = ({ language, ...rest }) => {
+  return (
+    <Box
+      sx={{
+        userSelect: `none`,
+        paddingX: 3,
+        fontSize: 1,
+        borderTopLeftRadius: 2,
+        borderTopRightRadius: 2,
+        backgroundColor: `muted`,
+      }}
+      {...rest}
+    >
+      {language}
+    </Box>
+  )
+}
+
+const FileName = ({ fileName, ...rest }) => (
+  <Flex
+    sx={{
+      flex: 1,
+      justifyContent: `center`,
+      fontSize: 1,
+      width: `100%`,
+      textAlign: `center`,
+      backgroundColor: `muted`,
+    }}
+    {...rest}
+  >
+    {fileName}
+  </Flex>
+)
+
+const OverflowHidden = ({ children, ...rest }) => (
+  <Box sx={{ overflow: `hidden` }} {...rest}>
+    {children}
+  </Box>
+)
 
 export default CodeBlock
