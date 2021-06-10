@@ -1,33 +1,31 @@
 /** @jsx jsx */
-import { useState } from "react"
-import { jsx, Button, Box, Flex } from "theme-ui"
+import { useState, useContext } from "react"
+import { jsx, Box, Flex } from "theme-ui"
 import Prism from "@theme-ui/prism"
-import { FaClipboardCheck, FaClipboard } from "react-icons/fa"
+import useSound from "use-sound"
+import { useThemeUI } from "theme-ui"
 import copyToClipboard from "./copy-to-clipboard"
+import CopyButton from "./copy-button"
+import FileName from "./file-name"
+import LanguageTab from "./language-tab"
+import { SoundContext } from "../SoundProvider"
+import bite from "../../assets/sounds/bite.mp3"
+import {
+  CODE_BLOCK_COPY_CLICK_TIMEOUT as COPY_CLICK_TIMEOUT,
+  CODE_BLOCK_CLASS as CLASS,
+  CODE_BLOCK_CONTAINER_CLASS as CONTAINER_CLASS,
+} from "../../utils/constants"
+
+// @TODO
+// Scroll left/right on arrow press when focused
+// Add focus prop (tabindex)
+// Set theme-ui tokens
 
 const languageRegex = new RegExp(`language-`, ``)
 const highlightCommentRegex = new RegExp(
   `\/\/ highlight-((start|end)\n|line)`,
   `g`
 )
-
-const getBorderRadius = ({ component, showLanguageTab, showFileName }) => {
-  if (component === `FileName`) {
-    return {
-      borderTopLeftRadius: 2,
-      borderTopRightRadius: showLanguageTab ? 0 : 2,
-    }
-  } else if (component === `OverflowHidden`) {
-    return {
-      borderTopLeftRadius: showFileName ? 0 : 2,
-      borderTopRightRadius: showFileName || showLanguageTab ? 0 : 2,
-      borderBottomLeftRadius: 2,
-      borderBottomRightRadius: 2,
-    }
-  } else {
-    return {}
-  }
-}
 
 const getLanguage = (className, languageRegex) => {
   const firstClassName = className?.split(` `)[0]
@@ -36,87 +34,161 @@ const getLanguage = (className, languageRegex) => {
   return isLanguageClassName ? firstClassName.replace(languageRegex, ``) : null
 }
 
+// Set `border-radius` based on the `FileName` presence
+const getBorderRadius = showFileName => ({
+  borderTopLeftRadius: showFileName ? 0 : 2,
+  borderTopRightRadius: showFileName ? 0 : 2,
+  borderBottomLeftRadius: 2,
+  borderBottomRightRadius: 2,
+})
+
 const CodeBlock = ({
   children,
-  className,
+  className: prismClassName,
   fileName,
   id,
   showCopy = true,
   showLanguage = true,
+  setTabIndex = true,
   ...rest
 }) => {
   const [isCopied, setIsCopied] = useState(false)
+  const [sound] = useContext(SoundContext)
+  const [playByte] = useSound(bite)
+
+  const {
+    theme: {
+      colors: { accent: accentColor, primary: primaryColor, gray: grayColor },
+    },
+  } = useThemeUI()
 
   const handleCopyClick = () => {
     setIsCopied(true)
     copyToClipboard(children.replace(highlightCommentRegex, ``))
+
+    if (sound) {
+      playByte()
+    }
+
     setTimeout(() => {
       setIsCopied(false)
-    }, 3000)
+    }, COPY_CLICK_TIMEOUT)
   }
 
-  const language = getLanguage(className, languageRegex)
+  const elementId = id ? { id } : {}
+  const language = getLanguage(prismClassName, languageRegex)
 
   const showLanguageTab =
     (showLanguage === `true` || showLanguage === true) && Boolean(language)
   const showFileName = Boolean(fileName)
   const showCopyButton = showCopy === `true` || showCopy === true
-
-  const borderRadius = {
-    fileName: getBorderRadius({
-      component: `FileName`,
-      showLanguageTab,
-    }),
-    overflowHidden: getBorderRadius({
-      component: `OverflowHidden`,
-      showLanguageTab,
-      showFileName,
-    }),
-  }
-
-  const elementId = id ? { id } : {}
+  const tabIndex = Number(setTabIndex === `true` || setTabIndex === true) - 1
 
   return (
     <Flex
+      tabIndex={tabIndex}
+      className={CLASS}
+      {...elementId}
       sx={{
-        flexDirection: `column`,
         position: `relative`,
+        flexDirection: `column`,
         marginTop: 5,
         marginBottom: 4,
         scrollMarginTop: 5,
+        borderRadius: 2,
+        "&:focus": {
+          ".language-tab": {
+            boxShadow: `0 0 0 2px ${accentColor}`,
+            transition: `box-shadow 200ms ease`,
+          },
+        },
+        "&:focus, &:hover, &:active": {
+          ".copy-button": {
+            opacity: 1,
+          },
+        },
       }}
-      {...elementId}
     >
       <Box>
         {showLanguageTab && (
           <LanguageTab
             language={language}
+            className="language-tab"
             sx={{
               position: `absolute`,
-              right: 0,
-              transform: `translateY(-100%)`,
+              right: 4,
+              transform: `translateY(calc(-100% - 2px))`,
+              "&:after": {
+                content: `""`,
+                width: `100%`,
+                height: `4px`,
+                backgroundColor: `muted`,
+                display: `inline-block`,
+                position: `absolute`,
+                bottom: `-2px`,
+                right: 0,
+              },
             }}
           />
         )}
         {showFileName && (
-          <FileName fileName={fileName} sx={{ ...borderRadius.fileName }} />
+          <FileName
+            fileName={fileName}
+            sx={{
+              borderTopRightRadius: 2,
+              borderTopLeftRadius: 2,
+            }}
+          />
         )}
         {showCopyButton && (
           <CopyButton
             onClick={handleCopyClick}
             isCopied={isCopied}
+            className="copy-button"
             sx={{
               position: `absolute`,
+              zIndex: 1,
               top: 4,
               right: 2,
+              opacity: 0,
+              transition: `opacity 200ms ease`,
             }}
           />
         )}
       </Box>
-      <OverflowHidden sx={{ ...borderRadius.overflowHidden }}>
-        <Box sx={{ overflowX: `auto` }}>
+      <Box
+        sx={{
+          position: `relative`,
+          overflow: `hidden`,
+          ...getBorderRadius(showFileName),
+        }}
+      >
+        <Box
+          // Fix `Firefox` bug when `div` with overflow receives focus
+          // https://bugzilla.mozilla.org/show_bug.cgi?id=1069739
+          // eslint-disable-next-line extra-rules/no-commented-out-code
+          // tabIndex="-1"
+          className={CONTAINER_CLASS}
+          sx={{
+            overflowX: `auto`,
+            scrollbarColor: `${primaryColor} ${grayColor}`,
+            scrollbarWidth: `thin`,
+            "&::-webkit-scrollbar": {
+              height: 6,
+            },
+            "&::-webkit-scrollbar-track": {
+              backgroundColor: `gray`,
+              borderRadius: 2,
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: `primary`,
+              borderRadius: 2,
+            },
+            ...getBorderRadius(showFileName),
+          }}
+        >
           <Prism
-            className={className}
+            className={prismClassName}
             sx={{
               marginY: 0,
               padding: 3,
@@ -132,73 +204,8 @@ const CodeBlock = ({
             {children}
           </Prism>
         </Box>
-      </OverflowHidden>
+      </Box>
     </Flex>
   )
 }
-
-const CopyButton = ({ isCopied, onClick, ...rest }) => {
-  const Icon = isCopied ? <FaClipboardCheck /> : <FaClipboard />
-  const ariaLabel = isCopied
-    ? `Code block is copied to clipboard`
-    : `Copy code block to clipboard`
-
-  return (
-    <Button
-      onClick={onClick}
-      aria-label={ariaLabel}
-      sx={{
-        fontSize: 1,
-        paddingX: 1,
-        paddingY: 1,
-        lineHeight: 0,
-        borderRadius: 2,
-      }}
-      {...rest}
-    >
-      {Icon}
-    </Button>
-  )
-}
-
-const LanguageTab = ({ language, ...rest }) => {
-  return (
-    <Box
-      sx={{
-        userSelect: `none`,
-        paddingX: 3,
-        fontSize: 1,
-        borderTopLeftRadius: 2,
-        borderTopRightRadius: 2,
-        backgroundColor: `muted`,
-      }}
-      {...rest}
-    >
-      {language}
-    </Box>
-  )
-}
-
-const FileName = ({ fileName, ...rest }) => (
-  <Flex
-    sx={{
-      flex: 1,
-      justifyContent: `center`,
-      fontSize: 1,
-      width: `100%`,
-      textAlign: `center`,
-      backgroundColor: `muted`,
-    }}
-    {...rest}
-  >
-    {fileName}
-  </Flex>
-)
-
-const OverflowHidden = ({ children, ...rest }) => (
-  <Box sx={{ overflow: `hidden` }} {...rest}>
-    {children}
-  </Box>
-)
-
 export default CodeBlock

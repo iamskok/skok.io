@@ -1,31 +1,54 @@
 import React from "react"
 import { Global } from "@emotion/core"
+import { useThemeUI } from "theme-ui"
 import fontFaces from "../../gatsby-plugin-theme-ui/fontFaces"
-import breakpoints from "../../gatsby-plugin-theme-ui/tokens/breakpoints"
 
-const styles = `
-  ${fontFaces}
+const GlobalStyles = () => {
+  const {
+    theme: {
+      colors: { accent: accentColor },
+      breakpoints: [tablet],
+      radii: [, borderRadiusSm, borderRadiusMd],
+    },
+  } = useThemeUI()
 
-  html {
-    font-size: 125%;
-    height: 100%;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-  }
-
-  @media (min-width: ${breakpoints[0]}) {
-    html {
-      font-size: 150%;
-    }
-  }
-
-  body,
-  #___gatsby,
-  #gatsby-focus-wrapper {
-    height: 100%;
-  }
-`
-
-const GlobalStyles = () => <Global styles={styles} />
+  return (
+    <Global
+      styles={[
+        ...fontFaces,
+        {
+          "*:focus": {
+            outline: 0,
+            boxShadow: `0 0 0 2px ${accentColor}`,
+            borderRadius: borderRadiusMd,
+            transition: `box-shadow 200ms ease`,
+          },
+          "a, button": {
+            "&:focus": {
+              boxShadow: `0 0 0 2px ${accentColor}`,
+              borderRadius: borderRadiusSm,
+              transition: `box-shadow 200ms ease`,
+            },
+          },
+          html: {
+            fontSize: `125%`,
+            height: `100%`,
+            overflowY: `scroll`,
+            scrollBehavior: `smooth`,
+            [`@media (min-width: ${tablet})`]: {
+              fontSize: `150%`,
+            },
+          },
+          "body, #___gatsby, #gatsby-focus-wrapper": {
+            height: `100%`,
+          },
+          "#gatsby-focus-wrapper": {
+            boxShadow: `none`,
+          },
+        },
+      ]}
+    />
+  )
+}
 
 export default GlobalStyles

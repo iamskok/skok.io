@@ -2,11 +2,13 @@
 import { jsx, Themed } from "theme-ui"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { useKey } from "react-use"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
 import Layout from "../../components/Layout"
 import ArticleCover from "../../components/ArticleCover"
 import ArticleMeta from "../../components/ArticleMeta"
 import Pagination from "../../components/Pagination"
+import scrollCodeBlock from "../../components/CodeBlock/scroller"
 import ScrollProgress from "../../components/ScrollProgress"
 import { ScrollProvider } from "../../components/ScrollProvider"
 
@@ -29,6 +31,9 @@ const Article = ({ pageContext, data }) => {
       article: { type, breadcrumb },
     },
   } = useSiteMetadata()
+
+  useKey("ArrowLeft", event => scrollCodeBlock(event, `left`))
+  useKey("ArrowRight", event => scrollCodeBlock(event, `right`))
 
   return (
     <ScrollProvider>

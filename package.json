@@ -58,9 +58,8 @@
     "react-helmet": "^6.0.0",
     "react-icons": "^4.2.0",
     "react-intersection-observer": "^8.31.1",
-    "react-live": "^2.2.2",
     "react-rough-notation": "^1.0.1",
-    "react-simple-code-editor": "^0.11.0",
+    "react-use": "^17.2.4",
     "remark-slug": "^6.0.0",
     "theme-ui": "^0.8.4",
     "use-sound": "^1.0.2"

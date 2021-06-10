@@ -27,15 +27,19 @@ Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello He
 
 `console.log('inline code')`
 
-```js id=123 showCopy=false showLanguage=false
+```js
+console.log("xxx")
+console.log("xxx") console.log("xxx") console.log("xxx") console.log("xxx") console.log("xxx") console.log("xxx") console.log("xxx") console.log("xxx") console.log("xxx") console.log("xxx") console.log("xxx") console.log("xxx") console.log("xxx") console.log("xxx")
+console.log("xxx")
+```
+
+```js id=123 showCopy=false showLanguage=false setTabIndex=false
 console.log("xxx")
 console.log("xxx")
 console.log("xxx")
 ```
 
-```js
-;(highlist - start) & (highlight - end)
-
+```js setTabIndex=true
 // highlight-start
 console.log("xxx")
 // highlight-end
@@ -61,12 +65,45 @@ console.log('file name')
 console.log('file name')
 ```
 
-```js fileName=index.js
+```js fileName=./src/Components/OverflowHidden/index.js
 console.log("file name")
 console.log("file name")
 console.log("file name")
 console.log("file name")
 console.log("file name")
+```
+
+```python
+import os.path
+from .github_rate_limiter import GithubRateLimiter
+
+load_dotenv()
+
+GITHUB_URL = os.environ.get("GITHUB_URL")
+
+g = Github(GITHUB_ACCESS_TOKEN)
+
+logger = create_logger()
+
+
+def git_sync():
+    state = State()
+    gh_limiter = GithubRateLimiter()
+
+    if not state.is_github_key_added:
+        if is_github_key_added():
+            state.set_attr("is_github_key_added")
+            gh_limiter.update_remaining()
+        else:
+            raise Exception("GitHub key was not added.")
+
+def run():
+    while True:
+        git_sync()
+        if SYNC_TIME:
+            sleep(int(SYNC_TIME))
+        else:
+            break
 ```
 
 [test id](#123)
