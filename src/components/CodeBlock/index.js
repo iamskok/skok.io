@@ -96,6 +96,7 @@ const CodeBlock = ({
         marginBottom: 4,
         scrollMarginTop: 5,
         borderRadius: 2,
+        backgroundColor: `muted`,
         "&:focus": {
           ".language-tab": {
             boxShadow: `0 0 0 2px ${accentColor}`,
@@ -171,6 +172,8 @@ const CodeBlock = ({
           className={CONTAINER_CLASS}
           sx={{
             overflowX: `auto`,
+            overscrollBehaviorY: `none`,
+            WebkitOverflowScrolling: `auto`,
             scrollbarColor: `${primaryColor} ${grayColor}`,
             scrollbarWidth: `thin`,
             "&::-webkit-scrollbar": {
