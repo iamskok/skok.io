@@ -35,6 +35,9 @@ const GlobalStyles = () => {
             height: `100%`,
             overflowY: `scroll`,
             scrollBehavior: `smooth`,
+            // Fix font size adjustment in `CodeBlock` component on iOS
+            // https://stackoverflow.com/a/22417120/3614631
+            textSizeAdjust: `none`,
             [`@media (min-width: ${tablet})`]: {
               fontSize: `150%`,
             },
