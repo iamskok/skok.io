@@ -165,15 +165,13 @@ const CodeBlock = ({
         }}
       >
         <Box
-          // Fix `Firefox` bug when `div` with overflow receives focus
+          // Fix Firefox bug when div with overflow receives focus
           // https://bugzilla.mozilla.org/show_bug.cgi?id=1069739
           // eslint-disable-next-line extra-rules/no-commented-out-code
           // tabIndex="-1"
           className={CONTAINER_CLASS}
           sx={{
-            overflowX: `auto`,
-            overscrollBehaviorY: `none`,
-            WebkitOverflowScrolling: `auto`,
+            overflow: `auto`,
             scrollbarColor: `${primaryColor} ${grayColor}`,
             scrollbarWidth: `thin`,
             "&::-webkit-scrollbar": {
