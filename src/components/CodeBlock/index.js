@@ -148,7 +148,7 @@ const CodeBlock = ({
             className="copy-button"
             sx={{
               position: `absolute`,
-              zIndex: 1,
+              zIndex: `codeBlockCopyButton`,
               top: 4,
               right: 2,
               opacity: 0,

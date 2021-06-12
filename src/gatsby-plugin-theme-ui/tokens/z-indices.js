@@ -1,8 +1,6 @@
 const zIndices = {
-  languageTab: 1,
-  editor: 1,
-  tweatableSelection: 10,
-  progress: 10,
+  codeBlockCopyButton: 100,
+  progress: 1000,
 }
 
 export default zIndices
