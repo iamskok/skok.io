@@ -9,6 +9,8 @@ import lineHeights from "./tokens/line-heights"
 import borderWidths from "./tokens/border-widths"
 import radii from "./tokens/radii"
 import shadows from "./tokens/shadows"
+import transitions from "./tokens/transitions"
+import opacities from "./tokens/opacities"
 import zIndices from "./tokens/z-indices"
 import text from "./variants/text"
 import buttons from "./variants/buttons"
@@ -29,6 +31,8 @@ const theme = {
   borderWidths,
   radii,
   shadows,
+  transitions,
+  opacities,
   zIndices,
   text,
   buttons,

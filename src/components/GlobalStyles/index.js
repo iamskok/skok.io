@@ -17,9 +17,11 @@ const GlobalStyles = () => {
       styles={[
         ...fontFaces,
         {
+          // @TODO not #gatsby-focus-wrapper
           "*:focus": {
             outline: 0,
             boxShadow: `0 0 0 2px ${accentColor}`,
+            // @TODO use theme ui values
             borderRadius: borderRadiusMd,
             transition: `box-shadow 200ms ease`,
           },

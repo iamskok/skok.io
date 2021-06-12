@@ -4,22 +4,18 @@ import { jsx, Box, Flex } from "theme-ui"
 import Prism from "@theme-ui/prism"
 import useSound from "use-sound"
 import { useThemeUI } from "theme-ui"
+import useSiteMetadata from "../../hooks/useSiteMetadata"
 import copyToClipboard from "./copy-to-clipboard"
 import CopyButton from "./copy-button"
 import FileName from "./file-name"
-import LanguageTab from "./language-tab"
+import LanguageLabel from "./language-label"
 import { SoundContext } from "../SoundProvider"
-import bite from "../../assets/sounds/bite.mp3"
+import biteSound from "../../assets/sounds/bite.mp3"
 import {
-  CODE_BLOCK_COPY_CLICK_TIMEOUT as COPY_CLICK_TIMEOUT,
-  CODE_BLOCK_CLASS as CLASS,
-  CODE_BLOCK_CONTAINER_CLASS as CONTAINER_CLASS,
+  CODE_BLOCK_COPY_CLICK_TIMEOUT,
+  CODE_BLOCK_CLASS_NAME,
+  CODE_BLOCK_CONTAINER_CLASS_NAME,
 } from "../../utils/constants"
-
-// @TODO
-// Scroll left/right on arrow press when focused
-// Add focus prop (tabindex)
-// Set theme-ui tokens
 
 const languageRegex = new RegExp(`language-`, ``)
 const highlightCommentRegex = new RegExp(
@@ -35,59 +31,65 @@ const getLanguage = (className, languageRegex) => {
 }
 
 // Set `border-radius` based on the `FileName` presence
-const getBorderRadius = showFileName => ({
-  borderTopLeftRadius: showFileName ? 0 : 2,
-  borderTopRightRadius: showFileName ? 0 : 2,
+const getBorderRadius = isFileNameVisible => ({
+  borderTopLeftRadius: isFileNameVisible ? 0 : 2,
+  borderTopRightRadius: isFileNameVisible ? 0 : 2,
   borderBottomLeftRadius: 2,
   borderBottomRightRadius: 2,
 })
 
-const CodeBlock = ({
-  children,
-  className: prismClassName,
-  fileName,
-  id,
-  showCopy = true,
-  showLanguage = true,
-  setTabIndex = true,
-  ...rest
-}) => {
+const truthyList = [true, `true`]
+
+const CodeBlock = props => {
   const [isCopied, setIsCopied] = useState(false)
   const [sound] = useContext(SoundContext)
-  const [playByte] = useSound(bite)
-
+  const [play] = useSound(biteSound)
   const {
     theme: {
       colors: { accent: accentColor, primary: primaryColor, gray: grayColor },
     },
   } = useThemeUI()
+  const {
+    components: {
+      codeBlock: { isCopy, isLabel, isFocus },
+    },
+  } = useSiteMetadata()
+
+  const {
+    id,
+    children,
+    fileName,
+    className: prismClassName,
+    copy = isCopy,
+    label = isLabel,
+    focus = isFocus,
+    ...rest
+  } = props
+
+  const elementId = id ? { id } : {}
+  const language = getLanguage(prismClassName, languageRegex)
+  const isLanguageLabelVisible = truthyList.includes(label) && Boolean(language)
+  const isFileNameVisible = Boolean(fileName)
+  const isCopyButtonVisible = truthyList.includes(copy)
+  const tabIndex = Number(truthyList.includes(focus)) - 1
 
   const handleCopyClick = () => {
     setIsCopied(true)
     copyToClipboard(children.replace(highlightCommentRegex, ``))
 
     if (sound) {
-      playByte()
+      play()
     }
 
     setTimeout(() => {
       setIsCopied(false)
-    }, COPY_CLICK_TIMEOUT)
+    }, CODE_BLOCK_COPY_CLICK_TIMEOUT)
   }
-
-  const elementId = id ? { id } : {}
-  const language = getLanguage(prismClassName, languageRegex)
-
-  const showLanguageTab =
-    (showLanguage === `true` || showLanguage === true) && Boolean(language)
-  const showFileName = Boolean(fileName)
-  const showCopyButton = showCopy === `true` || showCopy === true
-  const tabIndex = Number(setTabIndex === `true` || setTabIndex === true) - 1
 
   return (
     <Flex
       tabIndex={tabIndex}
-      className={CLASS}
+      className={CODE_BLOCK_CLASS_NAME}
       {...elementId}
       sx={{
         position: `relative`,
@@ -98,23 +100,31 @@ const CodeBlock = ({
         borderRadius: 2,
         backgroundColor: `muted`,
         "&:focus": {
-          ".language-tab": {
+          ".language-label": {
             boxShadow: `0 0 0 2px ${accentColor}`,
-            transition: `box-shadow 200ms ease`,
+            transition: `codeBlockLanguageLabelIsFocused`,
+          },
+          ".copy-button": {
+            opacity: `codeBlockCopyButtonIsFocused`,
           },
         },
-        "&:focus, &:hover, &:active": {
+        "&:hover": {
           ".copy-button": {
-            opacity: 1,
+            opacity: `codeBlockCopyButtonIsHovered`,
+          },
+        },
+        "&:active": {
+          ".copy-button": {
+            opacity: `codeBlockCopyButtonIsActive`,
           },
         },
       }}
     >
       <Box>
-        {showLanguageTab && (
-          <LanguageTab
+        {isLanguageLabelVisible && (
+          <LanguageLabel
             language={language}
-            className="language-tab"
+            className="language-label"
             sx={{
               position: `absolute`,
               right: 4,
@@ -122,7 +132,7 @@ const CodeBlock = ({
               "&:after": {
                 content: `""`,
                 width: `100%`,
-                height: `4px`,
+                height: `codeBlockLanguageLabelAfter`,
                 backgroundColor: `muted`,
                 display: `inline-block`,
                 position: `absolute`,
@@ -132,7 +142,7 @@ const CodeBlock = ({
             }}
           />
         )}
-        {showFileName && (
+        {isFileNameVisible && (
           <FileName
             fileName={fileName}
             sx={{
@@ -141,7 +151,7 @@ const CodeBlock = ({
             }}
           />
         )}
-        {showCopyButton && (
+        {isCopyButtonVisible && (
           <CopyButton
             onClick={handleCopyClick}
             isCopied={isCopied}
@@ -151,8 +161,8 @@ const CodeBlock = ({
               zIndex: `codeBlockCopyButton`,
               top: 4,
               right: 2,
-              opacity: 0,
-              transition: `opacity 200ms ease`,
+              opacity: `codeBlockCopyButton`,
+              transition: `codeBlockCopyButton`,
             }}
           />
         )}
@@ -161,7 +171,7 @@ const CodeBlock = ({
         sx={{
           position: `relative`,
           overflow: `hidden`,
-          ...getBorderRadius(showFileName),
+          ...getBorderRadius(isFileNameVisible),
         }}
       >
         <Box
@@ -169,13 +179,13 @@ const CodeBlock = ({
           // https://bugzilla.mozilla.org/show_bug.cgi?id=1069739
           // eslint-disable-next-line extra-rules/no-commented-out-code
           // tabIndex="-1"
-          className={CONTAINER_CLASS}
+          className={CODE_BLOCK_CONTAINER_CLASS_NAME}
           sx={{
             overflow: `auto`,
             scrollbarColor: `${primaryColor} ${grayColor}`,
             scrollbarWidth: `thin`,
             "&::-webkit-scrollbar": {
-              height: 6,
+              height: `codeBlockScrollBar`,
             },
             "&::-webkit-scrollbar-track": {
               backgroundColor: `gray`,
@@ -185,7 +195,7 @@ const CodeBlock = ({
               backgroundColor: `primary`,
               borderRadius: 2,
             },
-            ...getBorderRadius(showFileName),
+            ...getBorderRadius(isFileNameVisible),
           }}
         >
           <Prism

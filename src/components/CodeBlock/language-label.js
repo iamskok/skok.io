@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box } from "theme-ui"
 
-const LanguageTab = ({ language, ...rest }) => (
+const LanguageLabel = ({ language, ...rest }) => (
   <Box
     sx={{
       userSelect: `none`,
@@ -17,4 +17,4 @@ const LanguageTab = ({ language, ...rest }) => (
   </Box>
 )
 
-export default LanguageTab
+export default LanguageLabel

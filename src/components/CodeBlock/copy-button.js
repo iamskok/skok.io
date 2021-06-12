@@ -13,12 +13,12 @@ const CopyButton = ({ isCopied, onClick, ...rest }) => {
       onClick={onClick}
       aria-label={ariaLabel}
       sx={{
-        fontSize: 1,
+        fontSize: 2,
         paddingX: 1,
         paddingY: 1,
         lineHeight: 0,
         "&:focus": {
-          opacity: 1,
+          opacity: `codeBlockCopyButtonIsFocused`,
         },
       }}
       {...rest}

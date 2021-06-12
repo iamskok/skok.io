@@ -1,17 +1,20 @@
 import {
-  CODE_BLOCK_CLASS as CLASS,
-  CODE_BLOCK_CONTAINER_CLASS as CONTAINER_CLASS,
-  CODE_BLOCK_SCROLL_STEP as SCROLL_STEP,
+  CODE_BLOCK_CLASS_NAME,
+  CODE_BLOCK_CONTAINER_CLASS_NAME,
+  CODE_BLOCK_SCROLL_STEP,
 } from "../../utils/constants"
 
 const isEventTargetClass = (event, className) =>
   Boolean(event?.target?.classList?.contains(className))
 
 const scroll = (event, direction) => {
-  const scrollStep = direction === `left` ? -1 * SCROLL_STEP : SCROLL_STEP
+  const scrollStep =
+    direction === `left` ? -1 * CODE_BLOCK_SCROLL_STEP : CODE_BLOCK_SCROLL_STEP
 
-  if (isEventTargetClass(event, CLASS)) {
-    event.target.querySelector(`.${CONTAINER_CLASS}`).scrollLeft += scrollStep
+  if (isEventTargetClass(event, CODE_BLOCK_CLASS_NAME)) {
+    event.target.querySelector(
+      `.${CODE_BLOCK_CONTAINER_CLASS_NAME}`
+    ).scrollLeft += scrollStep
   }
 }
 

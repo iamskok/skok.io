@@ -61,15 +61,16 @@ const useSiteMetadata = () => {
               }
             }
             colorModes
-            codeBlock {
-              lineNumbers
-              lineNumbersButton
-              copyButton
-              languageTab
-            }
             favicons {
               light
               dark
+            }
+            components {
+              codeBlock {
+                isCopy
+                isFocus
+                isLabel
+              }
             }
           }
         }

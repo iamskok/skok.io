@@ -51,17 +51,18 @@ module.exports = {
     },
   },
   copyrightYear: new Date().getFullYear(),
-  codeBlock: {
-    lineNumbers: true,
-    lineNumbersButton: true,
-    copyButton: true,
-    languageTab: true,
-  },
   colorModes: [`default`, `light`],
   favicons: {
     checkmarkEmoji: `/favicon-checkmark-emoji.svg`,
     eyesEmoji: `/favicon-eyes-emoji.svg`,
     light: `/favicon-light.svg`,
     dark: `/favicon-dark.svg`,
+  },
+  components: {
+    codeBlock: {
+      isCopy: true,
+      isFocus: true,
+      isLabel: true,
+    },
   },
 }
