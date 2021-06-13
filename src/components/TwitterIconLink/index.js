@@ -34,6 +34,7 @@ const TwitterIconLink = () => {
         height: `iconButton`,
         color: highlight ? `secondary` : `primary`,
         transition: `color 400ms ease`,
+        borderRadius: 1,
       }}
     >
       <svg

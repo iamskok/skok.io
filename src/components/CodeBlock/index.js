@@ -3,19 +3,19 @@ import { useState, useContext } from "react"
 import { jsx, Box, Flex } from "theme-ui"
 import Prism from "@theme-ui/prism"
 import useSound from "use-sound"
-import { useThemeUI } from "theme-ui"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
-import copyToClipboard from "./copy-to-clipboard"
-import CopyButton from "./copy-button"
-import FileName from "./file-name"
-import LanguageLabel from "./language-label"
-import { SoundContext } from "../SoundProvider"
 import biteSound from "../../assets/sounds/bite.mp3"
+import { isFirefox } from "../../utils/user-agent"
 import {
   CODE_BLOCK_COPY_CLICK_TIMEOUT,
   CODE_BLOCK_CLASS_NAME,
   CODE_BLOCK_CONTAINER_CLASS_NAME,
 } from "../../utils/constants"
+import { SoundContext } from "../SoundProvider"
+import copyToClipboard from "./copy-to-clipboard"
+import CopyButton from "./copy-button"
+import FileName from "./file-name"
+import LanguageLabel from "./language-label"
 
 const languageRegex = new RegExp(`language-`, ``)
 const highlightCommentRegex = new RegExp(
@@ -30,7 +30,7 @@ const getLanguage = (className, languageRegex) => {
   return isLanguageClassName ? firstClassName.replace(languageRegex, ``) : null
 }
 
-// Set `border-radius` based on the `FileName` presence
+// Calculate border radius styles based on the `FileName` presence
 const getBorderRadius = isFileNameVisible => ({
   borderTopLeftRadius: isFileNameVisible ? 0 : 2,
   borderTopRightRadius: isFileNameVisible ? 0 : 2,
@@ -44,11 +44,6 @@ const CodeBlock = props => {
   const [isCopied, setIsCopied] = useState(false)
   const [sound] = useContext(SoundContext)
   const [play] = useSound(biteSound)
-  const {
-    theme: {
-      colors: { accent: accentColor, primary: primaryColor, gray: grayColor },
-    },
-  } = useThemeUI()
   const {
     components: {
       codeBlock: { isCopy, isLabel, isFocus },
@@ -66,7 +61,6 @@ const CodeBlock = props => {
     ...rest
   } = props
 
-  const elementId = id ? { id } : {}
   const language = getLanguage(prismClassName, languageRegex)
   const isLanguageLabelVisible = truthyList.includes(label) && Boolean(language)
   const isFileNameVisible = Boolean(fileName)
@@ -90,7 +84,7 @@ const CodeBlock = props => {
     <Flex
       tabIndex={tabIndex}
       className={CODE_BLOCK_CLASS_NAME}
-      {...elementId}
+      {...(id && { id })}
       sx={{
         position: `relative`,
         flexDirection: `column`,
@@ -101,7 +95,7 @@ const CodeBlock = props => {
         backgroundColor: `muted`,
         "&:focus": {
           ".language-label": {
-            boxShadow: `0 0 0 2px ${accentColor}`,
+            boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
             transition: `codeBlockLanguageLabelIsFocused`,
           },
           ".copy-button": {
@@ -175,14 +169,14 @@ const CodeBlock = props => {
         }}
       >
         <Box
-          // Fix Firefox bug when div with overflow receives focus
+          // `div` with overflow styles receives focus in Firefox browser.
           // https://bugzilla.mozilla.org/show_bug.cgi?id=1069739
-          // eslint-disable-next-line extra-rules/no-commented-out-code
-          // tabIndex="-1"
+          {...(isFirefox && { tabIndex: `-1` })}
           className={CODE_BLOCK_CONTAINER_CLASS_NAME}
           sx={{
             overflow: `auto`,
-            scrollbarColor: `${primaryColor} ${grayColor}`,
+            scrollbarColor: ({ colors: { primary, gray } }) =>
+              `${primary} ${gray}`,
             scrollbarWidth: `thin`,
             "&::-webkit-scrollbar": {
               height: `codeBlockScrollBar`,

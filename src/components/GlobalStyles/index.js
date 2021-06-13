@@ -8,7 +8,6 @@ const GlobalStyles = () => {
     theme: {
       colors: { accent: accentColor },
       breakpoints: [tablet],
-      radii: [, borderRadiusSm, borderRadiusMd],
     },
   } = useThemeUI()
 
@@ -17,38 +16,27 @@ const GlobalStyles = () => {
       styles={[
         ...fontFaces,
         {
-          // @TODO not #gatsby-focus-wrapper
           "*:focus": {
             outline: 0,
-            boxShadow: `0 0 0 2px ${accentColor}`,
-            // @TODO use theme ui values
-            borderRadius: borderRadiusMd,
-            transition: `box-shadow 200ms ease`,
-          },
-          "a, button": {
-            "&:focus": {
+            "&:not(#gatsby-focus-wrapper)": {
               boxShadow: `0 0 0 2px ${accentColor}`,
-              borderRadius: borderRadiusSm,
               transition: `box-shadow 200ms ease`,
             },
           },
           html: {
+            // Fix font size adjustment in `CodeBlock` component on iOS
+            // https://stackoverflow.com/a/22417120/3614631
+            textSizeAdjust: `none`,
             fontSize: `125%`,
             height: `100%`,
             overflowY: `scroll`,
             scrollBehavior: `smooth`,
-            // Fix font size adjustment in `CodeBlock` component on iOS
-            // https://stackoverflow.com/a/22417120/3614631
-            textSizeAdjust: `none`,
             [`@media (min-width: ${tablet})`]: {
               fontSize: `150%`,
             },
           },
           "body, #___gatsby, #gatsby-focus-wrapper": {
             height: `100%`,
-          },
-          "#gatsby-focus-wrapper": {
-            boxShadow: `none`,
           },
         },
       ]}

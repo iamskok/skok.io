@@ -4,6 +4,8 @@ const links = {
     textDecoration: `none`,
     textTransform: `uppercase`,
     marginRight: 3,
+    borderRadius: 1,
+    padding: 2,
   },
 }
 

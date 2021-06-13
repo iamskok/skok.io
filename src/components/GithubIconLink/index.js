@@ -34,6 +34,7 @@ const GithubIconLink = () => {
         marginX: 0,
         color: highlight ? `secondary` : `primary`,
         transition: `color 400ms ease`,
+        borderRadius: 1,
       }}
     >
       <svg
