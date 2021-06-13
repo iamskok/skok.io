@@ -91,8 +91,8 @@ const CodeBlock = props => {
         marginTop: 5,
         marginBottom: 4,
         scrollMarginTop: 5,
-        borderRadius: 2,
         backgroundColor: `muted`,
+        borderRadius: 2,
         "&:focus": {
           ".language-label": {
             boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
@@ -125,13 +125,13 @@ const CodeBlock = props => {
               transform: `translateY(calc(-100% - 2px))`,
               "&:after": {
                 content: `""`,
-                width: `100%`,
-                height: `codeBlockLanguageLabelAfter`,
-                backgroundColor: `muted`,
-                display: `inline-block`,
                 position: `absolute`,
                 bottom: `-2px`,
                 right: 0,
+                display: `inline-block`,
+                width: `100%`,
+                height: `codeBlockLanguageLabelAfter`,
+                backgroundColor: `muted`,
               },
             }}
           />
@@ -152,9 +152,9 @@ const CodeBlock = props => {
             className="copy-button"
             sx={{
               position: `absolute`,
-              zIndex: `codeBlockCopyButton`,
               top: 4,
               right: 2,
+              zIndex: `codeBlockCopyButton`,
               opacity: `codeBlockCopyButton`,
               transition: `codeBlockCopyButton`,
             }}
@@ -195,13 +195,13 @@ const CodeBlock = props => {
           <Prism
             className={prismClassName}
             sx={{
+              float: `left`,
               marginY: 0,
               padding: 3,
-              float: `left`,
               minWidth: `100%`,
               ".highlight": {
-                paddingX: 3,
                 marginX: -3,
+                paddingX: 3,
               },
             }}
             {...rest}
