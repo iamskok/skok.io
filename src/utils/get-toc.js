@@ -16,7 +16,7 @@ const getHeaderIds = (items = []) =>
     return acc
   }, [])
 
-const getToc = (items, hasIntro) => {
+const getToc = (items = [], hasIntro) => {
   const allItems = hasIntro ? [INTRODUCTION_ITEM, ...items] : items
 
   return {

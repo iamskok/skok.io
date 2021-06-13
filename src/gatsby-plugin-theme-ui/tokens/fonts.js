@@ -1,7 +1,9 @@
+import { amstelvar, inter, dankMono } from "../fontFaces"
+
 const fonts = {
-  body: `'Inter var'`,
-  heading: `'Amstelvar'`,
-  code: `'Dank Mono'`,
+  body: inter[`@font-face`].fontFamily,
+  heading: amstelvar[`@font-face`].fontFamily,
+  code: dankMono[`@font-face`].fontFamily,
 }
 
 export default fonts

@@ -9,6 +9,7 @@ const GlobalStyles = () => {
       colors: { accent },
       breakpoints: [tablet],
       transitions: { globalStyles: transition },
+      opacities: { globalStyles: opacity },
     },
   } = useThemeUI()
 
@@ -22,6 +23,7 @@ const GlobalStyles = () => {
             "&:not(#gatsby-focus-wrapper)": {
               boxShadow: `0 0 0 2px ${accent}`,
               transition,
+              opacity,
             },
           },
           html: {
