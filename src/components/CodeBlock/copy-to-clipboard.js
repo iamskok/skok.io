@@ -1,7 +1,7 @@
 const copyToClipboard = str => {
   const clipboard = window.navigator.clipboard
 
-  // `navigator.clipboard` fallback
+  // Fallback for older browsers
   if (!clipboard || typeof clipboard.writeText !== `function`) {
     const textarea = document.createElement(`textarea`)
 

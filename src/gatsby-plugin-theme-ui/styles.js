@@ -56,15 +56,11 @@ export default {
   },
   pre: {
     variant: `text.code`,
-    // marginBottom: 4,
     color: `secondary`,
     backgroundColor: `muted`,
-    // overflowX: `auto`,
   },
   code: {
     variant: `text.code`,
-    // float: `left`,
-    // minWidth: `100%`,
     ...prism,
   },
   inlineCode: {

@@ -29,7 +29,7 @@ const GlobalStyles = () => {
           html: {
             fontSize: `125%`,
             scrollBehavior: `smooth`,
-            // Disable font size adjustment in `CodeBlock` component on iOS
+            // Fixes font size issue in `CodeBlock` component on iOS
             // https://stackoverflow.com/a/22417120/3614631
             textSizeAdjust: `none`,
             [`@media (min-width: ${tablet})`]: {

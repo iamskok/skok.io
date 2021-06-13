@@ -23,14 +23,13 @@ const highlightCommentRegex = new RegExp(
   `g`
 )
 
-const getLanguage = (className, languageRegex) => {
+const getLanguage = (className, regex = languageRegex) => {
   const firstClassName = className?.split(` `)[0]
-  const isLanguageClassName = firstClassName?.match(languageRegex)
+  const isLanguageClassName = firstClassName?.match(regex)
 
-  return isLanguageClassName ? firstClassName.replace(languageRegex, ``) : null
+  return isLanguageClassName ? firstClassName.replace(regex, ``) : null
 }
 
-// Calculate border radius styles based on the `FileName` presence
 const getBorderRadius = isFileNameVisible => ({
   borderTopLeftRadius: isFileNameVisible ? 0 : 2,
   borderTopRightRadius: isFileNameVisible ? 0 : 2,
@@ -61,7 +60,7 @@ const CodeBlock = props => {
     ...rest
   } = props
 
-  const language = getLanguage(prismClassName, languageRegex)
+  const language = getLanguage(prismClassName)
   const isLanguageLabelVisible = truthyList.includes(label) && Boolean(language)
   const isFileNameVisible = Boolean(fileName)
   const isCopyButtonVisible = truthyList.includes(copy)
@@ -169,8 +168,9 @@ const CodeBlock = props => {
         }}
       >
         <Box
-          // `div` with overflow styles receives focus in Firefox browser.
+          // `div` with overflow receives focus in Firefox
           // https://bugzilla.mozilla.org/show_bug.cgi?id=1069739
+          // Conditioanlly remove element from the tab order
           {...(isFirefox && { tabIndex: `-1` })}
           className={CODE_BLOCK_CONTAINER_CLASS_NAME}
           sx={{
