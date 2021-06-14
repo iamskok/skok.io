@@ -33,7 +33,7 @@ const TwitterIconLink = () => {
         width: `iconButton`,
         height: `iconButton`,
         color: highlight ? `secondary` : `primary`,
-        transition: `color 400ms ease`,
+        transition: `twitterIconLink`,
         borderRadius: 1,
       }}
     >

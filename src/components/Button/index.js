@@ -13,7 +13,7 @@ const StyledButton = ({ children }) => {
       onTouchEnd={removeBackgroundColor}
       sx={{
         backgroundColor: touchStart ? `secondary` : `primary`,
-        transition: `background-color 400ms ease`,
+        transition: `button`,
       }}
     >
       {children}

@@ -33,7 +33,7 @@ const GithubIconLink = () => {
         height: `iconButton`,
         marginX: 0,
         color: highlight ? `secondary` : `primary`,
-        transition: `color 400ms ease`,
+        transition: `githubIconLink`,
         borderRadius: 1,
       }}
     >

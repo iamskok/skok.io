@@ -5,7 +5,7 @@ const Introduction = ({ children }) => (
   <Box
     id="introduction"
     sx={{
-      scrollMarginTop: theme => theme.space[3],
+      scrollMarginTop: 3,
     }}
   >
     {children}

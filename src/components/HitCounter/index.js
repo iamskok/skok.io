@@ -79,7 +79,7 @@ const HitCounter = ({ slug }) => {
         flexDirection: `row`,
         alignItems: `center`,
         backgroundColor: blink ? `primary` : `transparent`,
-        transition: `background-color 400ms ease`,
+        transition: `hitCounter`,
         borderRadius: 1,
       }}
     >

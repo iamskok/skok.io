@@ -6,6 +6,9 @@ const Details = ({ children }) => (
     <summary
       sx={{
         cursor: `pointer`,
+        padding: 1,
+        margin: -1,
+        borderRadius: 1,
       }}
     >
       Table of Contents{` `}
