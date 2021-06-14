@@ -17,7 +17,7 @@ import CopyButton from "./copy-button"
 import FileName from "./file-name"
 import LanguageLabel from "./language-label"
 
-const languageRegex = new RegExp(`language-`, ``)
+const languageRegex = new RegExp(`language-`)
 const highlightCommentRegex = new RegExp(
   `\/\/ highlight-((start|end)\n|line)`,
   `g`
@@ -171,7 +171,7 @@ const CodeBlock = props => {
           // `div` with overflow receives focus in Firefox
           // https://bugzilla.mozilla.org/show_bug.cgi?id=1069739
           // Conditioanlly remove element from the tab order
-          {...(isFirefox && { tabIndex: `-1` })}
+          {...(isFirefox() && { tabIndex: `-1` })}
           className={CODE_BLOCK_CONTAINER_CLASS_NAME}
           sx={{
             overflow: `auto`,
