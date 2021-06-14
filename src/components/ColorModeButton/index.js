@@ -1,60 +1,92 @@
 /** @jsx jsx */
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect, useRef } from "react"
 import { jsx, IconButton, useColorMode } from "theme-ui"
 import useSound from "use-sound"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
-import { SoundContext } from "../SoundProvider"
-import switchOn from "../../assets/sounds/switch-on.mp3"
 import setFavicon from "../../utils/set-favicon"
+import isWindow from "../../utils/is-window"
+import switchOnSound from "../../assets/sounds/switch-on.mp3"
+import { SoundContext } from "../SoundProvider"
+
+const styleElement = isWindow() && document.createElement(`style`)
+
+const disableTransitions = () => {
+  styleElement.appendChild(
+    document.createTextNode(
+      `*:not(.color-mode-button-svg) {
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -o-transition: none !important;
+        -ms-transition: none !important;
+        transition: none !important;
+      }`
+    )
+  )
+
+  document.head.appendChild(styleElement)
+}
+
+const enableTransitions = () => styleElement?.remove()
 
 const ColorModeButton = props => {
   const [sound] = useContext(SoundContext)
-  const [playSwitchOn] = useSound(switchOn)
-
-  const [highlight, setHighlight] = useState(false)
-  const addHighlight = () => setHighlight(true)
-  const removeHighlight = () => setHighlight(false)
-
-  const { colorModes, favicons } = useSiteMetadata()
-  const [colorMode, setColorMode] = useColorMode()
-
+  const [playSwitchOn] = useSound(switchOnSound)
   const [turn, setTurn] = useState(0)
-  const turnButton = () => setTurn(turn < 1 ? 1 : 0)
+  const [colorMode, setColorMode] = useColorMode()
+  const {
+    colorModes,
+    favicons: { light: lightFavicon, dark: darkFavicon },
+  } = useSiteMetadata()
+  const isToggled = useRef(false)
 
-  const { light: faviconLight, dark: faviconDark } = favicons
+  useEffect(() => {
+    if (isToggled.current) {
+      enableTransitions()
+      isToggled.current = false
+    }
+  })
+
+  const turnButton = () => setTurn(Number(turn < 1))
 
   const clickHandler = () => {
     const index = colorModes.indexOf(colorMode)
     const next = colorModes[(index + 1) % colorModes.length]
-    setColorMode(next)
+
     turnButton()
+    disableTransitions()
+    setColorMode(next)
+    isToggled.current = true
 
-    next === `default` ? setFavicon(faviconDark) : setFavicon(faviconLight)
+    if (next === `default`) {
+      setFavicon(darkFavicon)
+    } else {
+      setFavicon(lightFavicon)
+    }
 
-    sound && playSwitchOn()
+    if (sound) {
+      playSwitchOn()
+    }
   }
 
   return (
     <IconButton
-      {...props}
-      onFocus={addHighlight}
-      onBlur={removeHighlight}
-      onTouchStart={addHighlight}
-      onTouchEnd={removeHighlight}
-      onMouseEnter={addHighlight}
-      onMouseLeave={removeHighlight}
       aria-label="Toggle website theme"
       onClick={clickHandler}
       sx={{
-        cursor: `pointer`,
         padding: 0,
+        marginX: 0,
         width: `iconButton`,
         height: `iconButton`,
-        marginX: 0,
-        color: highlight ? `secondary` : `primary`,
+        color: `primary`,
+        cursor: `pointer`,
+        "&:hover, &:focus, &:active": {
+          color: `secondary`,
+        },
       }}
+      {...props}
     >
       <svg
+        className="color-mode-button-svg"
         width="24"
         height="24"
         viewBox="0 0 32 32"
@@ -62,7 +94,7 @@ const ColorModeButton = props => {
         sx={{
           display: `flex`,
           margin: `0 auto`,
-          transition: `transform 400ms ease`,
+          transition: `colorModeButton`,
           transform: `rotate(${turn * 180}deg)`,
         }}
       >
@@ -73,8 +105,8 @@ const ColorModeButton = props => {
           fill="none"
           stroke="currentColor"
           strokeWidth="4"
-        ></circle>
-        <path d="M 16 0 A 16 16 0 0 0 16 32 z"></path>
+        />
+        <path d="M 16 0 A 16 16 0 0 0 16 32 z" />
       </svg>
     </IconButton>
   )
