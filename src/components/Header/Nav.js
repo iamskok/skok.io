@@ -8,6 +8,14 @@ const Nav = ({ links }) => (
       padding: 0,
       margin: 0,
       listStyle: `none`,
+      li: {
+        "&:first-child": {
+          marginRight: 2,
+        },
+        "&:last-child": {
+          marginLeft: 2,
+        },
+      },
     }}
   >
     {links.map(({ to, label }) => (

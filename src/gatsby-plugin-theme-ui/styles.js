@@ -21,12 +21,15 @@ export default {
     WebkitTapHighlightColor: `transparent`,
     // Disable iOS link preview
     WebkitTouchCallout: `none`,
+    textDecoration: `none`,
     transition: `a`,
-    "&:hover": {
+    "&:hover, &:active": {
       color: `secondary`,
-      textDecoration: `none`,
     },
-    "&:focus, &:active": {
+    "&:focus": {
+      padding: 1,
+      margin: -1,
+      borderRadius: 2,
       color: `secondary`,
     },
   },
