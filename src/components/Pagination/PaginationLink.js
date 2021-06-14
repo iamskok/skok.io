@@ -6,16 +6,14 @@ const PaginationLink = ({ to, children }) => (
   <Link
     to={to}
     sx={{
-      paddingY: 1,
-      paddingX: 2,
-      marginY: -1,
-      marginX: -2,
       fontSize: 4,
       fontWeight: `bold`,
       color: `primary`,
       textDecoration: `none`,
       transition: `paginationLink`,
       "&:hover, &:focus, &:active": {
+        paddingX: 2,
+        marginX: -2,
         color: `secondary`,
         borderRadius: 2,
       },
