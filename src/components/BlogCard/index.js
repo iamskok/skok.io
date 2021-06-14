@@ -16,6 +16,8 @@ const BlogCard = ({ article }) => {
         marginBottom: 4,
         borderRadius: 2,
         "&:hover, &:focus, &:active": {
+          marginBottom: 4,
+          padding: 0,
           ".blog-card": {
             boxShadow: `active`,
             borderColor: `secondary`,
