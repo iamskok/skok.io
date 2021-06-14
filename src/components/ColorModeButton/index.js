@@ -94,8 +94,7 @@ const ColorModeButton = props => {
         sx={{
           display: `flex`,
           margin: `0 auto`,
-          // transition: `colorModeButton`,
-          transition: `all 400ms ease`,
+          transition: `colorModeButton`,
           transform: `rotate(${turn * 180}deg)`,
         }}
       >
