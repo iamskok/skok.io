@@ -92,6 +92,7 @@ const ColorModeButton = props => {
         viewBox="0 0 32 32"
         fill="currentColor"
         sx={{
+          zIndex: 100,
           display: `flex`,
           margin: `0 auto`,
           transition: `colorModeButton`,
