@@ -10,16 +10,14 @@ const Link = ({ url, title, active }) => (
       color: active ? `primary` : `text`,
       transition: `tableOfContentsLink`,
       textDecoration: `none`,
-      opacity: active ? 1 : 0.5,
+      opacity: active ? `linkActive` : `link`,
       display: `inline-block`,
-      "&:hover": {
-        opacity: 1,
-        color: `secondary`,
-      },
-      "&:focus": {
+      "&:hover, &:active, &:focus": {
         padding: 1,
         margin: -1,
         borderRadius: 1,
+        opacity: `linkActive`,
+        color: `secondary`,
       },
     }}
   >
