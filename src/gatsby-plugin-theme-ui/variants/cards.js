@@ -7,12 +7,7 @@ const cards = {
     boxShadow: `default`,
     borderRadius: 2,
     borderColor: `primary`,
-    transition: `
-      border 400ms ease,
-      border-radius 400ms ease,
-      box-shadow 400ms ease,
-      background-color 400ms ease
-    `,
+    transition: `card`,
   },
 }
 

@@ -12,7 +12,7 @@ const buttons = {
     width: `iconButton`,
     cursor: `pointer`,
     color: `primary`,
-    transition: `color 400ms ease`,
+    transition: `button`,
     "&:hover": {
       color: `secondary`,
     },
