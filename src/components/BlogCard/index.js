@@ -14,10 +14,12 @@ const BlogCard = ({ article }) => {
       sx={{
         textDecoration: `none`,
         marginBottom: 4,
+        transition: `blogCard`,
         borderRadius: 2,
         "&:hover, &:focus, &:active": {
-          marginBottom: 4,
           padding: 0,
+          marginBottom: 4,
+          boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
           ".blog-card": {
             boxShadow: `active`,
             borderColor: `secondary`,
@@ -33,7 +35,6 @@ const BlogCard = ({ article }) => {
         className="blog-card"
         sx={{
           boxShadow: `default`,
-          borderRadius: 2,
           borderColor: `primary`,
         }}
       >

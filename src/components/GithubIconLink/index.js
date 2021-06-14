@@ -1,13 +1,8 @@
 /** @jsx jsx */
-import { useState } from "react"
 import { jsx } from "theme-ui"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
 
 const GithubIconLink = () => {
-  const [highlight, setHighlight] = useState(false)
-  const addHighlight = () => setHighlight(true)
-  const removeHighlight = () => setHighlight(false)
-
   const {
     socialMedia: { github: githubUrl },
   } = useSiteMetadata()
@@ -18,23 +13,21 @@ const GithubIconLink = () => {
       target="_blank"
       href={githubUrl}
       aria-label="Navigate to Vladimir's Github account"
-      onFocus={addHighlight}
-      onBlur={removeHighlight}
-      onTouchStart={addHighlight}
-      onTouchEnd={removeHighlight}
-      onMouseEnter={addHighlight}
-      onMouseLeave={removeHighlight}
       sx={{
         display: `flex`,
         alignItems: `center`,
         cursor: `pointer`,
-        padding: 0,
         width: `iconButton`,
         height: `iconButton`,
-        marginX: 0,
-        color: highlight ? `secondary` : `primary`,
+        color: `primary`,
         transition: `githubIconLink`,
         borderRadius: 1,
+        "&:hover, &:active": {
+          color: `secondary`,
+        },
+        "&:focus": {
+          boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
+        },
       }}
     >
       <svg

@@ -92,21 +92,18 @@ const CodeBlock = props => {
         scrollMarginTop: 5,
         backgroundColor: `muted`,
         borderRadius: 2,
+        transition: `codeBlock`,
         "&:focus": {
+          boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
           ".language-label": {
             boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
-            transition: `codeBlockLanguageLabelIsFocused`,
+            transition: `codeBlock`,
           },
           ".copy-button": {
-            opacity: `codeBlockCopyButtonIsFocused`,
+            opacity: `codeBlockCopyButtonIsActive`,
           },
         },
-        "&:hover": {
-          ".copy-button": {
-            opacity: `codeBlockCopyButtonIsHovered`,
-          },
-        },
-        "&:active": {
+        "&:hover, &:active": {
           ".copy-button": {
             opacity: `codeBlockCopyButtonIsActive`,
           },

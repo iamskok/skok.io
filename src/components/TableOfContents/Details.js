@@ -9,6 +9,15 @@ const Details = ({ children }) => (
         padding: 1,
         margin: -1,
         borderRadius: 1,
+        "&:hover, &:active": {
+          padding: 1,
+          margin: -1,
+          borderRadius: 1,
+          color: `secondary`,
+        },
+        "&:focus": {
+          boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
+        },
       }}
     >
       Table of Contents{` `}

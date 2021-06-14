@@ -11,13 +11,27 @@ const Link = ({ href, to, ...rest }) => {
     },
   } = useThemeUI()
 
+  const styles = {
+    linkStyles,
+    transition: `link`,
+    "&:hover, &:active": {
+      color: `secondary`,
+    },
+    "&:focus": {
+      margin: -1,
+      padding: 1,
+      borderRadius: 1,
+      boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
+    },
+  }
+
   const url = href || to
   const isExternal = isAbsoluteURL(url)
 
   return isExternal ? (
-    <ThemeUILink href={url} {...rest} />
+    <ThemeUILink href={url} sx={styles} {...rest} />
   ) : (
-    <GatsbyLink to={url} sx={linkStyles} {...rest} />
+    <GatsbyLink to={url} sx={styles} {...rest} />
   )
 }
 

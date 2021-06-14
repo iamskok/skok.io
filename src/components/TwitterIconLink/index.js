@@ -1,13 +1,8 @@
 /** @jsx jsx */
-import { useState } from "react"
 import { jsx } from "theme-ui"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
 
 const TwitterIconLink = () => {
-  const [highlight, setHighlight] = useState(false)
-  const addHighlight = () => setHighlight(true)
-  const removeHighlight = () => setHighlight(false)
-
   const {
     socialMedia: { twitter: twitterUrl },
   } = useSiteMetadata()
@@ -18,23 +13,25 @@ const TwitterIconLink = () => {
       target="_blank"
       href={twitterUrl}
       aria-label="Navigate to Vladimir's Twitter account"
-      onFocus={addHighlight}
-      onBlur={removeHighlight}
-      onTouchStart={addHighlight}
-      onTouchEnd={removeHighlight}
-      onMouseEnter={addHighlight}
-      onMouseLeave={removeHighlight}
       sx={{
         display: `flex`,
         alignItems: `center`,
         cursor: `pointer`,
-        marginX: 0,
-        padding: 0,
         width: `iconButton`,
         height: `iconButton`,
-        color: highlight ? `secondary` : `primary`,
+        color: `primary`,
         transition: `twitterIconLink`,
         borderRadius: 1,
+        transition: `
+          color 400ms ease,
+          box-shadow 400ms ease
+        `,
+        "&:hover, &:active": {
+          color: `secondary`,
+        },
+        "&:focus": {
+          boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
+        },
       }}
     >
       <svg

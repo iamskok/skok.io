@@ -10,10 +10,14 @@ const Nav = ({ links }) => (
       listStyle: `none`,
       li: {
         "&:first-child": {
+          marginLeft: -2,
           marginRight: 2,
+          padding: 2,
         },
         "&:last-child": {
           marginLeft: 2,
+          marginRight: -2,
+          padding: 2,
         },
       },
     }}
@@ -29,6 +33,20 @@ const Nav = ({ links }) => (
           to={to}
           sx={{
             variant: `links.nav`,
+            borderRadius: 1,
+            margin: -1,
+            padding: 1,
+
+            transition: `
+              color 400ms ease,
+              box-shadow 400ms ease,
+            `,
+            "&:hover, &:focus, &:active": {
+              color: `secondary`,
+            },
+            "&:focus": {
+              boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
+            },
           }}
         >
           {label}

@@ -79,8 +79,12 @@ const ColorModeButton = props => {
         height: `iconButton`,
         color: `primary`,
         cursor: `pointer`,
-        "&:hover, &:focus, &:active": {
+        transition: `colorModeButton`,
+        "&:hover, &:active": {
           color: `secondary`,
+        },
+        "&:focus": {
+          boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
         },
       }}
       {...props}
@@ -94,7 +98,7 @@ const ColorModeButton = props => {
         sx={{
           display: `flex`,
           margin: `0 auto`,
-          transition: `colorModeButton`,
+          transition: `colorModeButtonSvg`,
           transform: `rotate(${turn * 180}deg)`,
         }}
       >

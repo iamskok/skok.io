@@ -1,23 +1,24 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-const Link = ({ url, title, active }) => (
+const Link = ({ url, title, isActive }) => (
   <a
     href={url}
     sx={{
       fontSize: 1,
       fontFamily: `code`,
-      color: active ? `primary` : `text`,
+      color: isActive ? `primary` : `text`,
       transition: `tableOfContentsLink`,
       textDecoration: `none`,
-      opacity: active ? `linkActive` : `link`,
       display: `inline-block`,
-      "&:hover, &:active, &:focus": {
-        padding: 1,
-        margin: -1,
-        borderRadius: 1,
-        opacity: `linkActive`,
+      padding: 1,
+      margin: -1,
+      borderRadius: 1,
+      "&:hover, &:active": {
         color: `secondary`,
+      },
+      "&:focus": {
+        boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
       },
     }}
   >

@@ -10,7 +10,7 @@ const renderItems = (items, activeHeader) => (
 
       return (
         <li key={url}>
-          <Link title={title} url={url} active={isActive} />
+          <Link title={title} url={url} isActive={isActive} />
 
           {items && renderItems(items, activeHeader)}
         </li>

@@ -1,16 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useThemeUI } from "theme-ui"
 
 /* eslint react/display-name: 0 */
 /* eslint react-hooks/rules-of-hooks: 0 */
 const Heading = Tag => props => {
   const { id, children } = props
-  const {
-    theme: {
-      styles: { a: linkStyles },
-    },
-  } = useThemeUI()
 
   if (!id) return <Tag {...props} />
 
@@ -25,13 +19,19 @@ const Heading = Tag => props => {
       <a
         href={`#${id}`}
         sx={{
-          ...linkStyles,
           textDecoration: `none`,
           fontFamily: `body`,
-          marginRight: 2,
-          padding: 1,
+          marginRight: 3,
+          padding: 2,
+          marginLeft: -2,
+          borderRadius: 2,
+          color: `primary`,
+          transition: `heading`,
+          "&:hover, &:active": {
+            color: `gray`,
+          },
           "&:focus": {
-            borderRadius: 1,
+            boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
           },
         }}
       >

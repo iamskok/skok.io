@@ -1,43 +1,59 @@
-const durationShort = `200ms`
-const durationMedium = `400ms`
+const duration = `200ms`
 
 const transitions = {
-  button: `background-color ${durationMedium} ease`,
+  button: `background-color ${duration} ease`,
   colorModeButton: `
-    transform ${durationMedium} ease,
-    color ${durationMedium} ease
+    color ${duration} ease,
+    box-shadow ${duration} ease,
   `,
+  colorModeButtonSvg: `transform ${duration} ease`,
   soundModeButton: `
-    background-color ${durationMedium} ease,
-    fill ${durationMedium} ease,
-    color ${durationMedium} ease
+    background-color ${duration} ease,
+    color ${duration} ease
   `,
-  soundModeButtonWave: `fill ${durationMedium} ease`,
+  soundModeButtonWave: `fill ${duration} ease`,
+  codeBlock: `
+    box-shadow ${duration} ease,
+    opacity ${duration} ease
+  `,
   codeBlockCopyButton: `
-    opacity ${durationShort} ease,
-    background-color ${durationShort} ease
+    box-shadow ${duration} ease,
+    opacity ${duration} ease,
+    background-color ${duration} ease
   `,
-  codeBlockLanguageLabelIsFocused: `box-shadow ${durationShort} ease`,
-  globalStyles: `box-shadow ${durationShort} ease`,
-  blogCardHeader: `color ${durationMedium} ease`,
-  blogCardParagraph: `color ${durationMedium} ease`,
-  a: `color ${durationMedium} ease`,
-  githubIconLink: `color ${durationMedium} ease`,
-  paginationLink: `color ${durationMedium} ease`,
-  twitterIconLink: `color ${durationMedium} ease`,
+  blogCard: `
+    box-shadow ${duration} ease,
+    color ${duration} ease
+  `,
+  blogCardHeader: `color ${duration} ease`,
+  blogCardParagraph: `color ${duration} ease`,
+  link: `
+    color ${duration} ease,
+    box-shadow ${duration} ease
+  `,
+  heading: `
+    color 400ms ease,
+    box-shadow 400ms ease
+  `,
+  githubIconLink: `
+    color ${duration} ease,
+    box-shadow ${duration} ease
+  `,
+  paginationLink: `color ${duration} ease`,
+  twitterIconLink: `color ${duration} ease`,
   tableOfContentsLink: `
-    color ${durationMedium} ease,
-    opacity ${durationMedium} ease
+    color ${duration} ease,
+    opacity ${duration} ease
   `,
-  progress: `opacity ${durationShort} ease`,
-  progressBar: `width ${durationMedium} ease`,
-  progressValue: `width ${durationMedium} ease`,
-  hitCounter: `background-color ${durationMedium} ease`,
+  progress: `opacity ${duration} ease`,
+  progressBar: `width ${duration} ease`,
+  progressValue: `width ${duration} ease`,
+  hitCounter: `background-color ${duration} ease`,
   card: `
-    border ${durationMedium} ease,
-    border-radius ${durationMedium} ease,
-    box-shadow ${durationMedium} ease,
-    background-color ${durationMedium} ease
+    border ${duration} ease,
+    border-radius ${duration} ease,
+    box-shadow ${duration} ease,
+    background-color ${duration} ease
   `,
 }
 
