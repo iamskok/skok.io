@@ -18,9 +18,13 @@ export default {
   a: {
     color: `primary`,
     WebkitTapHighlightColor: `transparent`,
+    transition: `a`,
     "&:hover": {
       color: `secondary`,
       textDecoration: `none`,
+    },
+    "&:focus, &:active": {
+      color: `secondary`,
     },
   },
   h1: {
