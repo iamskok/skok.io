@@ -1,35 +1,33 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { Link } from "gatsby"
+import Link from "../Link"
 
-const Nav = ({ links }) => {
-  return (
-    <ul
-      sx={{
-        padding: 0,
-        margin: 0,
-        listStyle: `none`,
-      }}
-    >
-      {links.map(({ to, label }) => (
-        <li
-          key={label}
+const Nav = ({ links }) => (
+  <ul
+    sx={{
+      padding: 0,
+      margin: 0,
+      listStyle: `none`,
+    }}
+  >
+    {links.map(({ to, label }) => (
+      <li
+        key={label}
+        sx={{
+          display: `inline-block`,
+        }}
+      >
+        <Link
+          to={to}
           sx={{
-            display: `inline-block`,
+            variant: `links.nav`,
           }}
         >
-          <Link
-            to={to}
-            sx={{
-              variant: `links.nav`,
-            }}
-          >
-            {label}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  )
-}
+          {label}
+        </Link>
+      </li>
+    ))}
+  </ul>
+)
 
 export default Nav
