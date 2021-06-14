@@ -28,7 +28,8 @@ const GlobalStyles = () => {
           },
           html: {
             fontSize: `125%`,
-            scrollBehavior: `smooth`,
+            // Prevent scrollbar from repositioning web page
+            paddingLeft: `calc(100vw - 100%)`,
             // Fixes font size issue in `CodeBlock` component on iOS
             // https://stackoverflow.com/a/22417120/3614631
             textSizeAdjust: `none`,
