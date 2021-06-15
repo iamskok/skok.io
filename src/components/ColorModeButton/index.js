@@ -80,7 +80,7 @@ const ColorModeButton = props => {
         color: `primary`,
         cursor: `pointer`,
         transition: `colorModeButton`,
-        "&:hover, &:active": {
+        "&:hover": {
           color: `secondary`,
         },
         "&:focus": {

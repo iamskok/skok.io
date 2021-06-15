@@ -9,7 +9,7 @@ const Details = ({ children }) => (
         padding: 1,
         margin: -1,
         borderRadius: 1,
-        "&:hover, &:active": {
+        "&:hover": {
           padding: 1,
           margin: -1,
           borderRadius: 1,

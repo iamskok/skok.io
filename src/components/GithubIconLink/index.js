@@ -22,7 +22,7 @@ const GithubIconLink = () => {
         color: `primary`,
         transition: `githubIconLink`,
         borderRadius: 1,
-        "&:hover, &:active": {
+        "&:hover": {
           color: `secondary`,
         },
         "&:focus": {

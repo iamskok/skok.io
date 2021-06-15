@@ -18,7 +18,7 @@ const CopyButton = ({ isCopied, onClick, ...rest }) => {
         paddingY: 1,
         lineHeight: 0,
         transition: `codeBlockCopyButton`,
-        "&:hover, &:active": {
+        "&:hover": {
           backgroundColor: `secondary`,
         },
         "&:focus": {

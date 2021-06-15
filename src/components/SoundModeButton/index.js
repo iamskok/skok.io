@@ -32,7 +32,7 @@ const SoundModeButton = props => {
         transition: `soundModeButton`,
         color: `primary`,
         transition: `soundModeButton`,
-        "&:hover, &:active": {
+        "&:hover": {
           color: `secondary`,
         },
         "&:focus": {

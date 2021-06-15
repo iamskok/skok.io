@@ -22,7 +22,7 @@ export default {
     // Disable iOS link preview
     WebkitTouchCallout: `none`,
     textDecoration: `none`,
-    "&:hover, &:focus, &:active": {
+    "&:hover": {
       color: `secondary`,
     },
   },

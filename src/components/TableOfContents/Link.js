@@ -14,7 +14,7 @@ const Link = ({ url, title, isActive }) => (
       padding: 1,
       margin: -1,
       borderRadius: 1,
-      "&:hover, &:active": {
+      "&:hover": {
         color: `secondary`,
       },
       "&:focus": {

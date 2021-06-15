@@ -27,7 +27,7 @@ const Heading = Tag => props => {
           borderRadius: 2,
           color: `primary`,
           transition: `heading`,
-          "&:hover, &:active": {
+          "&:hover": {
             color: `gray`,
           },
           "&:focus": {

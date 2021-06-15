@@ -11,7 +11,7 @@ const PaginationLink = ({ to, children }) => (
       color: `primary`,
       textDecoration: `none`,
       transition: `paginationLink`,
-      "&:hover, &:active": {
+      "&:hover": {
         color: `secondary`,
       },
       "&:focus": {

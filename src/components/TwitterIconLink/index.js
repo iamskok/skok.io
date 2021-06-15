@@ -26,7 +26,7 @@ const TwitterIconLink = () => {
           color 400ms ease,
           box-shadow 400ms ease
         `,
-        "&:hover, &:active": {
+        "&:hover": {
           color: `secondary`,
         },
         "&:focus": {

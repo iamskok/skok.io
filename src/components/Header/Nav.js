@@ -36,12 +36,11 @@ const Nav = ({ links }) => (
             borderRadius: 1,
             margin: -1,
             padding: 1,
-
             transition: `
               color 400ms ease,
               box-shadow 400ms ease,
             `,
-            "&:hover, &:focus, &:active": {
+            "&:hover": {
               color: `secondary`,
             },
             "&:focus": {

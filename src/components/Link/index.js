@@ -14,7 +14,7 @@ const Link = ({ href, to, ...rest }) => {
   const styles = {
     linkStyles,
     transition: `link`,
-    "&:hover, &:active": {
+    "&:hover": {
       color: `secondary`,
     },
     "&:focus": {
