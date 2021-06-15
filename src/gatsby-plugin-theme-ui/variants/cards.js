@@ -1,12 +1,9 @@
 const cards = {
   primary: {
-    padding: 3,
     margin: 0,
-    borderWidth: 3,
-    borderStyle: `solid`,
+    padding: 3,
     boxShadow: `default`,
-    borderRadius: 2,
-    borderColor: `primary`,
+    borderRadius: 1,
     transition: `card`,
   },
 }

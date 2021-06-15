@@ -50,8 +50,6 @@ const transitions = {
   progressValue: `width ${duration} ease`,
   hitCounter: `background-color ${duration} ease`,
   card: `
-    border ${duration} ease,
-    border-radius ${duration} ease,
     box-shadow ${duration} ease,
     background-color ${duration} ease
   `,

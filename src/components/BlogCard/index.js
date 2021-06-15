@@ -15,29 +15,22 @@ const BlogCard = ({ article }) => {
         textDecoration: `none`,
         marginBottom: 4,
         transition: `blogCard`,
-        borderRadius: 2,
-        "&:hover, &:focus, &:active": {
+        "&:hover, &:focus": {
           padding: 0,
           marginBottom: 4,
-          boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
           ".blog-card": {
             boxShadow: `active`,
-            borderColor: `secondary`,
           },
           ".blog-card-header": {
             color: `primary`,
           },
         },
+        "&:focus": {
+          boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
+        },
       }}
     >
-      <Card
-        as="article"
-        className="blog-card"
-        sx={{
-          boxShadow: `default`,
-          borderColor: `primary`,
-        }}
-      >
+      <Card as="article" className="blog-card">
         {cover && (
           <Img
             alt={coverAlt}
