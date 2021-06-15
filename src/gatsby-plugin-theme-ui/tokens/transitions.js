@@ -3,10 +3,10 @@ const duration = `200ms`
 const transitions = {
   button: `background-color ${duration} ease`,
   colorModeButton: `
-    color ${duration} ease,
-    box-shadow ${duration} ease,
+    color 1500ms ease,
+    box-shadow 1500ms ease,
   `,
-  colorModeButtonSvg: `transform ${duration} ease`,
+  colorModeButtonSvg: `transform 1500ms ease`,
   soundModeButton: `
     background-color ${duration} ease,
     color ${duration} ease
@@ -32,8 +32,8 @@ const transitions = {
     box-shadow ${duration} ease
   `,
   heading: `
-    color 400ms ease,
-    box-shadow 400ms ease
+    color ${duration} ease,
+    box-shadow ${duration} ease
   `,
   githubIconLink: `
     color ${duration} ease,
