@@ -17,6 +17,7 @@ const ScrollProgress = () => {
       value={scrollProgress}
       sx={{
         position: `fixed`,
+        left: 0,
         zIndex: `progress`,
         borderRadius: 0,
         opacity,
