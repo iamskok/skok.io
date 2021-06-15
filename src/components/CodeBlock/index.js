@@ -93,7 +93,7 @@ const CodeBlock = props => {
         backgroundColor: `muted`,
         borderRadius: 2,
         transition: `codeBlock`,
-        "&:focus": {
+        "&:focus, &:active": {
           boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
           ".language-label": {
             boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
@@ -103,7 +103,7 @@ const CodeBlock = props => {
             opacity: `codeBlockCopyButtonIsActive`,
           },
         },
-        "&:hover, &:active": {
+        "&:hover": {
           ".copy-button": {
             opacity: `codeBlockCopyButtonIsActive`,
           },
