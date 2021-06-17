@@ -14,13 +14,11 @@ const Link = ({ href, to, ...rest }) => {
   const styles = {
     linkStyles,
     transition: `link`,
+    borderRadius: 1,
     "&:hover": {
       color: `secondary`,
     },
     "&:focus": {
-      margin: -1,
-      padding: 1,
-      borderRadius: 1,
       boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
     },
   }
