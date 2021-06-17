@@ -1,4 +1,6 @@
-const duration = `200ms`
+import transitionDurations from "./transition-durations"
+
+const duration = transitionDurations[0]
 
 const transitions = {
   button: `background-color ${duration} ease`,

@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { useState, useContext, useEffect, useRef } from "react"
-import { jsx, IconButton, useColorMode } from "theme-ui"
+import { useState, useContext, useEffect } from "react"
+import { jsx, IconButton, useColorMode, useThemeUI } from "theme-ui"
 import useSound from "use-sound"
 import { motion } from "framer-motion"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
@@ -34,6 +34,11 @@ const ColorModeButton = props => {
     colorModes,
     favicons: { light: lightFavicon, dark: darkFavicon },
   } = useSiteMetadata()
+  const {
+    theme: {
+      transitionDurations: [duration],
+    },
+  } = useThemeUI()
 
   useEffect(() => {
     if (isInThemeTransition) {
@@ -91,9 +96,7 @@ const ColorModeButton = props => {
         height="24"
         viewBox="0 0 32 32"
         fill="currentColor"
-        transition={{
-          duration: 0.2,
-        }}
+        transition={{ duration }}
         animate={{
           rotate: turn * 180,
           originX: `50%`,
