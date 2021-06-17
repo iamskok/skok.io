@@ -10,24 +10,6 @@ import { SoundContext } from "../SoundProvider"
 
 const styleElement = isWindow() && document.createElement(`style`)
 
-const disableTransitions = () => {
-  styleElement.appendChild(
-    document.createTextNode(
-      `*:not(.color-mode-button-svg) {
-        -webkit-transition: none !important;
-        -moz-transition: none !important;
-        -o-transition: none !important;
-        -ms-transition: none !important;
-        transition: none !important;
-      }`
-    )
-  )
-
-  document.head.appendChild(styleElement)
-}
-
-const enableTransitions = () => styleElement?.remove()
-
 const ColorModeButton = props => {
   const [sound] = useContext(SoundContext)
   const [playSwitchOn] = useSound(switchOnSound)
@@ -37,14 +19,6 @@ const ColorModeButton = props => {
     colorModes,
     favicons: { light: lightFavicon, dark: darkFavicon },
   } = useSiteMetadata()
-  const isToggled = useRef(false)
-
-  useEffect(() => {
-    if (isToggled.current) {
-      enableTransitions()
-      isToggled.current = false
-    }
-  })
 
   const turnButton = () => setTurn(Number(turn < 1))
 
@@ -53,9 +27,7 @@ const ColorModeButton = props => {
     const next = colorModes[(index + 1) % colorModes.length]
 
     turnButton()
-    disableTransitions()
     setColorMode(next)
-    isToggled.current = true
 
     if (next === `default`) {
       setFavicon(darkFavicon)
