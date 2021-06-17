@@ -22,10 +22,6 @@ const TwitterIconLink = () => {
         color: `primary`,
         transition: `twitterIconLink`,
         borderRadius: 1,
-        transition: `
-          color 400ms ease,
-          box-shadow 400ms ease
-        `,
         "&:hover": {
           color: `secondary`,
         },

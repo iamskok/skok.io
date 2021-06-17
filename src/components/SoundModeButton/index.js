@@ -29,7 +29,6 @@ const SoundModeButton = props => {
         cursor: `pointer`,
         width: `iconButton`,
         height: `iconButton`,
-        transition: `soundModeButton`,
         color: `primary`,
         transition: `soundModeButton`,
         "&:hover": {

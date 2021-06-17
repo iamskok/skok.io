@@ -1,6 +1,6 @@
 import transitionDurations from "./transition-durations"
 
-const duration = transitionDurations[0]
+const [duration] = transitionDurations.map(duration => `${duration}s`)
 
 const transitions = {
   button: `background-color ${duration} ease`,
@@ -9,8 +9,8 @@ const transitions = {
     box-shadow ${duration} ease
   `,
   soundModeButton: `
-    background-color ${duration} ease,
-    color ${duration} ease
+    color ${duration} ease,
+    box-shadow ${duration} ease
   `,
   soundModeButtonWave: `fill ${duration} ease`,
   codeBlock: `
@@ -40,8 +40,11 @@ const transitions = {
     color ${duration} ease,
     box-shadow ${duration} ease
   `,
+  twitterIconLink: `
+    color ${duration} ease,
+    box-shadow ${duration} ease
+  `,
   paginationLink: `color ${duration} ease`,
-  twitterIconLink: `color ${duration} ease`,
   tableOfContentsLink: `
     color ${duration} ease,
     opacity ${duration} ease
