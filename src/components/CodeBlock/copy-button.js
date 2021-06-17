@@ -23,7 +23,7 @@ const CopyButton = ({ isCopied, onClick, ...rest }) => {
         },
         "&:focus": {
           boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
-          opacity: `codeBlockCopyButtonIsActive`,
+          opacity: 1,
         },
       }}
       {...rest}
