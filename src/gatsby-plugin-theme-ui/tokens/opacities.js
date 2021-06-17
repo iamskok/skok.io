@@ -1,7 +1,3 @@
-const opacities = {
-  globalStyles: 1,
-  codeBlockCopyButton: 0,
-  codeBlockCopyButtonIsActive: 1,
-}
+const opacities = {}
 
 export default opacities

@@ -13,11 +13,12 @@ const BlogCard = ({ article }) => {
       to={article.fields.slug}
       sx={{
         textDecoration: `none`,
+        margin: 0,
+        padding: 0,
         marginBottom: 4,
+        borderRadius: 2,
         transition: `blogCard`,
         "&:hover, &:focus": {
-          padding: 0,
-          marginBottom: 4,
           ".blog-card": {
             boxShadow: `active`,
           },
@@ -25,12 +26,19 @@ const BlogCard = ({ article }) => {
             color: `primary`,
           },
         },
-        "&:focus": {
-          boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
-        },
       }}
     >
-      <Card as="article" className="blog-card">
+      <Card
+        as="article"
+        className="blog-card"
+        sx={{
+          margin: 0,
+          padding: 3,
+          borderRadius: 2,
+          boxShadow: `default`,
+          transition: `card`,
+        }}
+      >
         {cover && (
           <Img
             alt={coverAlt}
