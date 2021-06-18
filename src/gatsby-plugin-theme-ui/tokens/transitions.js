@@ -23,8 +23,8 @@ const transitions = {
     background-color ${duration} ease
   `,
   blogCard: `
-    box-shadow ${duration} ease,
-    color ${duration} ease
+    color ${duration} ease,
+    box-shadow ${duration} ease
   `,
   blogCardHeader: `color ${duration} ease`,
   blogCardParagraph: `color ${duration} ease`,
@@ -54,8 +54,8 @@ const transitions = {
   progressValue: `width ${duration} ease`,
   hitCounter: `background-color ${duration} ease`,
   card: `
-    box-shadow ${duration} ease,
-    background-color ${duration} ease
+    background-color ${duration} ease,
+    box-shadow ${duration} ease
   `,
 }
 
