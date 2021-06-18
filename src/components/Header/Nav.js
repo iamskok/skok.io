@@ -9,15 +9,11 @@ const Nav = ({ links }) => (
       margin: 0,
       listStyle: `none`,
       li: {
-        "&:first-child": {
-          marginLeft: -2,
+        "&:first-of-type": {
           marginRight: 2,
-          padding: 2,
         },
-        "&:last-child": {
+        "&:last-of-type": {
           marginLeft: 2,
-          marginRight: -2,
-          padding: 2,
         },
       },
     }}
