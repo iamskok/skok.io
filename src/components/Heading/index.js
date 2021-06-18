@@ -26,10 +26,7 @@ const Heading = Tag => props => {
           color: `primary`,
           transition: `heading`,
           "&:hover": {
-            color: `gray`,
-          },
-          "&:focus-visible": {
-            boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
+            color: `secondary`,
           },
         }}
       >

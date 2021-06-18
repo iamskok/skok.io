@@ -94,18 +94,17 @@ const CodeBlock = props => {
         borderRadius: 2,
         transition: `codeBlock`,
         "&:focus-visible": {
-          boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
           ".language-label": {
             boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
             transition: `codeBlock`,
           },
           ".copy-button": {
-            opacity: `codeBlockCopyButtonIsActive`,
+            opacity: 1,
           },
         },
         "&:hover": {
           ".copy-button": {
-            opacity: `codeBlockCopyButtonIsActive`,
+            opacity: 1,
           },
         },
       }}
@@ -126,7 +125,7 @@ const CodeBlock = props => {
                 right: 0,
                 display: `inline-block`,
                 width: `100%`,
-                height: `codeBlockLanguageLabelAfter`,
+                height: 4,
                 backgroundColor: `muted`,
               },
             }}
@@ -151,8 +150,11 @@ const CodeBlock = props => {
               top: 4,
               right: 2,
               zIndex: `codeBlockCopyButton`,
-              opacity: `codeBlockCopyButton`,
               transition: `codeBlockCopyButton`,
+              opacity: 0,
+              "&:focus-visible": {
+                opacity: 1,
+              },
             }}
           />
         )}

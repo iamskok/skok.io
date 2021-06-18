@@ -18,9 +18,6 @@ const Link = ({ href, to, ...rest }) => {
     "&:hover": {
       color: `secondary`,
     },
-    "&:focus-visible": {
-      boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
-    },
   }
 
   const url = href || to

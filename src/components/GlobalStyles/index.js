@@ -7,6 +7,7 @@ const GlobalStyles = () => {
   const {
     theme: {
       breakpoints: [tablet],
+      colors: { accent },
     },
   } = useThemeUI()
 
@@ -16,8 +17,14 @@ const GlobalStyles = () => {
         ...fontFaces,
         {
           "*": {
-            "&:focus, &:focus-visible": {
+            "&:focus": {
               outline: 0,
+            },
+            "&:focus-visible": {
+              outline: 0,
+              "&:not(#gatsby-focus-wrapper)": {
+                boxShadow: `0 0 0 2px ${accent}`,
+              },
             },
           },
           html: {

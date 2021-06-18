@@ -5,7 +5,6 @@ const sizes = {
   container: 800,
   tocContainer: 350,
   codeBlockScrollBar: 6,
-  codeBlockLanguageLabelAfter: 4,
 }
 
 export default sizes

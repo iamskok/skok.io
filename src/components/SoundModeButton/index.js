@@ -34,10 +34,7 @@ const SoundModeButton = props => {
         "&:hover": {
           color: `secondary`,
         },
-        "&:focus-visible": {
-          boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
-        },
-        "& .sound-mode-button-wave": {
+        ".sound-mode-button-wave": {
           fill: sound ? `currentColor` : `transparent`,
           transition: `soundModeButtonWave`,
         },
