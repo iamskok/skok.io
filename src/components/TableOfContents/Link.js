@@ -11,13 +11,11 @@ const Link = ({ url, title, isActive }) => (
       transition: `tableOfContentsLink`,
       textDecoration: `none`,
       display: `inline-block`,
-      padding: 1,
-      margin: -1,
       borderRadius: 1,
       "&:hover": {
         color: `secondary`,
       },
-      "&:focus": {
+      "&:focus-visible": {
         boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
       },
     }}

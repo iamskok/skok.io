@@ -15,8 +15,10 @@ const GlobalStyles = () => {
       styles={[
         ...fontFaces,
         {
-          "*:focus": {
-            outline: 0,
+          "*": {
+            "&:focus, &:focus-visible": {
+              outline: 0,
+            },
           },
           html: {
             fontSize: `125%`,

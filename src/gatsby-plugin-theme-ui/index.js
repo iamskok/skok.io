@@ -15,7 +15,6 @@ import opacities from "./tokens/opacities"
 import zIndices from "./tokens/z-indices"
 import text from "./variants/text"
 import buttons from "./variants/buttons"
-import links from "./variants/links"
 import messages from "./variants/messages"
 import styles from "./styles"
 
@@ -37,7 +36,6 @@ const theme = {
   zIndices,
   text,
   buttons,
-  links,
   messages,
   styles,
 }

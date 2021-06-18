@@ -10,14 +10,12 @@ const PaginationLink = ({ to, children }) => (
       fontWeight: `bold`,
       color: `primary`,
       textDecoration: `none`,
+      borderRadius: 1,
       transition: `paginationLink`,
       "&:hover": {
         color: `secondary`,
       },
-      "&:focus": {
-        paddingX: 2,
-        marginX: -2,
-        borderRadius: 2,
+      "&:focus-visible": {
         boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
       },
     }}

@@ -21,7 +21,7 @@ const CopyButton = ({ isCopied, onClick, ...rest }) => {
         "&:hover": {
           backgroundColor: `secondary`,
         },
-        "&:focus": {
+        "&:focus-visible": {
           boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
           opacity: 1,
         },

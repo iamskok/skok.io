@@ -21,16 +21,14 @@ const Heading = Tag => props => {
         sx={{
           textDecoration: `none`,
           fontFamily: `body`,
-          marginRight: 3,
-          padding: 2,
-          marginLeft: -2,
-          borderRadius: 2,
+          marginRight: 2,
+          borderRadius: 1,
           color: `primary`,
           transition: `heading`,
           "&:hover": {
             color: `gray`,
           },
-          "&:focus": {
+          "&:focus-visible": {
             boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
           },
         }}

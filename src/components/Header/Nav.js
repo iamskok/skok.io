@@ -32,18 +32,15 @@ const Nav = ({ links }) => (
         <Link
           to={to}
           sx={{
-            variant: `links.nav`,
+            color: `primary`,
+            textDecoration: `none`,
+            textTransform: `uppercase`,
             borderRadius: 1,
-            margin: -1,
-            padding: 1,
-            transition: `
-              color 400ms ease,
-              box-shadow 400ms ease,
-            `,
+            transition: `link`,
             "&:hover": {
               color: `secondary`,
             },
-            "&:focus": {
+            "&:focus-visible": {
               boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
             },
           }}

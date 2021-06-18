@@ -93,7 +93,7 @@ const CodeBlock = props => {
         backgroundColor: `muted`,
         borderRadius: 2,
         transition: `codeBlock`,
-        "&:focus, &:active": {
+        "&:focus-visible": {
           boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
           ".language-label": {
             boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
