@@ -8,6 +8,7 @@ import setFavicon from "../../utils/set-favicon"
 import isWindow from "../../utils/is-window"
 import switchOnSound from "../../assets/sounds/switch-on.mp3"
 import { SoundContext } from "../SoundProvider"
+import Icon from "../Icon"
 
 const disableAllTransitionStyles = `* {
   -webkit-transition: none !important;
@@ -22,6 +23,8 @@ const disableAllTransitions = () => {
   document.head.appendChild(styleElement)
 }
 const enableAllTransitions = () => styleElement.remove()
+
+const AnimatedIcon = motion(Icon)
 
 const ColorModeButton = props => {
   const [sound] = useContext(SoundContext)
@@ -73,10 +76,6 @@ const ColorModeButton = props => {
       aria-label="Toggle website theme"
       onClick={clickHandler}
       sx={{
-        padding: 0,
-        marginX: 0,
-        width: `iconButton`,
-        height: `iconButton`,
         color: `primary`,
         transition: `colorModeButton`,
         "&:hover": {
@@ -85,32 +84,28 @@ const ColorModeButton = props => {
       }}
       {...props}
     >
-      <motion.svg
-        width="24"
-        height="24"
+      <AnimatedIcon
+        as={motion.svg}
         viewBox="0 0 32 32"
-        fill="currentColor"
         transition={{ duration }}
         animate={{
           rotate: iconAngle,
-          originX: `50%`,
-          originY: `50%`,
-        }}
-        sx={{
-          display: `flex`,
-          margin: `0 auto`,
+          originX: `center`,
+          originY: `center`,
         }}
       >
         <circle
-          cx="16"
-          cy="16"
-          r="14"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="4"
+          sx={{
+            cx: 16,
+            cy: 16,
+            r: 14,
+            fill: `none`,
+            stroke: `currentColor`,
+            strokeWidth: 4,
+          }}
         />
         <path d="M 16 0 A 16 16 0 0 0 16 32 z" />
-      </motion.svg>
+      </AnimatedIcon>
     </IconButton>
   )
 }
