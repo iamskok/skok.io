@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import { useEffect } from "react"
 import { jsx, Themed } from "theme-ui"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
@@ -9,8 +8,8 @@ import {
   NotationProvider,
   notationRef,
 } from "../../components/NotationProvider"
-import isWindow from "../../utils/is-window"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
+import useScrollBehavior from "../../hooks/useScrollBehavior"
 import Layout from "../../components/Layout"
 import ArticleCover from "../../components/ArticleCover"
 import ArticleMeta from "../../components/ArticleMeta"
@@ -18,21 +17,10 @@ import Pagination from "../../components/Pagination"
 import scrollCodeBlock from "../../components/CodeBlock/scroller"
 import ScrollProgress from "../../components/ScrollProgress"
 
-const htmlElement = isWindow() && document.querySelector(`html`)
-
 const Article = ({ pageContext, data }) => {
-  const {
-    prev,
-    next,
-    slug,
-    toc: { ids: headerIds, items: tocItems },
-  } = pageContext
-  const {
-    mdx: {
-      body,
-      frontmatter: { title, description, date, modifiedDate, cover, coverAlt },
-    },
-  } = data
+  useScrollBehavior()
+  useKey(`ArrowLeft`, event => scrollCodeBlock(event, `left`))
+  useKey(`ArrowRight`, event => scrollCodeBlock(event, `right`))
 
   const {
     pages: {
@@ -40,13 +28,19 @@ const Article = ({ pageContext, data }) => {
     },
   } = useSiteMetadata()
 
-  useKey(`ArrowLeft`, event => scrollCodeBlock(event, `left`))
-  useKey(`ArrowRight`, event => scrollCodeBlock(event, `right`))
+  const {
+    prev,
+    next,
+    slug,
+    toc: { ids: headerIds, items: tocItems },
+  } = pageContext
 
-  useEffect(() => {
-    htmlElement.style.scrollBehavior = `smooth`
-    return () => (htmlElement.style.scrollBehavior = ``)
-  }, [])
+  const {
+    mdx: {
+      body,
+      frontmatter: { title, description, date, modifiedDate, cover, coverAlt },
+    },
+  } = data
 
   return (
     <NotationProvider>
