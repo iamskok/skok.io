@@ -10,6 +10,7 @@ const LanguageLabel = ({ language, ...rest }) => (
       borderTopLeftRadius: 2,
       borderTopRightRadius: 2,
       userSelect: `none`,
+      transition: `codeBlockLanguageLabel`,
     }}
     {...rest}
   >
