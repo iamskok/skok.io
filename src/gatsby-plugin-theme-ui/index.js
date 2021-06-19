@@ -14,6 +14,7 @@ import transitionDurations from "./tokens/transition-durations"
 import opacities from "./tokens/opacities"
 import zIndices from "./tokens/z-indices"
 import text from "./variants/text"
+import icons from "./variants/icons"
 import buttons from "./variants/buttons"
 import messages from "./variants/messages"
 import styles from "./styles"
@@ -34,6 +35,7 @@ const theme = {
   transitionDurations,
   opacities,
   zIndices,
+  icons,
   text,
   buttons,
   messages,
