@@ -7,13 +7,7 @@ import { AiOutlineFileText as FileIcon } from "react-icons/ai"
 /* eslint react/display-name: 0 */
 const icons = {
   mdx: ({ className }) => (
-    <svg
-      viewBox="0 0 208 128"
-      className={className}
-      sx={{
-        width: `24px`,
-      }}
-    >
+    <svg viewBox="0 0 208 128" className={className} sx={{ width: `24px` }}>
       <rect
         width="198"
         height="118"
@@ -28,20 +22,10 @@ const icons = {
     </svg>
   ),
   image: ({ className }) => (
-    <ImgIcon
-      className={className}
-      sx={{
-        fontSize: `24px`,
-      }}
-    />
+    <ImgIcon className={className} sx={{ fontSize: `24px` }} />
   ),
   file: ({ className }) => (
-    <FileIcon
-      className={className}
-      sx={{
-        fontSize: `24px`,
-      }}
-    />
+    <FileIcon className={className} sx={{ fontSize: `24px` }} />
   ),
   js: ({ className }) => (
     <svg

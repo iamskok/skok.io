@@ -11,12 +11,7 @@ const Folder = ({ children, name, open = true }) => {
 
   return (
     <Box>
-      <Flex
-        sx={{
-          alignItems: `center`,
-        }}
-        onClick={handleClick}
-      >
+      <Flex sx={{ alignItems: `center` }} onClick={handleClick}>
         {isOpened ? (
           <OpenedFolderIcon
             sx={{
@@ -42,13 +37,7 @@ const Folder = ({ children, name, open = true }) => {
         }}
       >
         {Children.map(children, child => (
-          <li
-            sx={{
-              display: isOpened ? `flex` : `none`,
-            }}
-          >
-            {child}
-          </li>
+          <li sx={{ display: isOpened ? `flex` : `none` }}>{child}</li>
         ))}
       </ul>
     </Box>

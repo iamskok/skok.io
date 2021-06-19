@@ -9,11 +9,7 @@ const Pagination = ({ next, previous }) => (
       marginBottom: 4,
     }}
   >
-    <Flex
-      sx={{
-        flex: 1,
-      }}
-    >
+    <Flex sx={{ flex: 1 }}>
       {previous && <PaginationLink to={previous}>Previous</PaginationLink>}
     </Flex>
 

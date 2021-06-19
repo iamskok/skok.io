@@ -19,12 +19,7 @@ const Nav = ({ links }) => (
     }}
   >
     {links.map(({ to, label }) => (
-      <li
-        key={label}
-        sx={{
-          display: `inline-block`,
-        }}
-      >
+      <li key={label} sx={{ display: `inline-block` }}>
         <Link
           to={to}
           sx={{

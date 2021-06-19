@@ -7,16 +7,7 @@ const ArticleCover = ({ alt, src }) => {
     childImageSharp: { sizes, fluid },
   } = src
 
-  return (
-    <Img
-      alt={alt}
-      sizes={sizes}
-      fluid={fluid}
-      sx={{
-        marginBottom: 5,
-      }}
-    />
-  )
+  return <Img alt={alt} sizes={sizes} fluid={fluid} sx={{ marginBottom: 5 }} />
 }
 
 export default ArticleCover

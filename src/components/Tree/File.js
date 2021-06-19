@@ -30,11 +30,7 @@ const File = ({ name }) => {
 
   return (
     <Flex sx={{ alignItems: `center` }}>
-      <Logo
-        sx={{
-          marginRight: 2,
-        }}
-      />
+      <Logo sx={{ marginRight: 2 }} />
       {name}
     </Flex>
   )

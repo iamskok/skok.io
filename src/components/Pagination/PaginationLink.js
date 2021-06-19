@@ -6,7 +6,7 @@ const PaginationLink = ({ to, children }) => (
   <Link
     to={to}
     sx={{
-      fontSize: 4,
+      fontSize: 3,
       fontWeight: `bold`,
       color: `primary`,
       textDecoration: `none`,

@@ -9,13 +9,7 @@ const Heading = Tag => props => {
   if (!id) return <Tag {...props} />
 
   return (
-    <Tag
-      sx={{
-        scrollMarginTop: 3,
-      }}
-      {...props}
-      data-header="true"
-    >
+    <Tag sx={{ scrollMarginTop: 3 }} {...props}>
       <a
         href={`#${id}`}
         sx={{
