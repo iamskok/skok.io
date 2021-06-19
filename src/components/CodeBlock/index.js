@@ -1,27 +1,27 @@
 /** @jsx jsx */
-import { useState, useContext } from "react"
+// import { useState, useContext } from "react"
 import { jsx, Box, Flex } from "theme-ui"
 import Prism from "@theme-ui/prism"
-import useSound from "use-sound"
+// import useSound from "use-sound"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
-import biteSound from "../../assets/sounds/bite.mp3"
+// import biteSound from "../../assets/sounds/bite.mp3"
 import { isFirefox } from "../../utils/user-agent"
 import {
-  CODE_BLOCK_COPY_CLICK_TIMEOUT,
+  // CODE_BLOCK_COPY_CLICK_TIMEOUT,
   CODE_BLOCK_CLASS_NAME,
   CODE_BLOCK_CONTAINER_CLASS_NAME,
 } from "../../utils/constants"
-import { SoundContext } from "../SoundProvider"
-import copyToClipboard from "./copy-to-clipboard"
+// import { SoundContext } from "../SoundProvider"
+// import copyToClipboard from "./copy-to-clipboard"
 import CopyButton from "./copy-button"
 import FileName from "./file-name"
 import LanguageLabel from "./language-label"
 
 const languageRegex = new RegExp(`language-`)
-const highlightCommentRegex = new RegExp(
-  `\/\/ highlight-((start|end)\n|line)`,
-  `g`
-)
+// const highlightCommentRegex = new RegExp(
+//   `\/\/ highlight-((start|end)\n|line)`,
+//   `g`
+// )
 
 const getLanguage = (className, regex = languageRegex) => {
   const firstClassName = className?.split(` `)[0]
@@ -40,9 +40,9 @@ const getBorderRadius = isFileNameVisible => ({
 const truthyList = [true, `true`]
 
 const CodeBlock = props => {
-  const [isCopied, setIsCopied] = useState(false)
-  const [sound] = useContext(SoundContext)
-  const [play] = useSound(biteSound)
+  // const [isCopied, setIsCopied] = useState(false)
+  // const [sound] = useContext(SoundContext)
+  // const [play] = useSound(biteSound)
   const {
     components: {
       codeBlock: { isCopy, isLabel, isFocus },
@@ -66,19 +66,6 @@ const CodeBlock = props => {
   const isCopyButtonVisible = truthyList.includes(copy)
   const tabIndex = Number(truthyList.includes(focus)) - 1
 
-  const handleCopyClick = () => {
-    setIsCopied(true)
-    copyToClipboard(children.replace(highlightCommentRegex, ``))
-
-    if (sound) {
-      play()
-    }
-
-    setTimeout(() => {
-      setIsCopied(false)
-    }, CODE_BLOCK_COPY_CLICK_TIMEOUT)
-  }
-
   return (
     <Flex
       tabIndex={tabIndex}
@@ -97,14 +84,6 @@ const CodeBlock = props => {
           ".language-label": {
             boxShadow: ({ colors: { accent } }) => `0 0 0 2px ${accent}`,
             transition: `codeBlock`,
-          },
-          ".copy-button": {
-            opacity: 1,
-          },
-        },
-        "&:hover": {
-          ".copy-button": {
-            opacity: 1,
           },
         },
       }}
@@ -142,19 +121,12 @@ const CodeBlock = props => {
         )}
         {isCopyButtonVisible && (
           <CopyButton
-            onClick={handleCopyClick}
-            isCopied={isCopied}
-            className="copy-button"
+            content={children}
             sx={{
               position: `absolute`,
               top: 4,
               right: 2,
               zIndex: `codeBlockCopyButton`,
-              transition: `codeBlockCopyButton`,
-              opacity: 0,
-              "&:focus-visible": {
-                opacity: 1,
-              },
             }}
           />
         )}

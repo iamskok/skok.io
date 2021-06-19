@@ -19,8 +19,7 @@ const transitions = {
   `,
   codeBlockCopyButton: `
     box-shadow ${duration} ease,
-    opacity ${duration} ease,
-    background-color ${duration} ease
+    opacity ${duration} ease
   `,
   blogCard: `
     color ${duration} ease,
