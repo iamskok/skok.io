@@ -32,7 +32,6 @@ const SoundModeButton = props => {
       aria-label="Toggle sound mode"
       onClick={clickHandler}
       sx={{
-        cursor: `pointer`,
         width: `iconButton`,
         height: `iconButton`,
         color: `primary`,

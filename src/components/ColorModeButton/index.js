@@ -78,7 +78,6 @@ const ColorModeButton = props => {
         width: `iconButton`,
         height: `iconButton`,
         color: `primary`,
-        cursor: `pointer`,
         transition: `colorModeButton`,
         "&:hover": {
           color: `secondary`,
