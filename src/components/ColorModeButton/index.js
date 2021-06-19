@@ -9,27 +9,26 @@ import isWindow from "../../utils/is-window"
 import switchOnSound from "../../assets/sounds/switch-on.mp3"
 import { SoundContext } from "../SoundProvider"
 
-const styleElement = isWindow() && document.createElement(`style`)
-const disableTransitionStyles = `* {
+const disableAllTransitionStyles = `* {
   -webkit-transition: none !important;
   -moz-transition: none !important;
   -o-transition: none !important;
   -ms-transition: none !important;
   transition: none !important;
 }`
-
-const disableTransitions = () => {
-  styleElement.appendChild(document.createTextNode(disableTransitionStyles))
+const styleElement = isWindow() && document.createElement(`style`)
+const disableAllTransitions = () => {
+  styleElement.appendChild(document.createTextNode(disableAllTransitionStyles))
   document.head.appendChild(styleElement)
 }
-const enableTransitions = () => styleElement?.remove()
+const enableAllTransitions = () => styleElement.remove()
 
 const ColorModeButton = props => {
   const [sound] = useContext(SoundContext)
   const [playSwitchOn] = useSound(switchOnSound)
-  const [turn, setTurn] = useState(0)
+  const [iconAngle, setIconAngle] = useState(0)
   const [colorMode, setColorMode] = useColorMode()
-  const [isInThemeTransition, setIsInThemeTransition] = useState(false)
+  const [isInColorModeTransition, setIsInColorModeTransition] = useState(false)
   const {
     colorModes,
     favicons: { light: lightFavicon, dark: darkFavicon },
@@ -41,24 +40,24 @@ const ColorModeButton = props => {
   } = useThemeUI()
 
   useEffect(() => {
-    if (isInThemeTransition) {
-      enableTransitions()
-      setIsInThemeTransition(false)
+    if (isInColorModeTransition) {
+      enableAllTransitions()
+      setIsInColorModeTransition(false)
     }
-  }, [isInThemeTransition])
+  }, [isInColorModeTransition])
 
-  const turnButton = () => setTurn(Number(turn < 1))
+  const rotateIcon = () => setIconAngle(iconAngle === 0 ? 180 : 0)
 
   const clickHandler = () => {
-    const index = colorModes.indexOf(colorMode)
-    const next = colorModes[(index + 1) % colorModes.length]
+    const currentThemeIndex = colorModes.indexOf(colorMode)
+    const nextTheme = colorModes[(currentThemeIndex + 1) % colorModes.length]
 
-    turnButton()
-    disableTransitions()
-    setColorMode(next)
-    setIsInThemeTransition(true)
+    rotateIcon()
+    disableAllTransitions()
+    setColorMode(nextTheme)
+    setIsInColorModeTransition(true)
 
-    if (next === `default`) {
+    if (nextTheme === `default`) {
       setFavicon(darkFavicon)
     } else {
       setFavicon(lightFavicon)
@@ -88,14 +87,13 @@ const ColorModeButton = props => {
       {...props}
     >
       <motion.svg
-        className="color-mode-button-svg"
         width="24"
         height="24"
         viewBox="0 0 32 32"
         fill="currentColor"
         transition={{ duration }}
         animate={{
-          rotate: turn * 180,
+          rotate: iconAngle,
           originX: `50%`,
           originY: `50%`,
         }}
