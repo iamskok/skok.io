@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Box } from "theme-ui"
+import { jsx, Themed } from "theme-ui"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
 
 const Intro = ({ children, ...rest }) => {
@@ -10,9 +10,9 @@ const Intro = ({ children, ...rest }) => {
   } = useSiteMetadata()
 
   return (
-    <Box id={id} sx={{ scrollMarginTop: 3 }} {...rest}>
+    <Themed.p id={id} sx={{ scrollMarginTop: 3 }} {...rest}>
       {children}
-    </Box>
+    </Themed.p>
   )
 }
 
