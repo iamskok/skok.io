@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Themed } from "theme-ui"
 
 /* eslint-disable react/display-name */
 const Heading =
@@ -10,23 +10,20 @@ const Heading =
     }
 
     return (
-      <Tag id={id} sx={{ scrollMarginTop: 3 }} {...rest}>
-        <a
+      <Tag {...rest}>
+        <Themed.a
+          id={id}
           href={`#${id}`}
+          aria-label={children}
           sx={{
-            textDecoration: `none`,
-            fontFamily: `body`,
+            scrollMarginTop: 3,
             marginRight: 2,
             borderRadius: 1,
-            color: `primary`,
             transition: `heading`,
-            "&:hover": {
-              color: `secondary`,
-            },
           }}
         >
           #
-        </a>
+        </Themed.a>
         {children}
       </Tag>
     )
