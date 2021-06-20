@@ -10,13 +10,11 @@ const Heading =
     }
 
     return (
-      <Tag {...rest}>
+      <Tag {...rest} id={id} sx={{ scrollMarginTop: 3 }}>
         <Themed.a
-          id={id}
           href={`#${id}`}
           aria-label={children}
           sx={{
-            scrollMarginTop: 3,
             marginRight: 2,
             borderRadius: 1,
             transition: `heading`,
