@@ -64,5 +64,12 @@ module.exports = {
       isFocus: true,
       isLabel: true,
     },
+    intro: {
+      id: `introduction`,
+    },
+    tableOfContents: {
+      introId: `introduction`,
+      introTitle: `Introduction`,
+    },
   },
 }

@@ -1,11 +1,19 @@
 /** @jsx jsx */
 import { jsx, Box } from "theme-ui"
-import { INTRO_ID } from "../../utils/constants"
+import useSiteMetadata from "../../hooks/useSiteMetadata"
 
-const Intro = ({ children, id = INTRO_ID, ...rest }) => (
-  <Box id={id} sx={{ scrollMarginTop: 3 }} {...rest}>
-    {children}
-  </Box>
-)
+const Intro = ({ children, ...rest }) => {
+  const {
+    components: {
+      intro: { id },
+    },
+  } = useSiteMetadata()
+
+  return (
+    <Box id={id} sx={{ scrollMarginTop: 3 }} {...rest}>
+      {children}
+    </Box>
+  )
+}
 
 export default Intro

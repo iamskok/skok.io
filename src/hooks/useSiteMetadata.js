@@ -71,6 +71,13 @@ const useSiteMetadata = () => {
                 isFocus
                 isLabel
               }
+              intro {
+                id
+              }
+              tableOfContents {
+                introId
+                introTitle
+              }
             }
           }
         }

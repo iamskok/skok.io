@@ -8,7 +8,7 @@ const Container = ({ children }) => (
       position: [`relative`, `relative`, `fixed`],
       top: [0, 0, 6],
       right: [0, 0, 4],
-      width: `tocContainer`,
+      width: `tableOfContents`,
       marginBottom: 4,
     }}
   >

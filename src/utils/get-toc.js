@@ -1,8 +1,12 @@
-const { INTRO_ID } = require("./constants")
+const {
+  components: {
+    tableOfContents: { introId, introTitle },
+  },
+} = require("../../site-metadata")
 
 const introItem = {
-  url: INTRO_ID,
-  title: `Introduction`,
+  url: `#${introId}`,
+  title: introTitle,
 }
 
 const getHeaderIds = (items = []) =>

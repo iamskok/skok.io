@@ -124,19 +124,7 @@ exports.createPages = ({ actions, graphql }) =>
     createArticles(actions.createPage, edges)
   })
 
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      alias: {
-        buble$: path.resolve(
-          __dirname,
-          `node_modules/@philpl/buble/src/index.js`
-        ),
-      },
-    },
-  })
-}
-
+// Support relative paths in processed MDX content
 // https://github.com/ChristopherBiscardi/gatsby-mdx/issues/176#issuecomment-429569578
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({

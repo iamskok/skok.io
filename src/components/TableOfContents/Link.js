@@ -1,19 +1,20 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
-import InternalLink from "../Link"
+import { jsx, Themed } from "theme-ui"
 
 const Link = ({ url, title, isActive }) => (
-  <InternalLink
+  <Themed.a
     href={url}
     sx={{
       display: `flex`,
       fontSize: 1,
       fontFamily: `code`,
       color: isActive ? `primary` : `text`,
+      borderRadius: 1,
+      transition: `tableOfContentsLink`,
     }}
   >
     {title}
-  </InternalLink>
+  </Themed.a>
 )
 
 export default Link

@@ -7,7 +7,7 @@ const Details = ({ children }) => (
       sx={{
         cursor: `pointer`,
         borderRadius: 1,
-        transition: `tableOfContentsDetails`,
+        transition: `tableOfContentsSummary`,
         "&:hover": {
           color: `secondary`,
         },
