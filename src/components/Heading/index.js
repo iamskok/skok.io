@@ -1,7 +1,6 @@
 /** @jsx jsx */
-import { jsx, Themed } from "theme-ui"
-import { motion } from "framer-motion"
-import Icon from "../Icon"
+import { jsx } from "theme-ui"
+import AnchorIcon from "./anchor-icon"
 
 /* eslint-disable react/display-name */
 const Heading =
@@ -12,37 +11,14 @@ const Heading =
     }
 
     return (
-      <Tag {...rest} id={id}>
-        <Themed.a
+      <Tag {...rest}>
+        <AnchorIcon
+          id={id}
+          target={null}
+          rel={null}
           href={`#${id}`}
-          aria-label={children}
-          sx={{
-            scrollMarginTop: 3,
-            marginRight: 2,
-            borderRadius: 1,
-            transition: `heading`,
-          }}
-        >
-          <Icon sx={{ fill: `none`, stroke: `currentColor` }}>
-            <motion.path
-              sx={{
-                strokeWidth: 2,
-                strokeLinecap: `round`,
-                strokeLinejoin: `round`,
-              }}
-              initial={{
-                pathLength: 0,
-              }}
-              animate={{
-                pathLength: 1,
-                transition: {
-                  duration: 1,
-                },
-              }}
-              d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-            />
-          </Icon>
-        </Themed.a>
+          ariaLabel={children}
+        />
         {children}
       </Tag>
     )
