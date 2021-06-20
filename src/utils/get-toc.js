@@ -1,5 +1,7 @@
-const INTRODUCTION_ITEM = {
-  url: `#introduction`,
+const { INTRO_ID } = require("./constants")
+
+const introItem = {
+  url: INTRO_ID,
   title: `Introduction`,
 }
 
@@ -17,7 +19,7 @@ const getHeaderIds = (items = []) =>
   }, [])
 
 const getToc = (items = [], hasIntro) => {
-  const allItems = hasIntro ? [INTRODUCTION_ITEM, ...items] : items
+  const allItems = hasIntro ? [introItem, ...items] : items
 
   return {
     ids: getHeaderIds(allItems),
