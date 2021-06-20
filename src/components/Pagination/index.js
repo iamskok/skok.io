@@ -1,26 +1,12 @@
 /** @jsx jsx */
-import { jsx, Flex } from "theme-ui"
-import PaginationLink from "./PaginationLink"
+import { jsx, Flex, Box } from "theme-ui"
+import Link from "./Link"
 
 const Pagination = ({ next, previous }) => (
-  <Flex
-    sx={{
-      justifyContent: `space-between`,
-      marginBottom: 4,
-    }}
-  >
-    <Flex sx={{ flex: 1 }}>
-      {previous && <PaginationLink to={previous}>Previous</PaginationLink>}
-    </Flex>
-
-    <Flex
-      sx={{
-        flex: 1,
-        flexDirection: `row-reverse`,
-      }}
-    >
-      {next && <PaginationLink to={next}>Next</PaginationLink>}
-    </Flex>
+  <Flex sx={{ marginBottom: 4 }}>
+    {previous && <Link to={previous}>Previous</Link>}
+    <Box sx={{ marginX: `auto` }} />
+    {next && <Link to={next}>Next</Link>}
   </Flex>
 )
 
