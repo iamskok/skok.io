@@ -46,11 +46,11 @@ const CodeBlock = props => {
   } = props
 
   const language = getLanguage(prismClassName)
-  const truthyList = [true, `true`]
-  const isLanguageLabelVisible = truthyList.includes(label) && Boolean(language)
+  const truthy = [true, `true`]
+  const isLanguageLabelVisible = truthy.includes(label) && Boolean(language)
   const isFileNameVisible = Boolean(fileName)
-  const isCopyButtonVisible = truthyList.includes(copy)
-  const tabIndex = Number(truthyList.includes(focus)) - 1
+  const isCopyButtonVisible = truthy.includes(copy)
+  const tabIndex = Number(truthy.includes(focus)) - 1
 
   return (
     <Flex
@@ -81,15 +81,15 @@ const CodeBlock = props => {
             sx={{
               position: `absolute`,
               right: 4,
+              // Mask intersecting focus styles
               transform: `translateY(calc(-100% - 2px))`,
               "&:after": {
                 content: `""`,
                 position: `absolute`,
-                bottom: `-2px`,
-                right: 0,
-                display: `inline-block`,
                 width: `100%`,
                 height: 4,
+                bottom: `-2px`,
+                right: 0,
                 backgroundColor: `muted`,
               },
             }}
