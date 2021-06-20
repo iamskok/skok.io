@@ -11,7 +11,6 @@ import radii from "./tokens/radii"
 import shadows from "./tokens/shadows"
 import transitions from "./tokens/transitions"
 import transitionDurations from "./tokens/transition-durations"
-import opacities from "./tokens/opacities"
 import zIndices from "./tokens/z-indices"
 import text from "./variants/text"
 import icons from "./variants/icons"
@@ -33,7 +32,6 @@ const theme = {
   shadows,
   transitions,
   transitionDurations,
-  opacities,
   zIndices,
   icons,
   text,
