@@ -1,7 +1,8 @@
 import React from "react"
 import { Box } from "theme-ui"
 
-// Currently Theme UI is not exposing its SVG component
+// Currently Theme UI is not exposing SVG component
+// and there is no way to use `variants` with `svg` elements
 // https://github.com/system-ui/theme-ui/blob/develop/packages/components/src/SVG.js
 const Icon = React.forwardRef(function Icon(props, ref) {
   return (
