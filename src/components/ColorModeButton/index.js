@@ -73,7 +73,7 @@ const ColorModeButton = props => {
 
   return (
     <IconButton
-      aria-label="Toggle website theme"
+      aria-label="Change color mode"
       onClick={clickHandler}
       sx={{
         color: `primary`,
