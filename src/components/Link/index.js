@@ -1,32 +1,29 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from "theme-ui"
-import { Link as GatsbyLink } from "gatsby"
-import { Link as ThemeUILink } from "theme-ui"
+import { Link as InternalLink } from "gatsby"
+import { Link as OutboundLink } from "theme-ui"
 import isAbsoluteURL from "is-absolute-url"
 
 const Link = ({ href, to, ...rest }) => {
   const {
     theme: {
-      styles: { a: linkStyles },
+      styles: { a: link },
     },
   } = useThemeUI()
 
   const styles = {
-    linkStyles,
+    ...link,
     transition: `link`,
     borderRadius: 1,
-    "&:hover": {
-      color: `secondary`,
-    },
   }
 
   const url = href || to
   const isExternal = isAbsoluteURL(url)
 
   return isExternal ? (
-    <ThemeUILink href={url} sx={styles} {...rest} />
+    <OutboundLink href={url} sx={styles} {...rest} />
   ) : (
-    <GatsbyLink to={url} sx={styles} {...rest} />
+    <InternalLink to={url} sx={styles} {...rest} />
   )
 }
 
