@@ -4,7 +4,7 @@ import { Box } from "theme-ui"
 // Currently Theme UI is not exposing SVG component
 // and there is no way to use `variants` with `svg` elements
 // https://github.com/system-ui/theme-ui/blob/develop/packages/components/src/SVG.js
-const Icon = React.forwardRef(function Icon(props, ref) {
+const SVG = React.forwardRef(function Icon(props, ref) {
   return (
     <Box
       ref={ref}
@@ -20,4 +20,4 @@ const Icon = React.forwardRef(function Icon(props, ref) {
   )
 })
 
-export default Icon
+export default SVG

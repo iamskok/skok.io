@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import popUpOffSound from "../../assets/sounds/pop-up-off.mp3"
 import popUpOnSound from "../../assets/sounds/pop-up-on.mp3"
 import { SoundContext } from "../SoundProvider"
-import Icon from "../Icon"
+import SVG from "../SVG"
 
 const SoundModeButton = props => {
   const [sound, setSound] = useContext(SoundContext)
@@ -61,7 +61,7 @@ const SoundModeButton = props => {
       }}
       {...props}
     >
-      <Icon viewBox="0 0 88 70">
+      <SVG viewBox="0 0 88 70">
         <path d="M44.017,2.121L24.304,16.964H6.36c-2.341,0-4.242,1.898-4.242,4.24v18.728c0,2.34,1.9,4.24,4.242,4.24h17.119l20.538,15.464  V2.121z" />
         <path d="M44.017,61.756c-0.451,0-0.901-0.143-1.276-0.424l-19.972-15.04H6.36c-3.507,0-6.36-2.853-6.36-6.36V21.205  c0-3.508,2.853-6.362,6.36-6.362h17.238L42.741,0.428c0.643-0.485,1.504-0.564,2.221-0.206c0.721,0.36,1.174,1.095,1.174,1.898  v57.516c0,0.805-0.453,1.54-1.174,1.897C44.663,61.684,44.339,61.756,44.017,61.756z M6.36,19.083c-1.168,0-2.12,0.952-2.12,2.122  v18.728c0,1.17,0.952,2.12,2.12,2.12h17.119c0.46,0,0.908,0.151,1.274,0.429l17.144,12.905V6.373L25.582,18.657  c-0.369,0.278-0.816,0.426-1.278,0.426H6.36z" />
         <motion.g
@@ -76,7 +76,7 @@ const SoundModeButton = props => {
             <motion.path d={d} key={key} variants={wavePathVariants} />
           ))}
         </motion.g>
-      </Icon>
+      </SVG>
     </IconButton>
   )
 }

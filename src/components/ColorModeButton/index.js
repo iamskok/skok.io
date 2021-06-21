@@ -8,7 +8,7 @@ import setFavicon from "../../utils/set-favicon"
 import isWindow from "../../utils/is-window"
 import switchOnSound from "../../assets/sounds/switch-on.mp3"
 import { SoundContext } from "../SoundProvider"
-import Icon from "../Icon"
+import SVG from "../SVG"
 
 const disableAllTransitionStyles = `* {
   -webkit-transition: none !important;
@@ -24,7 +24,7 @@ const disableAllTransitions = () => {
 }
 const enableAllTransitions = () => styleElement.remove()
 
-const AnimatedIcon = motion(Icon)
+const AnimatedSVG = motion(SVG)
 
 const ColorModeButton = props => {
   const [sound] = useContext(SoundContext)
@@ -84,7 +84,7 @@ const ColorModeButton = props => {
       }}
       {...props}
     >
-      <AnimatedIcon
+      <AnimatedSVG
         as={motion.svg}
         viewBox="0 0 32 32"
         transition={{ duration }}
@@ -105,7 +105,7 @@ const ColorModeButton = props => {
           }}
         />
         <path d="M 16 0 A 16 16 0 0 0 16 32 z" />
-      </AnimatedIcon>
+      </AnimatedSVG>
     </IconButton>
   )
 }

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, IconButton } from "theme-ui"
-import Icon from "../Icon"
+import SVG from "../SVG"
 
 const IconLink = ({
   children,
@@ -25,7 +25,7 @@ const IconLink = ({
     }}
     {...rest}
   >
-    <Icon>{children}</Icon>
+    <SVG>{children}</SVG>
   </IconButton>
 )
 
