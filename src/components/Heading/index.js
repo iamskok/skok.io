@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import AnchorIcon from "./anchor-icon"
+import Icon from "./icon"
 
 /* eslint-disable react/display-name */
 const Heading =
@@ -12,7 +12,7 @@ const Heading =
 
     return (
       <Tag {...rest}>
-        <AnchorIcon
+        <Icon
           id={id}
           target={null}
           rel={null}

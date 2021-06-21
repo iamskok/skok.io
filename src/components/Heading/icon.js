@@ -1,14 +1,20 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, useThemeUI } from "theme-ui"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import IconLink from "../IconLink"
 
-const AnchorIcon = ({ id, ariaLabel, threshold = 0.1, triggerOnce = true }) => {
+const Icon = ({ id, ariaLabel, threshold = 0.1, triggerOnce = true }) => {
   const { ref, inView } = useInView({
     threshold,
     triggerOnce,
   })
+
+  const {
+    theme: {
+      transitionDurations: [, , , duration],
+    },
+  } = useThemeUI()
 
   const iconVariants = {
     initial: {
@@ -18,9 +24,7 @@ const AnchorIcon = ({ id, ariaLabel, threshold = 0.1, triggerOnce = true }) => {
     visible: {
       pathLength: 1,
       opacity: 1,
-      transition: {
-        duration: 2,
-      },
+      transition: { duration },
     },
   }
 
@@ -34,8 +38,10 @@ const AnchorIcon = ({ id, ariaLabel, threshold = 0.1, triggerOnce = true }) => {
         aria-label={ariaLabel}
         sx={{
           scrollMarginTop: 3,
-          marginRight: 2,
           color: `primary`,
+          "&:hover": {
+            color: `secondary`,
+          },
         }}
       >
         <motion.path
@@ -55,4 +61,4 @@ const AnchorIcon = ({ id, ariaLabel, threshold = 0.1, triggerOnce = true }) => {
   )
 }
 
-export default AnchorIcon
+export default Icon
