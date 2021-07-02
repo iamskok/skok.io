@@ -10,11 +10,11 @@ const useStyleSheet = (selector, rule) => {
     }
   `
 
-  styleSheet.insertRule(cssStyleRule)
-
   useEffect(() => {
-    return () => styleSheet.removeRule(0)
-  }, [styleSheet, rule])
+    styleSheet.insertRule(cssStyleRule)
+
+    return () => styleSheet.deleteRule(0)
+  }, [styleSheet, cssStyleRule])
 }
 
 export default useStyleSheet
