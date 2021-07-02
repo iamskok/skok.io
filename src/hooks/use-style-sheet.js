@@ -1,8 +1,8 @@
 import { useEffect } from "react"
-import isWindow from "../utils/is-window"
+import isBrowser from "../utils/is-browser"
 
 const useStyleSheet = (selector, rule) => {
-  const styleSheet = isWindow() && document.styleSheets[0]
+  const styleSheet = isBrowser() && document.styleSheets[0]
   const [[property, value]] = Object.entries(rule)
   const cssStyleRule = `
     ${selector} {

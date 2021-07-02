@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react"
-import isWindow from "../utils/is-window"
+import isBrowser from "../utils/is-browser"
 
 const useLocalStorage = (
   key,
@@ -7,7 +7,7 @@ const useLocalStorage = (
   { serialize = JSON.stringify, deserialize = JSON.parse } = {}
 ) => {
   const [state, setState] = useState(() => {
-    const valueInLocalStorage = isWindow() && window.localStorage.getItem(key)
+    const valueInLocalStorage = isBrowser() && window.localStorage.getItem(key)
     if (valueInLocalStorage) {
       return deserialize(valueInLocalStorage)
     }

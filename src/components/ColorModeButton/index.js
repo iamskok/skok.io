@@ -5,7 +5,7 @@ import useSound from "use-sound"
 import { motion } from "framer-motion"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
 import setFavicon from "../../utils/set-favicon"
-import isWindow from "../../utils/is-window"
+import isBrowser from "../../utils/is-browser"
 import switchOnSound from "../../assets/sounds/switch-on.mp3"
 import { SoundContext } from "../SoundProvider"
 import SVG from "../SVG"
@@ -17,7 +17,7 @@ const disableAllTransitionStyles = `* {
   -ms-transition: none !important;
   transition: none !important;
 }`
-const styleElement = isWindow() && document.createElement(`style`)
+const styleElement = isBrowser() && document.createElement(`style`)
 const disableAllTransitions = () => {
   styleElement.appendChild(document.createTextNode(disableAllTransitionStyles))
   document.head.appendChild(styleElement)
