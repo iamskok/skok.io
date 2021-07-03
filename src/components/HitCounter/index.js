@@ -5,41 +5,14 @@ import firebase from "firebase/app"
 import "firebase/firestore"
 import useLocalStorage from "../../hooks/useLocalStorage"
 import EyeIcon from "../../assets/icons/eye.inline.svg"
-
-// const {
-//   GATSBY_FIREBASE_API_KEY,
-//   GATSBY_FIREBASE_AUTH_DOMAIN,
-//   GATSBY_FIREBASE_DATABASE_URL,
-//   GATSBY_FIREBASE_PROJECT_ID,
-//   FIREBASE_API_KEY_DEV,
-//   FIREBASE_AUTH_DOMAIN_DEV,
-//   FIREBASE_DATABASE_URL_DEV,
-//   FIREBASE_PROJECT_ID_DEV,
-// } = process.env
-
-// eslint-disable-next-line no-console
-console.log(
-  process.env.GATSBY_FIREBASE_API_KEY,
-  process.env.GATSBY_FIREBASE_AUTH_DOMAIN,
-  process.env.GATSBY_FIREBASE_DATABASE_URL,
-  process.env.GATSBY_FIREBASE_PROJECT_ID
-  // FIREBASE_API_KEY_DEV,
-  // FIREBASE_AUTH_DOMAIN_DEV,
-  // FIREBASE_DATABASE_URL_DEV,
-  // FIREBASE_PROJECT_ID_DEV,
-)
+import { REGISTERED_HIT_ENDPOINT } from "../../utils/constants"
 
 const config = {
   apiKey: process.env.GATSBY_FIREBASE_API_KEY,
   authDomain: process.env.GATSBY_FIREBASE_AUTH_DOMAIN,
   databaseURL: process.env.GATSBY_FIREBASE_DATABASE_URL,
-  // Temporary fix. Netlify is not picking up this variable.
   projectId: process.env.GATSBY_FIREBASE_PROJECT_ID,
-  // ? process.env.FIREBASE_PROJECT_ID
-  // : `iamskok`,
 }
-
-const REGISTERED_HIT_ENDPOINT = `/.netlify/functions/register-hit`
 
 firebase.initializeApp(config)
 
