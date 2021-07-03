@@ -7,7 +7,7 @@ const seo = {
     width: 112,
     height: 112,
   },
-  language: `en`,
+  language: `en_US`,
   socialMedia: {
     twitter: `https://twitter.com/iamskok1`,
     github: `https://github.com/iamskok`,
