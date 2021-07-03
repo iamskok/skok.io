@@ -6,12 +6,35 @@ import "firebase/firestore"
 import useLocalStorage from "../../hooks/useLocalStorage"
 import EyeIcon from "../../assets/icons/eye.inline.svg"
 
+const {
+  FIREBASE_API_KEY,
+  FIREBASE_AUTH_DOMAIN,
+  FIREBASE_DATABASE_URL,
+  FIREBASE_PROJECT_ID,
+  FIREBASE_API_KEY_DEV,
+  FIREBASE_AUTH_DOMAIN_DEV,
+  FIREBASE_DATABASE_URL_DEV,
+  FIREBASE_PROJECT_ID_DEV,
+} = process.env
+
+// eslint-disable-next-line no-console
+console.table({
+  FIREBASE_API_KEY,
+  FIREBASE_AUTH_DOMAIN,
+  FIREBASE_DATABASE_URL,
+  FIREBASE_PROJECT_ID,
+  FIREBASE_API_KEY_DEV,
+  FIREBASE_AUTH_DOMAIN_DEV,
+  FIREBASE_DATABASE_URL_DEV,
+  FIREBASE_PROJECT_ID_DEV,
+})
+
 const config = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  apiKey: FIREBASE_API_KEY,
+  authDomain: FIREBASE_AUTH_DOMAIN,
+  databaseURL: FIREBASE_DATABASE_URL,
   // Temporary fix. Netlify is not picking up this variable.
-  projectId: process.env.FIREBASE_PROJECT_ID,
+  projectId: FIREBASE_PROJECT_ID,
   // ? process.env.FIREBASE_PROJECT_ID
   // : `iamskok`,
 }
