@@ -1,5 +1,5 @@
 const path = require("path")
-const { POSTS_PATH } = require("../../config/paths")
+const { POSTS_PATH } = require("../../src/utils/constants")
 
 const sourcePosts = {
   resolve: `gatsby-source-filesystem`,

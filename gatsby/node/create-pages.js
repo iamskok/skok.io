@@ -4,7 +4,7 @@ const {
   tableOfContents: tableOfContentsConfig,
 } = require("../../config/components")
 const slashify = require("../../src/utils/slashify")
-const { POST_TEMPLATE_PATH } = require("../../config/paths")
+const { POST_TEMPLATE_PATH } = require("../../src/utils/constants")
 
 const query = `
   query {

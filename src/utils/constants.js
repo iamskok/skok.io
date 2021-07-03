@@ -5,6 +5,9 @@ const CODE_BLOCK_SCROLL_STEP = 100
 const INACTIVE_FAVICON_TIMEOUT = 5000
 const SCROLL_PROVIDER_THROTTLE_DEPLAY = 200
 const REGISTERED_HIT_ENDPOINT = `/.netlify/functions/register-hit`
+const IMAGES_PATH = `./src/assets/images`
+const POSTS_PATH = `./posts`
+const POST_TEMPLATE_PATH = `./src/templates/post/index.js`
 
 module.exports = {
   CODE_BLOCK_COPY_CLICK_TIMEOUT,
@@ -14,4 +17,7 @@ module.exports = {
   INACTIVE_FAVICON_TIMEOUT,
   SCROLL_PROVIDER_THROTTLE_DEPLAY,
   REGISTERED_HIT_ENDPOINT,
+  IMAGES_PATH,
+  POSTS_PATH,
+  POST_TEMPLATE_PATH,
 }
