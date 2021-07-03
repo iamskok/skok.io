@@ -5,12 +5,10 @@ import Link from "./link"
 const Pagination = ({ previous, next }) => (
   <Flex
     sx={{
-      marginX: [-3, 0],
+      marginX: [-2, -3],
       marginBottom: 4,
-      columnGap: [0, 4],
-      rowGap: [2, 0],
-      flexDirection: [`column`, `row`],
-      textAlign: `left`,
+      rowGap: 2,
+      flexDirection: `column`,
     }}
   >
     {previous && (

@@ -8,11 +8,11 @@ const Link = ({ url, title, text, ...rest }) => (
     sx={{
       display: `flex`,
       flexDirection: `column`,
-      width: [`auto`, `50%`],
+      width: `100%`,
       backgroundColor: `transparent`,
-      textAlign: [`left`, `center`],
+      textAlign: `left`,
       transition: `paginationLink`,
-      alignSelf: [`auto`, `flex-start`],
+      paddingX: [2, 3],
       color: `text`,
       "&:hover": {
         backgroundColor: `primary`,
@@ -21,8 +21,21 @@ const Link = ({ url, title, text, ...rest }) => (
     {...rest}
   >
     <Flex sx={{ flexDirection: `column` }}>
-      <Box sx={{ variant: `text.code` }}>{text}</Box>
-      <Box as="h3" sx={{ variant: `text.body`, fontWeight: `body` }}>
+      <Box
+        sx={{
+          variant: `text.code`,
+          fontSize: 1,
+        }}
+      >
+        {text}
+      </Box>
+      <Box
+        sx={{
+          variant: `text.body`,
+          fontSize: 2,
+          fontWeight: `body`,
+        }}
+      >
         {title}
       </Box>
     </Flex>
