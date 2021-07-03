@@ -10,7 +10,7 @@ import isBrowser from "../../utils/is-browser"
 import fontFaceDeclarations from "../../gatsby-plugin-theme-ui/fontFaces"
 import getFontFaces from "./get-font-faces"
 
-// Access `Article` component DOM node.
+// Access `Post` component DOM node.
 const notationRef = createRef()
 const NotationContext = createContext()
 

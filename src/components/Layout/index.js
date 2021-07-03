@@ -26,7 +26,7 @@ const Layout = ({
   const speakableSelector = Object.fromEntries(
     new Map([Object.values(selector)])
   )
-  // Add `speakableSelector` for certain pages
+  // Selectively add `speakableSelector`
   const isSpeakableSelector = [`home`, `post`].includes(pageId)
 
   return (
