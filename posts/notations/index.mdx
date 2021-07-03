@@ -1,10 +1,9 @@
 ---
 title: Notations component
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-date: 2021-04-11
-published: true
-cover: ./cover.jpg
-coverAlt: Notations component
+datePublished: 2021-04-11
+image: ./cover.jpg
+imageAlt: Notations component
 hasIntro: true
 ---
 
@@ -38,7 +37,10 @@ import TableOfContents from "../../src/components/TableOfContents"
   et purus feugiat lobortis malesuada ac metus.
 </Intro>
 
-<TableOfContents items={props.tocItems} headerIds={props.headerIds} />
+<TableOfContents
+  items={props.tableOfContentsItems}
+  ids={props.tableOfContentsHeaderIds}
+/>
 
 Default Notation <Notation color="red" animationDelay="1000" animationDuration="10000">Custom Notation</Notation> dolor sit amet, consectetur adipiscing elit.
 

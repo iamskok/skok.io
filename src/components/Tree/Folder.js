@@ -9,23 +9,24 @@ const Folder = ({ children, name, open = true }) => {
 
   const handleClick = () => setIsOpened(!isOpened)
 
+  const folderStyles = {
+    marginRight: 2,
+    fontSize: theme => theme.sizes.treeIcon,
+    cursor: `pointer`,
+  }
+
   return (
     <Box>
-      <Flex sx={{ alignItems: `center` }} onClick={handleClick}>
+      <Flex
+        onClick={handleClick}
+        sx={{
+          alignItems: `center`,
+        }}
+      >
         {isOpened ? (
-          <OpenedFolderIcon
-            sx={{
-              marginRight: 2,
-              fontSize: theme => theme.sizes.treeIcon,
-            }}
-          />
+          <OpenedFolderIcon sx={folderStyles} />
         ) : (
-          <FolderIcon
-            sx={{
-              marginRight: 2,
-              fontSize: theme => theme.sizes.treeIcon,
-            }}
-          />
+          <FolderIcon sx={folderStyles} />
         )}
         {name}
       </Flex>

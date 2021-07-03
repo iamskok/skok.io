@@ -45,13 +45,11 @@ Edit Firebase security configurations for production environment (it's required 
 
 ## Scripts
 
-| Name         | Description                                       |
-| ------------ | ------------------------------------------------- |
-| lint         | Lint all `js` files                               |
-| lint:fix     | Lint and fix all `js` file                        |
-| prettier     | Lint all `json`, `md`, and `mdx` files            |
-| prettier:fix | Lint and format all `json`, `md`, and `mdx` files |
-| clean        | Wipe `.cache` and `public` directories            |
-| dev          | Start development server                          |
-| build        | Compile application                               |
-| serve        | Serve production build                            |
+| Name   | Description                              |
+| ------ | ---------------------------------------- |
+| lint   | Lint and fix all `js` file               |
+| format | Format all `json`, `md`, and `mdx` files |
+| clean  | Wipe `.cache` and `public` directories   |
+| dev    | Start development server                 |
+| build  | Compile application                      |
+| serve  | Serve production build                   |

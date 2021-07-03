@@ -11,14 +11,13 @@ const useSiteMetadata = () => {
             firstName
             lastName
             siteUrl
+            siteName
             language
-            speakableSelector
-            logo {
-              url
-              width
-              height
+            logo
+            speakableSelector {
+              attribute
+              value
             }
-            copyrightYear
             address {
               addressCountry
               addressLocality
@@ -30,34 +29,29 @@ const useSiteMetadata = () => {
             }
             pages {
               home {
-                to
-                order
-                label
-                breadcrumb
+                id
+                pathName
                 title
                 description
-                coverAlt
+                image
+                imageAlt
+                breadcrumb
                 type
               }
               blog {
-                to
-                order
-                label
-                breadcrumb
+                id
+                pathName
                 title
                 description
-                coverAlt
+                image
+                imageAlt
+                breadcrumb
                 type
               }
               post {
-                order
-                breadcrumb
+                id
                 type
-              }
-              notFound {
-                order
-                title
-                description
+                breadcrumb
               }
             }
             colorModes

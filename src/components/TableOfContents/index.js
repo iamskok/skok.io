@@ -6,14 +6,14 @@ import Container from "./Container"
 import Details from "./Details"
 import renderItems from "./render-items"
 
-const TableOfContents = ({ items, headerIds }) => {
-  const [{ activeHeaderId }, dispatch] = useContext(ScrollContext)
+const TableOfContents = ({ items, ids }) => {
+  const [{ activeId }, dispatch] = useContext(ScrollContext)
 
   useEffect(() => {
     dispatch({
-      type: `ENABLE_TOC`,
+      type: `SHOW_TABLE_OF_CONTENTS`,
       payload: {
-        isTocEnabled: true,
+        isVisible: true,
       },
     })
   }, [dispatch])
@@ -22,14 +22,14 @@ const TableOfContents = ({ items, headerIds }) => {
     dispatch({
       type: `SET_HEADER_IDS`,
       payload: {
-        headerIds: headerIds,
+        ids,
       },
     })
-  }, [dispatch, headerIds])
+  }, [dispatch, ids])
 
   return (
     <Container>
-      <Details>{renderItems(items, activeHeaderId)}</Details>
+      <Details>{renderItems(items, activeId)}</Details>
     </Container>
   )
 }

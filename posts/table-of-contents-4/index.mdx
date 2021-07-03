@@ -1,12 +1,11 @@
 ---
 title: Table Of Contents
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu iaculis elit.
-date: 2021-04-23
-modifiedDate: 2021-04-23
-published: true
+datePublished: 2021-04-23
+dateModified: 2021-04-23
 hasIntro: true
-cover: ./cover.jpg
-coverAlt: Cover image
+image: ./cover.jpg
+imageAlt: Cover image
 ---
 
 import TableOfContents from "../../src/components/TableOfContents"
@@ -26,7 +25,10 @@ import Intro from "../../src/components/Intro"
   et purus feugiat lobortis malesuada ac metus.
 </Intro>
 
-<TableOfContents items={props.tocItems} headerIds={props.headerIds} />
+<TableOfContents
+  items={props.tableOfContentsItems}
+  ids={props.tableOfContentsHeaderIds}
+/>
 
 ## h2 long heading
 

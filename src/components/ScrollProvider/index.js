@@ -1,38 +1,42 @@
-import React, { createContext, useReducer, useRef, useEffect } from "react"
-import throttle from "lodash.throttle"
+import React, { createContext, useReducer, useEffect } from "react"
+import { throttle } from "lodash-es"
 import useIsMounted from "../../hooks/useIsMounted"
+import { SCROLL_PROVIDER_THROTTLE_DEPLAY } from "../../utils/constants"
 import handleActiveHeaderId from "./handleActiveHeaderId"
 import handleProgress from "./handleProgress"
 
-const reducer = (state, { type, payload }) => {
+const reducer = (
+  state,
+  { type, payload: { ids, activeId, isVisible, scrollProgress } }
+) => {
   switch (type) {
     case `SET_HEADER_IDS`:
       return {
         ...state,
-        headerIds: [...payload.headerIds],
+        ids,
       }
     case `SET_ACTIVE_HEADER_ID`:
       return {
         ...state,
-        activeHeaderId: payload.activeHeaderId,
+        activeId,
       }
-    case `ENABLE_TOC`:
+    case `SHOW_TABLE_OF_CONTENTS`:
       return {
         ...state,
-        isTocEnabled: payload.isTocEnabled,
+        isVisible,
       }
     case `SET_SCROLL_PROGRESS`:
       return {
         ...state,
-        scrollProgress: payload.scrollProgress,
+        scrollProgress,
       }
   }
 }
 
 const initialState = {
-  headerIds: [],
-  activeHeaderId: null,
-  isTocEnabled: false,
+  ids: [],
+  activeId: null,
+  isVisible: false,
   scrollProgress: null,
 }
 
@@ -41,16 +45,17 @@ const ScrollContext = createContext()
 const ScrollProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const isMounted = useIsMounted()
-  const { headerIds, isTocEnabled } = state
+
+  const { ids, isVisible } = state
 
   useEffect(() => {
     dispatch({
       type: `SET_ACTIVE_HEADER_ID`,
       payload: {
-        activeHeaderId: headerIds[0],
+        activeId: ids[0],
       },
     })
-  }, [headerIds])
+  }, [ids])
 
   useEffect(() => {
     const handleScroll = throttle(() => {
@@ -60,19 +65,19 @@ const ScrollProvider = ({ children }) => {
           dispatch,
         })
 
-        if (isTocEnabled) {
+        if (isVisible) {
           handleActiveHeaderId({
-            headerIds,
+            ids,
             dispatch,
           })
         }
       }
-    }, 200)
+    }, SCROLL_PROVIDER_THROTTLE_DEPLAY)
 
     window.addEventListener(`scroll`, handleScroll)
 
     return () => window.removeEventListener(`scroll`, handleScroll)
-  }, [headerIds, isTocEnabled, isMounted])
+  }, [ids, isVisible, isMounted])
 
   return (
     <ScrollContext.Provider value={[state, dispatch]}>

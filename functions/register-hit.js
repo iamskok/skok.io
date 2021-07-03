@@ -1,32 +1,18 @@
 const firebase = require("firebase")
 
-// Get `production` and `development` environment variables from Netlify.
 const {
-  FIREBASE_API_KEY,
-  FIREBASE_AUTH_DOMAIN,
-  FIREBASE_DATABASE_URL,
-  FIREBASE_PROJECT_ID,
-
-  FIREBASE_API_KEY_DEV,
-  FIREBASE_AUTH_DOMAIN_DEV,
-  FIREBASE_DATABASE_URL_DEV,
-  FIREBASE_PROJECT_ID_DEV,
+  GATSBY_FIREBASE_API_KEY,
+  GATSBY_FIREBASE_AUTH_DOMAIN,
+  GATSBY_FIREBASE_DATABASE_URL,
+  GATSBY_FIREBASE_PROJECT_ID,
 } = process.env
 
-// Set configuration based on the Netlify environment.
-const config = process.env.NETLIFY_DEV
-  ? {
-      apiKey: FIREBASE_API_KEY_DEV,
-      authDomain: FIREBASE_AUTH_DOMAIN_DEV,
-      databaseURL: FIREBASE_DATABASE_URL_DEV,
-      projectId: FIREBASE_PROJECT_ID_DEV,
-    }
-  : {
-      apiKey: FIREBASE_API_KEY,
-      authDomain: FIREBASE_AUTH_DOMAIN,
-      databaseURL: FIREBASE_DATABASE_URL,
-      projectId: FIREBASE_PROJECT_ID,
-    }
+const config = {
+  apiKey: GATSBY_FIREBASE_API_KEY,
+  authDomain: GATSBY_FIREBASE_AUTH_DOMAIN,
+  databaseURL: GATSBY_FIREBASE_DATABASE_URL,
+  projectId: GATSBY_FIREBASE_PROJECT_ID,
+}
 
 // Check if Firebase wasn't previously initialized.
 if (!firebase.apps.length) {

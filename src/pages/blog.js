@@ -4,32 +4,36 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import useSiteMetadata from "../hooks/useSiteMetadata"
 import BlogCard from "../components/BlogCard"
+import slashify from "../utils/slashify"
 
-const Blog = ({ data: { file, allMdx } }) => {
+const Blog = ({
+  data: {
+    allMdx: { edges },
+    file: { childImageSharp: seoImages },
+  },
+}) => {
   const {
     pages: {
-      blog: { to, title, description, coverAlt, type, breadcrumb },
+      blog: { id, pathName, title, description, imageAlt, breadcrumb, type },
     },
   } = useSiteMetadata()
-
-  const covers = file?.childImageSharp
-  const articles = allMdx.edges.map(({ node }) => node)
+  const posts = edges.map(({ node }) => node)
 
   return (
     <Layout
-      to={to}
+      pageId={id}
+      pathName={pathName}
       title={title}
       description={description}
-      covers={{ ...covers }}
-      coverAlt={coverAlt}
-      type={type}
+      images={{ ...seoImages }}
+      imageAlt={imageAlt}
       breadcrumb={breadcrumb}
-      pageName="blog"
+      type={type}
     >
       <Themed.h1>{title}</Themed.h1>
 
-      {articles.map(({ id, ...article }) => (
-        <BlogCard key={id} article={article} />
+      {posts.map(({ id, fields: { slug }, ...post }) => (
+        <BlogCard key={id} relativeUrl={slashify(pathName, slug)} post={post} />
       ))}
     </Layout>
   )
@@ -38,13 +42,13 @@ const Blog = ({ data: { file, allMdx } }) => {
 export default Blog
 
 export const query = graphql`
-  query {
-    file(relativePath: { eq: "blog.jpg" }) {
+  query ($image: String) {
+    file(absolutePath: { eq: $image }) {
       childImageSharp {
-        ...ChildImageSharpFields
+        ...ImageUrlFields
       }
     }
-    allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMdx(sort: { order: DESC, fields: [frontmatter___datePublished] }) {
       edges {
         node {
           id
@@ -53,13 +57,6 @@ export const query = graphql`
           }
           frontmatter {
             ...FrontmatterFields
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 900) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
           }
         }
       }

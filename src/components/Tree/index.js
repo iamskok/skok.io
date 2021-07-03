@@ -3,7 +3,7 @@ import { jsx, Box } from "theme-ui"
 import File from "./File"
 import Folder from "./Folder"
 
-const Tree = ({ children }) => <Box>{children}</Box>
+const Tree = ({ children }) => <Box sx={{ marginBottom: 4 }}>{children}</Box>
 
 Tree.File = File
 Tree.Folder = Folder

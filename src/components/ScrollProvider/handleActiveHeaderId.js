@@ -1,10 +1,10 @@
-const handleActiveHeaderId = ({ headerIds, dispatch }) => {
+const handleActiveHeaderId = ({ ids, dispatch }) => {
   // Track central page position
   const pageScrollPosition = window.scrollY + window.innerHeight / 2
 
-  for (let i = 0; i < headerIds.length; i++) {
-    const topHeaderId = headerIds[i]
-    const bottomHeaderId = headerIds[i + 1]
+  for (let i = 0; i < ids.length; i++) {
+    const topHeaderId = ids[i]
+    const bottomHeaderId = ids[i + 1]
     const topHeaderPosition = document.getElementById(topHeaderId)?.offsetTop
     const bottomHeaderPosition =
       document.getElementById(bottomHeaderId)?.offsetTop || Infinity
@@ -16,7 +16,7 @@ const handleActiveHeaderId = ({ headerIds, dispatch }) => {
       return dispatch({
         type: `SET_ACTIVE_HEADER_ID`,
         payload: {
-          activeHeaderId: topHeaderId,
+          activeId: topHeaderId,
         },
       })
     }
@@ -27,7 +27,7 @@ const handleActiveHeaderId = ({ headerIds, dispatch }) => {
   dispatch({
     type: `SET_ACTIVE_HEADER_ID`,
     payload: {
-      activeHeaderId: headerIds[0],
+      activeId: ids[0],
     },
   })
 }

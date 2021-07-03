@@ -18,10 +18,15 @@ const Nav = ({ links }) => (
       },
     }}
   >
-    {links.map(({ to, label }) => (
-      <li key={label} sx={{ display: `inline-block` }}>
+    {links.map(({ relativeUrl, title }, key) => (
+      <li
+        key={key}
+        sx={{
+          display: `inline-block`,
+        }}
+      >
         <Link
-          to={to}
+          to={relativeUrl}
           sx={{
             color: `primary`,
             textDecoration: `none`,
@@ -33,7 +38,7 @@ const Nav = ({ links }) => (
             },
           }}
         >
-          {label}
+          {title}
         </Link>
       </li>
     ))}

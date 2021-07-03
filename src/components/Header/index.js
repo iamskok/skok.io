@@ -3,14 +3,26 @@ import { jsx, Flex } from "theme-ui"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
 import Nav from "./Nav"
 import SideNav from "./SideNav"
+import slashify from "../../utils/slashify"
 
 const Header = () => {
-  const { pages } = useSiteMetadata()
+  const {
+    pages: {
+      home: { id: homeTitle, pathName: homePathName },
+      blog: { id: blogTitle, pathName: blogPathName },
+    },
+  } = useSiteMetadata()
 
-  const links = Object.keys(pages)
-    .map(page => pages[page])
-    .filter(page => page?.order)
-    .sort((a, b) => a.order - b.order)
+  const navLinks = [
+    {
+      title: homeTitle,
+      relativeUrl: slashify(homePathName),
+    },
+    {
+      title: blogTitle,
+      relativeUrl: slashify(blogPathName),
+    },
+  ]
 
   return (
     <Flex
@@ -24,7 +36,7 @@ const Header = () => {
         marginBottom: 5,
       }}
     >
-      <Nav links={links} />
+      <Nav links={navLinks} />
       <SideNav />
     </Flex>
   )

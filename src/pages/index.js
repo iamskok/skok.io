@@ -5,24 +5,26 @@ import Layout from "../components/Layout"
 import useSiteMetadata from "../hooks/useSiteMetadata"
 import GlitchText from "../components/GlitchText"
 
-const IndexPage = ({ data }) => {
+const Home = ({
+  data: {
+    file: { childImageSharp: seoImages },
+  },
+}) => {
   const {
     pages: {
-      home: { to, title, description, coverAlt, type, breadcrumb },
+      home: { id, title, description, imageAlt, breadcrumb, type },
     },
   } = useSiteMetadata()
-  const covers = data?.file?.childImageSharp
 
   return (
     <Layout
-      to={to}
+      pageId={id}
       title={title}
       description={description}
-      covers={{ ...covers }}
-      coverAlt={coverAlt}
+      images={{ ...seoImages }}
+      imageAlt={imageAlt}
       breadcrumb={breadcrumb}
       type={type}
-      pageName="home"
     >
       <Flex
         sx={{
@@ -31,7 +33,6 @@ const IndexPage = ({ data }) => {
           justifyContent: `center`,
           minHeight: `100%`,
         }}
-        data-speakable="true"
       >
         <Themed.h1
           sx={{
@@ -74,13 +75,13 @@ const IndexPage = ({ data }) => {
 }
 
 export const query = graphql`
-  query {
-    file(relativePath: { eq: "home.jpg" }) {
+  query ($image: String) {
+    file(absolutePath: { eq: $image }) {
       childImageSharp {
-        ...ChildImageSharpFields
+        ...ImageUrlFields
       }
     }
   }
 `
 
-export default IndexPage
+export default Home

@@ -1,21 +1,36 @@
 import { graphql } from "gatsby"
 
-export const ChildImageSharpFields = graphql`
-  fragment ChildImageSharpFields on ImageSharp {
-    google1x1: fixed(width: 1600, height: 1600) {
-      src
-    }
-    google4x3: fixed(width: 1600, height: 1200) {
-      src
-    }
-    google16x9: fixed(width: 1600, height: 900) {
-      src
-    }
-    twitter: fixed(width: 1600, height: 800) {
-      src
-    }
-    facebook: fixed(width: 1600, height: 838) {
-      src
-    }
+export const ImageUrlFields = graphql`
+  fragment ImageUrlFields on ImageSharp {
+    twitter: gatsbyImageData(
+      layout: FIXED
+      width: 1600
+      height: 800
+      formats: [JPG]
+    )
+    openGraph: gatsbyImageData(
+      layout: FIXED
+      width: 1600
+      height: 838
+      formats: [JPG]
+    )
+    schemaOrg1x1: gatsbyImageData(
+      layout: FIXED
+      width: 1600
+      height: 1600
+      formats: [JPG]
+    )
+    schemaOrg4x3: gatsbyImageData(
+      layout: FIXED
+      width: 1600
+      height: 1200
+      formats: [JPG]
+    )
+    schemaOrg16x9: gatsbyImageData(
+      layout: FIXED
+      width: 1600
+      height: 900
+      formats: [JPG]
+    )
   }
 `

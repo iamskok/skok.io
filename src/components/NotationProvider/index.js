@@ -6,11 +6,11 @@ import React, {
   createRef,
 } from "react"
 import useFontFaceObserver from "use-font-face-observer"
-import isWindow from "../../utils/is-window"
+import isBrowser from "../../utils/is-browser"
 import fontFaceDeclarations from "../../gatsby-plugin-theme-ui/fontFaces"
 import getFontFaces from "./get-font-faces"
 
-// Access `Article` component DOM node.
+// Access `Post` component DOM node.
 const notationRef = createRef()
 const NotationContext = createContext()
 
@@ -25,7 +25,7 @@ const NotationProvider = ({ children }) => {
   // `resizeObserver` will be created each time `useEffect` callback is executed.
   const resizeObserver = useMemo(
     () =>
-      isWindow() &&
+      isBrowser() &&
       new ResizeObserver(entries =>
         setPageHeight(entries[0].target.scrollHeight)
       ),

@@ -4,8 +4,17 @@ export const FrontmatterFields = graphql`
   fragment FrontmatterFields on MdxFrontmatter {
     title
     description
-    date(formatString: "MMMM DD, YYYY")
-    modifiedDate(formatString: "MMMM DD, YYYY")
-    coverAlt
+    datePublished(formatString: "MMMM DD, YYYY")
+    dateModified(formatString: "MMMM DD, YYYY")
+    image {
+      childImageSharp {
+        gatsbyImageData(
+          width: 900
+          placeholder: BLURRED
+          formats: [AUTO, WEBP, AVIF]
+        )
+      }
+    }
+    imageAlt
   }
 `
