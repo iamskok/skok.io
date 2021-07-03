@@ -2,11 +2,7 @@ const seo = {
   firstName: `Vladimir`,
   lastName: `Skok`,
   siteName: `Vladimir Skok`,
-  logo: {
-    url: `logo.jpg`,
-    width: 112,
-    height: 112,
-  },
+  logo: `logo.jpg`,
   language: `en_US`,
   socialMedia: {
     twitter: `https://twitter.com/iamskok1`,

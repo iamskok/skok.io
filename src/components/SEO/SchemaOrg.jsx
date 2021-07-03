@@ -7,7 +7,7 @@ const SchemaOrg = ({
   siteName,
   firstName,
   lastName,
-  logo: { pathName: logoPathName, width: logoWidth, height: logoHeight },
+  logo,
   language,
   socialMedia: { twitter, github },
   address,
@@ -66,9 +66,7 @@ const SchemaOrg = ({
     name: siteName,
     logo: {
       "@type": `ImageObject`,
-      url: slashify(siteUrl, logoPathName),
-      height: logoHeight,
-      width: logoWidth,
+      url: slashify(siteUrl, logo),
     },
     address: {
       "@id": schemaId(`address`),
