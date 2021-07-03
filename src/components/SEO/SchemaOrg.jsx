@@ -90,15 +90,8 @@ const SchemaOrg = ({
         schemaOrg16x9ImageUrl,
       ],
     },
-    isPost &&
-      datePublished && {
-        datePublished,
-      },
-    isPost && dateModified
-      ? { dateModified }
-      : datePublished
-      ? { dateModified: datePublished }
-      : null,
+    isPost && datePublished && { datePublished },
+    isPost && dateModified ? { dateModified } : { dateModified: datePublished },
     !isBlog &&
       speakableSelector && {
         speakable: {
