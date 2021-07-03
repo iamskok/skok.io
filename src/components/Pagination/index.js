@@ -5,16 +5,22 @@ import Link from "./link"
 const Pagination = ({ previous, next }) => (
   <Flex
     sx={{
-      marginX: [-2, -3],
       marginBottom: 4,
-      rowGap: 2,
-      flexDirection: `column`,
+      columnGap: [2, 4],
     }}
   >
     {previous && (
       <Link url={previous.url} title={previous.title} text="Previous" />
     )}
-    {next && <Link url={next.url} title={next.title} text="Next" />}
+    <div sx={{ marginX: `auto` }} />
+    {next && (
+      <Link
+        sx={{ textAlign: `right` }}
+        url={next.url}
+        title={next.title}
+        text="Next"
+      />
+    )}
   </Flex>
 )
 

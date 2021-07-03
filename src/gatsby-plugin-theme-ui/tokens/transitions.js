@@ -29,7 +29,7 @@ const transitions = {
   progressBar: `${width}`,
   progressValue: `${width}`,
   hitCounter: `${backgroundColor}`,
-  paginationLink: `${backgroundColor}, ${boxShadow}`,
+  paginationLink: `${color}, ${boxShadow}`,
 }
 
 export default transitions
