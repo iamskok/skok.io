@@ -1,20 +1,20 @@
 import { useEffect } from "react"
-import isBrowser from "../utils/is-browser"
 
-const useStyleSheet = (selector, rule) => {
-  const styleSheet = isBrowser() && document.styleSheets[0]
-  const [[property, value]] = Object.entries(rule)
-  const cssStyleRule = `
-    ${selector} {
-      ${property}: ${value};
-    }
-  `
-
+const useStyleSheet = (selector, rules) => {
   useEffect(() => {
+    const styleSheet = document.styleSheets[0]
+    const rulesList = Object.entries(rules)
+    const cssStyleRule = `
+        ${selector} {
+          ${rulesList
+            .map(([property, value]) => `${property}: ${value};`)
+            .join(`\n`)}
+        }
+      `
     styleSheet.insertRule(cssStyleRule)
 
     return () => styleSheet.deleteRule(0)
-  }, [styleSheet, cssStyleRule])
+  }, [rules, selector])
 }
 
 export default useStyleSheet
