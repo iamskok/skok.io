@@ -21,7 +21,7 @@ const robotsTxt = {
         policy: [
           {
             userAgent: `*`,
-            disallow: [`/`],
+            // disallow: [`/`],
           },
         ],
       },
@@ -29,7 +29,7 @@ const robotsTxt = {
         policy: [
           {
             userAgent: `*`,
-            disallow: [`/`],
+            // disallow: [`/`],
           },
         ],
       },
