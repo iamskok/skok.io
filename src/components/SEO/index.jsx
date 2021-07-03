@@ -107,11 +107,11 @@ const getCurrentUrl = ({
   pages: {
     blog: { pathName: blogPathName },
   },
-  activePages: { isHome, isArticle },
+  activePages: { isHome, isPost },
 }) =>
   isHome
     ? siteUrl
-    : isArticle
+    : isPost
     ? slashify(siteUrl, blogPathName, slug)
     : slashify(siteUrl, pathName)
 
