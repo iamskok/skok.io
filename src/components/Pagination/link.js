@@ -13,6 +13,7 @@ const Link = ({ url, title, text, ...rest }) => (
       textAlign: [`left`, `center`],
       transition: `paginationLink`,
       alignSelf: [`auto`, `flex-start`],
+      color: `text`,
       "&:hover": {
         backgroundColor: `primary`,
       },
