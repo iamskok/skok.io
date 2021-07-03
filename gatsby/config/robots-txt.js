@@ -2,7 +2,6 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-// const { NODE_ENV, NETLIFY_ENV = NODE_ENV } = process.env
 const { NODE_ENV, CONTEXT: NETLIFY_ENV = NODE_ENV } = process.env
 
 const robotsTxt = {
@@ -21,7 +20,7 @@ const robotsTxt = {
         policy: [
           {
             userAgent: `*`,
-            // disallow: [`/`],
+            disallow: [`/`],
           },
         ],
       },
@@ -29,7 +28,7 @@ const robotsTxt = {
         policy: [
           {
             userAgent: `*`,
-            // disallow: [`/`],
+            disallow: [`/`],
           },
         ],
       },
