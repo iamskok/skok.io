@@ -5,7 +5,7 @@ const pages = {
     title: `Vladimir Skok`,
     description: `Software engineering blog`,
     image: `home.jpg`,
-    imageAlt: `Home Page`,
+    imageAlt: `Home page cover photo`,
     breadcrumb: `🏠 Home`,
     type: `WebPage`,
   },
