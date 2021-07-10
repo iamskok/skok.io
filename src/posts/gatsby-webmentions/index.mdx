@@ -1,0 +1,169 @@
+---
+title: Gatsby Webmentions
+date: 2020-08-02
+published: true
+---
+
+- I bought the cheapest domain at the moment on NameCheap for just 2\$ -- skok.club (Yes, I know it sounds narcissistic)
+- Make sure that the domain name is used as your website in twitter/github bio.
+- Add this markup to the head/footer of your website `<a href="https://twitter.com/iamskok" rel="me" class="h-card">Twitter</a>` & `<a href="https://github.com/iamskok" rel="me" class="h-card">Github</a>`.
+- Go to webmentions.io and sign in using your domain name.
+- Generate new token
+- Create `.env.development` file
+- Add `WEBMENTION_TOKEN` variable using the freshly generate token
+- Install `gatsby-webmentions-plugin` - `yarn add gatsby-plugin-webmention`
+- Open `gatsby-config.js` and paste in below code to configure `.process.env`
+
+```js
+const activeEnv = process.env.NODE_ENV
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+})
+```
+
+- In `gatsby-config.js` paste in below code changing the `username`, `identity` and `domain` on your personal.
+
+```js
+{
+    resolve: `gatsby-plugin-webmention`,
+    options: {
+    username: `https://skok.club`,
+    identity: {
+        twitter: `iamskok`,
+        github: `iamskok`,
+    },
+    mentions: true,
+    pingbacks: true,
+    forwardPingbacksAsWebmentions: `https://brid.gy`,
+    domain: `skok.club`,
+    fetchLimit: 10000,
+    token: process.env.WEBMENTION_TOKEN,
+    },
+},
+```
+
+- Open `gatsby-config.js` in blog post generation section and add `permalink` in `context`. This is how we are going to filter webmentions.
+
+```js
+const createPosts = (createPage, edges) => {
+  const { siteUrl } = siteMetadata
+
+  edges.forEach(({ node }, i) => {
+    const slug = node.fields.slug
+    const permalink = `${siteUrl}${slug}`
+
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`src/templates/BlogPost/index.js`),
+      context: {
+        id: node.id,
+        permalink,
+      },
+    })
+  })
+}
+```
+
+- Open `BlogPost.js` template and add GraphQL query to fetch webmentions
+
+```js
+const BlogPost = ({ pageContext, data }) => {
+  const { mdx } = data
+  const { title, date, cover, coverAlt } = mdx.frontmatter
+  const allWebMentionEntry = data?.allWebMentionEntry
+
+  return (
+    <Layout>
+      <Styled.h1 className="p-name">{title}</Styled.h1>
+
+      <MDXRenderer children={mdx.body} />
+
+      {allWebMentionEntry?.edges?.length > 0 && (
+        <WebMentions allWebmentionEntry={allWebMentionEntry} />
+      )}
+
+      <Pagination previous={prev?.fields?.slug} next={next?.fields?.slug} />
+    </Layout>
+  )
+}
+
+export default BlogPost
+
+export const pageQuery = graphql`
+  query($id: String!, $permalink: String!) {
+    mdx(id: { eq: $id }) {
+      id
+      body
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+      }
+    }
+    allWebMentionEntry(filter: { wmTarget: { eq: $permalink } }) {
+      edges {
+        node {
+          type
+          mentionOf
+          wmTarget
+          wmSource
+          wmProperty
+          wmPrivate
+          wmId
+          url
+          author {
+            name
+            type
+            photo
+            url
+          }
+        }
+      }
+    }
+  }
+`
+```
+
+- Create `WebMentions` component
+
+```js
+import React from "react"
+
+const WebMentions = ({ allWebmentionEntry }) => {
+  return (
+    <div>
+      <b>WebMentions</b>
+      <pre>
+        <code>{JSON.stringify(allWebmentionEntry)}</code>
+      </pre>
+    </div>
+  )
+}
+
+export default WebMentions
+```
+
+- Add microformats2 markup to blog articles
+
+```
+<article class="h-entry">
+  <h1 class="p-name">Microformats are amazing</h1>
+  <p>Published by <a class="p-author h-card" href="http://example.com">W. Developer</a>
+     on <time class="dt-published" datetime="2013-06-13 12:00:00">13<sup>th</sup> June 2013</time></p>
+
+  <p class="p-summary">In which I extoll the virtues of using microformats.</p>
+
+  <div class="e-content">
+    <p>Blah blah blah</p>
+  </div>
+</article>
+```
+
+- Test markup with https://IndieWebify.me or https://pin13.net
+
+- Open `Head` component and add webmention link (optionally you can add pingback link)
+
+```
+<link rel="webmention" href="https://webmention.io/skok.club/webmention" />
+<link rel="pingback" href="https://webmention.io/skok.club/xmlrpc" />
+```
